@@ -98,22 +98,19 @@ One-line pitch. Creator: @handle. (Note what you could and couldn't see.)
 ```
 
 ## 3. Deliver it (try these in order)
-**A. git** (if you have a shell and repo access):
-```bash
-git clone https://github.com/TheYoungCrews/recipes.git && cd recipes   # or git pull
-test -e recipes/<slug>.md && echo "EXISTS - stop" && exit 1
-# write the file
-python3 scripts/build.py      # validates; fix any error it reports
-git add recipes/<slug>.md
-git commit -m "add: <slug>"
-git push origin main          # if rejected: git pull --rebase, then push. Never --force.
+**Outside agents (Muse, Instinct, ...) write ONLY to `inbox/`**, one new file per recipe. Never edit or delete any other path. Never commit or paste the token.
+**A. GitHub contents API (create-only):** use the fine-grained token (TheYoungCrews/recipes only, Contents read/write).
 ```
-**B. GitHub REST API** (token with contents:write on this repo only):
-`PUT https://api.github.com/repos/TheYoungCrews/recipes/contents/recipes/<slug>.md` with JSON `{"message":"add: <slug>","content":"<base64 of file>","branch":"main"}`. Do **not** send a `sha` field: without it, GitHub refuses to overwrite an existing file (422). On a 422, pick the next slug suffix or treat it as a duplicate.
-**C. Email** (no GitHub access, and the normal path for people): email **crews@mail.grokbot.com**. Grok Bot reads that inbox and commits entries.
-- Subject: `recipe: <title or short description>` (drinks: `cocktail: ...`; feedback on a made dish: `made: <title> N/5`).
-- Body: the link (if any), and either the full markdown file (agents) or plain words (people): who it's from, anything to change. Attach photos/screenshots/videos as-is.
-**D. Raw drop** (can't fully decode): commit `inbox/YYYY-MM-DD-<short-slug>.md` containing the source URL, sender, `via`, and whatever raw text or transcript you have (or email it with subject `recipe-raw: ...`). Any later agent normalizes it: it writes the real recipe file, then adds `normalized_to: recipes/<slug>.md` at the top of the inbox file. Inbox files are never deleted.
+PUT https://api.github.com/repos/TheYoungCrews/recipes/contents/inbox/YYYY-MM-DD-<slug>.md
+Authorization: Bearer <token>
+Accept: application/vnd.github+json
+{"message":"inbox: <title> (via <agent>)","content":"<base64 of the whole file>","branch":"main"}
+```
+Do **not** send `sha`: without it GitHub refuses to overwrite (422). On a 422, try `-2` once, or treat it as a duplicate. Dedupe first with `GET /repos/TheYoungCrews/recipes/contents/recipes` and `.../contents/inbox` (list the filenames).
+**B. Email fallback:** **crews@mail.grokbot.com**, subject `recipe: <title>` (drinks `cocktail: ...`), body = the full markdown file. People write plain words and attach photos.
+**C. Raw drop** (can't fully decode): same API, `inbox/YYYY-MM-DD-raw-<slug>.md` with source, sender, `via` and raw text/transcript (or email `recipe-raw: ...`).
+**Filing (Grok Bot's hourly routine, not you):** validates with `scripts/build.py` rules, writes `recipes/<slug>.md`, adds `filed_to:` at the top of the inbox file. Inbox files are never deleted.
+Agents working *inside* a local clone with Crews's go-ahead (e.g. Grok Bot) may commit to `recipes/` directly: `git pull`, check the path doesn't exist, `python3 scripts/build.py`, commit `add: <slug>`, push (never force).
 
 ## 4. Report back to the sender (one short message)
-Title, one-line pitch, what to buy (the `[ ]` items), and the file path or email used. Mention anything you couldn't see or had to guess.
+Title, one-line pitch, what to buy (the `[ ]` items), and the inbox path or email used. Mention anything you couldn't see or had to guess.

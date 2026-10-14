@@ -7,6 +7,8 @@ Private repo `TheYoungCrews/recipes`. Plain markdown, $0. This page is enough on
 - Keep it **private**: never paste repo contents publicly. Never buy anything or edit shopping lists.
 - Never invent amounts, ratings or feedback. Write `(amount not given)`, and say what you couldn't see.
 - Never edit `## Original` after capture. Never force-push.
+- **Agents outside the repo (Muse, Instinct, ...) write ONLY to `inbox/`.** One new file per recipe or feedback, created with the GitHub contents API (create-only). Grok Bot's hourly filing routine validates inbox files and files them into `recipes/` / `cocktails/`. Never edit or delete any other path.
+- Never commit, paste or log your GitHub token.
 
 ## 1. Intake (link, IG/TikTok/YouTube post, photo, screenshot, video, text, email)
 1. **Dedupe first:** search `recipes/`, `cocktails/`, `inbox/` for the same source URL (ignore `?igsh=`/`utm_` params) or a near-identical title. If it matches, don't create anything; tell the sender which file it is.
@@ -37,22 +39,36 @@ cooks: 0
 ```
    Tag values: protein chicken/turkey/beef/lamb/pork/fish/shellfish/egg/veg/organ; method dutch-oven/air-fryer/grill/sheet-pan/one-pot/no-cook/braise/smoker/stovetop; effort quick-20/weeknight-30/weeknight-45/weekend-project/make-ahead/freezer-friendly. **Weeknight dinners are the priority.** No store info in recipes (that's a later grocery-list step). Apply the **Standing substitutions** in `taste-profile.md` in Our version: soy sauce becomes liquid aminos, chili paste becomes sambal oelek. Others are in TAGS.md. Don't invent tags.
 5. **Body:** one-line pitch (creator @handle). Then `## Original` (faithful ingredients + steps), then `## Our version`: a grocery checklist (`- [x]` if in `pantry/staples.md`, else `- [ ]`) and steps adapted to our Dutch oven / air fryer and taste (brothy, charred, umami, lime/herbs, high-protein; see `taste-profile.md`). Then `## Notes` with `- YYYY-MM-DD (via <agent>): captured, sent by <who>.`
-6. **Can't decode properly?** Save the raw material as `inbox/YYYY-MM-DD-<slug>.md` (source, sender, via, raw text). A later agent normalizes it and adds `normalized_to: <path>` at the top.
+6. **Save as** `inbox/YYYY-MM-DD-<slug>.md` (today's date + the slug), full frontmatter + body as above. Grok Bot files it into `recipes/<slug>.md`.
+7. **Can't decode properly?** Save the raw material as `inbox/YYYY-MM-DD-raw-<slug>.md` (source, sender, via, raw text). The filing routine normalizes it later.
 
 ## 2. Feedback ("made it", voice note, text, `made:` email)
-1. **Match the recipe** by title or slug (ignore words like "the" and "bowls"). If it's ambiguous, ask once, or write `inbox/YYYY-MM-DD-feedback-<slug>.md` and change nothing.
-2. **Notes**, newest first under `## Notes`: `- YYYY-MM-DD (anna via instinct/<model>, 4/5): too salty; loved the basil. -> Our version updated: yes|no`
-3. **Frontmatter:** set `owner` to who adapted it (`anna`/`crews`/`anna+crews`) once Our version gets a real change from them. `status: made` (`favorite` only for 5/5 or "favorite"; `retired` only for "never again"), `last_made`, `rating` if one was given, `cooks` + 1.
-4. **Our version:** edit only for a specific fix ("halve the chili crisp"), with the smallest change, marked `(changed YYYY-MM-DD: was ...)`. If it says "Same as original", copy the Original in first. Vague praise goes in Notes only.
-5. **taste-profile.md:** add only general preferences ("Anna dislikes cilantro"), noting who and the slug, plus a `## Change log` line. No duplicates.
+**Outside agents:** don't edit the recipe. Create `inbox/YYYY-MM-DD-made-<slug>.md`:
+```yaml
+---
+inbox_type: feedback
+recipe: <slug if known, else the title as said>
+cooked: YYYY-MM-DD
+who: anna            # crews | anna | anna+crews
+rating: 4            # only if they gave a number; else leave blank
+via: muse
+---
+<their words, as said: what worked, what to change, any general preference>
+```
+**Filing routine (Grok Bot), applied to the recipe:**
+1. **Match** by slug or title (ignore "the", "bowls"). If it's ambiguous, leave the file in inbox/ and ask Crews.
+2. **Notes**, newest first: `- YYYY-MM-DD (anna via muse, 4/5): too salty; loved the basil. -> Our version updated: yes|no`
+3. **Frontmatter:** `status: made` (`favorite` only for 5/5 or "favorite"; `retired` only for "never again"), `last_made`, `rating` if given, `cooks` + 1, and `owner` = whoever adapted it once Our version really changes.
+4. **Our version:** edit only for a specific fix, with the smallest change, marked `(changed YYYY-MM-DD: was ...)`. Original stays untouched.
+5. **taste-profile.md:** add general preferences only, with who + slug and a Change log line.
 
-## 3. Email path: crews@mail.grokbot.com (people and agents)
-Subjects: `recipe: <what>`, `cocktail: <what>`, `made: <title> N/5`, `recipe-raw: <what>` (raw drop).
-Body: the link, and either the full markdown file (agents) or plain words (people: who, what to change). Attach photos, screenshots or videos as they are. Grok Bot turns these into commits.
+## 3. Email path (fallback): crews@mail.grokbot.com
+For people, and agents without GitHub access. Subjects: `recipe: <what>`, `cocktail: <what>`, `made: <title> N/5`, `recipe-raw: <what>`. Body: the link, plus the full markdown file (agents) or plain words (people). Attach photos as they are. Grok Bot puts these into inbox/ and files them.
 
-## 4. Delivery (try in this order)
-1. **git:** pull, check the path doesn't exist, write, `python3 scripts/build.py` (must pass), then commit `add: <slug>` / `feedback: <slug>` and push. If the push is rejected: `git pull --rebase`, then push again.
-2. **GitHub API:** `PUT /repos/TheYoungCrews/recipes/contents/<path>` with `message` and base64 `content`, and **no `sha`**, so an existing file can't be overwritten (422 = exists).
-3. **Email** crews@mail.grokbot.com (section 3).
-4. **Raw drop** to `inbox/` (by git or email).
-Then reply to the sender in one line: what you saved or changed, what to buy, and anything you guessed.
+## 4. Delivery (outside agents, in this order)
+1. **GitHub contents API, create-only:** `PUT https://api.github.com/repos/TheYoungCrews/recipes/contents/inbox/YYYY-MM-DD-<slug>.md`. Headers: `Authorization: Bearer <token>`, `Accept: application/vnd.github+json`. Body: `{"message":"inbox: <title> (via <agent>)","content":"<base64 of the file>","branch":"main"}`. **Never send `sha`**, so an existing file is never overwritten. A 422 means the name exists: add `-2` and retry once, or treat it as a duplicate.
+   The token is fine-grained: TheYoungCrews/recipes only, Contents read/write. Keep it out of files, commits and chat.
+2. **Email** crews@mail.grokbot.com (section 3).
+Then reply to the sender in one line: what you saved, what to buy, and anything you guessed.
+
+**Grok Bot (filing routine, hourly):** for each new inbox file, dedupe, run `scripts/build.py` checks, write `recipes/<slug>.md` (or apply the feedback), then add `filed_to: <path>` + date at the top of the inbox file. Inbox files are never deleted. Commit `file: <slug>`.

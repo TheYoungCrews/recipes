@@ -43,7 +43,11 @@ Recipes carry no store info (no `stores:` field, no `@store` marks). Store picki
 Before creating a file, search `recipes/`, `cocktails/`, `inbox/` for the same `source` URL (ignoring tracking params) or a near-identical title. Match = no new file.
 
 ## inbox/
-Raw drops (`inbox/YYYY-MM-DD-<slug>.md`) that an agent couldn't fully decode. Free-form; must include source, sender, via. When normalized, add `normalized_to: <path>` at the top. Never deleted.
+Landing zone for outside agents (Muse, Instinct, ...), which may write **only** here, one new file each, created with the GitHub contents API (create-only, no `sha`).
+- `inbox/YYYY-MM-DD-<slug>.md`: a full recipe (all frontmatter above + body).
+- `inbox/YYYY-MM-DD-made-<slug>.md`: feedback (`inbox_type: feedback`, `recipe`, `cooked`, `who`, `rating`, `via`, then their words).
+- `inbox/YYYY-MM-DD-raw-<slug>.md`: a raw drop (source, sender, via, raw text).
+Commit message: `inbox: <title> (via <agent>)`. Grok Bot's hourly routine validates each file, files it into `recipes/` / `cocktails/` (or applies the feedback), and adds `filed_to: <path>` at the top. Inbox files are never deleted.
 
 ## Owner
 `owner` is not `source` (where it came from) and not `added_by` (who sent it). New intake defaults to the source creator (name or @handle). Switch it to `anna`, `crews` or `anna+crews` once they adapt it, i.e. the first real feedback that changes Our version. Required (build.py fails without it).

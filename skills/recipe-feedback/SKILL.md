@@ -9,7 +9,22 @@ Follows the feedback protocol in `AGENTS.md` (section 3). Read `SCHEMA.md`, `TAG
 ## Hard rules
 - Never delete or rename files. Never edit `## Original`.
 - Never invent feedback, ratings or dates. Use only what the person said. If no rating was given, leave `rating` as it is.
-- Only touch: the matched recipe file, `taste-profile.md`, and (if ambiguous) a new file in `inbox/`.
+- **Outside agents (Muse, Instinct, ...) only create `inbox/YYYY-MM-DD-made-<slug>.md`** (format below) and never edit recipe files. Grok Bot's hourly filing routine applies sections 2 to 4.
+- The filing routine only touches the matched recipe file, `taste-profile.md` and the inbox file (it adds `filed_to:`).
+
+## 0. Inbox feedback file (outside agents)
+```yaml
+---
+inbox_type: feedback
+recipe: <slug if known, else the title as said>
+cooked: YYYY-MM-DD
+who: anna            # crews | anna | anna+crews
+rating: 4            # only if they gave a number
+via: muse
+---
+<their words: what worked, what to change, any general preference>
+```
+Deliver it with the GitHub contents API, create-only (`PUT .../contents/inbox/YYYY-MM-DD-made-<slug>.md`, message `inbox: made <title> (via <agent>)`, no `sha`). Fallback: email crews@mail.grokbot.com, subject `made: <title> N/5`.
 
 ## 1. Parse the input
 | Input | How |
@@ -24,7 +39,7 @@ Extract: **dish**, **who** (crews / anna / both), **rating** (1-5, optional; tur
 2. Exact or clear single match (e.g. "lamb bowls" -> `braised-lamb-collard-noodle-bowls`): use it.
 3. Several plausible matches, or none:
    - If you can ask the sender, ask one short question listing the candidates.
-   - Otherwise write `inbox/YYYY-MM-DD-feedback-<short-slug>.md` with the raw feedback, sender, `via`, and candidate files. Change no recipe.
+   - Otherwise leave the inbox file unfiled, add `candidates:` to it, and ask Crews. Change no recipe.
 4. They cooked something not in the repo: capture it first with `skills/recipe-intake/SKILL.md`, or drop it to `inbox/`.
 
 ## 3. Update the recipe file
@@ -42,5 +57,5 @@ Add only **general** preferences that apply beyond this dish ("Anna doesn't like
 
 ## 5. Save and confirm
 - Run `python3 scripts/build.py` (must pass).
-- Commit `feedback: <slug>` (and `taste: <pref>` in the same commit if you changed the profile). Push the normal way and never force-push. Without repo access, email crews@mail.grokbot.com with subject `made: <title> N/5` and the parsed feedback.
+- Commit `file: made <slug>` (include taste-profile changes in the same commit), after adding `filed_to: <path>` at the top of the inbox file. Push the normal way and never force-push.
 - Reply to the sender in one line: what you recorded, what you changed in Our version, and any taste-profile addition.

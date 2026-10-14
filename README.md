@@ -17,17 +17,17 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `skills/recipe-feedback/SKILL.md` | Feedback skill: 'we made it' -> Notes, Our version, taste profile |
 | `docs/CLOUDFLARE.md` | Chosen hosting: Cloudflare Pages + Access (email PIN, private, $0) |
 | `docs/HOSTING.md` | Alternative: spare laptop + Tailscale |
-| `inbox/` | Raw drops waiting to be normalized |
+| `inbox/` | Where outside agents drop new recipes/feedback (create-only); filed hourly into `recipes/` |
 | `templates/` | Copy these to start a new brief |
 | `scripts/build.py` | Builds `site/index.html` (no dependencies, Python 3) |
 
 ## Adding a recipe (no GitHub needed)
 **Anna and Crews:** either
-1. **Email crews@mail.grokbot.com** with subject `recipe: <what it is>` (`cocktail: ...` for drinks, `made: <title> 4/5` for feedback after cooking). Paste the link, or attach a photo or screenshot, and add a line with anything you want changed. Grok Bot turns it into a recipe.
-2. **Send it to any of our agents** (Muse, Instinct, Grok Bot): "save this recipe" plus the link, photo or text.
+1. **Send it to any of our agents** (Muse, Instinct, Grok Bot): "save this recipe" plus the link, photo or text. They drop it in `inbox/`, and it's filed within the hour.
+2. **Or email crews@mail.grokbot.com** with subject `recipe: <what it is>` (`cocktail: ...` for drinks, `made: <title> 4/5` for feedback after cooking). Paste the link, or attach a photo or screenshot, and add a line with anything you want changed. Grok Bot turns it into a recipe.
 Then browse the site (below). It shows up as **to-try**.
 
-**Agents:** follow `skills/recipe-intake/SKILL.md`.
+**Agents:** follow `AGENTS.md`. Outside agents commit one file to `inbox/` only (GitHub contents API, create-only, fine-grained token); email is the fallback.
 
 ## Flow
 capture -> `status: to-try` -> cook -> feedback -> dated note + "Our version" update + taste-profile update -> `made` / `favorite` / `retired`.
