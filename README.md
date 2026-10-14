@@ -14,6 +14,7 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `recipes/` | Food briefs, one file each |
 | `cocktails/` | Drink briefs (same schema, `type: cocktail`) |
 | `skills/recipe-intake/SKILL.md` | Intake skill for any agent/model (Muse, Instinct, ...) and any input -> to-try file |
+| `skills/recipe-feedback/SKILL.md` | Feedback skill: 'we made it' -> Notes, Our version, taste profile |
 | `inbox/` | Raw drops waiting to be normalized |
 | `templates/` | Copy these to start a new brief |
 | `scripts/build.py` | Builds `site/index.html` (no dependencies, Python 3) |

@@ -27,6 +27,7 @@ Input: a link, IG/TikTok caption, screenshot, transcript, or a free-text idea.
 - Need a new tag? Add it to `TAGS.md` in the same commit and mention it to the human.
 
 ## 3. Feedback protocol (after cooking)
+Full step-by-step skill for any agent (voice note, text, `made: <title> N/5` email): [`skills/recipe-feedback/SKILL.md`](skills/recipe-feedback/SKILL.md).
 Input: "made X, 4/5, too salty, Anna loved the herbs".
 1. Append a dated line under `## Notes` (format in `templates/feedback.md`).
 2. Update frontmatter: `status` (`made`; `favorite` if 5/5 or they say so; `retired` if "never again"), `last_made`, `rating`, `cooks += 1`.
