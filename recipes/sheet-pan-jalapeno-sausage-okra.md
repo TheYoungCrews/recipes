@@ -2,7 +2,7 @@
 title: Sheet-Pan Jalapeño Sausage & Charred Okra
 slug: sheet-pan-jalapeno-sausage-okra
 type: main
-status: to-try
+status: made
 tags: [beef, sheet-pan, weeknight-30]
 ingredients: [beef jalapeno sausage, okra, vidalia onion, zucchini, olive oil, paprika, garlic powder, onion powder, thyme, salt, black pepper, lemon, chili crisp]
 serves: 2
@@ -18,7 +18,7 @@ input_type: text
 owner: anna
 last_made:
 rating:
-cooks: 0
+cooks: 1
 ---
 High-heat oven method that gets okra charred instead of slimy, without setting off the smoke alarm.
 
@@ -48,3 +48,4 @@ AI-generated, so there's no outside original. The recipe as sent is in Our versi
 ## Notes
 - 2026-10-14 (grok-bot): the original didn't say when the sausage goes on the pan; assumed it roasts alongside the veggies the whole time.
 - 2026-10-14 (via gemini): captured, sent by anna.
+- 2026-10-14 (crews): proven recipe Anna has made before; marked made (no date or rating yet).

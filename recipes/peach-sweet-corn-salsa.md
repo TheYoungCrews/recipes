@@ -2,7 +2,7 @@
 title: Fresh Peach & Charred Sweet Corn Salsa
 slug: peach-sweet-corn-salsa
 type: snack
-status: to-try
+status: made
 tags: [veg, no-cook, quick-20]
 ingredients: [peaches, tomatoes, vidalia onion, red onion, bell pepper, lime, jalapeno, cilantro, salt]
 serves: 4
@@ -16,7 +16,7 @@ input_type: text
 owner: anna
 last_made:
 rating:
-cooks: 0
+cooks: 1
 ---
 Bright, sweet and crunchy seasonal salsa to cut through rich, heavy mains.
 
@@ -41,3 +41,4 @@ AI-generated, so there's no outside original. The recipe as sent is in Our versi
 ## Notes
 - 2026-10-14 (grok-bot): the title says charred sweet corn, but the recipe as sent has no corn in it. Ask Anna whether to add it (and how much) or drop it from the title.
 - 2026-10-14 (via gemini): captured, sent by anna.
+- 2026-10-14 (crews): proven recipe Anna has made before; marked made (no date or rating yet).
