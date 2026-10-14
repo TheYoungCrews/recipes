@@ -16,9 +16,9 @@ added_by: crews
 via: chatgpt (Apple Notes import by grok-bot)
 input_type: text
 owner: crews
-last_made:
-rating:
-cooks: 1
+last_made: 2026-10-14
+rating: 3
+cooks: 2
 ---
 Brothy, spicy noodle bowl with a blistered tomato base, turmeric-ginger bone broth, crispy chicken and chili crisp.
 
@@ -46,7 +46,13 @@ Brothy, spicy noodle bowl with a blistered tomato base, turmeric-ginger bone bro
 ## Our version
 Same as the original, except season the broth with liquid aminos instead of soy sauce (taste profile).
 
+**Try next time (Buford Highway upgrades, untested):**
+- Swap the egg white noodles for fresh rice noodles or fresh ramen.
+- Add bok choy with the asparagus, and finish with Thai basil, bean sprouts and fried shallots.
+- Stir a spoon of sambal oelek and a splash of fish sauce into the broth for more depth.
+
 ## Notes
 - 2026-10-14 (crews): replaced with Crews's revised version (charred asparagus step, warmed-not-boiled noodles, timings added).
 - 2026-10-14 (grok-bot): time_minutes is an estimate; the Apple Notes brief gave no time.
 - 2026-10-13 (import): from Crews's Apple Notes; he liked it. Rating not recorded yet.
+- 2026-10-14 (crews): made it, 3/5. Does the job but uninspired: Asian-inspired soup with basic ingredients. Egg white vermicelli noodles were weird. Buford Highway subs could make it cool.
