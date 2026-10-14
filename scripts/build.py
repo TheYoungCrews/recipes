@@ -39,13 +39,15 @@ def md_to_html(md):
         m_ul, m_ol = re.match(r"^- (\[[ x]\] )?(.*)", esc), re.match(r"^\d+\. (.*)", esc)
         kind = "ul" if m_ul else "ol" if m_ol else None
         if inlist and kind != inlist: out.append(f"</{inlist}>"); inlist = None
-        if kind and not inlist: out.append(f"<{kind}>"); inlist = kind
+        if kind and not inlist:
+            out.append('<ul class="chk">' if (m_ul and m_ul.group(1)) else f"<{kind}>"); inlist = kind
         if m_ul:
             box = m_ul.group(1)
-            pre = ("☑ " if "x" in box else "☐ ") if box else ""
+            pre = ('<span class="box x"></span>' if "x" in box else '<span class="box"></span>') if box else ""
             out.append(f"<li>{pre}{m_ul.group(2)}</li>")
         elif m_ol: out.append(f"<li>{m_ol.group(1)}</li>")
-        elif s.startswith("## "): out.append(f"<h3>{esc[3:]}</h3>")
+        elif s.startswith("## "):
+            out.append(f"<h3>{esc[3:]}</h3>")
         elif s.startswith("# "): out.append(f"<h2>{esc[2:]}</h2>")
         elif s: out.append(f"<p>{esc}</p>")
     if inlist: out.append(f"</{inlist}>")
@@ -64,7 +66,7 @@ def main():
             for t in fm.get("tags") or []:
                 if t not in tags_ok: errs.append(f"{f.name}: unknown tag '{t}' (add to TAGS.md)")
             if fm.get("type") and fm["type"] not in tags_ok: errs.append(f"{f.name}: unknown type '{fm['type']}'")
-            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","rating","time_minutes","source","last_made"]},
+            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","rating","time_minutes","serves","source","last_made"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body)})
     if errs:

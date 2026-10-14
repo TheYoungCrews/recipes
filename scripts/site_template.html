@@ -1,45 +1,89 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no">
 <title>Our Recipes</title>
 <style>
-:root{--bg:#faf7f2;--card:#fff;--ink:#2b2620;--mut:#7a6f62;--acc:#c0532b;--chip:#efe6da}
-*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
-header{padding:16px;position:sticky;top:0;background:var(--bg);border-bottom:1px solid #e6dccf;z-index:2}
-h1{margin:0 0 8px;font-size:22px}input,select{font:inherit;padding:8px;border:1px solid #d8cbbb;border-radius:8px;background:#fff}
-#q{width:100%;margin-bottom:8px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.chip{border:0;background:var(--chip);padding:4px 10px;border-radius:99px;font-size:13px;cursor:pointer}
-.chip.on{background:var(--acc);color:#fff}main{padding:16px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-.card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 1px 3px #0001;cursor:pointer}
-.card h2{font-size:17px;margin:0 0 4px}.meta{color:var(--mut);font-size:13px}.miss{font-size:13px;margin-top:6px}
-.st{font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:4px;background:#e8f0e3}
-.st.to-try{background:#fdecc8}.st.favorite{background:#f9d0c4}.st.retired{background:#ddd}
-#detail{position:fixed;inset:0;background:#0006;display:none;z-index:5}#detail.open{display:block}
-#detail .in{background:#fff;max-width:760px;margin:4vh auto;max-height:92vh;overflow:auto;border-radius:12px;padding:20px}
-#detail h3{color:var(--acc);margin-top:20px}button.x{float:right;font-size:20px;border:0;background:none;cursor:pointer}
+:root{--bg:#faf7f2;--card:#fff;--ink:#2b2620;--mut:#6f6458;--acc:#c0532b;--chip:#efe6da;--line:#e6dccf}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:17px/1.5 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:env(safe-area-inset-bottom)}
+header{position:sticky;top:0;z-index:3;background:var(--bg);padding:calc(10px + env(safe-area-inset-top)) 14px 10px;border-bottom:1px solid var(--line)}
+.top{display:flex;gap:8px;align-items:center}
+h1{margin:0 0 8px;font-size:22px}
+input[type=search]{flex:1;min-width:0;font-size:17px;padding:12px 14px;border:1px solid #d8cbbb;border-radius:12px;background:#fff;-webkit-appearance:none}
+.fbtn{min-height:46px;padding:0 14px;border-radius:12px;border:1px solid #d8cbbb;background:#fff;font:600 16px system-ui;color:var(--ink)}
+.fbtn.act{background:var(--acc);color:#fff;border-color:var(--acc)}
+#filters{display:none;padding-top:10px;max-height:60vh;overflow:auto}#filters.open{display:block}
+.lab{font-size:13px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;margin:10px 0 6px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:40px;border:0;background:var(--chip);padding:8px 14px;border-radius:99px;font:15px system-ui;color:var(--ink)}
+.chip.on{background:var(--acc);color:#fff}
+.clear{margin-top:12px;background:none;border:0;color:var(--acc);font:600 16px system-ui;min-height:40px;padding:0}
+#count{font-size:14px;color:var(--mut);padding:10px 16px 0}
+main{padding:10px 14px 30px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{display:block;width:100%;text-align:left;font:inherit;color:inherit;border:0;background:var(--card);border-radius:14px;padding:16px;box-shadow:0 1px 3px #0001}
+.card h2{font-size:18px;margin:0 0 6px;line-height:1.3}
+.meta{color:var(--mut);font-size:14px;margin-top:4px}
+.need{font-size:15px;margin-top:8px}
+.st{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:6px;background:#e3eedd;color:#2f6b47}
+.st.to-try{background:#fdecc8;color:#8a5a00}.st.favorite{background:#f9d0c4;color:#9a3410}.st.retired{background:#e2e2e2;color:#555}
+#view{display:none;position:fixed;inset:0;z-index:5;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch}
+#view.open{display:block}
+.vbar{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(8px + env(safe-area-inset-top)) 10px 8px;display:flex;gap:8px;align-items:center;z-index:2}
+.back{min-height:46px;padding:0 14px;border:0;border-radius:12px;background:var(--chip);font:600 17px system-ui;color:var(--ink)}
+.jump{display:flex;gap:6px;overflow-x:auto}.jump a{white-space:nowrap;padding:10px 12px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15px}
+.vin{padding:16px 18px 60px;max-width:720px;margin:0 auto}
+.vin h2{font-size:24px;line-height:1.25;margin:4px 0 8px}
+.vin h3{font-size:19px;color:var(--acc);margin:26px 0 8px;padding-top:12px;border-top:2px solid var(--line);scroll-margin-top:80px}
+.vin ul,.vin ol{padding-left:22px}.vin li{margin:8px 0}.vin ul.chk{list-style:none;padding-left:0}
+.vin ul.chk li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid #f1ebe3}
+.box{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #b9a996;margin-top:2px}.box.x{background:#3a8a5c;border-color:#3a8a5c}
+.vin a{color:var(--acc);word-break:break-all}.src{font-size:14px;color:var(--mut)}
+.notes li{font-size:16px}
 </style></head><body>
 <header><h1>🍲 Our Recipes</h1>
-<input id="q" placeholder="Search title or ingredient…">
-<div class="row">
-<select id="kind"><option value="">Food + drinks</option><option value="recipes">Food</option><option value="cocktails">Drinks</option></select>
-<select id="status"><option value="">Any status</option><option>to-try</option><option>made</option><option>favorite</option><option>retired</option></select>
-<label>Missing ≤ <select id="miss"><option value="">any</option><option>0</option><option>1</option><option>2</option><option>3</option><option>5</option></select> vs staples</label>
-</div><div class="chips" id="tags"></div></header>
-<main id="list"></main>
-<div id="detail"><div class="in" id="din"></div></div>
+<div class="top"><input id="q" type="search" placeholder="Search name or ingredient" autocomplete="off"><button class="fbtn" id="fb">Filters</button></div>
+<div id="filters">
+<div class="lab">Food or drink</div><div class="seg" id="kind"></div>
+<div class="lab">Status</div><div class="seg" id="status"></div>
+<div class="lab">Can make with staples (missing at most)</div><div class="seg" id="miss"></div>
+<div class="lab">Tags</div><div class="seg" id="tags"></div>
+<button class="clear" id="clr">Clear all filters</button>
+</div></header>
+<div id="count"></div><main id="list"></main>
+<div id="view"><div class="vbar"><button class="back" id="back">‹ Back</button><div class="jump" id="jump"></div></div><div class="vin" id="vin"></div></div>
 <script>
-const D=/*DATA*/null;const S=new Set(D.staples);const on=new Set();
+const D=/*DATA*/null;const S=new Set(D.staples);
+const F={kind:'',status:'',miss:'',tags:new Set()};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const missing=r=>r.ingredients.filter(i=>!S.has(i));
-const allTags=[...new Set(D.items.flatMap(r=>r.tags))].sort();
-const tg=document.getElementById('tags');
-allTags.forEach(t=>{const b=document.createElement('button');b.className='chip';b.textContent=t;b.onclick=()=>{on.has(t)?on.delete(t):on.add(t);b.classList.toggle('on');render()};tg.appendChild(b)});
-const $=id=>document.getElementById(id);['q','kind','status','miss'].forEach(i=>$(i).oninput=render);
-function render(){const q=$('q').value.toLowerCase(),k=$('kind').value,st=$('status').value,m=$('miss').value;
- const L=D.items.filter(r=>(!k||r.dir==k)&&(!st||r.status==st)&&[...on].every(t=>r.tags.includes(t))
-  &&(!q||(r.title+' '+r.ingredients.join(' ')).toLowerCase().includes(q))&&(m===''||missing(r).length<=+m));
- $('list').innerHTML=L.map(r=>{const ms=missing(r);return `<div class="card" data-s="${r.slug}"><h2>${r.title}</h2>
- <div class="meta"><span class="st ${r.status}">${r.status}</span> ${r.type}${r.time_minutes?' · '+r.time_minutes+' min':''}${r.rating?' · '+r.rating+'/5':''}</div>
- <div class="meta">${r.tags.join(' · ')}</div><div class="miss">${ms.length?'Need: '+ms.join(', '):'✅ all staples'}</div></div>`}).join('')||'<p>No matches.</p>';
- document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{const r=D.items.find(x=>x.slug==c.dataset.s);
-  $('din').innerHTML=`<button class="x" onclick="$('detail').classList.remove('open')">✕</button><h2>${r.title}</h2>${r.html}`;$('detail').classList.add('open')});}
-$('detail').onclick=e=>{if(e.target.id=='detail')e.target.classList.remove('open')};render();
+function seg(id,opts,key){const el=$(id);el.innerHTML='';opts.forEach(([v,l])=>{const b=document.createElement('button');b.className='chip';b.textContent=l;
+ b.onclick=()=>{if(key==='tags'){F.tags.has(v)?F.tags.delete(v):F.tags.add(v)}else{F[key]=F[key]===v?'':v}sync();render()};b.dataset.v=v;el.appendChild(b)})}
+seg('kind',[['recipes','🍽 Food'],['cocktails','🍸 Drinks']],'kind');
+seg('status',[['to-try','To try'],['made','Made'],['favorite','Favorite'],['retired','Retired']],'status');
+seg('miss',[['0','0 (have it all)'],['1','1'],['2','2'],['3','3'],['5','5']],'miss');
+seg('tags',[...new Set(D.items.flatMap(r=>r.tags))].sort().map(t=>[t,t]),'tags');
+function sync(){[['kind'],['status'],['miss']].forEach(([k])=>$(k).querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',F[k]===b.dataset.v)));
+ $('tags').querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',F.tags.has(b.dataset.v)));
+ const n=(F.kind?1:0)+(F.status?1:0)+(F.miss!==''?1:0)+F.tags.size;$('fb').textContent=n?`Filters (${n})`:'Filters';$('fb').classList.toggle('act',n>0)}
+$('fb').onclick=()=>$('filters').classList.toggle('open');
+$('clr').onclick=()=>{F.kind=F.status=F.miss='';F.tags.clear();$('q').value='';sync();render()};
+$('q').oninput=render;
+function render(){const q=$('q').value.trim().toLowerCase();
+ const L=D.items.filter(r=>(!F.kind||r.dir===F.kind)&&(!F.status||r.status===F.status)&&[...F.tags].every(t=>r.tags.includes(t))
+  &&(!q||(r.title+' '+r.ingredients.join(' ')+' '+r.tags.join(' ')).toLowerCase().includes(q))&&(F.miss===''||missing(r).length<=+F.miss));
+ $('count').textContent=`${L.length} of ${D.items.length}`;
+ $('list').innerHTML=L.map(r=>{const ms=missing(r);return `<button class="card" data-s="${esc(r.slug)}"><h2>${r.dir==='cocktails'?'🍸 ':''}${esc(r.title)}</h2>
+ <div class="meta"><span class="st ${esc(r.status)}">${esc(r.status)}</span> ${esc(r.type)}${r.time_minutes?' · '+esc(r.time_minutes)+' min':''}${r.serves?' · serves '+esc(r.serves):''}${r.rating?' · ★ '+esc(r.rating)+'/5':''}</div>
+ <div class="meta">${r.tags.map(esc).join(' · ')}</div><div class="need">${ms.length?'🛒 Need: '+ms.map(esc).join(', '):'✅ All staples on hand'}</div></button>`}).join('')||'<p style="padding:0 4px">No matches. Try clearing filters.</p>';
+ document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{location.hash='r='+c.dataset.s})}
+function route(){const m=location.hash.match(/^#r=(.+)$/);const r=m&&D.items.find(x=>x.slug===decodeURIComponent(m[1]));
+ if(!r){$('view').classList.remove('open');document.body.style.overflow='';return}
+ $('vin').innerHTML=`<h2>${esc(r.title)}</h2><div class="meta"><span class="st ${esc(r.status)}">${esc(r.status)}</span> ${esc(r.type)}${r.time_minutes?' · '+esc(r.time_minutes)+' min':''}${r.serves?' · serves '+esc(r.serves):''}${r.last_made?' · last made '+esc(r.last_made):''}</div>${r.source?`<p class="src">Source: ${/^https?:/.test(r.source)?`<a href="${esc(r.source)}">${esc(r.source)}</a>`:esc(r.source)}</p>`:''}${r.html}`;
+ $('jump').innerHTML=[...$('vin').querySelectorAll('h3')].map((h,i)=>{h.id='s'+i;return `<a href="#" data-t="s${i}">${h.textContent}</a>`}).join('');
+ $('jump').querySelectorAll('a').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.t).scrollIntoView({behavior:'smooth'})});
+ $('view').classList.add('open');$('view').scrollTop=0;document.body.style.overflow='hidden'}
+$('back').onclick=()=>{history.length>1&&location.hash?history.back():(location.hash='')};
+window.addEventListener('hashchange',route);sync();render();route();
 </script></body></html>
