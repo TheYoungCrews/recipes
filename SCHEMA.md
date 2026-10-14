@@ -10,6 +10,7 @@ type: soup-bowl                            # required, one TAGS.md "type"
 status: to-try                             # required: to-try | made | favorite | retired
 tags: [chicken, dutch-oven, air-fryer, weeknight-30]   # only values from TAGS.md
 ingredients: [cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, green onion, sesame seeds, chicken nuggets]  # normalized names, lowercase, singular-ish; match pantry/staples.md wording
+stores: [trader-joes, buford-highway]       # optional: where to buy the non-staple items (values from TAGS.md store list)
 serves: 2
 time_minutes: 30
 source: https://...                        # URL, "Instagram @handle", "ChatGPT brief", etc.
@@ -31,6 +32,9 @@ cooks: 0                                   # times made
 4. `## Notes` - dated feedback log, newest first: `- 2026-10-20 (Crews, 4/5): too salty; halve chili crisp.`
 
 Cocktails add optional `spirit:` and `glass:` fields.
+
+## Stores
+Optional `stores:` lists where to shop for this recipe. In the grocery checklist, an item can end with `@store`, e.g. `- [ ] thai basil @buford-highway`. Staples carry their usual store in `pantry/staples.md` as `- item | store`.
 
 ## Provenance
 `added_by` + `via` + `source_type`/`input_type` say who wanted it, which agent/model wrote it, and what it came from. `via` and `input_type` are optional for older files.

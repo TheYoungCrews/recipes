@@ -34,7 +34,7 @@ rating:
 cooks: 0
 ---
 ```
-   Tag values: protein chicken/beef/lamb/pork/fish/shellfish/egg/veg/organ; method dutch-oven/air-fryer/grill/sheet-pan/one-pot/no-cook/braise/smoker/stovetop; effort weeknight-30/weekend-project/make-ahead/freezer-friendly. Others are in TAGS.md. Don't invent tags.
+   Tag values: protein chicken/beef/lamb/pork/fish/shellfish/egg/veg/organ; method dutch-oven/air-fryer/grill/sheet-pan/one-pot/no-cook/braise/smoker/stovetop; effort quick-20/weeknight-30/weeknight-45/weekend-project/make-ahead/freezer-friendly. **Weeknight dinners are the priority.** Optional `stores: [costco, whole-foods, trader-joes, buford-highway, kroger]`; mark checklist items `@store`. Others are in TAGS.md. Don't invent tags.
 5. **Body:** one-line pitch (creator @handle). Then `## Original` (faithful ingredients + steps), then `## Our version`: a grocery checklist (`- [x]` if in `pantry/staples.md`, else `- [ ]`) and steps adapted to our Dutch oven / air fryer and taste (brothy, charred, umami, lime/herbs, high-protein; see `taste-profile.md`). Then `## Notes` with `- YYYY-MM-DD (via <agent>): captured, sent by <who>.`
 6. **Can't decode properly?** Save the raw material as `inbox/YYYY-MM-DD-<slug>.md` (source, sender, via, raw text). A later agent normalizes it and adds `normalized_to: <path>` at the top.
 

@@ -18,7 +18,7 @@ last_made:
 rating:
 cooks: 0
 ---
-Smoky, blood-red sour for the Halloween party; batchable without the egg white. Example entry; delete or retire if not wanted.
+Smoky, blood-red sour for the Halloween party; batchable without the egg white. Example entry, low priority (weeknight dinners come first).
 
 ## Original
 - 2 oz mezcal

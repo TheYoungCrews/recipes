@@ -1,35 +1,35 @@
 # Staples (~30, hand-kept)
 
 One item per line under the list. Wording must match recipe `ingredients:`. Remove a line when we run out and won't restock.
-Seeded from the two briefs; Crews/Anna to correct.
+Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` | ` (costco, whole-foods, trader-joes, buford-highway, kroger); stores are guesses until confirmed.
 
 - salt
 - black pepper
-- olive oil
+- olive oil | costco
 - neutral oil
 - garlic
 - green onion
 - lime
 - tomato paste
-- anchovy paste
-- chili crisp
-- sesame seeds
-- bone broth
-- egg white spaghetti
-- cottage cheese
+- anchovy paste | whole-foods
+- chili crisp | trader-joes
+- sesame seeds | buford-highway
+- bone broth | costco
+- egg white spaghetti | whole-foods
+- cottage cheese | costco
 - milk
-- sourdough
-- eggs
+- sourdough | trader-joes
+- eggs | costco
 - butter
-- soy sauce
-- fish sauce
-- rice
+- soy sauce | buford-highway
+- fish sauce | buford-highway
+- rice | costco
 - onion
-- frozen chicken nuggets
+- frozen chicken nuggets | trader-joes
 - honey
-- rice vinegar
+- rice vinegar | buford-highway
 - red pepper flakes
 - cumin
 - smoked paprika
-- parmesan
+- parmesan | costco
 - canned tomatoes

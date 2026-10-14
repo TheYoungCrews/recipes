@@ -27,7 +27,7 @@ def allowed_tags():
     return tags
 
 def staples():
-    return [l[2:].strip().lower() for l in (ROOT/"pantry/staples.md").read_text().splitlines() if l.startswith("- ")]
+    return [l[2:].split(" | ")[0].strip().lower() for l in (ROOT/"pantry/staples.md").read_text().splitlines() if l.startswith("- ")]
 
 def md_to_html(md):
     out, inlist = [], None
