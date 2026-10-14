@@ -11,13 +11,13 @@ You may be Grok Bot, Muse, ChatGPT, Claude, or anything else. Follow these rules
 6. Run `python3 scripts/build.py` after changes; it validates frontmatter and fails loudly on unknown tags.
 
 ## 1. Decode protocol (capture -> to-try)
-Full step-by-step skill for capturing a post (IG/TikTok/web): [`skills/muse-capture/SKILL.md`](skills/muse-capture/SKILL.md).
+Full step-by-step intake skill for any agent and any input (posts, links, photos, screenshots, video, text, email): [`skills/recipe-intake/SKILL.md`](skills/recipe-intake/SKILL.md). Dedupe first; can't decode? drop it in `inbox/`.
 
 Input: a link, IG/TikTok caption, screenshot, transcript, or a free-text idea.
 1. Check for duplicates (search titles/sources in `recipes/`). If found, add a note instead of a new file.
 2. Extract the source faithfully into `## Original`. If amounts are missing (common in reels), write `(amount not given)`; never invent silently. If you could only see the caption, say so in the description line.
 3. Write `## Our version`: adapt to staples, gear (Dutch oven, air fryer) and the taste profile. Mark each grocery item `- [x]` if it is in `pantry/staples.md`, else `- [ ]`.
-4. Fill frontmatter: `status: to-try`, `added`, `added_by` (your name), `source`, `source_type`, normalized `ingredients` (staples wording).
+4. Fill frontmatter: `status: to-try`, `added`, `added_by` (the person), `via` (you/your model), `input_type`, `source`, `source_type`, normalized `ingredients` (staples wording).
 5. Reply to the human with: title, 1-line pitch, what to buy, link to file.
 
 ## 2. Tag protocol
@@ -39,3 +39,6 @@ Use `taste-profile.md` likes, prefer staples, and fill `## Original` with your f
 
 ## 5. If you cannot write to GitHub
 Produce the full markdown file in your reply (or email it to crews@mail.grokbot.com); Grok Bot will commit it.
+
+## 6. Inbox
+`inbox/` holds raw drops. Any agent may normalize one: write the real file per the intake skill, then add `normalized_to:` at the top of the inbox file. Never delete inbox files.

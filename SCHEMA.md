@@ -15,7 +15,9 @@ time_minutes: 30
 source: https://...                        # URL, "Instagram @handle", "ChatGPT brief", etc.
 source_type: instagram                     # instagram | tiktok | youtube | web | book | ai | family | own
 added: 2026-10-13                          # YYYY-MM-DD
-added_by: grok-bot                         # who/which agent captured it
+added_by: crews                            # PERSON who sent/asked for it: crews | anna | agent name if self-initiated
+via: grok-bot                              # agent/model that wrote the file, e.g. muse/<model>, instinct/<model>, grok-bot, human
+input_type: text                           # instagram-video | instagram-carousel | tiktok | youtube | web-page | photo | screenshot | video-file | text | email
 last_made:                                 # YYYY-MM-DD or blank
 rating:                                    # 1-5 or blank (latest overall)
 cooks: 0                                   # times made
@@ -29,3 +31,12 @@ cooks: 0                                   # times made
 4. `## Notes` - dated feedback log, newest first: `- 2026-10-20 (Crews, 4/5): too salty; halve chili crisp.`
 
 Cocktails add optional `spirit:` and `glass:` fields.
+
+## Provenance
+`added_by` + `via` + `source_type`/`input_type` say who wanted it, which agent/model wrote it, and what it came from. `via` and `input_type` are optional for older files.
+
+## Dedupe rule
+Before creating a file, search `recipes/`, `cocktails/`, `inbox/` for the same `source` URL (ignoring tracking params) or a near-identical title. Match = no new file.
+
+## inbox/
+Raw drops (`inbox/YYYY-MM-DD-<slug>.md`) that an agent couldn't fully decode. Free-form; must include source, sender, via. When normalized, add `normalized_to: <path>` at the top. Never deleted.

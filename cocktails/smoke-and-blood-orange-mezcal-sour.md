@@ -12,6 +12,8 @@ source: Grok Bot idea (example entry to test the cocktail schema)
 source_type: ai
 added: 2026-10-13
 added_by: grok-bot
+via: grok-bot
+input_type: text
 last_made:
 rating:
 cooks: 0

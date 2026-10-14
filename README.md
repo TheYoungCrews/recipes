@@ -13,9 +13,18 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `bar.md` | Home bar inventory |
 | `recipes/` | Food briefs, one file each |
 | `cocktails/` | Drink briefs (same schema, `type: cocktail`) |
-| `skills/muse-capture/SKILL.md` | Skill for Muse or any agent: IG post -> to-try recipe file -> push (email fallback) |
+| `skills/recipe-intake/SKILL.md` | Intake skill for any agent/model (Muse, Instinct, ...) and any input -> to-try file |
+| `inbox/` | Raw drops waiting to be normalized |
 | `templates/` | Copy these to start a new brief |
 | `scripts/build.py` | Builds `site/index.html` (no dependencies, Python 3) |
+
+## Adding a recipe (no GitHub needed)
+**Anna and Crews:** either
+1. **Email crews@mail.grokbot.com** with subject `recipe: <what it is>` (`cocktail: ...` for drinks, `made: <title> 4/5` for feedback after cooking). Paste the link, or attach a photo or screenshot, and add a line with anything you want changed. Grok Bot turns it into a recipe.
+2. **Send it to any of our agents** (Muse, Instinct, Grok Bot): "save this recipe" plus the link, photo or text.
+Then browse the site (below). It shows up as **to-try**.
+
+**Agents:** follow `skills/recipe-intake/SKILL.md`.
 
 ## Flow
 capture -> `status: to-try` -> cook -> feedback -> dated note + "Our version" update + taste-profile update -> `made` / `favorite` / `retired`.
