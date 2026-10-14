@@ -1,11 +1,11 @@
 # Hosting: Cloudflare Pages + Cloudflare Access (chosen; $0, private)
 
-The site builds from the private repo on every push and is served at `https://<project>.pages.dev`. Cloudflare Access sits in front of it: only Crews and Anna get in, by typing their email and a one-time PIN, and stay signed in for up to a month. Alternative, if you'd rather not use Cloudflare: `docs/HOSTING.md` (spare laptop + Tailscale).
+The site builds from the private repo on every push and is served at `https://<project>.pages.dev`. Cloudflare Access sits in front of it: only Crews and Anna get in, by typing their email and a one-time PIN, and stay signed in for up to a month. Alternative, if you'd rather not use Cloudflare: `_system/docs/HOSTING.md` (spare laptop + Tailscale).
 
 Checked against Cloudflare docs, Oct 2026: Pages build image v3 (Ubuntu 22.04, Python 3.13.3 default, overridable via `.python-version`), and "Known issues > Enable Access on your *.pages.dev domain".
 
 ## Build facts (already set up in the repo)
-- Build command: `python3 scripts/build.py`. Output directory: `site`. Pure standard-library Python, no installs.
+- Build command: `python3 _system/scripts/build.py`. Output directory: `site`. Pure standard-library Python, no installs.
 - `.python-version` pins `3.13`. No `requirements.txt` is needed.
 - The build fails, and Cloudflare keeps the last good site, if a recipe has a bad tag or missing fields.
 
@@ -19,7 +19,7 @@ Checked against Cloudflare docs, Oct 2026: Pages build image v3 (Ubuntu 22.04, P
    - Project name: e.g. `enochs-recipes` (this becomes `enochs-recipes.pages.dev` and **can't be changed later**; it's visible in the URL, so avoid anything personal)
    - Production branch: `main`
    - Framework preset: **None**
-   - Build command: `python3 scripts/build.py`
+   - Build command: `python3 _system/scripts/build.py`
    - Build output directory: `site`
    - (Optional) Environment variable `SKIP_DEPENDENCY_INSTALL` = `1`
 4. **Save and Deploy.** Wait for "Success" and open the URL to check it works. It's public until step 3, so do step 3 right away.

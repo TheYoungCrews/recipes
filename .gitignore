@@ -1,2 +1,4 @@
 site/
 __pycache__/
+loop.pid
+*.pid

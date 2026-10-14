@@ -1,16 +1,16 @@
 ---
 name: recipe-feedback
-description: Record "we made it" feedback (voice note, text, chat, or an email with subject `made: <title> N/5`) into the right recipe file in TheYoungCrews/recipes, and grow taste-profile.md. Works for any agent or model.
+description: Record "we made it" feedback (voice note, text, chat, or an email with subject `made: <title> N/5`) into the right recipe file in TheYoungCrews/recipes, and grow kitchen/taste-profile.md. Works for any agent or model.
 ---
 # Skill: recipe feedback (any agent, any input)
 
-Follows the feedback protocol in `AGENTS.md` (section 3). Read `SCHEMA.md`, `TAGS.md` and `taste-profile.md` first.
+Follows the feedback protocol in `AGENTS.md` (section 3). Read `_system/SCHEMA.md`, `_system/TAGS.md` and `kitchen/taste-profile.md` first.
 
 ## Hard rules
 - Never delete or rename files. Never edit `## Original`.
 - Never invent feedback, ratings or dates. Use only what the person said. If no rating was given, leave `rating` as it is.
 - **Outside agents (Muse, Instinct, ...) only create `inbox/YYYY-MM-DD-made-<slug>.md`** (format below) and never edit recipe files. Grok Bot's hourly filing routine applies sections 2 to 4.
-- The filing routine only touches the matched recipe file, `taste-profile.md` and the inbox file (it adds `filed_to:`).
+- The filing routine only touches the matched recipe file, `kitchen/taste-profile.md` and the inbox file (it adds `filed_to:`).
 
 ## 0. Inbox feedback file (outside agents)
 ```yaml
@@ -40,7 +40,7 @@ Extract: **dish**, **who** (crews / anna / both), **rating** (1-5, optional; tur
 3. Several plausible matches, or none:
    - If you can ask the sender, ask one short question listing the candidates.
    - Otherwise leave the inbox file unfiled, add `candidates:` to it, and ask Crews. Change no recipe.
-4. They cooked something not in the repo: capture it first with `skills/recipe-intake/SKILL.md`, or drop it to `inbox/`.
+4. They cooked something not in the repo: capture it first with `_system/skills/recipe-intake/SKILL.md`, or drop it to `inbox/`.
 
 ## 3. Update the recipe file
 1. **Notes line** under `## Notes`, newest first (just below the heading):
@@ -49,13 +49,13 @@ Extract: **dish**, **who** (crews / anna / both), **rating** (1-5, optional; tur
 2. **Frontmatter:** if this feedback changes Our version, set `owner:` to who adapted it (`anna`, `crews`, `anna+crews`); otherwise leave it. `status: made` (`favorite` only if they rate it 5/5 or call it a favorite; `retired` only if they say "never again"). `last_made:` = date cooked. `rating:` = latest rating if given. `cooks:` + 1.
 3. **Our version:** change it only when the feedback names a concrete fix ("halve the chili crisp", "needed 10 more minutes", "use spinach next time"). Make the smallest edit, and mark it inline, e.g. `(changed 2026-10-20: was 2 tbsp)`. Vague feedback ("pretty good") changes only the Notes. If Our version just says "Same as original", copy the Original into Our version first, then apply the fix.
 
-## 4. Update taste-profile.md
+## 4. Update kitchen/taste-profile.md
 Add only **general** preferences that apply beyond this dish ("Anna doesn't like cilantro", "we like more acid", "spice level 3/5 is our max"):
 - Put it under `## Likes` or `## Dislikes / avoid` (or `## Open questions` if unclear), tagged with who and the dish: `- More lime/acid in brothy bowls (both; braised-lamb-collard-noodle-bowls, 2026-10-20)`.
 - Add a line under `## Change log`: `- YYYY-MM-DD: added "<pref>" from <slug> feedback (<who> via <agent>)`.
 - Don't duplicate an existing line; if feedback contradicts one, update it and log the change.
 
 ## 5. Save and confirm
-- Run `python3 scripts/build.py` (must pass).
+- Run `python3 _system/scripts/build.py` (must pass).
 - Commit `file: made <slug>` (include taste-profile changes in the same commit), after adding `filed_to: <path>` at the top of the inbox file. Push the normal way and never force-push.
 - Reply to the sender in one line: what you recorded, what you changed in Our version, and any taste-profile addition.

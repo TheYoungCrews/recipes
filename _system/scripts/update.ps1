@@ -1,5 +1,5 @@
 # Windows: pull the latest recipes and rebuild site\index.html (run from Task Scheduler).
 $ErrorActionPreference = "Stop"
-Set-Location (Split-Path $PSScriptRoot -Parent)
+Set-Location (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent)
 git pull --ff-only -q
-python scripts\build.py
+python _system\scripts\build.py

@@ -1,6 +1,6 @@
 # Alternative hosting: spare laptop + Tailscale ($0, private)
 
-> **Chosen setup is Cloudflare Pages + Access: see `docs/CLOUDFLARE.md`.** Use this guide only if Cloudflare doesn't work out.
+> **Chosen setup is Cloudflare Pages + Access: see `_system/docs/CLOUDFLARE.md`.** Use this guide only if Cloudflare doesn't work out.
 
 The spare laptop keeps a copy of the repo, rebuilds the site every 15 minutes, and serves it. Phones and the iPad reach it from anywhere through Tailscale, a free private network that only your devices can join. Nothing is public. The full site works this way, search and filters included (unlike the iCloud file).
 
@@ -15,7 +15,7 @@ You need: the spare laptop (plugged in, sleep off), a free Tailscale account (yo
 Pick one:
 - **gh login (easiest):** install GitHub CLI, run `gh auth login`, then `gh repo clone TheYoungCrews/recipes ~/recipes`.
 - **Deploy key (read-only, safer):** `ssh-keygen -t ed25519 -f ~/.ssh/recipes_deploy -N ""`. Paste the `.pub` into GitHub > TheYoungCrews/recipes > Settings > Deploy keys (leave "write" unchecked). Then `GIT_SSH_COMMAND="ssh -i ~/.ssh/recipes_deploy" git clone git@github.com:TheYoungCrews/recipes.git ~/recipes` and `git -C ~/recipes config core.sshCommand "ssh -i ~/.ssh/recipes_deploy"`.
-Then build once: `cd ~/recipes && python3 scripts/build.py`.
+Then build once: `cd ~/recipes && python3 _system/scripts/build.py`.
 
 ## 3a. macOS
 1. Keep it awake: System Settings > Battery/Energy > "Prevent automatic sleeping when the display is off" on.
@@ -38,6 +38,6 @@ Then build once: `cd ~/recipes && python3 scripts/build.py`.
 - Optional HTTPS: on the laptop run `tailscale serve --bg 8080` (enable HTTPS certificates in the admin console when prompted). Then use `https://recipes-laptop.<your-tailnet>.ts.net`. Still private to your tailnet.
 
 ## Checks and gotchas
-- New recipe not showing? Wait 15 minutes, or run `scripts/update.sh` (or `update.ps1`) by hand; check `~/recipes-update.log`.
+- New recipe not showing? Wait 15 minutes, or run `_system/scripts/update.sh` (or `update.ps1`) by hand; check `~/recipes-update.log`.
 - If the laptop is off or asleep, the site is down. The iCloud `Recipes.html` (share/HOW-TO-SHARE.md) is the backup.
 - The update only pulls (`--ff-only`); never edit recipes on the laptop itself.

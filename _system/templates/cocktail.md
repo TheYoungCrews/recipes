@@ -24,7 +24,7 @@ One-line description.
 ## Original
 - 
 
-## Our version (using bar.md)
+## Our version (using kitchen/bar.md)
 - 
 
 **Method**

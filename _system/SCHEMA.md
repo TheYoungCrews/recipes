@@ -6,10 +6,10 @@ Every file in `recipes/` and `cocktails/` starts with YAML frontmatter. Keep val
 ---
 title: Chili Crisp Chicken Noodle Bowl     # required
 slug: chili-crisp-chicken-noodle-bowl      # required, = filename without .md
-type: soup-bowl                            # required, one TAGS.md "type"
+type: soup-bowl                            # required, one _system/TAGS.md "type"
 status: to-try                             # required: to-try | made | favorite | retired
-tags: [chicken, dutch-oven, air-fryer, weeknight-30]   # only values from TAGS.md
-ingredients: [cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, green onion, sesame seeds, chicken nuggets]  # normalized names, lowercase, singular-ish; match pantry/staples.md wording
+tags: [chicken, dutch-oven, air-fryer, weeknight-30]   # only values from _system/TAGS.md
+ingredients: [cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, green onion, sesame seeds, chicken nuggets]  # normalized names, lowercase, singular-ish; match kitchen/staples.md wording
 serves: 2
 time_minutes: 30
 prep_minutes: 10                           # optional integer, only from the source (blank if not given)
@@ -36,7 +36,7 @@ cooks: 0                                   # times made
 Cocktails add optional `spirit:` and `glass:` fields.
 
 ## Stores
-Recipes carry no store info (no `stores:` field, no `@store` marks). Store picking happens later in a separate grocery-list step that uses `pantry/staples.md` usual stores. `ingredients:` is the key field for matching and tagging.
+Recipes carry no store info (no `stores:` field, no `@store` marks). Store picking happens later in a separate grocery-list step that uses `kitchen/staples.md` usual stores. `ingredients:` is the key field for matching and tagging.
 
 ## Provenance
 `added_by` + `via` + `source_type`/`input_type` say who wanted it, which agent/model wrote it, and what it came from. `via` and `input_type` are optional for older files.

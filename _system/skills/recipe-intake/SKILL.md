@@ -17,11 +17,11 @@ Muse decoding Instagram posts is one example. The same steps apply to every agen
 | Email to crews@mail.grokbot.com | the subject + body + attachments, using the rules above for each |
 If you can't finish properly (no tools for video, unclear photo), use **Raw drop** (section 3D) instead of guessing.
 
-You are adding ONE new recipe (or cocktail) file. The rules here are complete. If the repo is readable, `AGENTS.md`, `SCHEMA.md` and `TAGS.md` win over this file where they disagree.
+You are adding ONE new recipe (or cocktail) file. The rules here are complete. If the repo is readable, `AGENTS.md`, `_system/SCHEMA.md` and `_system/TAGS.md` win over this file where they disagree.
 
 ## Hard rules
 - **Never delete, rename or overwrite an existing file.** Only create new files. If the target path already exists, stop and use the duplicate rule below.
-- Never buy anything, edit shopping lists, or change `pantry/staples.md`, `taste-profile.md` or `bar.md`.
+- Never buy anything, edit shopping lists, or change `kitchen/staples.md`, `kitchen/taste-profile.md` or `kitchen/bar.md`.
 - Never invent amounts or steps silently. Write `(amount not given)` or `(step inferred)`.
 - Keep the repo private. Never paste its contents anywhere public.
 
@@ -48,8 +48,8 @@ title: Crispy Gochujang Salmon Bites
 slug: crispy-gochujang-salmon-bites      # must equal the filename
 type: main                                # one of: main, side, soup-bowl, breakfast, dessert, sauce, prep-component, snack, cocktail, mocktail
 status: to-try                            # always to-try for captures
-tags: [fish, korean, air-fryer, weeknight-30]   # 3-8, only from TAGS.md
-ingredients: [salmon, gochujang, honey, soy sauce, garlic, green onion, rice]  # lowercase; reuse pantry/staples.md wording
+tags: [fish, korean, air-fryer, weeknight-30]   # 3-8, only from _system/TAGS.md
+ingredients: [salmon, gochujang, honey, soy sauce, garlic, green onion, rice]  # lowercase; reuse kitchen/staples.md wording
 serves: 2
 time_minutes: 25                          # total
 prep_minutes: 10                          # optional; only if the source says
@@ -68,7 +68,7 @@ cooks: 0
 ```
 Cocktails also get `spirit:` and `glass:`, and `type: cocktail` or `mocktail`.
 
-**Tags** (allowed values, from TAGS.md): include at least one protein (or `veg`), one method and one effort tag.
+**Tags** (allowed values, from _system/TAGS.md): include at least one protein (or `veg`), one method and one effort tag.
 - protein: chicken, turkey, beef, lamb, pork, fish, shellfish, egg, veg, organ
 - cuisine: american, mexican, italian, japanese, chinese, korean, thai, vietnamese, indian, mediterranean, southern, fusion
 - method: dutch-oven, air-fryer, grill, sheet-pan, one-pot, no-cook, braise, smoker, stovetop
@@ -76,7 +76,7 @@ Cocktails also get `spirit:` and `glass:`, and `type: cocktail` or `mocktail`.
 - occasion: hosting (only if it scales to 6+), date-night, crowd, holiday, halloween
 - season: spring, summer, fall, winter. diet: high-protein, gluten-free, dairy-free
 - cocktail spirit: bourbon, rye, gin, vodka, rum, tequila, mezcal, brandy, amaro, zero-proof. cocktail style: stirred, shaken, built, batch, highball, sour
-If nothing fits, leave the tag out and tell Crews which tag you'd add. Don't add tags to TAGS.md yourself.
+If nothing fits, leave the tag out and tell Crews which tag you'd add. Don't add tags to _system/TAGS.md yourself.
 
 **Body:**
 ```markdown
@@ -90,10 +90,10 @@ One-line pitch. Creator: @handle. (Note what you could and couldn't see.)
 
 ## Our version
 **Grocery & inventory check**
-- [x] soy sauce          <- [x] if it's in pantry/staples.md, else [ ]
+- [x] soy sauce          <- [x] if it's in kitchen/staples.md, else [ ]
 - [ ] salmon
 **Steps**
-1. ... adapted to a Dutch oven / air fryer and taste-profile.md (brothy, charred, umami, lime/herb finish, high-protein) when that fits.
+1. ... adapted to a Dutch oven / air fryer and kitchen/taste-profile.md (brothy, charred, umami, lime/herb finish, high-protein) when that fits.
 
 ## Notes
 - YYYY-MM-DD (via muse): captured from Instagram, sent by anna.
@@ -111,8 +111,8 @@ Accept: application/vnd.github+json
 Do **not** send `sha`: without it GitHub refuses to overwrite (422). On a 422, try `-2` once, or treat it as a duplicate. Dedupe first with `GET /repos/TheYoungCrews/recipes/contents/recipes` and `.../contents/inbox` (list the filenames).
 **B. Email fallback:** **crews@mail.grokbot.com**, subject `recipe: <title>` (drinks `cocktail: ...`), body = the full markdown file. People write plain words and attach photos.
 **C. Raw drop** (can't fully decode): same API, `inbox/YYYY-MM-DD-raw-<slug>.md` with source, sender, `via` and raw text/transcript (or email `recipe-raw: ...`).
-**Filing (Grok Bot's hourly routine, not you):** validates with `scripts/build.py` rules, writes `recipes/<slug>.md`, adds `filed_to:` at the top of the inbox file. Inbox files are never deleted.
-Agents working *inside* a local clone with Crews's go-ahead (e.g. Grok Bot) may commit to `recipes/` directly: `git pull`, check the path doesn't exist, `python3 scripts/build.py`, commit `add: <slug>`, push (never force).
+**Filing (Grok Bot's hourly routine, not you):** validates with `_system/scripts/build.py` rules, writes `recipes/<slug>.md`, adds `filed_to:` at the top of the inbox file. Inbox files are never deleted.
+Agents working *inside* a local clone with Crews's go-ahead (e.g. Grok Bot) may commit to `recipes/` directly: `git pull`, check the path doesn't exist, `python3 _system/scripts/build.py`, commit `add: <slug>`, push (never force).
 
 ## 4. Report back to the sender (one short message)
 Title, one-line pitch, what to buy (the `[ ]` items), and the inbox path or email used. Mention anything you couldn't see or had to guess.

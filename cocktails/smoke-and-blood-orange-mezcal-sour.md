@@ -29,8 +29,8 @@ Smoky, blood-red sour for the Halloween party; batchable without the egg white. 
 - 1 egg white (optional)
 - Angostura bitters on top
 
-## Our version (using bar.md)
-- bar.md not filled in yet; check bottles before buying.
+## Our version (using kitchen/bar.md)
+- kitchen/bar.md not filled in yet; check bottles before buying.
 
 **Method**
 1. Dry shake with egg white, then shake hard with ice. Strain over a big cube; dash bitters on the foam.

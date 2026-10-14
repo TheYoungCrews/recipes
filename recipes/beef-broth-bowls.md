@@ -86,9 +86,9 @@ Weeknight version (aiming for about 30 minutes, Dutch oven, more lime/herbs/umam
 4. Build the broth in the same pot (Original step 5), using liquid aminos for the finishing soy sauce.
 5. Assemble bowls and finish each with extra lime juice, double the cilantro, and sambal oelek for heat.
 
-(changed 2026-10-14: soy sauce -> liquid aminos; chili crunch -> sambal oelek, per taste-profile.md standing substitutions)
+(changed 2026-10-14: soy sauce -> liquid aminos; chili crunch -> sambal oelek, per kitchen/taste-profile.md standing substitutions)
 
 ## Notes
 - 2026-10-14 (grok-bot): time conflict. Source page says prep 30 + cook 15 = 45 min total; captured total was 35. Kept 35 per the round-down rule (lower total wins); prep/cook left as sourced.
-- 2026-10-14 (filed by grok-bot): received by email from Crews (subject "recipe: Beef Broth Bowls"); raw copy at inbox/2026-10-14-beef-broth-bowls.md. Added grocery checklist, dairy-free and dutch-oven tags, and normalized ingredient wording to pantry/staples.md.
+- 2026-10-14 (filed by grok-bot): received by email from Crews (subject "recipe: Beef Broth Bowls"); raw copy at inbox/2026-10-14-beef-broth-bowls.md. Added grocery checklist, dairy-free and dutch-oven tags, and normalized ingredient wording to kitchen/staples.md.
 - 2026-10-14 (via muse): captured from instagram-video, sent by crews. Caption gated ("drop EAT"); full recipe from the creator's linked page. Video audio and on-screen text not reviewed.
