@@ -53,6 +53,36 @@ def md_to_html(md):
     if inlist: out.append(f"</{inlist}>")
     return "\n".join(out)
 
+def static_html(items, st):
+    """No-JavaScript version (iPhone Files / Quick Look disables JS). In-page links only."""
+    e = html.escape
+    miss = lambda r: [i for i in r["ingredients"] if i not in st]
+    def card(r):
+        m = miss(r)
+        return (f'<li class="sc"><a href="#r-{e(r["slug"])}"><b>{"🍸 " if r["dir"]=="cocktails" else ""}{e(r["title"])}</b></a>'
+                f'<br><small>{e(r["status"])} · {e(r["type"])}{" · "+e(str(r["time_minutes"]))+" min" if r["time_minutes"] else ""}'
+                f'<br>{"Need: "+e(", ".join(m)) if m else "Have all staples"}</small></li>')
+    def sec(i, title, rs):
+        return f'<h2 id="{i}">{e(title)} ({len(rs)})</h2><ul class="sl">' + ("".join(card(r) for r in rs) or "<li>None</li>") + '</ul><p><a href="#top">↑ Top</a></p>'
+    tags = sorted({t for r in items for t in r["tags"]})
+    groups = [("g-food", "Food", [r for r in items if r["dir"]=="recipes"]),
+              ("g-drinks", "Drinks", [r for r in items if r["dir"]=="cocktails"]),
+              ("g-try", "To try", [r for r in items if r["status"]=="to-try"]),
+              ("g-fav", "Favorites + made", [r for r in items if r["status"] in ("favorite","made")]),
+              ("g-have", "Can make now (have all staples)", [r for r in items if not miss(r)]),
+              ("g-near", "Missing 1 to 2 items", [r for r in items if 1 <= len(miss(r)) <= 2])]
+    nav = " · ".join(f'<a href="#{i}">{e(t)}</a>' for i, t, _ in groups)
+    tagnav = " · ".join(f'<a href="#t-{e(t)}">{e(t)}</a>' for t in tags)
+    out = [f'<div id="top"></div><h1>🍲 Our Recipes</h1><p class="sn"><b>Browse:</b> {nav}</p><p class="sn"><b>Tags:</b> {tagnav}</p>']
+    out.append(sec("all", "All recipes", sorted(items, key=lambda r: r["title"])))
+    out += [sec(i, t, rs) for i, t, rs in groups]
+    out += [sec("t-"+t, "Tag: "+t, [r for r in items if t in r["tags"]]) for t in tags]
+    for r in items:
+        src = r["source"]
+        out.append(f'<hr><article id="r-{e(r["slug"])}"><h2>{e(r["title"])}</h2><p><small>{e(r["status"])} · {e(r["type"])} · {e(", ".join(r["tags"]))}</small></p>'
+                   + (f'<p><small>Source: {e(src)}</small></p>' if src else "") + r["html"] + '<p><a href="#top">↑ Top</a></p></article>')
+    return "\n".join(out)
+
 def main():
     tags_ok, errs, items = allowed_tags(), [], []
     for d in ["recipes", "cocktails"]:
@@ -73,7 +103,9 @@ def main():
         print("VALIDATION ERRORS:\n  " + "\n  ".join(errs)); sys.exit(1)
     data = json.dumps({"items": items, "staples": staples()}).replace("</", "<\\/")
     out = ROOT/"site"; out.mkdir(exist_ok=True)
-    (out/"index.html").write_text((ROOT/"scripts/site_template.html").read_text().replace("/*DATA*/null", data))
+    page = (ROOT/"scripts/site_template.html").read_text().replace("/*DATA*/null", data)
+    page = page.replace("<!--STATIC-->", static_html(items, set(staples())))
+    (out/"index.html").write_text(page)
     print(f"built site/index.html with {len(items)} items")
 
 if __name__ == "__main__": main()

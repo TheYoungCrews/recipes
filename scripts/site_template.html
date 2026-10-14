@@ -40,7 +40,10 @@ main{padding:10px 14px 30px;display:grid;gap:12px;grid-template-columns:repeat(a
 .box{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #b9a996;margin-top:2px}.box.x{background:#3a8a5c;border-color:#3a8a5c}
 .vin a{color:var(--acc);word-break:break-all}.src{font-size:14px;color:var(--mut)}
 .notes li{font-size:16px}
-</style></head><body>
+.nojs-only{padding:16px;max-width:720px;margin:0 auto}.js .nojs-only{display:none}#app{display:none}.js #app{display:block}
+.sl{padding-left:0;list-style:none}.sc{background:#fff;border-radius:12px;padding:12px;margin:8px 0}.sc a{font-size:18px}.sn{line-height:2.2}.nojs-only a{color:#c0532b}
+</style><script>document.documentElement.classList.add('js')</script></head><body>
+<div class="nojs-only"><!--STATIC--></div><div id="app">
 <header><h1>🍲 Our Recipes</h1>
 <div class="top"><input id="q" type="search" placeholder="Search name or ingredient" autocomplete="off"><button class="fbtn" id="fb">Filters</button></div>
 <div id="filters">
@@ -52,7 +55,7 @@ main{padding:10px 14px 30px;display:grid;gap:12px;grid-template-columns:repeat(a
 </div></header>
 <div id="count"></div><main id="list"></main>
 <div id="view"><div class="vbar"><button class="back" id="back">‹ Back</button><div class="jump" id="jump"></div></div><div class="vin" id="vin"></div></div>
-<script>
+</div><script>
 const D=/*DATA*/null;const S=new Set(D.staples);
 const F={kind:'',status:'',miss:'',tags:new Set()};
 const $=id=>document.getElementById(id);
