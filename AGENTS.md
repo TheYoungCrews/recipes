@@ -11,6 +11,8 @@ You may be Grok Bot, Muse, ChatGPT, Claude, or anything else. Follow these rules
 6. Run `python3 scripts/build.py` after changes; it validates frontmatter and fails loudly on unknown tags.
 
 ## 1. Decode protocol (capture -> to-try)
+Full step-by-step skill for capturing a post (IG/TikTok/web): [`skills/muse-capture/SKILL.md`](skills/muse-capture/SKILL.md).
+
 Input: a link, IG/TikTok caption, screenshot, transcript, or a free-text idea.
 1. Check for duplicates (search titles/sources in `recipes/`). If found, add a note instead of a new file.
 2. Extract the source faithfully into `## Original`. If amounts are missing (common in reels), write `(amount not given)`; never invent silently. If you could only see the caption, say so in the description line.

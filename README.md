@@ -13,6 +13,7 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `bar.md` | Home bar inventory |
 | `recipes/` | Food briefs, one file each |
 | `cocktails/` | Drink briefs (same schema, `type: cocktail`) |
+| `skills/muse-capture/SKILL.md` | Skill for Muse or any agent: IG post -> to-try recipe file -> push (email fallback) |
 | `templates/` | Copy these to start a new brief |
 | `scripts/build.py` | Builds `site/index.html` (no dependencies, Python 3) |
 
