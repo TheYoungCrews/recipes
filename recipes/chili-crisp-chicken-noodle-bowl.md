@@ -7,6 +7,8 @@ tags: [chicken, fusion, dutch-oven, air-fryer, weeknight-30, high-protein, fall]
 ingredients: [frozen chicken nuggets, cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, sesame seeds, green onion, neutral oil]
 serves: 2
 time_minutes: 30
+prep_minutes:
+cook_minutes:
 source: ChatGPT brief (Apple Notes)
 source_type: ai
 added: 2026-10-13

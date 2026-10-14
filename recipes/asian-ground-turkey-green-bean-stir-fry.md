@@ -7,6 +7,8 @@ tags: [turkey, fusion, one-pot, stovetop, weeknight-30, leftovers-friendly, high
 ingredients: [olive oil, green beans, salt, black pepper, ground turkey, onion, garlic, liquid aminos, honey, sambal oelek, sesame oil, ginger, red pepper flakes, coriander, rice]
 serves: 4
 time_minutes: 25
+prep_minutes: 10
+cook_minutes: 15
 source: https://www.eatyourselfskinny.com/asian-ground-turkey-and-green-bean-stir-fry/
 source_type: web
 added: 2026-10-14

@@ -51,7 +51,9 @@ status: to-try                            # always to-try for captures
 tags: [fish, korean, air-fryer, weeknight-30]   # 3-8, only from TAGS.md
 ingredients: [salmon, gochujang, honey, soy sauce, garlic, green onion, rice]  # lowercase; reuse pantry/staples.md wording
 serves: 2
-time_minutes: 25
+time_minutes: 25                          # total
+prep_minutes: 10                          # optional; only if the source says
+cook_minutes: 15                          # optional; only if the source says
 source: https://www.instagram.com/p/XXXXXXXX/    # canonical post URL, no tracking params (?igsh=..., ?utm_...)
 source_type: instagram                    # instagram | tiktok | youtube | web | book | ai | family | own
 added: YYYY-MM-DD                         # today's date

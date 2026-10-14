@@ -12,6 +12,8 @@ tags: [chicken, dutch-oven, air-fryer, weeknight-30]   # only values from TAGS.m
 ingredients: [cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, green onion, sesame seeds, chicken nuggets]  # normalized names, lowercase, singular-ish; match pantry/staples.md wording
 serves: 2
 time_minutes: 30
+prep_minutes: 10                           # optional integer, only from the source (blank if not given)
+cook_minutes: 20                           # optional integer, only from the source; build warns if prep+cook != time_minutes
 source: https://...                        # URL, "Instagram @handle", "ChatGPT brief", etc.
 source_type: instagram                     # instagram | tiktok | youtube | web | book | ai | family | own
 added: 2026-10-13                          # YYYY-MM-DD
@@ -51,3 +53,6 @@ Commit message: `inbox: <title> (via <agent>)`. Grok Bot's hourly routine valida
 
 ## Owner
 `owner` is not `source` (where it came from) and not `added_by` (who sent it). New intake defaults to the source creator (name or @handle). Switch it to `anna`, `crews` or `anna+crews` once they adapt it, i.e. the first real feedback that changes Our version. Required (build.py fails without it).
+
+## Times
+`time_minutes` is the total. `prep_minutes` and `cook_minutes` are optional whole numbers, copied from the source only (blank if the source doesn't say). The build warns if prep + cook differs from the total, and suggests the time tag from the total: 20 or less is `quick-20`, 30 or less `weeknight-30`, 45 or less `weeknight-45`, anything longer `weekend-project`.

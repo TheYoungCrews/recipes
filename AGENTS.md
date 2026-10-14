@@ -25,6 +25,8 @@ tags: [fish, korean, air-fryer, weeknight-30]   # 3-8 from TAGS.md: protein, met
 ingredients: [salmon, gochujang, honey, soy sauce, garlic]  # lowercase, use pantry/staples.md wording
 serves: 2
 time_minutes: 25
+prep_minutes: 10      # optional, from the source only
+cook_minutes: 15      # optional, from the source only
 source: https://www.instagram.com/p/XXXX/
 source_type: instagram   # instagram|tiktok|youtube|web|book|ai|family|own
 added: YYYY-MM-DD

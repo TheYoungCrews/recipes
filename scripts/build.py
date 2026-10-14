@@ -84,7 +84,8 @@ def static_html(items, st):
     return "\n".join(out)
 
 def main():
-    tags_ok, errs, items = allowed_tags(), [], []
+    tags_ok, errs, items, warns = allowed_tags(), [], [], []
+    TIME_TAGS = ["quick-20", "weeknight-30", "weeknight-45", "weekend-project"]
     for d in ["recipes", "cocktails"]:
         for f in sorted((ROOT/d).glob("*.md")):
             fm, body = parse_fm(f.read_text())
@@ -96,11 +97,25 @@ def main():
             for t in fm.get("tags") or []:
                 if t not in tags_ok: errs.append(f"{f.name}: unknown tag '{t}' (add to TAGS.md)")
             if fm.get("type") and fm["type"] not in tags_ok: errs.append(f"{f.name}: unknown type '{fm['type']}'")
+            nums = {}
+            for k in ["time_minutes", "prep_minutes", "cook_minutes"]:
+                v = fm.get(k, "")
+                if v in ("", None): continue
+                if not re.fullmatch(r"\d+", str(v)): errs.append(f"{f.name}: {k} must be a whole number (got '{v}')")
+                else: nums[k] = int(v)
+            if "prep_minutes" in nums and "cook_minutes" in nums and "time_minutes" in nums and nums["prep_minutes"] + nums["cook_minutes"] != nums["time_minutes"]:
+                warns.append(f"{f.name}: prep {nums['prep_minutes']} + cook {nums['cook_minutes']} = {nums['prep_minutes']+nums['cook_minutes']} but time_minutes is {nums['time_minutes']}")
+            total = nums.get("time_minutes", (nums["prep_minutes"] + nums["cook_minutes"]) if {"prep_minutes","cook_minutes"} <= nums.keys() else None)
+            if total is not None and fm.get("type") not in ("cocktail", "mocktail"):
+                want = "quick-20" if total <= 20 else "weeknight-30" if total <= 30 else "weeknight-45" if total <= 45 else "weekend-project"
+                have = [t for t in fm.get("tags") or [] if t in TIME_TAGS]
+                if have != [want]: warns.append(f"{f.name}: total {total} min suggests time tag '{want}' (has {have or 'none'})")
             if "stores" in fm: errs.append(f"{f.name}: 'stores:' not allowed in recipes (grocery-list step only)")
             if re.search(r"^- \[[ x]\] .* @[a-z-]+\s*$", body, re.M): errs.append(f"{f.name}: '@store' marks not allowed in checklists")
-            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","serves","source","last_made"]},
+            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body)})
+    for w in warns: print("WARN:", w)
     if errs:
         print("VALIDATION ERRORS:\n  " + "\n  ".join(errs)); sys.exit(1)
     data = json.dumps({"items": items, "staples": staples()}).replace("</", "<\\/")
@@ -108,7 +123,7 @@ def main():
     page = (ROOT/"scripts/site_template.html").read_text().replace("/*DATA*/null", data)
     page = page.replace("<!--STATIC-->", static_html(items, set(staples())))
     (out/"index.html").write_text(page)
-    keys = ["title","slug","type","status","owner","tags","ingredients","time_minutes","serves","rating","last_made","source"]
+    keys = ["title","slug","type","status","owner","tags","ingredients","time_minutes","prep_minutes","cook_minutes","serves","rating","last_made","source"]
     index = [{**{k: r[k] for k in keys}, "path": f'{r["dir"]}/{r["slug"]}.md'} for r in items]
     (out/"recipes.json").write_text(json.dumps(index, indent=2, ensure_ascii=False))
     print(f"built site/index.html with {len(items)} items")

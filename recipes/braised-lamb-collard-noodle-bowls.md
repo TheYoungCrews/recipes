@@ -7,6 +7,8 @@ tags: [lamb, organ, fusion, dutch-oven, braise, high-protein, fall, winter]
 ingredients: [sourdough, collard greens, thai basil, green onion, egg white spaghetti, anchovy paste, tomato paste, ground beef organ blend, ground lamb, lime, cottage cheese, bone broth, garlic, milk, salt, black pepper]
 serves: 4
 time_minutes: 50
+prep_minutes:
+cook_minutes:
 source: ChatGPT brief (Apple Notes)
 source_type: ai
 added: 2026-10-13

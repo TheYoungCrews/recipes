@@ -7,6 +7,8 @@ tags: [beef, thai, stovetop, dutch-oven, weeknight-45, high-protein, dairy-free]
 ingredients: [ground beef, ginger, garlic, cornstarch, chicken broth, liquid aminos, white sugar, toasted sesame oil, white pepper, red curry paste, yellow curry powder, coconut milk, lime, cilantro, rice, sesame seeds, cucumber, green onion, sambal oelek, coconut oil]
 serves: 4
 time_minutes: 35
+prep_minutes: 30
+cook_minutes: 15
 source: https://www.instagram.com/reel/DcQ8mVxIXFt/
 source_type: instagram
 added: 2026-10-14

@@ -7,6 +7,8 @@ tags: []
 ingredients: []
 serves: 2
 time_minutes:
+prep_minutes:
+cook_minutes:
 source:
 source_type:
 added: YYYY-MM-DD
