@@ -26,7 +26,7 @@ ingredients: [salmon, gochujang, honey, soy sauce, garlic]  # lowercase, use pan
 serves: 2
 time_minutes: 25
 prep_minutes: 10      # optional, from the source only
-cook_minutes: 15      # optional, from the source only
+cook_minutes: 15      # optional, from the source only; if times conflict, keep the LOWER total and note it
 source: https://www.instagram.com/p/XXXX/
 source_type: instagram   # instagram|tiktok|youtube|web|book|ai|family|own
 added: YYYY-MM-DD

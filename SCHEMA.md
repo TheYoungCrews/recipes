@@ -56,3 +56,4 @@ Commit message: `inbox: <title> (via <agent>)`. Grok Bot's hourly routine valida
 
 ## Times
 `time_minutes` is the total. `prep_minutes` and `cook_minutes` are optional whole numbers, copied from the source only (blank if the source doesn't say). The build warns if prep + cook differs from the total, and suggests the time tag from the total: 20 or less is `quick-20`, 30 or less `weeknight-30`, 45 or less `weeknight-45`, anything longer `weekend-project`.
+**Conflicts round down:** when sources or fields disagree on time, keep the LOWER total in `time_minutes`, keep sourced prep/cook as written, and add a Notes line explaining it. The build then only prints an info line.

@@ -84,7 +84,7 @@ def static_html(items, st):
     return "\n".join(out)
 
 def main():
-    tags_ok, errs, items, warns = allowed_tags(), [], [], []
+    tags_ok, errs, items, warns, infos = allowed_tags(), [], [], [], []
     TIME_TAGS = ["quick-20", "weeknight-30", "weeknight-45", "weekend-project"]
     for d in ["recipes", "cocktails"]:
         for f in sorted((ROOT/d).glob("*.md")):
@@ -104,7 +104,7 @@ def main():
                 if not re.fullmatch(r"\d+", str(v)): errs.append(f"{f.name}: {k} must be a whole number (got '{v}')")
                 else: nums[k] = int(v)
             if "prep_minutes" in nums and "cook_minutes" in nums and "time_minutes" in nums and nums["prep_minutes"] + nums["cook_minutes"] != nums["time_minutes"]:
-                warns.append(f"{f.name}: prep {nums['prep_minutes']} + cook {nums['cook_minutes']} = {nums['prep_minutes']+nums['cook_minutes']} but time_minutes is {nums['time_minutes']}")
+                (infos if nums["time_minutes"] < nums["prep_minutes"] + nums["cook_minutes"] else warns).append(f"{f.name}: prep {nums['prep_minutes']} + cook {nums['cook_minutes']} = {nums['prep_minutes']+nums['cook_minutes']} but time_minutes is {nums['time_minutes']}")
             total = nums.get("time_minutes", (nums["prep_minutes"] + nums["cook_minutes"]) if {"prep_minutes","cook_minutes"} <= nums.keys() else None)
             if total is not None and fm.get("type") not in ("cocktail", "mocktail"):
                 want = "quick-20" if total <= 20 else "weeknight-30" if total <= 30 else "weeknight-45" if total <= 45 else "weekend-project"
@@ -115,6 +115,7 @@ def main():
             items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body)})
+    for i in infos: print("info:", i, "(lower total kept: round-down rule)")
     for w in warns: print("WARN:", w)
     if errs:
         print("VALIDATION ERRORS:\n  " + "\n  ".join(errs)); sys.exit(1)

@@ -51,4 +51,5 @@ Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised 
 Same as original. Edit here after feedback.
 
 ## Notes
+- 2026-10-14 (grok-bot): time_minutes is an estimate; the Apple Notes brief gave no time.
 - 2026-10-13 (import): from Crews's Apple Notes; he liked it. Rating not recorded yet.
