@@ -13,6 +13,7 @@ added: 2026-10-13
 added_by: crews
 via: chatgpt (Apple Notes import by grok-bot)
 input_type: text
+owner: crews
 last_made:
 rating:
 cooks: 1

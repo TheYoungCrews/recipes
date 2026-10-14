@@ -57,6 +57,7 @@ source_type: instagram                    # instagram | tiktok | youtube | web |
 added: YYYY-MM-DD                         # today's date
 added_by: anna                            # the PERSON who sent it: crews | anna | (agent name if self-initiated)
 via: muse/<model name>                    # the agent + model that wrote the file, e.g. muse/gpt-x, instinct/claude-x, grok-bot
+owner: "@creatorhandle"                   # source creator until Crews/Anna adapt it
 input_type: instagram-video               # what you decoded: instagram-video | instagram-carousel | tiktok | youtube | web-page | photo | screenshot | video-file | text | email
 last_made:
 rating:
@@ -66,7 +67,7 @@ cooks: 0
 Cocktails also get `spirit:` and `glass:`, and `type: cocktail` or `mocktail`.
 
 **Tags** (allowed values, from TAGS.md): include at least one protein (or `veg`), one method and one effort tag.
-- protein: chicken, beef, lamb, pork, fish, shellfish, egg, veg, organ
+- protein: chicken, turkey, beef, lamb, pork, fish, shellfish, egg, veg, organ
 - cuisine: american, mexican, italian, japanese, chinese, korean, thai, vietnamese, indian, mediterranean, southern, fusion
 - method: dutch-oven, air-fryer, grill, sheet-pan, one-pot, no-cook, braise, smoker, stovetop
 - effort: weeknight-30, weekend-project, make-ahead, freezer-friendly

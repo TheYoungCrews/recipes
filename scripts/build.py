@@ -3,7 +3,7 @@
 Validates frontmatter against SCHEMA.md / TAGS.md; exits 1 on errors."""
 import json, re, sys, html, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-REQ = ["title", "slug", "type", "status"]
+REQ = ["title", "slug", "type", "status", "owner"]
 STATUSES = {"to-try", "made", "favorite", "retired"}
 
 def parse_fm(text):
@@ -96,7 +96,9 @@ def main():
             for t in fm.get("tags") or []:
                 if t not in tags_ok: errs.append(f"{f.name}: unknown tag '{t}' (add to TAGS.md)")
             if fm.get("type") and fm["type"] not in tags_ok: errs.append(f"{f.name}: unknown type '{fm['type']}'")
-            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","rating","time_minutes","serves","source","last_made"]},
+            if "stores" in fm: errs.append(f"{f.name}: 'stores:' not allowed in recipes (grocery-list step only)")
+            if re.search(r"^- \[[ x]\] .* @[a-z-]+\s*$", body, re.M): errs.append(f"{f.name}: '@store' marks not allowed in checklists")
+            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","serves","source","last_made"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body)})
     if errs:
@@ -106,6 +108,9 @@ def main():
     page = (ROOT/"scripts/site_template.html").read_text().replace("/*DATA*/null", data)
     page = page.replace("<!--STATIC-->", static_html(items, set(staples())))
     (out/"index.html").write_text(page)
+    keys = ["title","slug","type","status","owner","tags","ingredients","time_minutes","serves","rating","last_made","source"]
+    index = [{**{k: r[k] for k in keys}, "path": f'{r["dir"]}/{r["slug"]}.md'} for r in items]
+    (out/"recipes.json").write_text(json.dumps(index, indent=2, ensure_ascii=False))
     print(f"built site/index.html with {len(items)} items")
 
 if __name__ == "__main__": main()

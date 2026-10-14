@@ -1,7 +1,7 @@
 # Staples (~30, hand-kept)
 
 One item per line under the list. Wording must match recipe `ingredients:`. Remove a line when we run out and won't restock.
-Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` | ` (costco, whole-foods, trader-joes, buford-highway, kroger); stores are guesses until confirmed.
+Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` | ` (costco, whole-foods, trader-joes, buford-highway, kroger); stores are guesses until confirmed. Used only by the future grocery-list step, never copied into recipes.
 
 - salt
 - black pepper
@@ -33,3 +33,5 @@ Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` 
 - smoked paprika
 - parmesan | costco
 - canned tomatoes
+- liquid aminos | trader-joes
+- sambal oelek | trader-joes

@@ -14,6 +14,7 @@ added: 2026-10-13
 added_by: grok-bot
 via: grok-bot
 input_type: text
+owner: grok-bot
 last_made:
 rating:
 cooks: 0

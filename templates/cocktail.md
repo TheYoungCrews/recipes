@@ -14,6 +14,7 @@ added: YYYY-MM-DD
 added_by:
 via:
 input_type:
+owner:
 last_made:
 rating:
 cooks: 0

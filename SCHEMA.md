@@ -10,7 +10,6 @@ type: soup-bowl                            # required, one TAGS.md "type"
 status: to-try                             # required: to-try | made | favorite | retired
 tags: [chicken, dutch-oven, air-fryer, weeknight-30]   # only values from TAGS.md
 ingredients: [cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, green onion, sesame seeds, chicken nuggets]  # normalized names, lowercase, singular-ish; match pantry/staples.md wording
-stores: [trader-joes, buford-highway]       # optional: where to buy the non-staple items (values from TAGS.md store list)
 serves: 2
 time_minutes: 30
 source: https://...                        # URL, "Instagram @handle", "ChatGPT brief", etc.
@@ -19,6 +18,7 @@ added: 2026-10-13                          # YYYY-MM-DD
 added_by: crews                            # PERSON who sent/asked for it: crews | anna | agent name if self-initiated
 via: grok-bot                              # agent/model that wrote the file, e.g. muse/<model>, instinct/<model>, grok-bot, human
 input_type: text                           # instagram-video | instagram-carousel | tiktok | youtube | web-page | photo | screenshot | video-file | text | email
+owner: kelly-gellner                      # whose recipe it is in practice: anna | crews | anna+crews | <creator name/@handle> while unadapted
 last_made:                                 # YYYY-MM-DD or blank
 rating:                                    # 1-5 or blank (latest overall)
 cooks: 0                                   # times made
@@ -34,7 +34,7 @@ cooks: 0                                   # times made
 Cocktails add optional `spirit:` and `glass:` fields.
 
 ## Stores
-Optional `stores:` lists where to shop for this recipe. In the grocery checklist, an item can end with `@store`, e.g. `- [ ] thai basil @buford-highway`. Staples carry their usual store in `pantry/staples.md` as `- item | store`.
+Recipes carry no store info (no `stores:` field, no `@store` marks). Store picking happens later in a separate grocery-list step that uses `pantry/staples.md` usual stores. `ingredients:` is the key field for matching and tagging.
 
 ## Provenance
 `added_by` + `via` + `source_type`/`input_type` say who wanted it, which agent/model wrote it, and what it came from. `via` and `input_type` are optional for older files.
@@ -44,3 +44,6 @@ Before creating a file, search `recipes/`, `cocktails/`, `inbox/` for the same `
 
 ## inbox/
 Raw drops (`inbox/YYYY-MM-DD-<slug>.md`) that an agent couldn't fully decode. Free-form; must include source, sender, via. When normalized, add `normalized_to: <path>` at the top. Never deleted.
+
+## Owner
+`owner` is not `source` (where it came from) and not `added_by` (who sent it). New intake defaults to the source creator (name or @handle). Switch it to `anna`, `crews` or `anna+crews` once they adapt it, i.e. the first real feedback that changes Our version. Required (build.py fails without it).
