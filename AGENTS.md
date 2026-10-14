@@ -1,45 +1,57 @@
-# AGENTS.md - rules for any AI agent working in this repo
+# AGENTS.md: recipe repo playbook (any agent, any model)
 
-You may be Grok Bot, Muse, ChatGPT, Claude, or anything else. Follow these rules exactly. Plain markdown only; no databases, no paid services.
+Private repo `TheYoungCrews/recipes`. Plain markdown, $0. This page is enough on its own. For more detail see `skills/recipe-intake/SKILL.md`, `skills/recipe-feedback/SKILL.md`, `SCHEMA.md` and `TAGS.md`.
 
-## 0. Always first
-1. Read `SCHEMA.md`, `TAGS.md`, `taste-profile.md`, `pantry/staples.md` (and `bar.md` for drinks).
-2. Never delete a recipe; set `status: retired` instead.
-3. Never add to a shopping list or buy anything. Briefs only.
-4. One recipe per file: `recipes/<slug>.md` or `cocktails/<slug>.md`. Slug = lowercase-hyphenated title.
-5. Commit message: `add: <slug>` / `feedback: <slug>` / `taste: <what changed>`.
-6. Run `python3 scripts/build.py` after changes; it validates frontmatter and fails loudly on unknown tags.
+## Hard rules
+- **Never delete, rename or overwrite** a file. Only create new ones or make small edits as described below. To drop a recipe, set `status: retired`.
+- Keep it **private**: never paste repo contents publicly. Never buy anything or edit shopping lists.
+- Never invent amounts, ratings or feedback. Write `(amount not given)`, and say what you couldn't see.
+- Never edit `## Original` after capture. Never force-push.
 
-## 1. Decode protocol (capture -> to-try)
-Full step-by-step intake skill for any agent and any input (posts, links, photos, screenshots, video, text, email): [`skills/recipe-intake/SKILL.md`](skills/recipe-intake/SKILL.md). Dedupe first; can't decode? drop it in `inbox/`.
+## 1. Intake (link, IG/TikTok/YouTube post, photo, screenshot, video, text, email)
+1. **Dedupe first:** search `recipes/`, `cocktails/`, `inbox/` for the same source URL (ignore `?igsh=`/`utm_` params) or a near-identical title. If it matches, don't create anything; tell the sender which file it is.
+2. **Decode:** caption, then video speech and on-screen text, then the creator's own comments, then any linked recipe page. For photos or screenshots, read the text; for a dish photo with no recipe, mark it `(reconstructed from photo)`.
+3. **File:** `recipes/<slug>.md` (drinks: `cocktails/<slug>.md`). The slug is the title in lowercase, ASCII, hyphens only, max 60 chars. If the path exists and it's a different recipe, add `-2`.
+4. **Frontmatter** (flat, one line each, lists as `[a, b]`):
+```yaml
+---
+title: Crispy Gochujang Salmon Bites
+slug: crispy-gochujang-salmon-bites
+type: main            # main|side|soup-bowl|breakfast|dessert|sauce|prep-component|snack|cocktail|mocktail
+status: to-try
+tags: [fish, korean, air-fryer, weeknight-30]   # 3-8 from TAGS.md: protein, method, effort required
+ingredients: [salmon, gochujang, honey, soy sauce, garlic]  # lowercase, use pantry/staples.md wording
+serves: 2
+time_minutes: 25
+source: https://www.instagram.com/p/XXXX/
+source_type: instagram   # instagram|tiktok|youtube|web|book|ai|family|own
+added: YYYY-MM-DD
+added_by: anna           # the PERSON: crews|anna
+via: muse/<model>        # agent/model that wrote it
+input_type: instagram-video  # instagram-video|instagram-carousel|tiktok|youtube|web-page|photo|screenshot|video-file|text|email
+last_made:
+rating:
+cooks: 0
+---
+```
+   Tag values: protein chicken/beef/lamb/pork/fish/shellfish/egg/veg/organ; method dutch-oven/air-fryer/grill/sheet-pan/one-pot/no-cook/braise/smoker/stovetop; effort weeknight-30/weekend-project/make-ahead/freezer-friendly. Others are in TAGS.md. Don't invent tags.
+5. **Body:** one-line pitch (creator @handle). Then `## Original` (faithful ingredients + steps), then `## Our version`: a grocery checklist (`- [x]` if in `pantry/staples.md`, else `- [ ]`) and steps adapted to our Dutch oven / air fryer and taste (brothy, charred, umami, lime/herbs, high-protein; see `taste-profile.md`). Then `## Notes` with `- YYYY-MM-DD (via <agent>): captured, sent by <who>.`
+6. **Can't decode properly?** Save the raw material as `inbox/YYYY-MM-DD-<slug>.md` (source, sender, via, raw text). A later agent normalizes it and adds `normalized_to: <path>` at the top.
 
-Input: a link, IG/TikTok caption, screenshot, transcript, or a free-text idea.
-1. Check for duplicates (search titles/sources in `recipes/`). If found, add a note instead of a new file.
-2. Extract the source faithfully into `## Original`. If amounts are missing (common in reels), write `(amount not given)`; never invent silently. If you could only see the caption, say so in the description line.
-3. Write `## Our version`: adapt to staples, gear (Dutch oven, air fryer) and the taste profile. Mark each grocery item `- [x]` if it is in `pantry/staples.md`, else `- [ ]`.
-4. Fill frontmatter: `status: to-try`, `added`, `added_by` (the person), `via` (you/your model), `input_type`, `source`, `source_type`, normalized `ingredients` (staples wording).
-5. Reply to the human with: title, 1-line pitch, what to buy, link to file.
+## 2. Feedback ("made it", voice note, text, `made:` email)
+1. **Match the recipe** by title or slug (ignore words like "the" and "bowls"). If it's ambiguous, ask once, or write `inbox/YYYY-MM-DD-feedback-<slug>.md` and change nothing.
+2. **Notes**, newest first under `## Notes`: `- YYYY-MM-DD (anna via instinct/<model>, 4/5): too salty; loved the basil. -> Our version updated: yes|no`
+3. **Frontmatter:** `status: made` (`favorite` only for 5/5 or "favorite"; `retired` only for "never again"), `last_made`, `rating` if one was given, `cooks` + 1.
+4. **Our version:** edit only for a specific fix ("halve the chili crisp"), with the smallest change, marked `(changed YYYY-MM-DD: was ...)`. If it says "Same as original", copy the Original in first. Vague praise goes in Notes only.
+5. **taste-profile.md:** add only general preferences ("Anna dislikes cilantro"), noting who and the slug, plus a `## Change log` line. No duplicates.
 
-## 2. Tag protocol
-- 3 to 8 tags, only from `TAGS.md`. Include at least: one protein (or `veg`), one method, one effort.
-- Add `hosting`/`crowd` only if it scales to 6+.
-- Cocktails: `type: cocktail` or `mocktail`, one spirit tag, one style tag, plus `spirit:` field.
-- Need a new tag? Add it to `TAGS.md` in the same commit and mention it to the human.
+## 3. Email path: crews@mail.grokbot.com (people and agents)
+Subjects: `recipe: <what>`, `cocktail: <what>`, `made: <title> N/5`, `recipe-raw: <what>` (raw drop).
+Body: the link, and either the full markdown file (agents) or plain words (people: who, what to change). Attach photos, screenshots or videos as they are. Grok Bot turns these into commits.
 
-## 3. Feedback protocol (after cooking)
-Full step-by-step skill for any agent (voice note, text, `made: <title> N/5` email): [`skills/recipe-feedback/SKILL.md`](skills/recipe-feedback/SKILL.md).
-Input: "made X, 4/5, too salty, Anna loved the herbs".
-1. Append a dated line under `## Notes` (format in `templates/feedback.md`).
-2. Update frontmatter: `status` (`made`; `favorite` if 5/5 or they say so; `retired` if "never again"), `last_made`, `rating`, `cooks += 1`.
-3. Apply concrete fixes to `## Our version` (keep `## Original` untouched).
-4. If the feedback reveals a general preference (e.g. "too much cilantro"), add it to `taste-profile.md` with date and recipe slug.
-5. Confirm back in one line what changed.
-
-## 4. Writing new briefs (no source)
-Use `taste-profile.md` likes, prefer staples, and fill `## Original` with your first draft (`source_type: ai`).
-
-## 5. If you cannot write to GitHub
-Produce the full markdown file in your reply (or email it to crews@mail.grokbot.com); Grok Bot will commit it.
-
-## 6. Inbox
-`inbox/` holds raw drops. Any agent may normalize one: write the real file per the intake skill, then add `normalized_to:` at the top of the inbox file. Never delete inbox files.
+## 4. Delivery (try in this order)
+1. **git:** pull, check the path doesn't exist, write, `python3 scripts/build.py` (must pass), then commit `add: <slug>` / `feedback: <slug>` and push. If the push is rejected: `git pull --rebase`, then push again.
+2. **GitHub API:** `PUT /repos/TheYoungCrews/recipes/contents/<path>` with `message` and base64 `content`, and **no `sha`**, so an existing file can't be overwritten (422 = exists).
+3. **Email** crews@mail.grokbot.com (section 3).
+4. **Raw drop** to `inbox/` (by git or email).
+Then reply to the sender in one line: what you saved or changed, what to buy, and anything you guessed.
