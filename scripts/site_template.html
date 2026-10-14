@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Recipes</title>
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#2b2620;--mut:#7a6f62;--acc:#c0532b;--chip:#efe6da}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:16px;position:sticky;top:0;background:var(--bg);border-bottom:1px solid #e6dccf;z-index:2}
+h1{margin:0 0 8px;font-size:22px}input,select{font:inherit;padding:8px;border:1px solid #d8cbbb;border-radius:8px;background:#fff}
+#q{width:100%;margin-bottom:8px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.chip{border:0;background:var(--chip);padding:4px 10px;border-radius:99px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--acc);color:#fff}main{padding:16px;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 1px 3px #0001;cursor:pointer}
+.card h2{font-size:17px;margin:0 0 4px}.meta{color:var(--mut);font-size:13px}.miss{font-size:13px;margin-top:6px}
+.st{font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:2px 6px;border-radius:4px;background:#e8f0e3}
+.st.to-try{background:#fdecc8}.st.favorite{background:#f9d0c4}.st.retired{background:#ddd}
+#detail{position:fixed;inset:0;background:#0006;display:none;z-index:5}#detail.open{display:block}
+#detail .in{background:#fff;max-width:760px;margin:4vh auto;max-height:92vh;overflow:auto;border-radius:12px;padding:20px}
+#detail h3{color:var(--acc);margin-top:20px}button.x{float:right;font-size:20px;border:0;background:none;cursor:pointer}
+</style></head><body>
+<header><h1>🍲 Our Recipes</h1>
+<input id="q" placeholder="Search title or ingredient…">
+<div class="row">
+<select id="kind"><option value="">Food + drinks</option><option value="recipes">Food</option><option value="cocktails">Drinks</option></select>
+<select id="status"><option value="">Any status</option><option>to-try</option><option>made</option><option>favorite</option><option>retired</option></select>
+<label>Missing ≤ <select id="miss"><option value="">any</option><option>0</option><option>1</option><option>2</option><option>3</option><option>5</option></select> vs staples</label>
+</div><div class="chips" id="tags"></div></header>
+<main id="list"></main>
+<div id="detail"><div class="in" id="din"></div></div>
+<script>
+const D=/*DATA*/null;const S=new Set(D.staples);const on=new Set();
+const missing=r=>r.ingredients.filter(i=>!S.has(i));
+const allTags=[...new Set(D.items.flatMap(r=>r.tags))].sort();
+const tg=document.getElementById('tags');
+allTags.forEach(t=>{const b=document.createElement('button');b.className='chip';b.textContent=t;b.onclick=()=>{on.has(t)?on.delete(t):on.add(t);b.classList.toggle('on');render()};tg.appendChild(b)});
+const $=id=>document.getElementById(id);['q','kind','status','miss'].forEach(i=>$(i).oninput=render);
+function render(){const q=$('q').value.toLowerCase(),k=$('kind').value,st=$('status').value,m=$('miss').value;
+ const L=D.items.filter(r=>(!k||r.dir==k)&&(!st||r.status==st)&&[...on].every(t=>r.tags.includes(t))
+  &&(!q||(r.title+' '+r.ingredients.join(' ')).toLowerCase().includes(q))&&(m===''||missing(r).length<=+m));
+ $('list').innerHTML=L.map(r=>{const ms=missing(r);return `<div class="card" data-s="${r.slug}"><h2>${r.title}</h2>
+ <div class="meta"><span class="st ${r.status}">${r.status}</span> ${r.type}${r.time_minutes?' · '+r.time_minutes+' min':''}${r.rating?' · '+r.rating+'/5':''}</div>
+ <div class="meta">${r.tags.join(' · ')}</div><div class="miss">${ms.length?'Need: '+ms.join(', '):'✅ all staples'}</div></div>`}).join('')||'<p>No matches.</p>';
+ document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{const r=D.items.find(x=>x.slug==c.dataset.s);
+  $('din').innerHTML=`<button class="x" onclick="$('detail').classList.remove('open')">✕</button><h2>${r.title}</h2>${r.html}`;$('detail').classList.add('open')});}
+$('detail').onclick=e=>{if(e.target.id=='detail')e.target.classList.remove('open')};render();
+</script></body></html>
