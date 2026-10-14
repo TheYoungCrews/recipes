@@ -1,4 +1,6 @@
-# Hosting: spare laptop + Tailscale ($0, private)
+# Alternative hosting: spare laptop + Tailscale ($0, private)
+
+> **Chosen setup is Cloudflare Pages + Access: see `docs/CLOUDFLARE.md`.** Use this guide only if Cloudflare doesn't work out.
 
 The spare laptop keeps a copy of the repo, rebuilds the site every 15 minutes, and serves it. Phones and the iPad reach it from anywhere through Tailscale, a free private network that only your devices can join. Nothing is public. The full site works this way, search and filters included (unlike the iCloud file).
 

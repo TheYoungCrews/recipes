@@ -15,7 +15,8 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `cocktails/` | Drink briefs (same schema, `type: cocktail`) |
 | `skills/recipe-intake/SKILL.md` | Intake skill for any agent/model (Muse, Instinct, ...) and any input -> to-try file |
 | `skills/recipe-feedback/SKILL.md` | Feedback skill: 'we made it' -> Notes, Our version, taste profile |
-| `docs/HOSTING.md` | Spare laptop + Tailscale setup (private, $0, full site anywhere) |
+| `docs/CLOUDFLARE.md` | Chosen hosting: Cloudflare Pages + Access (email PIN, private, $0) |
+| `docs/HOSTING.md` | Alternative: spare laptop + Tailscale |
 | `inbox/` | Raw drops waiting to be normalized |
 | `templates/` | Copy these to start a new brief |
 | `scripts/build.py` | Builds `site/index.html` (no dependencies, Python 3) |
@@ -32,4 +33,5 @@ Then browse the site (below). It shows up as **to-try**.
 capture -> `status: to-try` -> cook -> feedback -> dated note + "Our version" update + taste-profile update -> `made` / `favorite` / `retired`.
 
 ## Browse
+Online (once set up): the Cloudflare Pages URL, signed in with email + PIN (see `docs/CLOUDFLARE.md`). Offline:
 `python3 scripts/build.py` then open `site/index.html` (single self-contained file: works offline, on a phone, or from iCloud/Drive). Filters: tags, status, search, and "missing at most N ingredients" vs `pantry/staples.md`.
