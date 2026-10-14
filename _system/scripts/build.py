@@ -92,35 +92,19 @@ SEASONS = {12: "winter", 1: "winter", 2: "winter", 3: "spring", 4: "spring", 5: 
 def readme(items):
     """The front page for Crews and Anna. Regenerated on every build; don't edit by hand."""
     import datetime
-    def link(r): return f'[{r["title"]}]({r["dir"]}/{r["slug"]}.md)'
-    def mins(r): return f'{r["time_minutes"]} min' if r["time_minutes"] else ""
-    def table(rs, first="Recipe"):
-        rows = [f"| {first} | Time | Whose | Status | Rating |", "|---|---|---|---|---|"]
-        for r in sorted(rs, key=lambda r: r["title"]):
-            rows.append(f'| {link(r)} | {mins(r)} | {r["owner"]} | {STATUS_WORD.get(r["status"], r["status"])} | {str(r["rating"])+"/5" if r["rating"] else ""} |')
-        return rows
-    live = [r for r in items if r["status"] != "retired"]
-    food = [r for r in live if r["dir"] == "recipes"]; drinks = [r for r in live if r["dir"] == "cocktails"]
+    link = lambda r: f'[{r["title"]}]({r["dir"]}/{r["slug"]}.md)'
     season = SEASONS[datetime.date.today().month]
-    now = [r for r in food if season in r["tags"]]
+    now = sorted([r for r in items if r["dir"] == "recipes" and r["status"] != "retired" and season in r["tags"]],
+                 key=lambda r: ({"favorite": 0, "made": 1}.get(r["status"], 2), r["title"]))[:5]
     out = ["# Crews & Anna's Kitchen", "",
-           "Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, and the family ones we don't want to lose.", "",
-           "Each recipe keeps the original the way its creator wrote it, plus our version. After we cook something we write down what worked and what we'd change, so our version gets a little better every time.", ""]
+           "Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, and the family ones we don't want to lose.",
+           "Each one keeps the creator's original plus our version, which gets a little better every time we cook it.", ""]
     if now:
-        out += [f"## Cooking this {season}", ""] + [f"- {link(r)}{' · '+mins(r) if mins(r) else ''}" for r in sorted(now, key=lambda r: r["title"])] + [""]
-    out += ["## Our recipes", ""]
-    for key, label in TYPE_ORDER + [(None, "Everything else")]:
-        rs = [r for r in food if (r["type"] == key if key else r["type"] not in dict(TYPE_ORDER))]
-        if rs: out += [f"### {label}", ""] + table(rs) + [""]
-    if drinks:
-        out += ["## Drinks", ""] + table(drinks, "Drink") + [""]
-    out += ["## Our kitchen", "",
-            "- [What we like](kitchen/taste-profile.md), including the swaps we always make",
-            "- [What's usually in the pantry](kitchen/staples.md)",
-            "- [What's on the bar shelf](kitchen/bar.md)", "",
-            "## Adding a recipe", "",
-            "Send the link, photo or post to one of our assistants, or email crews@mail.grokbot.com with \"recipe:\" and the name in the subject. "
-            "After cooking, email \"made: <name> 4/5\" and say what you'd change next time.", "",
+        out += [f"## Cooking this {season}", ""] + [f"- {link(r)}" for r in now] + [""]
+    out += ["Everything else is in [recipes](recipes/) and [cocktails](cocktails/).", "",
+            "## Our kitchen", "",
+            "[What we like](kitchen/taste-profile.md) · [Pantry staples](kitchen/staples.md) · [Bar shelf](kitchen/bar.md)", "",
+            "To add a recipe, send it to one of our assistants or email crews@mail.grokbot.com with \"recipe:\" and the name in the subject.", "",
             "<sub>For our AI helpers: [AGENTS.md](AGENTS.md) and [_system/](_system/README.md). This page rebuilds itself from the recipe files.</sub>", ""]
     return "\n".join(out)
 
