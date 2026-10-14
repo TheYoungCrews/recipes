@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/smoke-and-bitters.md
+filed_on: 2026-10-14
 title: Smoke & Bitters
 slug: smoke-and-bitters
 type: cocktail

@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/christmas-brown-butter-pecan-freezer-door-old-fashioned.md
+filed_on: 2026-10-14
 title: Christmas Brown-Butter & Pecan Freezer-Door Old Fashioned
 slug: christmas-brown-butter-pecan-freezer-door-old-fashioned
 type: cocktail

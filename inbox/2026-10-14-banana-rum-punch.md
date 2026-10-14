@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/banana-rum-punch.md
+filed_on: 2026-10-14
 title: Banana Rum Punch
 slug: banana-rum-punch
 type: cocktail

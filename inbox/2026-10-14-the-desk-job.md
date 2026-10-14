@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/the-desk-job.md
+filed_on: 2026-10-14
 title: The Desk Job
 slug: the-desk-job
 type: cocktail

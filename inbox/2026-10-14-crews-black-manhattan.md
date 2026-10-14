@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/crews-black-manhattan.md
+filed_on: 2026-10-14
 title: Crews Black Manhattan
 slug: crews-black-manhattan
 type: cocktail

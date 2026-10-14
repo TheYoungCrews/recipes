@@ -1,4 +1,6 @@
 ---
+filed_to: recipes/chilli-brothy-rice-caramelised-soy-chicken.md
+filed_on: 2026-10-14
 title: Chilli Brothy Rice with Caramelised Soy Chicken
 slug: chilli-brothy-rice-caramelised-soy-chicken
 type: soup-bowl

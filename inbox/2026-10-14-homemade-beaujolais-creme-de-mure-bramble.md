@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/homemade-beaujolais-creme-de-mure-bramble.md
+filed_on: 2026-10-14
 title: Homemade Beaujolais Crème de Mûre Bramble
 slug: homemade-beaujolais-creme-de-mure-bramble
 type: cocktail

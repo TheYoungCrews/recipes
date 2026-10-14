@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/autumn-negroni.md
+filed_on: 2026-10-14
 title: Autumn Negroni
 slug: autumn-negroni
 type: cocktail

@@ -1,4 +1,6 @@
 ---
+filed_to: recipes/coconut-red-curry-beef-broth-bowl.md
+filed_on: 2026-10-14
 title: Coconut + Red Curry Beef Broth Bowl
 slug: coconut-red-curry-beef-broth-bowl
 type: soup-bowl

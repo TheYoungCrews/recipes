@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/strawberry-basil-pavlova-negroni.md
+filed_on: 2026-10-14
 title: Strawberry-Basil Pavlova Negroni
 slug: strawberry-basil-pavlova-negroni
 type: cocktail

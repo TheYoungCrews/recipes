@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/the-gilded-lion.md
+filed_on: 2026-10-14
 title: The Gilded Lion
 slug: the-gilded-lion
 type: cocktail

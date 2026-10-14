@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/the-italian-job-smoky-rosemary-paloma.md
+filed_on: 2026-10-14
 title: The Italian Job (Smoky Rosemary Paloma)
 slug: the-italian-job-smoky-rosemary-paloma
 type: cocktail
