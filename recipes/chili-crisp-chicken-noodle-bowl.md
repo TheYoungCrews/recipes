@@ -4,7 +4,7 @@ slug: chili-crisp-chicken-noodle-bowl
 type: soup-bowl
 status: made
 tags: [chicken, fusion, dutch-oven, air-fryer, weeknight-30, high-protein, fall]
-ingredients: [frozen chicken nuggets, cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, sesame seeds, green onion, neutral oil]
+ingredients: [frozen chicken nuggets, cherry tomatoes, asparagus, egg white spaghetti, bone broth, chili crisp, lime, sesame seeds, green onion, neutral oil, salt]
 serves: 2
 time_minutes: 30
 prep_minutes:
@@ -25,27 +25,28 @@ Brothy, spicy noodle bowl with a blistered tomato base, turmeric-ginger bone bro
 ## Original
 
 **Grocery & inventory check**
-- [x] green onion
-- [x] frozen chicken nuggets
-- [x] cherry tomatoes (1 pint)
-- [x] asparagus (1 bunch)
-- [x] egg white spaghetti noodles
-- [x] Fire Kettle turmeric-ginger bone broth
-- [x] chili crisp
-- [x] fresh limes
-- [x] sesame seeds
+- green onion (whites and greens separated, thinly sliced)
+- frozen chicken nuggets
+- cherry tomatoes (1 pint)
+- asparagus (1 bunch, woody ends snapped, cut on a 1.5-inch bias)
+- egg white spaghetti noodles
+- Kettle & Fire turmeric-ginger bone broth
+- chili crisp (divided)
+- fresh limes
+- sesame seeds
 
 **Steps**
-1. **Crisp the chicken:** air fryer 400°F until deeply crunchy (katsu texture).
-2. **Cook the noodles:** boil separately so starch doesn't cloud the soup. Drain, divide into bowls.
-3. **Blister & smash:** splash of oil in the Dutch oven, medium-high. Whole cherry tomatoes, untouched 1-2 min until charred; toss, then smash once soft.
-4. **Build the broth:** pour in bone broth, scrape up the charred tomato fond. Steady simmer.
-5. **Add asparagus:** last 2-3 minutes so it keeps a crisp bite.
-6. **Assemble:** broth and asparagus over noodles; sliced chicken fanned on top; heavy spoon of chili crisp, squeeze of lime.
+1. **Crisp the chicken:** air fryer at 400°F for 12-15 min until deeply crunchy (katsu texture). Rest 2 min before slicing on a bias so the crust stays intact.
+2. **Char the asparagus:** splash of oil in the Dutch oven over medium-high. Sear bias-cut asparagus with a pinch of salt for 2-3 min until bright green and blistered in spots; remove to a plate so it keeps a crisp bite.
+3. **Blister & smash:** add a splash of oil to the hot Dutch oven if dry. Whole cherry tomatoes, untouched 4-5 min until deeply charred underneath; toss, cook 1-2 min until bursting, then smash into a jammy base. Stir in green onion whites and 1 tsp chili crisp for 30 sec until fragrant.
+4. **Build the broth:** pour in bone broth, scrape up the charred tomato fond. Steady simmer 3-4 min to marry flavors; season to taste with salt (or a splash of soy/fish sauce).
+5. **Warm the noodles:** rinse egg white noodles well, then dip in boiling water 60-90 sec just to warm through (do not overboil). Drain and divide into bowls.
+6. **Assemble:** blistered asparagus over noodles, ladle piping-hot broth on top. Fan sliced chicken over the top; finish with a heavy spoon of chili crisp, green onion greens, sesame seeds, and a squeeze of lime.
 
 ## Our version
-Same as original (it was written for our kitchen). Edit here after feedback.
+Same as the original, except season the broth with liquid aminos instead of soy sauce (taste profile).
 
 ## Notes
+- 2026-10-14 (crews): replaced with Crews's revised version (charred asparagus step, warmed-not-boiled noodles, timings added).
 - 2026-10-14 (grok-bot): time_minutes is an estimate; the Apple Notes brief gave no time.
 - 2026-10-13 (import): from Crews's Apple Notes; he liked it. Rating not recorded yet.
