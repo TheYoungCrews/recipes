@@ -126,6 +126,7 @@ def render(items, staples, root):
         if src and src.exists():
             shutil.copy2(src, out / "photos" / src.name); r["photo"] = "photos/" + src.name
     css = (SITE/"style.css").read_text().replace("/*FONT*/", base64.b64encode((SITE/"caveat.woff2").read_bytes()).decode())
+    shutil.copy2(SITE/"tablecloth.jpg", out/"tablecloth.jpg")
     banner = "data:image/jpeg;base64," + base64.b64encode((SITE/"banner-web.jpg").read_bytes()).decode()
     season = SEASONS[datetime.date.today().month]
     live = [r for r in items if r["status"] != "retired"]
@@ -156,6 +157,6 @@ def render(items, staples, root):
     page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Crews &amp; Anna's Kitchen</title><meta name=theme-color content="#7f9a7a"><meta name=apple-mobile-web-app-capable content=yes>
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="{banner}"><style>{css}</style></head>
-<body><div id=top></div><img class=banner src="{banner}" alt="Crews &amp; Anna's Kitchen">{home}{views}
+<body><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails</p></div></header>{home}{views}
 <script>window.KITCHEN={data};</script><script>{js}</script></body></html>'''
     (out/"index.html").write_text(page)
