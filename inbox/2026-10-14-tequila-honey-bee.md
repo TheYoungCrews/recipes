@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/tequila-honey-bee.md
+filed_on: 2026-10-14
 title: Tequila Honey Bee
 slug: tequila-honey-bee
 type: cocktail
