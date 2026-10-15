@@ -1,10 +1,10 @@
 # AGENTS.md: recipe repo playbook (any agent, any model)
 
-Private repo `TheYoungCrews/recipes`. Plain markdown, $0. This page is enough on its own. For more detail see `_system/skills/recipe-intake/SKILL.md`, `_system/skills/recipe-feedback/SKILL.md`, `_system/SCHEMA.md` and `_system/TAGS.md`.
+Public repo `TheYoungCrews/recipes`. Plain markdown, $0. This page is enough on its own. For more detail see `_system/skills/recipe-intake/SKILL.md`, `_system/skills/recipe-feedback/SKILL.md`, `_system/SCHEMA.md` and `_system/TAGS.md`.
 
 ## Hard rules
 - **Never delete, rename or overwrite** a file. Only create new ones or make small edits as described below. To drop a recipe, set `status: retired`.
-- Keep it **private**: never paste repo contents publicly. Never buy anything or edit shopping lists.
+- The repo is public: never commit secrets, tokens, emails or private info. Never buy anything or edit shopping lists.
 - Never invent amounts, ratings or feedback. Write `(amount not given)`, and say what you couldn't see.
 - Never edit `## Original` after capture. Never force-push.
 - **Agents outside the repo (Muse, Instinct, ...) write ONLY to `inbox/`.** One new file per recipe or feedback, created with the GitHub contents API (create-only). Grok Bot's hourly filing routine validates inbox files and files them into `recipes/` / `cocktails/`. Never edit or delete any other path.
