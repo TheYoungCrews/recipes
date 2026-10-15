@@ -20,7 +20,7 @@ last_made:
 rating:
 cooks: 0
 ---
-Rosemary rose Paloma with reposado, dry rose, grapefruit and lime. Creator: unknown. Distinct from cocktails/the-italian-job-smoky-rosemary-paloma.md (mezcal split-base, no rose wine).
+Rosemary rose Paloma with reposado, dry rose, grapefruit and lime. Creator: unknown.
 
 ## Original
 Pasted by Crews as text with no link or author. Serves and time were not given.
@@ -61,5 +61,6 @@ Note in the original: use freshly squeezed grapefruit juice.
 Same as original. Short shake so the rose wine does not over-dilute.
 
 ## Notes
-- 2026-10-14 (filed by grok-bot): filed from email 486867 / inbox. Swapped food tags [no-cook, quick-20] for spirit/style tags; added spirit + glass; set time_minutes: 5 (not in source; cocktail assembly). Related but not a duplicate of the-italian-job-smoky-rosemary-paloma.
+- 2026-10-14 (filed by grok-bot): filed from email 486867 / inbox. Swapped food tags [no-cook, quick-20] for spirit/style tags; added spirit + glass; set time_minutes: 5 (not in source; cocktail assembly).
 - 2026-10-14 (via muse): captured from text.
+- 2026-10-14 (crews): this is our rosemary paloma; the Italian Job version was removed as a mix-up.
