@@ -126,7 +126,7 @@ def render(items, staples, root):
         if src and src.exists():
             shutil.copy2(src, out / "photos" / src.name); r["photo"] = "photos/" + src.name
     css = (SITE/"style.css").read_text().replace("/*FONT*/", base64.b64encode((SITE/"caveat.woff2").read_bytes()).decode())
-    shutil.copy2(SITE/"tablecloth.jpg", out/"tablecloth.jpg")
+    shutil.copy2(SITE/"tablecloth.jpg", out/"tablecloth.jpg"); shutil.copy2(SITE/"og.jpg", out/"og.jpg")
     banner = "data:image/jpeg;base64," + base64.b64encode((SITE/"banner-web.jpg").read_bytes()).decode()
     season = SEASONS[datetime.date.today().month]
     live = [r for r in items if r["status"] != "retired"]
@@ -157,6 +157,7 @@ def render(items, staples, root):
     views = "\n".join(recipe_view(r, staples) for r in live)
     page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Crews &amp; Anna's Kitchen</title><meta name=theme-color content="#7f9a7a"><meta name=apple-mobile-web-app-capable content=yes>
+<meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s cocktails."><meta property="og:type" content="website"><meta property="og:url" content="https://blind-tiger.pages.dev/"><meta property="og:image" content="https://blind-tiger.pages.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s cocktails."><meta name="twitter:image" content="https://blind-tiger.pages.dev/og.jpg">
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="{banner}"><style>{css}</style></head>
 <body><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="#add">+ add one</a></p></div></header>{home}{views}
 <script>window.KITCHEN={data};</script><script>{js}</script></body></html>'''
