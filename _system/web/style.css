@@ -128,3 +128,6 @@ noscript p{font-size:13px;color:var(--mute);text-align:center}
 .cook .who{font-size:12px;color:#8f8676;text-align:center;margin:8px 0 0}.cook .who a{color:#bfb6a5}
 .rate button.h{background:linear-gradient(90deg,#e0a83a 50%,#4a453e 50%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent}
 .ing label span.have{flex:none}
+.diary>.dent{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.diary .dd{font-size:21px;line-height:1.1;color:var(--sage-d)}.dwho{display:flex;gap:8px;align-items:baseline}.dwho b{font-weight:600}
+.dent p{margin:3px 0 0;color:#4b463e}.dthumb{display:block;margin-top:8px;width:120px;height:90px;object-fit:cover;border-radius:8px;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.15);transform:rotate(-1.5deg)}

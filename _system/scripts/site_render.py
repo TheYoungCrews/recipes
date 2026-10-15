@@ -111,13 +111,18 @@ def recipe_view(r, staples):
         who = (m.group(3) or "").lower()
         person = re.match(r"(crews|anna)\b", who)
         if not person or "filed" in who or "grok" in who: continue
-        rate = re.search(r"(\d(?:\.\d)?)/5", who)
-        txt = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", m.group(4)) if not DEV.search(x)))
-        if txt.lower().rstrip(".") == "cooked it": txt = ""
-        if not txt and not rate: continue
+        raw = m.group(4)
+        rate = re.search(r"(\d(?:\.\d)?)/5", who) or re.search(r"(\d(?:\.\d)?)\s*/\s*5", raw)
+        pm = re.search(r"(photos/[\w.-]+\.(?:jpe?g|png|webp))", raw, re.I)
+        raw = re.sub(r"!\[[^\]]*\]\([^)]*\)|\(?photos/[\w.-]+\.(?:jpe?g|png|webp)\)?", "", raw, flags=re.I)
+        raw = re.sub(r"^(?:made it|cooked it)[,.:]?\s*(?:\d(?:\.\d)?\s*/\s*5[.,]?)?\s*", "", raw.strip(), flags=re.I)
+        txt = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", raw) if not DEV.search(x)))
+        if txt and txt[0].islower(): txt = txt[0].upper() + txt[1:]
+        if not txt and not rate and not pm: continue
         d = datetime.date.fromisoformat(m.group(1)).strftime("%b %-d")
         st = stars(rate.group(1)) if rate else ""
-        diary.append(f"<div><span>{d}</span><div><b>{person.group(1).title()}</b> {st} {inline(txt)}</div></div>")
+        th = f'<img class=dthumb src="{E(pm.group(1))}" alt="" loading=lazy>' if pm else ""
+        diary.append(f'<div class=dent><span class="dd hand">{d}</span><div><div class=dwho><b>{person.group(1).title()}</b>{st}</div>{f"<p>{inline(txt)}</p>" if txt else ""}{th}</div></div>')
     diary_html = "".join(diary) or "<p class=diary-empty>Not cooked yet.</p>"
     intro = " ".join(l.strip() for l in sec["_intro"] if l.strip() and not l.strip().startswith("!["))
     intro = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", intro) if not DEV.search(x)))
