@@ -2,6 +2,19 @@
 
 Public repo `TheYoungCrews/recipes`. Plain markdown, $0. This page is enough on its own. For more detail see `_system/skills/recipe-intake/SKILL.md`, `_system/skills/recipe-feedback/SKILL.md`, `_system/SCHEMA.md` and `_system/TAGS.md`.
 
+
+## Start here: adding a recipe without GitHub access (Anna's ChatGPT, Instinct, any assistant)
+You don't need a GitHub account or token. Recipes arrive by email and get filed into the repo within about an hour.
+1. Read the recipe from whatever you were given (link, video, photo, screenshot, text). Never invent amounts; write `(amount not given)`.
+2. Write one email per recipe:
+   - **To:** crews@mail.grokbot.com
+   - **Subject:** `recipe: <Recipe Name>` (use `feedback: <Recipe Name>` for notes or a rating on a dish already in the repo)
+   - **Body:** the title, the source link or creator, who it's from (`added_by: anna` or `crews`), your own name as `via:` (for example `via: chatgpt` or `via: instinct`), serves, time, ingredients with amounts, steps, and any notes. Plain text is fine; the frontmatter in section 1 is optional. Attach photos or screenshots if you have them.
+3. If you can send email yourself, send it. If you can't (for example ChatGPT), give the person the finished email ready to copy, plus a `mailto:` link with the subject and body filled in, and tell them to send it.
+4. Don't send repeats: check https://github.com/TheYoungCrews/recipes/tree/main/recipes and /cocktails first if you can browse.
+
+Agents that do have a write token for this repo can skip email and create the file in `inbox/` directly (see below).
+
 ## Hard rules
 - **Never delete, rename or overwrite** a file. Only create new ones or make small edits as described below. To drop a recipe, set `status: retired`.
 - The repo is public: never commit secrets, tokens, emails or private info. Never buy anything or edit shopping lists.
