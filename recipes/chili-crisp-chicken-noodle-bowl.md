@@ -22,6 +22,8 @@ cooks: 2
 ---
 Brothy, spicy noodle bowl with a blistered tomato base, turmeric-ginger bone broth, crispy chicken and chili crisp.
 
+![Made 2026-10-14](photos/chili-crisp-chicken-noodle-bowl-2026-10-14.jpg)
+
 ## Original
 
 **Grocery & inventory check**
