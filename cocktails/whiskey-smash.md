@@ -20,7 +20,7 @@ last_made:
 rating:
 cooks: 0
 ---
-A julep cousin: mint and lemon wedges muddled with sugar, whip-shaken with whiskey and served with all the fruit in the glass under a snow cap of pebble ice. Created by classic (Jerry Thomas era).
+A julep cousin: mint and lemon wedges muddled with sugar, whip-shaken with whiskey and served with all the fruit in the glass under a snow cap of pebble ice. A classic from the 1840s.
 
 ## Original
 - 8 to 10 mint leaves

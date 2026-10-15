@@ -20,7 +20,7 @@ last_made:
 rating:
 cooks: 0
 ---
-A rum and honey cousin of the French 75, topped with Champagne. Made for celebrations and early in the night. Created by Bacardi pamphlet, around 1930.
+A rum and honey cousin of the French 75, topped with Champagne. Made for celebrations and early in the night. First printed in a Bacardi pamphlet around 1930.
 
 ## Original
 - 1/2 oz (15 ml) fresh lime juice
