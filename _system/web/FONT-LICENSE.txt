@@ -1,0 +1,1 @@
+Caveat font (caveat.woff2, Latin subset) by Pablo Impallari, SIL Open Font License 1.1. https://github.com/google/fonts/tree/main/ofl/caveat

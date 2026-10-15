@@ -3,7 +3,7 @@ One index.html: home + every recipe as an <article id="r-slug"> shown via CSS :t
 so recipe links are deep-linkable (/#r-slug) and work without JavaScript."""
 import base64, datetime, html, json, re, shutil, pathlib
 E = html.escape
-SITE = pathlib.Path(__file__).resolve().parents[1] / "site"
+SITE = pathlib.Path(__file__).resolve().parents[1] / "web"
 SEASONS = {12:"winter",1:"winter",2:"winter",3:"spring",4:"spring",5:"spring",6:"summer",7:"summer",8:"summer",9:"fall",10:"fall",11:"fall"}
 SEASON_WORDS = {"fall":["autumn","halloween","thanksgiving"],"winter":["christmas","holiday","winter"],"spring":["spring"],"summer":["summer","peach"]}
 DRINK = ("cocktail","mocktail")
