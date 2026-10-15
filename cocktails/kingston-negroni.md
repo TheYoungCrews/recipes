@@ -2,7 +2,7 @@
 title: Kingston Negroni
 slug: kingston-negroni
 type: cocktail
-status: to-try
+status: made
 tags: [rum, stirred]
 spirit: rum
 glass: rocks
@@ -18,7 +18,7 @@ input_type: photo
 owner: "@educatedbarfly"
 last_made:
 rating:
-cooks: 0
+cooks: 1
 ---
 A Negroni with overproof aged Jamaican rum in place of gin. Simple and funky. Created by Joaquín Simó (2009).
 
@@ -43,3 +43,4 @@ A Negroni with overproof aged Jamaican rum in place of gin. Simple and funky. Cr
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): from Crews's photo of the book page, p. 108. Time set to 5 min for assembly.
+- 2026-10-14 (crews): made this before.

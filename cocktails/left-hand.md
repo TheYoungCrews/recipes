@@ -2,7 +2,7 @@
 title: Left Hand
 slug: left-hand
 type: cocktail
-status: to-try
+status: made
 tags: [bourbon, stirred]
 spirit: bourbon
 glass: coupe
@@ -18,7 +18,7 @@ input_type: photo
 owner: "@educatedbarfly"
 last_made:
 rating:
-cooks: 0
+cooks: 1
 ---
 A bourbon Negroni that sits halfway to a Manhattan, with chocolate bitters. The book suggests a spiced chocolate bitters like Fee's Aztec. Created by Sam Ross (Milk & Honey, around 2006).
 
@@ -45,3 +45,4 @@ A bourbon Negroni that sits halfway to a Manhattan, with chocolate bitters. The 
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): from Crews's photo of the book page, p. 109. Time set to 5 min for assembly.
+- 2026-10-14 (crews): made this before.
