@@ -85,3 +85,50 @@ $$('.ing input').forEach((cb,i)=>{const k="chk:"+cb.name;cb.checked=localStorage
 // Scroll to top when opening a recipe
 window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#r-'))window.scrollTo(0,0)});
 })();
+// ---- Cooked it: rate + note + photo -> /api/cook (Google sign-in; server checks the allowlist)
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+let cfg=null, gsiLoaded=null, pending=null;
+const getCfg=()=>cfg||(cfg=fetch("/api/config").then(r=>r.ok?r.json():{}).catch(()=>({})));
+const tok=()=>{try{const t=JSON.parse(sessionStorage.getItem("gid")||"null");return t&&t.exp>Date.now()/1000+60?t.v:null}catch(e){return null}};
+const saveTok=v=>{try{const p=JSON.parse(atob(v.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));sessionStorage.setItem("gid",JSON.stringify({v,exp:p.exp,email:p.email}))}catch(e){}};
+function loadGsi(clientId){
+  return gsiLoaded||(gsiLoaded=new Promise((ok,no)=>{const s=document.createElement("script");s.src="https://accounts.google.com/gsi/client";s.async=true;
+    s.onload=()=>{google.accounts.id.initialize({client_id:clientId,callback:r=>{saveTok(r.credential);if(pending){const f=pending;pending=null;f()}},auto_select:true,context:"signin"});ok()};s.onerror=no;document.head.appendChild(s)}));
+}
+const stars=(el,v)=>{$$(".rate button",el).forEach((b,i)=>{const n=i+1;b.style.color="";b.style.background="";
+  b.className=v>=n?"f":v>=n-.5?"h":""});$(".rv",el).textContent=v?`${v}/5`:"";};
+function resize(file){
+  return createImageBitmap(file,{imageOrientation:"from-image"}).catch(()=>createImageBitmap(file)).then(img=>{
+    const k=Math.min(1,1600/Math.max(img.width,img.height)),c=document.createElement("canvas");
+    c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+    return c.toDataURL("image/jpeg",.84)});
+}
+$$("form.cook").forEach(f=>{
+  let val=0, photo=null; const msg=$(".cmsg",f), save=$(".b2",f), say=(t,ok)=>{msg.textContent=t;msg.className="cmsg"+(ok?" ok":"")};
+  $$(".rate button",f).forEach(b=>b.addEventListener("click",()=>{const n=+b.dataset.v;val=val===n?n-.5:n;if(val<1)val=n;stars(f,val);save.disabled=false;getCfg()}));
+  $("input[type=file]",f).addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;say("Shrinking photo…");
+    try{photo=await resize(file);$(".pv img",f).src=photo;$(".pv",f).hidden=false;say("")}catch(err){say("Couldn't read that photo.")}});
+  $(".px",f).addEventListener("click",()=>{photo=null;$(".pv",f).hidden=true;$("input[type=file]",f).value=""});
+  async function send(){
+    say("Saving…");save.disabled=true;
+    const r=await fetch("/api/cook",{method:"POST",headers:{"content-type":"application/json",authorization:"Bearer "+tok()},
+      body:JSON.stringify({slug:f.dataset.slug,rating:val,note:$("textarea",f).value,photo})}).catch(()=>null);
+    const j=r?await r.json().catch(()=>({})):{};
+    if(r&&r.status===401){sessionStorage.removeItem("gid");save.disabled=false;return ask()}
+    if(!r||!r.ok){save.disabled=false;return say(j.error||"Couldn't save. Try again?")}
+    $(".gsi",f).innerHTML="";
+    say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`,true);
+    const d=$(".diary",f.closest("article"));if(d){$(".diary-empty",d)?.remove();const row=document.createElement("div");
+      row.innerHTML=`<span>today</span><div><b>${j.who}</b>: ${val}/5 ${$("textarea",f).value.replace(/[<&]/g,"")}</div>`;d.prepend(row)}
+  }
+  async function ask(){
+    const c=await getCfg();
+    if(!c.clientId||!c.ready){save.disabled=false;return say("Saving isn't switched on yet. Text the bot your rating for now.")}
+    try{await loadGsi(c.clientId)}catch(e){return say("Couldn't load Google sign-in.")}
+    pending=send; say("Sign in with Google so we know it's you:");
+    const g=$(".gsi",f);g.innerHTML="";google.accounts.id.renderButton(g,{theme:"filled_black",shape:"pill",text:"signin_with",size:"large"});google.accounts.id.prompt();
+  }
+  f.addEventListener("submit",e=>{e.preventDefault();if(!val)return say("Pick some stars first.");tok()?send():ask()});
+});
+})();

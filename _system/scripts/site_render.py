@@ -111,10 +111,13 @@ def recipe_view(r, staples):
 {f'<h3 class="sec hand">{"Method" if r["type"] in DRINK else "Steps"}</h3><ol class=st>{step_html}</ol>' if step_html else ""}
 {ours_html}{orig_html}
 <h3 class="sec hand">Cook diary</h3><div class=diary>{diary_html}</div>
-<div class="cook soon"><h4 class=hand>Cooked it? <span class=soonpill>COMING SOON</span></h4><p>Soon you'll rate it here and it'll log as cooked that day. For now, text the bot your rating and a photo.</p>
-<div class=rate aria-hidden=true><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-<textarea disabled placeholder="How'd it go? (optional)"></textarea>
-<div class=r><button disabled class=b1>📷 Add photo</button><button disabled class=b2>Log it</button></div></div>
+<form class=cook data-slug="{E(r["slug"])}" data-title="{E(r["title"])}"><h4 class=hand>Cooked it?</h4>
+<p class=cooksub>Rate it and it logs as cooked today.</p>
+<div class=rate role=radiogroup aria-label="Rating">{"".join(f'<button type=button data-v="{i}" aria-label="{i} stars">★</button>' for i in range(1,6))}<span class=rv></span></div>
+<textarea name=note maxlength=1000 placeholder="How'd it go? (optional)"></textarea>
+<div class=pv hidden><img alt=""><button type=button class=px aria-label="Remove photo">×</button></div>
+<div class=r><label class=b1>📷 Add photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>
+<div class=gsi></div><p class=cmsg role=status></p></form>
 {src}</div></div></div></article>'''
 
 def render(items, staples, root):
