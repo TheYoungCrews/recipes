@@ -3,7 +3,7 @@ title: Gumbo
 slug: gumbo
 type: soup-bowl
 status: to-try
-tags: [chicken, pork, southern, stovetop, braise, weekend-project]
+tags: [chicken, pork, southern, stovetop, braise, weekend-project, cajun]
 ingredients: [neutral oil, lard, flour, chicken, andouille sausage, onion, celery, green pepper, garlic, stock, green onion, joe's stuff seasoning blend, file powder, crab shrimp and crawfish boil, rice, french bread]
 serves:
 time_minutes:

@@ -3,7 +3,7 @@ title: Asado
 slug: asado
 type: main
 status: to-try
-tags: [pork, braise, weekend-project]
+tags: [pork, braise, weekend-project, filipino]
 ingredients: [pork roast, water, liquid aminos, brown sugar, white wine, salt, garlic, anise]
 serves:
 time_minutes:

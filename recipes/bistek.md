@@ -3,7 +3,7 @@ title: Bistek
 slug: bistek
 type: main
 status: to-try
-tags: [beef, stovetop, make-ahead, weekend-project]
+tags: [beef, stovetop, make-ahead, weekend-project, filipino]
 ingredients: [sirloin steak, lemon juice, liquid aminos, black pepper, salt, onion, neutral oil, water]
 serves: 4
 time_minutes:

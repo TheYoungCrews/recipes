@@ -3,7 +3,7 @@ title: Shrimp & Grits
 slug: shrimp-and-grits
 type: main
 status: to-try
-tags: [shellfish, southern, stovetop, weeknight-45]
+tags: [shellfish, southern, stovetop, weeknight-45, cajun]
 ingredients: [head-on shrimp, butter, garlic, worcestershire sauce, beer, stone-ground white grits, water, romano cheese, joe's stuff seasoning blend, crab shrimp and crawfish boil, dried thyme, dried rosemary, dried oregano]
 serves: 4-6
 time_minutes:
