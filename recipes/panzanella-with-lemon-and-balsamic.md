@@ -2,7 +2,7 @@
 title: Panzanella with Lemon and Balsamic
 slug: panzanella-with-lemon-and-balsamic
 type: side
-status: to-try
+status: made
 tags: [veg, no-cook, quick-20, italian]
 ingredients: [bread, tomato, cucumber, basil, olive oil, balsamic vinegar, lemon juice, salt, black pepper]
 serves:
@@ -16,7 +16,7 @@ input_type: text
 owner: crews
 last_made: 2025-04-18
 rating:
-cooks: 0
+cooks: 1
 ---
 Tomato-cucumber-basil bread salad with lemon and balsamic. Historical experimental version; final proportions incomplete. Initial version was disliked.
 
@@ -56,3 +56,4 @@ Same suggested method. Notes from capture: more tomato, balsamic, salt and olive
 ## Notes
 - 2026-10-14 (filed by grok-bot): historical recovery from email 486029 (recipe-raw). Incomplete amounts preserved as "(amount not given)". status to-try (initial version disliked; no "never again"; final positive verdict not recorded). last_made 2025-04-18; cooks 0.
 - 2026-10-14 (via dot): historical recipe recovery only; not a new cooking report.
+- 2026-10-14 (crews): remembers it as good stuff.

@@ -2,7 +2,7 @@
 title: Boeuf Bourguignon a la Julia Child
 slug: boeuf-bourguignon-a-la-julia-child
 type: main
-status: to-try
+status: made
 tags: [beef, dutch-oven, braise, weekend-project, french]
 ingredients: [bacon, olive oil, stewing beef, carrot, onion, salt, pepper, flour, red wine, beef stock, tomato paste, garlic, thyme, bay leaf, pearl onions, unsalted butter, parsley, mushrooms]
 serves:
@@ -16,7 +16,7 @@ input_type: web-page
 owner: Julia Child
 last_made:
 rating:
-cooks: 0
+cooks: 1
 ---
 Classic braised beef stew with bacon, pearl onions and sauteed mushrooms, adapted from Julia Child's "Mastering the Art of French Cooking." Creator: Julia Child (food.com submission by Chef Kate).
 
@@ -103,3 +103,4 @@ Same as original, in the Dutch oven (the fireproof casserole). No standing soy/c
 - 2026-10-14 (via muse): captured from web.
 - Crews says they made this last year (exact date and rating not given). cooks stays 0 because the count was not provided.
 - Time of 300 minutes is the page's "Ready In: 5hrs". Serves is blank on the page.
+- 2026-10-14 (crews): made once, after watching Julie & Julia.

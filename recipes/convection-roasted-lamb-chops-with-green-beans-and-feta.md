@@ -16,7 +16,7 @@ input_type: text
 owner: crews
 last_made: 2025-04-15
 rating:
-cooks: 0
+cooks: 1
 ---
 Convection-roasted lamb chops with green beans, feta and lentils. Historical recovery; marinade use and cook time unconfirmed.
 
@@ -57,3 +57,4 @@ Treat the marinade as a suggested version, not a validated cook-time guide. Roas
 ## Notes
 - 2026-10-14 (filed by grok-bot): historical recovery from email 486026 (recipe-raw). Incomplete method preserved; do not invent cook times or doneness. status made, last_made 2025-04-15, cooks 0. time_minutes left blank (roast time not preserved in source). No weeknight time tag invented.
 - 2026-10-14 (via dot): historical recipe recovery only; not a new cooking report.
+- 2026-10-14 (crews): remembers it as good stuff.

@@ -15,8 +15,8 @@ via: gemini/gemini-3-pro
 owner: crews
 input_type: text
 last_made:
-rating:
-cooks: 1
+rating: 4
+cooks: 3
 ---
 Brothy, aromatic Dutch oven seafood curry layering bloomed yellow curry, turmeric, and Szechuan-style white pepper heat with poached barramundi and shrimp.
 
@@ -60,3 +60,4 @@ Brothy, aromatic Dutch oven seafood curry layering bloomed yellow curry, turmeri
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from email 486995. Added chinese cuisine tag (Szechuan). Checklist marks match kitchen/staples.md (only garlic, bone broth, lime currently stapled). No standing soy/chili-paste subs in this recipe.
 - 2026-10-14 (via gemini): captured, sent by crews. status favorite, cooks: 1 as sent (last_made and rating blank).
+- 2026-10-14 (crews): made a few times last winter; 4 stars. (cooks: 3 is an estimate of "a few".)
