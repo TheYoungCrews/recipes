@@ -151,7 +151,7 @@ def render(items, staples, root):
 <div class=tools><div class=chips>{chip_html}</div><button id=pick type=button class="pick hand">🎲 what's for dinner?</button></div>
 <div id=food class=grid style="margin-top:10px">{"".join(card(r) for r in food)}</div><p id=nores class=nores hidden>No recipes match. Try another chip or word.</p>
 {f'<section class=bar id=bar><h2 class=hand>The bar cart <small>{len(bar)} cocktails</small></h2><div class=grid>{"".join(card(r) for r in bar)}</div></section>' if bar else ""}
-<section id=add class="sheet addr"><h2 class=hand>Add a recipe</h2><p>Got a recipe for us? <a href="mailto:crews@mail.grokbot.com?subject=recipe%3A%20">Email it to crews@mail.grokbot.com</a> with "recipe:" and the name in the subject.</p><p>Using an AI assistant? <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">Point it at our instructions</a>.</p></section>
+<p id=add class="addline hand">Got one we should try? <a href="mailto:crews@mail.grokbot.com?subject=recipe%3A%20">Send it our way</a> (or <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">have your AI do it</a>)</p>
 <footer>made at home <span class=heart>♥</span> {len(live)} recipes · <a href="https://github.com/TheYoungCrews/recipes">the recipe files</a></footer>
 <noscript><p>Search and the dinner picker need JavaScript; every recipe still opens.</p></noscript></div></section>'''
     views = "\n".join(recipe_view(r, staples) for r in live)
