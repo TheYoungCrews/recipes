@@ -91,21 +91,15 @@ SEASONS = {12: "winter", 1: "winter", 2: "winter", 3: "spring", 4: "spring", 5: 
 
 def readme(items):
     """The front page for Crews and Anna. Regenerated on every build; don't edit by hand."""
-    import datetime
-    link = lambda r: f'[{r["title"]}]({r["dir"]}/{r["slug"]}.md)'
-    season = SEASONS[datetime.date.today().month]
-    now = sorted([r for r in items if r["dir"] == "recipes" and r["status"] != "retired" and season in r["tags"]],
-                 key=lambda r: ({"favorite": 0, "made": 1}.get(r["status"], 2), r["title"]))[:5]
+    live = lambda d: sum(1 for r in items if r["dir"] == d and r["status"] != "retired")
     out = ['<img src="_system/assets/banner.jpg" alt="Crews and Anna Kitchen, recipes we love" width="100%">', "",
-           "Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, and the family ones we don't want to lose.",
-           "Each one keeps the creator's original plus our version, which gets a little better every time we cook it.", ""]
-    if now:
-        out += [f"## Cooking this {season}", ""] + [f"- {link(r)}" for r in now] + [""]
-    out += ["Everything else is in [recipes](recipes/) and [cocktails](cocktails/).", "",
-            "## Our kitchen", "",
-            "[What we like](kitchen/taste-profile.md) · [Pantry staples](kitchen/staples.md) · [Bar shelf](kitchen/bar.md)", "",
-            "To add a recipe, send it to one of our assistants or email crews@mail.grokbot.com with \"recipe:\" and the name in the subject.", "",
-            "<sub>For our AI helpers: [AGENTS.md](AGENTS.md) and [_system/](_system/README.md). This page rebuilds itself from the recipe files.</sub>", ""]
+           "Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, the family ones we don't want to lose, and Anna's own cocktails.",
+           "Each one keeps the creator's original plus our version, which gets a little better every time we cook it and rate it.", "",
+           f"Browse, search and rate them at **[blind-tiger.pages.dev](https://blind-tiger.pages.dev)**. So far: {live('recipes')} [recipes](recipes/) and {live('cocktails')} [cocktails](cocktails/).", "",
+           "## Our kitchen", "",
+           "[What we like](kitchen/taste-profile.md) · [Pantry staples](kitchen/staples.md) · [Bar shelf](kitchen/bar.md)", "",
+           "Got one we should try? Email crews@mail.grokbot.com with \"recipe:\" and the name in the subject, or point your AI at [AGENTS.md](AGENTS.md).", "",
+           "<sub>The site and this page rebuild themselves from the recipe files. Under the hood: [_system/](_system/README.md).</sub>", ""]
     return "\n".join(out)
 
 def main():
