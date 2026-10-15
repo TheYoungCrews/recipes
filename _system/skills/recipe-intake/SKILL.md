@@ -95,6 +95,8 @@ One-line pitch. Creator: @handle. (Note what you could and couldn't see.)
 **Steps**
 1. ... adapted to a Dutch oven / air fryer and kitchen/taste-profile.md (brothy, charred, umami, lime/herb finish, high-protein) when that fits.
 
+(Write Our version clean and self-contained: no `(changed ...)`/`(was ...)`/"standing sub for" asides and no "as in the Original" references. Explain substitutions in a dated Notes line; the site never shows Original or agent notes.)
+
 ## Notes
 - YYYY-MM-DD (via muse): captured from Instagram, sent by anna.
 ```

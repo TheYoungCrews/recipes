@@ -83,8 +83,6 @@ Quick weeknight stir fry: lean ground turkey and crisp green beans in a sweet-sp
 5. While the turkey cooks, whisk together liquid aminos, sambal oelek, honey, sesame oil, ginger, salt, black pepper, red pepper flakes, coriander and garlic (Crews's past seasoning mix for this dish).
 6. Return green beans to the pan; pour in the sauce and mix to coat. Simmer 2 to 3 minutes until the sauce thickens. Serve over hot rice. Optional finish: sliced green onion and sesame seeds.
 
-(changed 2026-10-14: soy sauce -> liquid aminos; chili garlic sauce -> sambal oelek; seasonings spelled out as salt, black pepper, red pepper flakes, coriander, garlic)
-
 ## Notes
 - 2026-10-14 (crews via grok-bot): used to make this a lot. Our version: liquid aminos (not soy), sambal oelek (not chili garlic sauce), and season with salt, black pepper, red pepper flakes, coriander and garlic. Recipe-specific; not a global rule. `cooks` left blank (unknown).
 - 2026-10-14 (via grok-bot): captured from web page. `status: made`.

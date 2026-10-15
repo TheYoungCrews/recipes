@@ -47,7 +47,7 @@ Extract: **dish**, **who** (crews / anna / both), **rating** (1-5, optional; tur
    `- YYYY-MM-DD (anna via instinct/<model>, 4/5): too salty; loved the Thai basil. -> Our version updated: yes`
    Use `(who via agent, N/5)`; leave out `, N/5` if there was no rating.
 2. **Frontmatter:** if this feedback changes Our version, set `owner:` to who adapted it (`anna`, `crews`, `anna+crews`); otherwise leave it. `status: made` (`favorite` only if they rate it 5/5 or call it a favorite; `retired` only if they say "never again"). `last_made:` = date cooked. `rating:` = latest rating if given. `cooks:` + 1.
-3. **Our version:** change it only when the feedback names a concrete fix ("halve the chili crisp", "needed 10 more minutes", "use spinach next time"). Make the smallest edit, and mark it inline, e.g. `(changed 2026-10-20: was 2 tbsp)`. Vague feedback ("pretty good") changes only the Notes. If Our version just says "Same as original", copy the Original into Our version first, then apply the fix.
+3. **Our version:** change it only when the feedback names a concrete fix ("halve the chili crisp", "needed 10 more minutes", "use spinach next time"). Make the smallest edit in place, with no inline annotation like `(changed ...: was ...)`; record what changed and why in the dated Notes line (e.g. `-> Our version updated: yes, chili crisp 2 tbsp -> 1 tbsp`). Vague feedback ("pretty good") changes only the Notes. If Our version just says "Same as original", copy the Original into Our version first, then apply the fix.
 
 ## 4. Update kitchen/taste-profile.md
 Add only **general** preferences that apply beyond this dish ("Anna doesn't like cilantro", "we like more acid", "spice level 3/5 is our max"):

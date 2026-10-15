@@ -30,7 +30,7 @@ cooks: 0                                   # times made
 ## Body sections (in this order)
 1. One-line description.
 2. `## Original` - faithful to the source (ingredients + steps). For AI-born recipes, the first draft.
-3. `## Our version` - adapted to our staples, gear (Dutch oven, air fryer) and taste-profile. Grocery checklist with `- [ ]` items, then steps.
+3. `## Our version` - adapted to our staples, gear (Dutch oven, air fryer) and taste-profile. Grocery checklist with `- [ ]` items, then steps. Our version is the recipe as we cook it now: edit it in place and keep it clean, with no inline change annotations (no `(changed ...)`, `(was ...)`, "swapped from", "standing sub" asides). Put the reason for a change in a dated Notes line instead (`- YYYY-MM-DD (grok-bot): swapped Averna for Cynar per crews.`). Git keeps the history. The site shows only Our version (falling back to Original only when Our version has no list/steps) plus personal cook-diary Notes from crews/anna; Original and agent notes are never shown.
 4. `## Notes` - dated feedback log, newest first: `- 2026-10-20 (Crews, 4/5): too salty; halve chili crisp.`
 
 Cocktails add optional `spirit:` and `glass:` fields.

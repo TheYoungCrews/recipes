@@ -80,15 +80,14 @@ Crispy caramelized beef and fluffy rice in a rich coconut curry broth, finished 
 
 **Steps**
 Weeknight version (aiming for about 30 minutes, Dutch oven, more lime/herbs/umami, high-protein):
-1. Start the rice as in the Original.
+1. Rice: boil generously salted water, add rice, boil 10 minutes until tender. Drain, return to the dry pot, cover and steam until serving.
 2. Heat coconut oil in the Dutch oven over high heat. Brown the beef hard, undisturbed, for caramelized edges, then break up and finish browning.
-3. Shake the cornstarch slurry as in the Original, using liquid aminos (standing sub for soy sauce) in place of the soy sauce. Add garlic and ginger, then the sauce, and cook until caramelized onto the beef. Remove the beef.
-4. Build the broth in the same pot (Original step 5), using liquid aminos for the finishing soy sauce.
+3. Shake 2 tsp cornstarch with 1/4 cup chicken broth until smooth, then add 2-1/2 tbsp liquid aminos, the sugar, sesame oil and white pepper; shake again. Lower heat to medium, add 1 tbsp each garlic and ginger, then the sauce, and cook until caramelized onto the beef. Remove the beef.
+4. Broth: same pot over low heat. Cook the remaining 1/2 tbsp each garlic and ginger 20 seconds. Stir in red curry paste and curry powder; cook 1 minute. Pour in coconut milk, scraping up the browned bits; whisk smooth. Add 1 cup chicken broth; boil 1 minute, then reduce to low. Stir in 1 tbsp liquid aminos, juice of 1/2 lime, and the cilantro.
 5. Assemble bowls and finish each with extra lime juice, double the cilantro, and sambal oelek for heat.
 
-(changed 2026-10-14: soy sauce -> liquid aminos; chili crunch -> sambal oelek, per kitchen/taste-profile.md standing substitutions)
-
 ## Notes
+- 2026-10-14 (grok-bot): Our version uses liquid aminos for the soy sauce and sambal oelek for the chili crunch (standing subs in kitchen/taste-profile.md).
 - 2026-10-14 (grok-bot): time conflict. Source page says prep 30 + cook 15 = 45 min total; captured total was 35. Kept 35 per the round-down rule (lower total wins); prep/cook left as sourced.
 - 2026-10-14 (filed by grok-bot): received by email from Crews (subject "recipe: Beef Broth Bowls"); raw copy at inbox/2026-10-14-beef-broth-bowls.md. Added grocery checklist, dairy-free and dutch-oven tags, and normalized ingredient wording to kitchen/staples.md.
 - 2026-10-14 (via muse): captured from instagram-video, sent by crews. Caption gated ("drop EAT"); full recipe from the creator's linked page. Video audio and on-screen text not reviewed.

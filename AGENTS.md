@@ -75,7 +75,7 @@ via: muse
 1. **Match** by slug or title (ignore "the", "bowls"). If it's ambiguous, leave the file in inbox/ and ask Crews.
 2. **Notes**, newest first: `- YYYY-MM-DD (anna via muse, 4/5): too salty; loved the basil. -> Our version updated: yes|no`
 3. **Frontmatter:** `status: made` (`favorite` only for 5/5 or "favorite"; `retired` only for "never again"), `last_made`, `rating` if given, `cooks` + 1, and `owner` = whoever adapted it once Our version really changes.
-4. **Our version:** edit only for a specific fix, with the smallest change, marked `(changed YYYY-MM-DD: was ...)`. Original stays untouched.
+4. **Our version:** edit only for a specific fix, with the smallest change, in place. Our version is the recipe as we cook it now: edit it in place and keep it clean, with no inline change annotations (no `(changed ...)`, `(was ...)`, "swapped from", "standing sub" asides). Put the reason for a change in a dated Notes line instead (`- YYYY-MM-DD (grok-bot): swapped Averna for Cynar per crews.`). Git keeps the history. The site shows only Our version (falling back to Original only when Our version has no list/steps) plus personal cook-diary Notes from crews/anna; Original and agent notes are never shown. Original stays untouched.
 5. **kitchen/taste-profile.md:** add general preferences only, with who + slug and a Change log line.
 
 ## 3. Email path (fallback): crews@mail.grokbot.com

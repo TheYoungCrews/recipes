@@ -20,7 +20,7 @@ last_made: 2026-10-14
 rating: 4.5
 cooks: 2
 ---
-Gin Negroni split with Campari and Cynar, adapted from Toby Maloney / @theeducatedbarfly by swapping Fernet-Branca for a 2:1 ratio of Black Walnut and Angostura bitters.
+Gin Negroni split with Campari and Cynar, finished with black walnut and Angostura bitters (2:1). Adapted from Toby Maloney / @theeducatedbarfly.
 
 ## Original
 - 2 oz London Dry Gin
@@ -39,7 +39,7 @@ Gin Negroni split with Campari and Cynar, adapted from Toby Maloney / @theeducat
 - [x] 0.75 oz sweet vermouth (Cocchi Storico di Torino)
 - [x] 0.5 oz Campari
 - [x] 0.5 oz Cynar
-- [x] 2 dashes black walnut bitters (changed 2026-10-14: was 0.25 oz Fernet-Branca + Peychaud's/Orange bitters)
+- [x] 2 dashes black walnut bitters
 - [x] 1 dash angostura bitters
 
 1. Combine gin, sweet vermouth, Campari, Cynar, 2 dashes Black Walnut bitters, and 1 dash Angostura bitters (3 dashes total in a 2:1 ratio) in a mixing glass with ice.

@@ -127,3 +127,4 @@ noscript p{font-size:13px;color:var(--mute);text-align:center}
 .cook .cmsg{margin:8px 0 0;text-align:center;min-height:0}.cook .cmsg:empty{display:none}.cook .cmsg.ok{color:#bcd7b5;font:700 22px/1.2 Hand,cursive}
 .cook .who{font-size:12px;color:#8f8676;text-align:center;margin:8px 0 0}.cook .who a{color:#bfb6a5}
 .rate button.h{background:linear-gradient(90deg,#e0a83a 50%,#4a453e 50%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent}
+.ing label span.have{flex:none}

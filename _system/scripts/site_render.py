@@ -65,6 +65,27 @@ def card(r):
             f'<h3 class="tt hand">{E(r["title"])}</h3><div class=tags>{tags}</div>'
             f'<div class=meta><span>{E(str(t))+" min" if t else "&nbsp;"}</span>{right}</div></div></a>')
 
+
+DEV = re.compile(r"filed|captur|reconstruct|estimate|standing sub|taste.profile|our version updated|replaced with|marked made|not recorded|recorded part|incomplete|version was|removed|mix-up|original|cooks:|recipe-specific|not a global|kitchen/|\bstatus\b|time_minutes|inbox/|email \d", re.I)
+def clean(t):
+    """Strip changelog / developer asides from a visible line."""
+    t = re.sub(r"\s*\((?:changed|was|original:|see original|amounts are)[^)]*\)", "", t, flags=re.I)
+    t = re.sub(r";?\s*(?:standing sub|subbing for|per kitchen)[^;)]*", "", t, flags=re.I)
+    t = re.sub(r"\s*->\s*our version updated:.*$", "", t, flags=re.I)
+    t = re.sub(r"\bOriginal guidance was about\b", "Plan on about", t)
+    t = re.sub(r"\(\s*\)", "", t)
+    return re.sub(r"\s{2,}", " ", t).strip()
+def ours_prose(lines):
+    out = []
+    for l in lines:
+        s = l.strip()
+        if not s or re.match(r"^\(changed", s, re.I) or s.startswith("**Steps**"): continue
+        s = re.sub(r"^Same as (?:the )?original[.,:]?\s*(?:with one change:|except)?\s*", "", s, flags=re.I)
+        sent = [x for x in re.split(r"(?<=[.!?])\s+", s) if x and not DEV.search(x) and not re.search(r"no standing|edit here after|original", x, re.I)]
+        s = clean(" ".join(sent))
+        if s and not s.startswith("**Grocery"): out.append(s[0].upper()+s[1:] if not s.startswith(("-", "*")) else s)
+    return out
+
 def recipe_view(r, staples):
     sec = sections(r["body"])
     orig, ours, notes = sec.get("original", []), sec.get("our version", []), sec.get("notes", [])
@@ -76,24 +97,30 @@ def recipe_view(r, staples):
     for i, x in enumerate(ings):
         m = re.match(r"\[([ x])\]\s*(.*)", x); txt = m.group(2) if m else x
         have = '<span class=have>on hand</span>' if (m and m.group(1) == "x") else ""
-        ing_html += f'<label><input type=checkbox name="{E(r["slug"])}-{i}"><span>{inline(txt)}</span>{have}</label>'
+        ing_html += f'<label><input type=checkbox name="{E(r["slug"])}-{i}"><span>{inline(clean(txt))}</span>{have}</label>'
     def step(s):
         m = re.match(r"^\*\*(.+?)\*\*:?\s*(.*)", s)
-        return f"<li><div><b>{E(m.group(1).rstrip(':'))}</b>{inline(m.group(2))}</div></li>" if m else f"<li><div>{inline(s)}</div></li>"
+        return f"<li><div><b>{E(m.group(1).rstrip(':'))}</b>{inline(m.group(2))}</div></li>" if m else f"<li><div>{inline(clean(s))}</div></li>"
     step_html = "".join(step(s) for s in steps)
-    # Our version box: prose/extra bullets that weren't pulled into ingredients/steps
-    extra = [l for l in ours if l.strip() and not re.match(r"^\s*(- \[[ x]\]|\d+\.\s)", l)] if (ours_checks or ou_ol) else [l for l in ours if l.strip()]
-    if extra and not (ours_checks or ou_ol): extra = ours
-    ours_html = f'<h3 class="sec hand">Our version</h3><div class=ours>{md_block(extra)}</div>' if any(l.strip() for l in extra) else ""
+    extra = ours_prose([l for l in ours if not re.match(r"^\s*(- \[[ x]\]|\d+\.\s)", l)])
+    ours_html = f'<h3 class="sec hand">Notes from us</h3><div class=ours>{md_block(extra)}</div>' if extra else ""
     diary = []
     for l in notes:
         m = re.match(r"^\s*- (\d{4}-\d{2}-\d{2})\s*(\(([^)]*)\))?:?\s*(.*)", l)
         if not m: continue
+        who = (m.group(3) or "").lower()
+        person = re.match(r"(crews|anna)\b", who)
+        if not person or "filed" in who or "grok" in who: continue
+        rate = re.search(r"(\d(?:\.\d)?)/5", who)
+        txt = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", m.group(4)) if not DEV.search(x)))
+        if txt.lower().rstrip(".") == "cooked it": txt = ""
+        if not txt and not rate: continue
         d = datetime.date.fromisoformat(m.group(1)).strftime("%b %-d")
-        who = f"<b>{E(m.group(3))}</b>: " if m.group(3) else ""
-        diary.append(f"<div><span>{d}</span><div>{who}{inline(m.group(4))}</div></div>")
+        st = stars(rate.group(1)) if rate else ""
+        diary.append(f"<div><span>{d}</span><div><b>{person.group(1).title()}</b> {st} {inline(txt)}</div></div>")
     diary_html = "".join(diary) or "<p class=diary-empty>Not cooked yet.</p>"
     intro = " ".join(l.strip() for l in sec["_intro"] if l.strip() and not l.strip().startswith("!["))
+    intro = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", intro) if not DEV.search(x)))
     hero = f'<div class=hero style="background-image:url({E(r["photo"])})"></div>' if r["photo"] else ""
     tags = "".join(f"<span class=tag>{E(t)}</span>" for t in [r["type"]] + r["tags"][:4])
     cooks = r.get("cooks") or "0"
@@ -101,7 +128,7 @@ def recipe_view(r, staples):
              ((r["owner"] or "–").replace("anna+crews", "both").title(), "owner"),
              (stars(r["rating"]) or E(r["status"].replace("-", " ")), f'{cooks} cook{"s" if str(cooks)!="1" else ""}')]
     facts_html = "".join(f"<div><b>{v if '<' in str(v) else E(str(v))}</b>{E(k)}</div>" for v, k in facts)
-    orig_html = f'<details class=orig><summary>The original</summary>{md_block(orig)}</details>' if any(l.strip() for l in orig) else ""
+    orig_html = ""  # Original stays in the file, never on the site
     src = f'<p class=src>Source: {inline(r["source"])}</p>' if r["source"] else ""
     return f'''<article class=view id="r-{E(r["slug"])}"><div class=wrap><a class=back href="#top">← Kitchen</a>
 <div class="sheet rc">{hero}<div class=in><div class=tags>{tags}</div>
