@@ -20,7 +20,7 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `_system/docs/HOSTING.md` | Alternative: spare laptop + Tailscale |
 | `inbox/` | Where outside agents drop new recipes/feedback (create-only); filed hourly into `recipes/` |
 | `_system/templates/` | Copy these to start a new brief |
-| `_system/scripts/build.py` | Builds `site/index.html`, `site/recipes.json` and the root `README.md` (no dependencies, Python 3) |
+| `_system/scripts/build.py` | Builds `site/index.html` (+ `site/photos/`), `site/recipes.json` and the root `README.md` (no dependencies, Python 3). Design lives in `_system/site/` (style.css, app.js, Caveat font, banner); HTML is rendered by `_system/scripts/site_render.py` |
 
 ## Adding a recipe (no GitHub needed)
 **Anna and Crews:** either

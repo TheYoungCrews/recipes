@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build site/index.html from recipes/ and cocktails/. No dependencies.
+"""Build site/index.html (design: _system/site/, renderer: site_render.py) from recipes/ and cocktails/. No dependencies.
 Validates frontmatter against _system/SCHEMA.md / _system/TAGS.md; exits 1 on errors."""
 import json, re, sys, html, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[2]  # repo root (this file is _system/scripts/build.py)
@@ -139,16 +139,15 @@ def main():
             if re.search(r"^- \[[ x]\] .* @[a-z-]+\s*$", body, re.M): errs.append(f"{f.name}: '@store' marks not allowed in checklists")
             items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
-                          "dir": d, "html": md_to_html(body)})
+                          "dir": d, "html": md_to_html(body), "body": body, "cooks": fm.get("cooks", "")})
     for i in infos: print("info:", i, "(lower total kept: round-down rule)")
     for w in warns: print("WARN:", w)
     if errs:
         print("VALIDATION ERRORS:\n  " + "\n  ".join(errs)); sys.exit(1)
     data = json.dumps({"items": items, "staples": staples()}).replace("</", "<\\/")
     out = ROOT/"site"; out.mkdir(exist_ok=True)
-    page = (ROOT/"_system/scripts/site_template.html").read_text().replace("/*DATA*/null", data)
-    page = page.replace("<!--STATIC-->", static_html(items, set(staples())))
-    (out/"index.html").write_text(page)
+    sys.path.insert(0, str(ROOT/"_system/scripts")); import site_render
+    site_render.render(items, staples(), ROOT)
     keys = ["title","slug","type","status","owner","tags","ingredients","time_minutes","prep_minutes","cook_minutes","serves","rating","last_made","source"]
     index = [{**{k: r[k] for k in keys}, "path": f'{r["dir"]}/{r["slug"]}.md'} for r in items]
     (out/"recipes.json").write_text(json.dumps(index, indent=2, ensure_ascii=False))
