@@ -151,12 +151,13 @@ def render(items, staples, root):
 <div class=tools><div class=chips>{chip_html}</div><button id=pick type=button class="pick hand">🎲 what's for dinner?</button></div>
 <div id=food class=grid style="margin-top:10px">{"".join(card(r) for r in food)}</div><p id=nores class=nores hidden>No recipes match. Try another chip or word.</p>
 {f'<section class=bar id=bar><h2 class=hand>The bar cart <small>{len(bar)} cocktails</small></h2><div class=grid>{"".join(card(r) for r in bar)}</div></section>' if bar else ""}
+<section id=add class="sheet addr"><h2 class=hand>Add a recipe</h2><p>Got a recipe for us? <a href="mailto:crews@mail.grokbot.com?subject=recipe%3A%20">Email it to crews@mail.grokbot.com</a> with "recipe:" and the name in the subject.</p><p>Using an AI assistant? <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">Point it at our instructions</a>.</p></section>
 <footer>made at home <span class=heart>♥</span> {len(live)} recipes · <a href="https://github.com/TheYoungCrews/recipes">the recipe files</a></footer>
 <noscript><p>Search and the dinner picker need JavaScript; every recipe still opens.</p></noscript></div></section>'''
     views = "\n".join(recipe_view(r, staples) for r in live)
     page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Crews &amp; Anna's Kitchen</title><meta name=theme-color content="#7f9a7a"><meta name=apple-mobile-web-app-capable content=yes>
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="{banner}"><style>{css}</style></head>
-<body><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails</p></div></header>{home}{views}
+<body><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="#add">+ add one</a></p></div></header>{home}{views}
 <script>window.KITCHEN={data};</script><script>{js}</script></body></html>'''
     (out/"index.html").write_text(page)
