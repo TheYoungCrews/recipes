@@ -1,0 +1,13 @@
+# Cloudflare Pages config (git deploys read this). Secrets live in Pages settings, never here.
+name = "blind-tiger"
+pages_build_output_dir = "site"
+compatibility_date = "2026-10-15"
+
+# Workers AI for /api/ask. Free tier only: functions/_lib/budget.js caps usage below the 10k-neuron free daily allocation.
+[ai]
+binding = "AI"
+
+# Daily ask counter (KV free tier).
+[[kv_namespaces]]
+binding = "ASK_KV"
+id = "e70a2891e29545dfb1708a936e3add38"

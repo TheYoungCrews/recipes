@@ -147,3 +147,22 @@ test("recover matches known vector", () => {
   assert.equal(recoverPersonal("hi", personalSign("hi", priv)), ethAddr(priv));
   assert.equal(ethAddr(priv), "0x2c7536e3605d9c16a7a3d7b1898e529396a65c23");
 });
+
+// ---- Session cookie + AI budget
+import { makeSession, readSession } from "../../functions/_lib/session.js";
+import { reserve, neurons, MAX_ASKS, MAX_NEURONS, MAX_TOKENS } from "../../functions/_lib/budget.js";
+test("session roundtrip + tamper + expiry", async () => {
+  const c = (await makeSession("s", "crews", NOW)).split(";")[0];
+  assert.equal(await readSession(c, "s", NOW + 10), "crews");
+  assert.equal(await readSession(c.replace("crews", "anna"), "s", NOW), null);
+  assert.equal(await readSession(c, "other", NOW), null);
+  assert.equal(await readSession(c, "s", NOW + 13 * 3600), null);
+});
+test("ai budget caps asks and neurons under free allocation", async () => {
+  const m = new Map(), kv = { get: async k => m.get(k) ?? null, put: async (k, v) => m.set(k, v) };
+  let ok = 0; while (await reserve(kv, 1, 0)) ok++;
+  assert.equal(ok, MAX_ASKS);
+  const m2 = new Map(), kv2 = { get: async k => m2.get(k) ?? null, put: async (k, v) => m2.set(k, v) };
+  assert.ok(await reserve(kv2, MAX_NEURONS - 1, 0)); assert.equal(await reserve(kv2, 5, 0), null);
+  assert.ok(MAX_NEURONS < 10000 && MAX_TOKENS <= 400 && neurons(4000, 400) < 40);
+});

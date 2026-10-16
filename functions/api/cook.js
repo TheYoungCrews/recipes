@@ -1,5 +1,6 @@
 import { verifyGoogleIdToken, whoFor } from "../_lib/auth.js";
 import { verifySiwe } from "../_lib/siwe.js";
+import { readSession } from "../_lib/session.js";
 import { commitCook } from "../_lib/github.js";
 import { todayNY } from "../_lib/recipe.js";
 const out = (status, body) => Response.json(body, { status, headers: { "cache-control": "no-store" } });
@@ -15,6 +16,8 @@ export async function onRequestPost({ request, env }) {
     try { r = await verifySiwe({ message: String(b.siwe.message || ""), signature: String(b.siwe.signature || ""), cookie: request.headers.get("cookie"), secret: env.SESSION_SECRET, cooksEth: env.COOKS_ETH, domain: env.SITE_DOMAIN || "blind-tiger.pages.dev" }); }
     catch { return out(401, { error: "Please sign in again." }); }
     who = r.who; clear = true;
+  } else if (!/^Bearer\s+[^n]/i.test(request.headers.get("authorization") || "") && (who = await readSession(request.headers.get("cookie"), env.SESSION_SECRET))) {
+    // signed in via session cookie (set after Google or SIWE sign-in)
   } else {
     if (!env.GOOGLE_CLIENT_ID || !env.COOKS) return out(503, { error: "Google sign-in isn't set up yet." });
     let user;

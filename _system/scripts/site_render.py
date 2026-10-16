@@ -150,6 +150,7 @@ def recipe_view(r, staples):
 <div class=pv hidden><img alt=""><button type=button class=px aria-label="Remove photo">×</button></div>
 <div class=r><label class=b1>📷 Add photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>
 <div class=gsi></div><p class=cmsg role=status></p></form>
+<form class=askr data-slug="{E(r["slug"])}"><h4 class=hand>Ask about this</h4><div class=askrow><input maxlength=500 placeholder="Out of something? Doubling it?" aria-label="Ask about this recipe"><button aria-label=Ask>↑</button></div><p class=askans role=status hidden></p><div class=gsi></div></form>
 {src}</div></div></div></article>'''
 
 def render(items, staples, root):
@@ -180,7 +181,7 @@ def render(items, staples, root):
 <form id=askform class="sheet ask" role=search><h1 class=hand>What's cooking?</h1>
 <div class=askbox><input id=q type=search enterkeyhint=search autocomplete=off placeholder="What are we feeling tonight?" aria-label="Ask the kitchen"><button aria-label=Ask>↑</button></div>
 <div class=hints><button type=button class=hint data-q="what can I make with what's in the pantry">🥬 from the pantry</button><button type=button class=hint data-q="something quick tonight">⏱ under 30 min</button><button type=button class=hint data-q="a cocktail for two">🍸 a drink for two</button></div>
-<div id=answer class=answer hidden></div></form>
+<div id=answer class=answer hidden></div><div id=asksign class=asksign hidden><span class=asksay>Sign in to ask the kitchen helper (we're matching by keyword for now).</span> <button type=button id=asksignbtn class=hand>sign in to ask</button><div class=gsi></div></div></form>
 {f'<h2 class=hand>This {season} <small>{len(picks)} picks</small></h2><div class=row>{"".join(card(r) for r in picks)}</div>' if picks else ""}
 <h2 class=hand>The kitchen <small>{len(food)} recipes</small></h2>
 <div class=tools><div class=chips>{chip_html}</div><button id=pick type=button class="pick hand">🎲 what's for dinner?</button></div>

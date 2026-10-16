@@ -131,3 +131,10 @@ noscript p{font-size:13px;color:var(--mute);text-align:center}
 .diary>.dent{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
 .diary .dd{font-size:21px;line-height:1.1;color:var(--sage-d)}.dwho{display:flex;gap:8px;align-items:baseline}.dwho b{font-weight:600}
 .dent p{margin:3px 0 0;color:#4b463e}.dthumb{display:block;margin-top:8px;width:120px;height:90px;object-fit:cover;border-radius:8px;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.15);transform:rotate(-1.5deg)}
+/* Ask about this (per recipe) + gentle sign-in nudge */
+form.askr{margin-top:18px;padding-top:14px;border-top:1px dashed rgba(0,0,0,.18)}
+form.askr h4{margin:0 0 6px;font-size:1.35em}
+.askrow{display:flex;gap:6px}.askrow input{flex:1;min-width:0;padding:9px 12px;border:1px solid rgba(0,0,0,.2);border-radius:999px;font:inherit;background:#fffdf7}
+.askrow button{border:0;border-radius:999px;width:38px;background:#c0392b;color:#fff;font-size:1.05em;cursor:pointer}
+.askans{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:repeating-linear-gradient(45deg,rgba(192,57,43,.05) 0 8px,transparent 8px 16px);white-space:pre-wrap;line-height:1.45}
+.asksign{margin-top:10px;font-size:.92em;opacity:.85}.asksign button{border:0;background:none;color:#c0392b;font-size:1.25em;cursor:pointer;text-decoration:underline}
