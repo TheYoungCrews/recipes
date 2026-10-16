@@ -17,7 +17,12 @@ function makeConfig(projectId) {
   const groups = projectId
     ? [{ groupName: "Wallets", wallets: [rainbowWallet, zerionWallet, metaMaskWallet, coinbaseWallet, walletConnectWallet, injectedWallet] }]
     : [{ groupName: "Wallets", wallets: [injectedWallet, coinbaseWallet] }];
-  const connectors = connectorsForWallets(groups, { appName: "Crews & Anna's Kitchen", projectId: projectId || "no-walletconnect" });
+  const connectors = connectorsForWallets(groups, {
+    appName: "Crews & Anna's Kitchen", projectId: projectId || "no-walletconnect",
+    // Explicit small metadata: WalletConnect otherwise scrapes page icons, and a data: URI icon blew the relay's 100 KB payload limit.
+    appDescription: "Our recipe book", appUrl: location.origin, appIcon: location.origin + "/icon-180.png",
+    walletConnectParameters: { metadata: { name: "Crews & Anna's Kitchen", description: "Our recipe book", url: location.origin, icons: [location.origin + "/icon-180.png"] } },
+  });
   return createConfig({ chains: [mainnet], connectors, transports: { [mainnet.id]: http() }, ssr: false });
 }
 
