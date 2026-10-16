@@ -1,9 +1,9 @@
 ---
-title: Braised Lamb & Collard Noodle Bowls
+title: Braised Lamb and Organ Meatball Bowl
 slug: braised-lamb-collard-noodle-bowls
 type: soup-bowl
 status: made
-tags: [lamb, organ, fusion, dutch-oven, braise, high-protein, fall, winter]
+tags: [lamb, organ, fusion, dutch-oven, braise, high-protein, fall, winter, weekend-project]
 ingredients: [sourdough, collard greens, thai basil, green onion, egg white spaghetti, anchovy paste, tomato paste, ground beef organ blend, ground lamb, lime, cottage cheese, bone broth, garlic, milk, salt, black pepper]
 serves: 4
 time_minutes: 50
@@ -25,10 +25,10 @@ Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised 
 ## Original
 
 **Ingredients**
-- [ ] sourdough (for the panade)
+- [x] sourdough (for the panade)
 - [ ] collard greens (1 large bunch, stems removed, chopped)
 - [ ] Thai basil
-- [x] green onions
+- [ ] green onions
 - [x] egg white spaghetti noodles
 - [x] anchovy paste
 - [x] tomato paste
@@ -51,5 +51,6 @@ Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised 
 Same as original. Edit here after feedback.
 
 ## Notes
+- 2026-10-16 (grok-bot): cooking again tonight. Still to buy: collard greens, Thai basil, green onions.
 - 2026-10-14 (grok-bot): time_minutes is an estimate; the Apple Notes brief gave no time.
 - 2026-10-13 (import): from Crews's Apple Notes; he liked it. Rating not recorded yet.
