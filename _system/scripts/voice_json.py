@@ -44,5 +44,14 @@ def write(items, out):
     full = [entry(r) for r in items]
     (out/"recipes.json").write_text(json.dumps({"site": SITE, "count": len(full), "items": full}, indent=1, ensure_ascii=False))
     (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status")} for e in full], ensure_ascii=False))
-    hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json"))
+    hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt"))
     (out/"_headers").write_text(hdr)
+    (out/"llms.txt").write_text("""# Crews & Anna's Kitchen
+
+> Recipes and cocktails from Crews and Anna. Plain-text data for AI agents.
+
+## For AI agents
+- Read recipes: https://blind-tiger.pages.dev/recipes.json (full) or https://blind-tiger.pages.dev/recipes-index.json (list)
+- Add a recipe: follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email it to crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject.
+- Agents with repo write access commit to inbox/ in https://github.com/TheYoungCrews/recipes
+""")
