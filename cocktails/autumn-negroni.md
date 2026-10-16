@@ -17,9 +17,9 @@ via: gemini/gemini-3-pro
 owner: crews
 credit: "Educated Barfly"
 input_type: text
-last_made: 2026-10-14
+last_made: 2026-10-16
 rating: 4.5
-cooks: 2
+cooks: 3
 ---
 Gin Negroni split with Campari and Cynar, finished with black walnut and Angostura bitters (2:1). Adapted from Toby Maloney / @theeducatedbarfly.
 
@@ -47,6 +47,7 @@ Gin Negroni split with Campari and Cynar, finished with black walnut and Angostu
 2. Stir for 35 seconds, strain over a large clear cube, and garnish with an expressed orange peel.
 
 ## Notes
+- 2026-10-16 (crews via site, 4.5/5): cooked it.
 - 2026-10-14 (crews via site, 4.5/5): cooked it.
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-autumn-negroni.md. Swapped food tags [quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.
 - 2026-10-14 (crews via gemini): didn't have Fernet so used Black Walnut bitters and Angostura bitters in a 2:1 ratio (3 dashes total). -> Our version updated: yes
