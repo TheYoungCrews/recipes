@@ -142,9 +142,7 @@ def main():
     out = ROOT/"site"; out.mkdir(exist_ok=True)
     sys.path.insert(0, str(ROOT/"_system/scripts")); import site_render
     site_render.render(items, staples(), ROOT)
-    keys = ["title","slug","type","status","owner","tags","ingredients","time_minutes","prep_minutes","cook_minutes","serves","rating","last_made","source"]
-    index = [{**{k: r[k] for k in keys}, "path": f'{r["dir"]}/{r["slug"]}.md'} for r in items]
-    (out/"recipes.json").write_text(json.dumps(index, indent=2, ensure_ascii=False))
+    import voice_json; voice_json.write(items, out)
     (ROOT/"README.md").write_text(readme(items))
     print(f"built site/index.html with {len(items)} items")
 
