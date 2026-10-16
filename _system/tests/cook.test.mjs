@@ -100,3 +100,50 @@ test("commitCook 404 for unknown slug", async () => {
   const fetchFn = async url => url.endsWith("/git/ref/heads/main") ? new Response('{"object":{"sha":"H"}}') : url.endsWith("/git/commits/H") ? new Response('{"tree":{"sha":"T"}}') : new Response("{}", { status: 404 });
   await assert.rejects(commitCook({ token: "T", repo: "O/R", slug: "nope", who: "crews", date: "2026-10-14", rating: 3, fetchFn }), e => e.status === 404);
 });
+
+// ---- Sign in with Ethereum (EIP-4361)
+import { secp256k1, keccak_256 } from "../../functions/_lib/vendor/noble.js";
+import { verifySiwe, recoverPersonal, makeNonceCookie, toChecksum, whoForAddr, parseSiwe } from "../../functions/_lib/siwe.js";
+const SECRET = "test-session-secret", DOM = "blind-tiger.pages.dev";
+const ethAddr = priv => "0x" + Buffer.from(keccak_256(secp256k1.getPublicKey(priv, false).slice(1)).slice(-20)).toString("hex");
+function personalSign(msg, priv) {
+  const m = new TextEncoder().encode(msg);
+  const h = keccak_256(new Uint8Array([...new TextEncoder().encode(`\x19Ethereum Signed Message:\n${m.length}`), ...m]));
+  const s = secp256k1.sign(h, priv, { prehash: false, format: "recovered" });
+  return "0x" + Buffer.from(s.slice(1)).toString("hex") + (s[0] + 27).toString(16);
+}
+const siweMsg = ({ domain = DOM, address, nonce, chain = 1, iat, exp, uri = `https://${DOM}` }) =>
+  `${domain} wants you to sign in with your Ethereum account:\n${address}\n\nSign in to log a cook.\n\nURI: ${uri}\nVersion: 1\nChain ID: ${chain}\nNonce: ${nonce}\nIssued At: ${iat}` + (exp ? `\nExpiration Time: ${exp}` : "");
+const iso = t => new Date(t * 1000).toISOString();
+const cookPriv = secp256k1.utils.randomSecretKey(), strangerPriv = secp256k1.utils.randomSecretKey();
+const COOKS_ETH = `${ethAddr(cookPriv)}=crews`;
+async function siweCase(o = {}) {
+  const priv = o.priv || cookPriv, { nonce, value } = await makeNonceCookie(SECRET, NOW);
+  const message = siweMsg({ address: toChecksum(ethAddr(priv)), nonce: o.nonce || nonce, iat: iso(o.iat ?? NOW), exp: o.exp, domain: o.domain, chain: o.chain, uri: o.uri });
+  const signature = o.sig || personalSign(o.signText ?? message, o.signer || priv);
+  return verifySiwe({ message, signature, cookie: o.cookie ?? `siwe_nonce=${value}`, secret: o.secret || SECRET, cooksEth: COOKS_ETH, domain: DOM, now: o.now ?? NOW });
+}
+test("siwe valid cook", async () => assert.equal((await siweCase()).who, "crews"));
+test("siwe random key not on allowlist", async () => assert.equal((await siweCase({ priv: strangerPriv })).who, null));
+test("siwe signed by someone else", async () => assert.rejects(siweCase({ signer: strangerPriv }), /signer mismatch/));
+test("siwe wrong domain", async () => assert.rejects(siweCase({ domain: "evil.example" }), /domain/));
+test("siwe wrong uri", async () => assert.rejects(siweCase({ uri: "https://evil.example" }), /uri/));
+test("siwe wrong chain", async () => assert.rejects(siweCase({ chain: 5 }), /chain/));
+test("siwe nonce mismatch", async () => assert.rejects(siweCase({ nonce: "0".repeat(32) }), /nonce/));
+test("siwe missing cookie", async () => assert.rejects(siweCase({ cookie: "" }), /nonce/));
+test("siwe forged cookie", async () => assert.rejects(siweCase({ secret: "other" }), /nonce/));
+test("siwe stale issued-at", async () => assert.rejects(siweCase({ iat: NOW - 900 }), /expired/));
+test("siwe nonce cookie expired", async () => assert.rejects(siweCase({ now: NOW + 700, iat: NOW + 650 }), /nonce expired/));
+test("siwe past expiration", async () => assert.rejects(siweCase({ exp: iso(NOW - 1) }), /expired/));
+test("siwe tampered message", async () => assert.rejects(siweCase({ signText: "something else" }), /signer mismatch/));
+test("siwe garbage signature", async () => assert.rejects(siweCase({ sig: "0x1234" }), /signature/));
+test("siwe parse + checksum + allowlist", () => {
+  assert.equal(toChecksum("0x5aaeb6053f3e94c9b9a09f33669435e7ef1beaed"), "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed");
+  assert.throws(() => parseSiwe("hello"), /SIWE/);
+  assert.equal(whoForAddr("0xABC", "0xabc=anna"), "anna"); assert.equal(whoForAddr("0xabd", "0xabc=anna"), null);
+});
+test("recover matches known vector", () => {
+  const priv = Uint8Array.from(Buffer.from("4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318", "hex"));
+  assert.equal(recoverPersonal("hi", personalSign("hi", priv)), ethAddr(priv));
+  assert.equal(ethAddr(priv), "0x2c7536e3605d9c16a7a3d7b1898e529396a65c23");
+});

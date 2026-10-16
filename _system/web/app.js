@@ -110,24 +110,44 @@ $$("form.cook").forEach(f=>{
   $("input[type=file]",f).addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;say("Shrinking photo…");
     try{photo=await resize(file);$(".pv img",f).src=photo;$(".pv",f).hidden=false;say("")}catch(err){say("Couldn't read that photo.")}});
   $(".px",f).addEventListener("click",()=>{photo=null;$(".pv",f).hidden=true;$("input[type=file]",f).value=""});
-  async function send(){
+  async function send(siwe){
     say("Saving…");save.disabled=true;
-    const r=await fetch("/api/cook",{method:"POST",headers:{"content-type":"application/json",authorization:"Bearer "+tok()},
-      body:JSON.stringify({slug:f.dataset.slug,rating:val,note:$("textarea",f).value,photo})}).catch(()=>null);
+    const h={"content-type":"application/json"};if(!siwe)h.authorization="Bearer "+tok();
+    const r=await fetch("/api/cook",{method:"POST",credentials:"same-origin",headers:h,
+      body:JSON.stringify({slug:f.dataset.slug,rating:val,note:$("textarea",f).value,photo,siwe:siwe||undefined})}).catch(()=>null);
     const j=r?await r.json().catch(()=>({})):{};
-    if(r&&r.status===401){sessionStorage.removeItem("gid");save.disabled=false;return ask()}
+    if(r&&r.status===401){if(!siwe)sessionStorage.removeItem("gid");save.disabled=false;return ask()}
     if(!r||!r.ok){save.disabled=false;return say(j.error||"Couldn't save. Try again?")}
     $(".gsi",f).innerHTML="";
     say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`,true);
     const d=$(".diary",f.closest("article"));if(d){$(".diary-empty",d)?.remove();const row=document.createElement("div");
       row.innerHTML=`<span>today</span><div><b>${j.who}</b>: ${val}/5 ${$("textarea",f).value.replace(/[<&]/g,"")}</div>`;d.prepend(row)}
   }
+  async function eth(){
+    const w=window.ethereum;
+    if(!w)return say("Open this page in your wallet's browser (MetaMask or Rainbow) to sign in with Ethereum.");
+    try{
+      say("Check your wallet…");
+      const [acct]=await w.request({method:"eth_requestAccounts"});
+      const n=await fetch("/api/nonce?address="+encodeURIComponent(acct),{credentials:"same-origin"}).then(r=>r.json());
+      if(!n.nonce)return say("Ethereum sign-in isn't switched on yet.");
+      const host=location.host,msg=`${host} wants you to sign in with your Ethereum account:\n${n.address}\n\nSign in to log a cook in Crews & Anna's Kitchen.\n\nURI: ${location.origin}\nVersion: 1\nChain ID: 1\nNonce: ${n.nonce}\nIssued At: ${new Date().toISOString()}\nExpiration Time: ${new Date(Date.now()+9*60e3).toISOString()}`;
+      const hexMsg="0x"+[...new TextEncoder().encode(msg)].map(b=>b.toString(16).padStart(2,"0")).join("");
+      const signature=await w.request({method:"personal_sign",params:[hexMsg,acct]});
+      send({message:msg,signature});
+    }catch(e){save.disabled=false;say(e&&e.code===4001?"Wallet request cancelled.":"Couldn't sign in with Ethereum.")}
+  }
   async function ask(){
     const c=await getCfg();
-    if(!c.clientId||!c.ready){save.disabled=false;return say("Saving isn't switched on yet. Text the bot your rating for now.")}
-    try{await loadGsi(c.clientId)}catch(e){return say("Couldn't load Google sign-in.")}
-    pending=send; say("Sign in with Google so we know it's you:");
-    const g=$(".gsi",f);g.innerHTML="";google.accounts.id.renderButton(g,{theme:"filled_black",shape:"pill",text:"signin_with",size:"large"});google.accounts.id.prompt();
+    const g$=c.clientId&&c.ready, e$=!!c.eth;
+    if(!g$&&!e$){save.disabled=false;return say("Saving isn't switched on yet. Text the bot your rating for now.")}
+    const g=$(".gsi",f);g.innerHTML="";
+    say("Sign in so we know it's you:");
+    if(g$){try{await loadGsi(c.clientId);pending=()=>send();const gb=document.createElement("div");g.appendChild(gb);
+      google.accounts.id.renderButton(gb,{theme:"filled_black",shape:"pill",text:"signin_with",size:"large"});google.accounts.id.prompt()}catch(e){}}
+    if(e$){const b=document.createElement("button");b.type="button";b.className="ethbtn";b.textContent="Sign in with Ethereum";
+      b.style.cssText="margin-top:8px;padding:9px 16px;border-radius:999px;border:0;background:#222;color:#fff;font:inherit;cursor:pointer";
+      b.addEventListener("click",eth);g.appendChild(b)}
   }
   f.addEventListener("submit",e=>{e.preventDefault();if(!val)return say("Pick some stars first.");tok()?send():ask()});
 });
