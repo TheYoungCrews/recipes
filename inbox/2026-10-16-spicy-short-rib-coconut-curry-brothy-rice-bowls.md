@@ -1,4 +1,6 @@
 ---
+filed_to: recipes/spicy-short-rib-coconut-curry-brothy-rice-bowls.md
+filed_on: 2026-10-16
 title: Spicy Short Rib Coconut Curry Brothy Rice Bowls
 slug: spicy-short-rib-coconut-curry-brothy-rice-bowls
 type: soup-bowl
