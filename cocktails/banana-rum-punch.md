@@ -15,6 +15,7 @@ added: 2026-10-14
 added_by: crews
 via: gemini/gemini-3-pro
 owner: @theeducatedbarfly
+credit: "Educated Barfly"
 input_type: screenshot
 last_made:
 rating:

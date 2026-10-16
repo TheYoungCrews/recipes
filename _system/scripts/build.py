@@ -131,7 +131,7 @@ def main():
                 if have != [want]: warns.append(f"{f.name}: total {total} min suggests time tag '{want}' (has {have or 'none'})")
             if "stores" in fm: errs.append(f"{f.name}: 'stores:' not allowed in recipes (grocery-list step only)")
             if re.search(r"^- \[[ x]\] .* @[a-z-]+\s*$", body, re.M): errs.append(f"{f.name}: '@store' marks not allowed in checklists")
-            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made"]},
+            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made","source_type","added_by","credit"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body), "body": body, "cooks": fm.get("cooks", "")})
     for i in infos: print("info:", i, "(lower total kept: round-down rule)")

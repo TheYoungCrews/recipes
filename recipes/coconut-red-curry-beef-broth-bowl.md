@@ -14,6 +14,7 @@ added_by: crews
 via: muse
 input_type: instagram-video
 owner: @cook.withcourtney
+credit: "@cook.withcourtney"
 last_made:
 rating:
 cooks: 0

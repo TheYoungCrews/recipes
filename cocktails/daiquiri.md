@@ -16,6 +16,7 @@ added_by: crews
 via: muse
 input_type: screenshot
 owner: "BAR FLY (visible watermark)"
+credit: "Bar Fly"
 last_made:
 rating:
 cooks: 0

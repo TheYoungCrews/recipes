@@ -1,5 +1,6 @@
 """Voice-friendly exports: site/recipes.json (full) and site/recipes-index.json (tiny). Plain text, no markdown, no emails."""
 import json, re
+from credit import credit as _credit
 
 SITE = "https://blind-tiger.pages.dev"
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+")
@@ -37,7 +38,7 @@ def entry(r):
     return {"slug": r["slug"], "title": r["title"], "type": r["type"], "status": r["status"],
             "tags": r["tags"], "rating": r["rating"] or None, "cooks": r["cooks"] or 0,
             "last_made": r["last_made"] or None, "serves": r["serves"] or None,
-            "time_minutes": r["time_minutes"] or None, "url": f'{SITE}/#r-{r["slug"]}',
+            "time_minutes": r["time_minutes"] or None, "url": f'{SITE}/#r-{r["slug"]}', "credit": _credit(r)[0], "credit_url": _credit(r)[1],
             "ingredients": yi or oi, "steps": ys or os_, "notes": notes[:3]}
 
 def write(items, out):

@@ -134,7 +134,9 @@ def recipe_view(r, staples):
              (stars(r["rating"]) or E(r["status"].replace("-", " ")), f'{cooks} cook{"s" if str(cooks)!="1" else ""}')]
     facts_html = "".join(f"<div><b>{v if '<' in str(v) else E(str(v))}</b>{E(k)}</div>" for v, k in facts)
     orig_html = ""  # Original stays in the file, never on the site
-    src = f'<p class=src>Source: {inline(r["source"])}</p>' if r["source"] else ""
+    from credit import credit as _cr
+    ct, ch = _cr(r)
+    src = (f'<p class=src><a href="{E(ch)}" rel=noopener target=_blank>{E(ct)}</a></p>' if ch else f'<p class=src>{E(ct)}</p>') if ct else ""
     return f'''<article class=view id="r-{E(r["slug"])}"><div class=wrap><a class=back href="#top">← Kitchen</a>
 <div class="sheet rc">{hero}<div class=in><div class=tags>{tags}</div>
 <h1 class=hand style="margin-top:10px">{E(r["title"])}</h1>{f"<p class=lede>{inline(intro)}</p>" if intro else ""}

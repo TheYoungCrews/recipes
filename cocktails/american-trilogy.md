@@ -16,6 +16,7 @@ added_by: crews
 via: recipe-repo
 input_type: photo
 owner: "@educatedbarfly"
+credit: "Educated Barfly"
 last_made:
 rating:
 cooks: 0

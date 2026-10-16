@@ -16,6 +16,7 @@ added_by: crews
 via: muse
 input_type: web-page
 owner: Nick Korbee
+credit: "Nick Korbee / Liquor.com"
 last_made:
 rating:
 cooks: 0

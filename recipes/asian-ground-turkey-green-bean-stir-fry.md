@@ -16,6 +16,7 @@ added_by: crews
 via: grok-bot
 input_type: web-page
 owner: anna+crews
+credit: "Eat Yourself Skinny"
 last_made:
 rating:
 cooks:

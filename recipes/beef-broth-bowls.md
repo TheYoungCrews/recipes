@@ -15,6 +15,7 @@ added: 2026-10-14
 added_by: crews
 via: muse
 owner: @chelseasmessyapron
+credit: "@chelseasmessyapron"
 input_type: instagram-video
 last_made:
 rating:

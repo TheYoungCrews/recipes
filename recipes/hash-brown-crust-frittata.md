@@ -16,6 +16,7 @@ added_by: crews
 via: recipe-repo
 input_type: screenshot
 owner: "@theroberts2.0"
+credit: "@theroberts2.0"
 last_made:
 rating:
 cooks: 0

@@ -14,6 +14,7 @@ added_by: crews
 via: muse
 input_type: instagram-video
 owner: @thelucasassis
+credit: "@thelucasassis"
 cooks: 0
 ---
 Lucas Assis's weekly vermut hour: Spanish conservas piled on chips ("basque nachos") with vermouth and an Americano. Creator: @thelucasassis.

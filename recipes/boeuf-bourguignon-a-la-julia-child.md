@@ -14,6 +14,7 @@ added_by: crews
 via: muse
 input_type: web-page
 owner: Julia Child
+credit: "Julia Child"
 last_made:
 rating:
 cooks: 1

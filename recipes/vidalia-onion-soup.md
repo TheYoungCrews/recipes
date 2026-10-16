@@ -16,6 +16,7 @@ added_by: crews
 via: grok-bot
 input_type: web-page
 owner: Southern Living (Patricia S. York)
+credit: "Southern Living"
 last_made:
 rating:
 cooks: 0

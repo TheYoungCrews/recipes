@@ -16,6 +16,7 @@ added_by: crews
 via: grok-bot
 input_type: web-page
 owner: White Oak Pastures
+credit: "White Oak Pastures"
 last_made:
 rating:
 cooks: 0

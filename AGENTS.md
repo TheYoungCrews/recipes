@@ -53,6 +53,7 @@ added: YYYY-MM-DD
 added_by: anna           # the PERSON: crews|anna
 via: muse/<model>        # agent/model that wrote it
 owner: "@creatorhandle" # whose recipe in practice: creator until adapted, then anna|crews|anna+crews
+credit: "@creatorhandle"  # optional: the public credit shown on the site (creator, site or author, e.g. "White Oak Pastures", "@handle"). Never name the pipeline (ChatGPT, Muse, notes, email). Leave blank for own/AI recipes; the site shows "By Crews"/"By Anna".
 input_type: instagram-video  # instagram-video|instagram-carousel|tiktok|youtube|web-page|photo|screenshot|video-file|text|email
 last_made:
 rating:

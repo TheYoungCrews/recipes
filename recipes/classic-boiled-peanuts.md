@@ -16,6 +16,7 @@ added_by: crews
 via: grok-bot
 input_type: web-page
 owner: Matt and Ted Lee (Southern Living)
+credit: "Matt & Ted Lee / Southern Living"
 last_made:
 rating:
 cooks: 0

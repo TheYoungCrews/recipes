@@ -15,6 +15,7 @@ added: 2026-10-14
 added_by: crews
 via: gemini/gemini-3-pro
 owner: crews
+credit: "Educated Barfly"
 input_type: text
 last_made: 2026-10-14
 rating: 4.5

@@ -16,6 +16,7 @@ added_by: crews
 via: grok-bot
 input_type: web-page
 owner: Haus Alpenz
+credit: "Haus Alpenz"
 last_made:
 rating:
 cooks: 0

@@ -14,6 +14,7 @@ added_by: crews
 via: muse
 input_type: photo
 owner: New Orleans School of Cooking
+credit: "New Orleans School of Cooking"
 last_made:
 rating:
 cooks: 0

@@ -14,6 +14,7 @@ added_by: crews
 via: muse
 input_type: photo
 owner: Zeny Domingo
+credit: "Zeny Domingo"
 last_made:
 rating:
 cooks: 0

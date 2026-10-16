@@ -21,6 +21,7 @@ added_by: crews                            # PERSON who sent/asked for it: crews
 via: grok-bot                              # agent/model that wrote the file, e.g. muse/<model>, instinct/<model>, grok-bot, human
 input_type: text                           # instagram-video | instagram-carousel | tiktok | youtube | web-page | photo | screenshot | video-file | text | email
 owner: kelly-gellner                      # whose recipe it is in practice: anna | crews | anna+crews | <creator name/@handle> while unadapted
+credit: "White Oak Pastures"                 # optional public credit line shown on the site; never the pipeline (no ChatGPT/Muse/notes/email). Omit for own/AI recipes ("By Crews"/"By Anna" is derived from owner; owner mom -> "Mom's recipe").
 last_made:                                 # YYYY-MM-DD or blank
 rating:                                    # 1-5 or blank (latest overall)
 cooks: 0                                   # times made
