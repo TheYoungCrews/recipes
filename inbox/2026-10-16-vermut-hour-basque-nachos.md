@@ -1,4 +1,6 @@
 ---
+filed_to: recipes/vermut-hour-basque-nachos.md
+filed_on: 2026-10-16
 title: Vermut Hour Basque Nachos
 slug: vermut-hour-basque-nachos
 type: snack
