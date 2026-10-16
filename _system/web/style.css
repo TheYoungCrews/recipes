@@ -138,3 +138,11 @@ form.askr h4{margin:0 0 6px;font-size:1.35em}
 .askrow button{border:0;border-radius:999px;width:38px;background:#c0392b;color:#fff;font-size:1.05em;cursor:pointer}
 .askans{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:repeating-linear-gradient(45deg,rgba(192,57,43,.05) 0 8px,transparent 8px 16px);white-space:pre-wrap;line-height:1.45}
 .asksign{margin-top:10px;font-size:.92em;opacity:.85}.asksign button{border:0;background:none;color:#c0392b;font-size:1.25em;cursor:pointer;text-decoration:underline}
+/* Sign-in pills: Google + Wallet, equal size */
+.gsi .signrow{width:100%}
+.signrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;max-width:380px}
+@media (max-width:340px){.signrow{grid-template-columns:1fr}}
+form .signrow .sbtn,.signrow .sbtn{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:999px;border:1.5px solid #5f7f5a;background:#fffdf7;color:#2f3a2c;font:600 15px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;overflow:hidden;white-space:nowrap;padding:0 14px;box-sizing:border-box;width:100%;margin:0;min-width:0;box-shadow:none}
+.signrow .sbtn:hover{background:#eef3ea}.sbtn:disabled{opacity:.6}
+.gsiover{position:absolute;inset:0;opacity:.001;display:flex;align-items:center;justify-content:center}
+.gsiover iframe{transform:scale(1.15)}

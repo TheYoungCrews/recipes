@@ -98,32 +98,27 @@ A.signedIn=async()=>{if(gtok())return true;if(!sessionStorage.getItem("ses"))ret
   const r=await fetch("/api/session",{credentials:"same-origin"}).catch(()=>null);if(r&&r.ok)return true;sessionStorage.removeItem("ses");return false};
 function loadGsi(id){return gsi||(gsi=new Promise((ok,no)=>{const s=document.createElement("script");s.src="https://accounts.google.com/gsi/client";s.async=true;
   s.onload=()=>{google.accounts.id.initialize({client_id:id,callback:r=>{saveTok(r.credential);done()},auto_select:true,context:"signin"});ok()};s.onerror=no;document.head.appendChild(s)}))}
-async function eth(say){
-  const w=window.ethereum;
-  if(!w)return say("Open this page in your wallet's browser (MetaMask or Rainbow) to sign in with Ethereum.");
-  try{
-    say("Check your wallet…");
-    const [acct]=await w.request({method:"eth_requestAccounts"});
-    const n=await fetch("/api/nonce?address="+encodeURIComponent(acct),{credentials:"same-origin"}).then(r=>r.json());
-    if(!n.nonce)return say("Ethereum sign-in isn't switched on yet.");
-    const msg=`${location.host} wants you to sign in with your Ethereum account:\n${n.address}\n\nSign in to Crews & Anna's Kitchen.\n\nURI: ${location.origin}\nVersion: 1\nChain ID: 1\nNonce: ${n.nonce}\nIssued At: ${new Date().toISOString()}\nExpiration Time: ${new Date(Date.now()+9*60e3).toISOString()}`;
-    const hexMsg="0x"+[...new TextEncoder().encode(msg)].map(b=>b.toString(16).padStart(2,"0")).join("");
-    const signature=await w.request({method:"personal_sign",params:[hexMsg,acct]});
-    const r=await fetch("/api/session",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json"},body:JSON.stringify({siwe:{message:msg,signature}})});
-    if(r.status===403)return say("That wallet isn't on the cook list.");
-    if(!r.ok)return say("Couldn't sign in with Ethereum. Try again?");
-    sessionStorage.setItem("ses",Date.now());say("");A.onSignedIn.forEach(f=>{try{f()}catch(e){}});
-  }catch(e){say(e&&e.code===4001?"Wallet request cancelled.":"Couldn't sign in with Ethereum.")}
+const G_ICON='<svg viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 7l7.3 5.7c4.3-4 7-9.9 7-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.1-13.5-9.9l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>';
+const E_ICON='<svg viewBox="0 0 256 417" width="12" height="19" aria-hidden="true"><path fill="#343434" d="M127.9 0l-2.8 9.5v275.7l2.8 2.8 127.9-75.6z"/><path fill="#8C8C8C" d="M127.9 0L0 212.3l127.9 75.6V154.2z"/><path fill="#3C3C3B" d="M127.9 312.2l-1.6 1.9v98.2l1.6 4.6L256 236.6z"/><path fill="#8C8C8C" d="M127.9 416.9V312.2L0 236.6z"/><path fill="#141414" d="M127.9 287.9l127.9-75.6-127.9-58.1z"/><path fill="#393939" d="M0 212.3l127.9 75.6V154.2z"/></svg>';
+let walletLoad=null;
+function loadWallet(){
+  if(!walletLoad){const l=document.createElement("link");l.rel="stylesheet";l.href="/wallet/wallet.css";document.head.appendChild(l);
+    walletLoad=import("/wallet/wallet.js").then(()=>window.KWALLET)}
+  return walletLoad;
 }
+function signedInNow(){sessionStorage.setItem("ses",Date.now());A.onSignedIn.forEach(f=>{try{f()}catch(e){}})}
 A.signIn=async(box,say)=>{
   const c=await getCfg(), g$=c.clientId&&c.ready, e$=!!c.eth;
   if(!g$&&!e$){say("Sign-in isn't switched on yet.");return false}
   box.innerHTML="";say("Sign in so we know it's you:");
-  if(g$){try{await loadGsi(c.clientId);const gb=document.createElement("div");box.appendChild(gb);
-    google.accounts.id.renderButton(gb,{theme:"filled_black",shape:"pill",text:"signin_with",size:"large"})}catch(e){}}
-  if(e$){const b=document.createElement("button");b.type="button";b.className="ethbtn";b.textContent="Sign in with Ethereum";
-    b.style.cssText="margin-top:8px;padding:9px 16px;border-radius:999px;border:0;background:#222;color:#fff;font:inherit;cursor:pointer";
-    b.addEventListener("click",()=>eth(say));box.appendChild(b)}
+  const row=document.createElement("div");row.className="signrow";box.appendChild(row);
+  if(g$){const b=document.createElement("div");b.className="sbtn";b.innerHTML=G_ICON+"<span>Google</span><div class=gsiover></div>";row.appendChild(b);
+    try{await loadGsi(c.clientId);const w=Math.round(b.getBoundingClientRect().width)||170;
+      google.accounts.id.renderButton(b.querySelector(".gsiover"),{type:"standard",shape:"pill",text:"signin",size:"large",width:Math.max(120,w)})}catch(e){b.remove()}}
+  if(e$){const b=document.createElement("button");b.type="button";b.className="sbtn";b.innerHTML=E_ICON+"<span>Wallet</span>";row.appendChild(b);
+    b.addEventListener("click",async()=>{b.disabled=true;say("Opening wallets…");
+      try{const W=await loadWallet();say("Sign in so we know it's you:");W.open({say,onDone:()=>{say("");signedInNow()}})}
+      catch(e){say("Couldn't load the wallet picker.")}finally{b.disabled=false}})}
   A.onSignedIn.push(()=>{box.innerHTML=""});
 };
 // Per-recipe "ask about this"

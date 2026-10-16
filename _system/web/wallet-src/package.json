@@ -1,0 +1,21 @@
+{
+ "name": "kitchen-wallet",
+ "private": true,
+ "type": "module",
+ "dependencies": {
+  "@coinbase/wallet-sdk": "^4.4.0",
+  "@metamask/sdk": "^0.34.0",
+  "@rainbow-me/rainbowkit": "^2.2.11",
+  "@tanstack/react-query": "^5.104.3",
+  "@walletconnect/ethereum-provider": "^2.26.0",
+  "dayjs": "^1.11.23",
+  "esbuild": "^0.28.2",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "viem": "^2.57.7",
+  "wagmi": "^2.19.5"
+ },
+ "scripts": {
+  "build": "esbuild wallet.jsx --bundle --minify --splitting --format=esm --target=es2020 --jsx=automatic --define:process.env.NODE_ENV='\"production\"' --define:global=globalThis --loader:.svg=dataurl --loader:.png=dataurl --external:porto --external:porto/internal --external:@base-org/account --chunk-names=w-[hash] --outdir=../wallet"
+ }
+}

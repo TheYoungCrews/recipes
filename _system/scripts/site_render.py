@@ -164,6 +164,7 @@ def render(items, staples, root):
         if src and src.exists():
             shutil.copy2(src, out / "photos" / src.name); r["photo"] = "photos/" + src.name
     css = (SITE/"style.css").read_text().replace("/*FONT*/", base64.b64encode((SITE/"caveat.woff2").read_bytes()).decode())
+    shutil.rmtree(out/"wallet", ignore_errors=True); shutil.copytree(SITE/"wallet", out/"wallet")
     shutil.copy2(SITE/"tablecloth.jpg", out/"tablecloth.jpg"); shutil.copy2(SITE/"og.jpg", out/"og.jpg")
     banner = "data:image/jpeg;base64," + base64.b64encode((SITE/"banner-web.jpg").read_bytes()).decode()
     season = SEASONS[datetime.date.today().month]
