@@ -1,5 +1,5 @@
 ---
-title: Braised Lamb and Organ Meatball Bowl
+title: Lamb Organ Meatball Bowl
 slug: braised-lamb-collard-noodle-bowls
 type: soup-bowl
 status: made

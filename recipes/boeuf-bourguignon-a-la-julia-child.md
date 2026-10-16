@@ -1,5 +1,5 @@
 ---
-title: Boeuf Bourguignon a la Julia Child
+title: Boeuf Bourguignon
 slug: boeuf-bourguignon-a-la-julia-child
 type: main
 status: made

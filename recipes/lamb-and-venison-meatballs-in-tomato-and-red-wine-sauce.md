@@ -1,5 +1,5 @@
 ---
-title: Lamb and Venison Meatballs in Tomato and Red-Wine Sauce
+title: Lamb and Venison Meatballs
 slug: lamb-and-venison-meatballs-in-tomato-and-red-wine-sauce
 type: main
 status: made

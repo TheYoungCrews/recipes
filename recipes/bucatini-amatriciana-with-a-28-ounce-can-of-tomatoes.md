@@ -1,5 +1,5 @@
 ---
-title: Bucatini Amatriciana with a 28-Ounce Can of Tomatoes
+title: Bucatini Amatriciana
 slug: bucatini-amatriciana-with-a-28-ounce-can-of-tomatoes
 type: main
 status: made

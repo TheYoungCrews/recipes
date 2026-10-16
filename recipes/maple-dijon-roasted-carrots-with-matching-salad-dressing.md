@@ -1,5 +1,5 @@
 ---
-title: Maple-Dijon Roasted Carrots with Matching Salad Dressing
+title: Maple-Dijon Carrots
 slug: maple-dijon-roasted-carrots-with-matching-salad-dressing
 type: side
 status: made

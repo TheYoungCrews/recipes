@@ -1,5 +1,5 @@
 ---
-title: Turkey Mole Bowl with Poblano, Carrots and Bell Pepper
+title: Turkey Mole Bowl
 slug: turkey-mole-bowl-with-poblano-carrots-and-bell-pepper
 type: main
 status: made

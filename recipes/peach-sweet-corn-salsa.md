@@ -1,5 +1,5 @@
 ---
-title: Fresh Peach & Charred Sweet Corn Salsa
+title: Peach Corn Salsa
 slug: peach-sweet-corn-salsa
 type: snack
 status: made

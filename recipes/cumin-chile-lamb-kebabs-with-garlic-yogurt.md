@@ -1,5 +1,5 @@
 ---
-title: Cumin-Chile Lamb Kebabs with Garlic Yogurt
+title: Cumin Lamb Kebabs
 slug: cumin-chile-lamb-kebabs-with-garlic-yogurt
 type: main
 status: to-try

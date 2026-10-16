@@ -1,5 +1,5 @@
 ---
-title: The Grand Rosemary Rose Paloma
+title: Rosemary Rose Paloma
 slug: grand-rosemary-rose-paloma
 type: cocktail
 status: to-try

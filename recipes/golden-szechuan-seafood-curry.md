@@ -1,5 +1,5 @@
 ---
-title: Golden Szechuan Seafood Curry
+title: Szechuan Seafood Curry
 slug: golden-szechuan-seafood-curry
 type: soup-bowl
 status: favorite

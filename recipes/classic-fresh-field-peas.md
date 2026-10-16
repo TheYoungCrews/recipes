@@ -1,5 +1,5 @@
 ---
-title: Classic Fresh Field Peas
+title: Field Peas
 slug: classic-fresh-field-peas
 type: side
 status: to-try

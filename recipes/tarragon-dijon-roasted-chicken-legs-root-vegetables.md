@@ -1,5 +1,5 @@
 ---
-title: Tarragon Dijon Chicken Legs with Root Vegetables
+title: Tarragon Chicken Legs
 slug: tarragon-dijon-roasted-chicken-legs-root-vegetables
 type: main
 status: to-try

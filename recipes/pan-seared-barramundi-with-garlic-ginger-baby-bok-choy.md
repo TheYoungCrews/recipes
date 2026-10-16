@@ -1,5 +1,5 @@
 ---
-title: Pan-Seared Barramundi with Garlic-Ginger Baby Bok Choy
+title: Seared Barramundi
 slug: pan-seared-barramundi-with-garlic-ginger-baby-bok-choy
 type: main
 status: made

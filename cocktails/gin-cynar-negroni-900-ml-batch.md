@@ -1,5 +1,5 @@
 ---
-title: Gin-Cynar Negroni (900 ml Batch)
+title: Gin-Cynar Negroni
 slug: gin-cynar-negroni-900-ml-batch
 type: cocktail
 status: made

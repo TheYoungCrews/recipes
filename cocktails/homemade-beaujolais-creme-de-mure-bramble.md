@@ -1,5 +1,5 @@
 ---
-title: Homemade Beaujolais Crème de Mûre Bramble
+title: Beaujolais Bramble
 slug: homemade-beaujolais-creme-de-mure-bramble
 type: cocktail
 status: favorite

@@ -1,5 +1,5 @@
 ---
-title: Coconut + Red Curry Beef Broth Bowl
+title: Red Curry Beef Bowl
 slug: coconut-red-curry-beef-broth-bowl
 type: soup-bowl
 status: to-try

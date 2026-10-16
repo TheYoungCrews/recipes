@@ -1,5 +1,5 @@
 ---
-title: Shredded Chicken Tacos with Cilantro Lime Dressing
+title: Chicken Tacos
 slug: shredded-chicken-tacos-cilantro-lime-dressing
 type: main
 status: to-try

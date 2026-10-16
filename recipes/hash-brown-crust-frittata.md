@@ -1,5 +1,5 @@
 ---
-title: Hash Brown Crust Frittata
+title: Hash Brown Frittata
 slug: hash-brown-crust-frittata
 type: breakfast
 status: to-try

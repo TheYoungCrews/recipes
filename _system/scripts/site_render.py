@@ -62,7 +62,7 @@ def card(r):
     stamp = "<span class=stamp>TO TRY</span>" if st == "to-try" else ""
     t = r["time_minutes"]
     return (f'<a class=card href="#r-{E(r["slug"])}" data-slug="{E(r["slug"])}">{stamp}{ph}<div class=bd>'
-            f'<h3 class="tt hand">{E(r["title"])}</h3><div class=tags>{tags}</div>'
+            (f'<h3 class="tt hand">{E(r["title"])}</h3>' if r["photo"] else f'<h3 class=sr>{E(r["title"])}</h3>') + f'<div class=tags>{tags}</div>'
             f'<div class=meta><span>{E(str(t))+" min" if t else "&nbsp;"}</span>{right}</div></div></a>')
 
 

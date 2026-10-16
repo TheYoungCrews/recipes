@@ -1,5 +1,5 @@
 ---
-title: Chilli Brothy Rice with Caramelised Soy Chicken
+title: Soy Chicken Brothy Rice
 slug: chilli-brothy-rice-caramelised-soy-chicken
 type: soup-bowl
 status: to-try

@@ -1,5 +1,5 @@
 ---
-title: Christmas Brown-Butter & Pecan Freezer-Door Old Fashioned
+title: Brown Butter Old Fashioned
 slug: christmas-brown-butter-pecan-freezer-door-old-fashioned
 type: cocktail
 status: favorite

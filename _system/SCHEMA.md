@@ -4,7 +4,7 @@ Every file in `recipes/` and `cocktails/` starts with YAML frontmatter. Keep val
 
 ```yaml
 ---
-title: Chili Crisp Chicken Noodle Bowl     # required
+title: Chili Crisp Chicken Noodle Bowl     # required — the short dish name, 2-4 words, no amounts, equipment, or ingredient lists
 slug: chili-crisp-chicken-noodle-bowl      # required, = filename without .md
 type: soup-bowl                            # required, one _system/TAGS.md "type"
 status: to-try                             # required: to-try | made | favorite | retired

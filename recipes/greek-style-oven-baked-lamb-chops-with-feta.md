@@ -1,5 +1,5 @@
 ---
-title: Greek-style Oven-Baked Lamb Chops with Feta
+title: Greek Lamb Chops
 slug: greek-style-oven-baked-lamb-chops-with-feta
 type: main
 status: to-try

@@ -1,5 +1,5 @@
 ---
-title: Chicken Coconut Curry with Bell Peppers, Jalapeño and Thai Chili
+title: Chicken Coconut Curry
 slug: chicken-coconut-curry-with-bell-peppers-jalapeno-and-thai
 type: main
 status: made

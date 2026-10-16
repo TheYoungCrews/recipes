@@ -146,3 +146,4 @@ form .signrow .sbtn,.signrow .sbtn{position:relative;display:flex;align-items:ce
 .signrow .sbtn:hover{background:#eef3ea}.sbtn:disabled{opacity:.6}
 .gsiover{position:absolute;inset:0;opacity:.001;display:flex;align-items:center;justify-content:center}
 .gsiover iframe{transform:scale(1.15)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;margin:0;padding:0}

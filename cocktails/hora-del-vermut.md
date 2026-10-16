@@ -1,5 +1,5 @@
 ---
-title: Hora del Vermut (Vermouth Hour)
+title: Hora del Vermut
 slug: hora-del-vermut
 type: cocktail
 status: to-try

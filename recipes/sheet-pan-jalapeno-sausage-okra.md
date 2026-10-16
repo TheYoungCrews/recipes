@@ -1,5 +1,5 @@
 ---
-title: Sheet-Pan Jalapeño Sausage & Charred Okra
+title: Sausage and Okra
 slug: sheet-pan-jalapeno-sausage-okra
 type: main
 status: made

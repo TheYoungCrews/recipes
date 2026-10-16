@@ -1,5 +1,5 @@
 ---
-title: Vermut Hour Basque Nachos
+title: Basque Nachos
 slug: vermut-hour-basque-nachos
 type: snack
 status: to-try

@@ -1,5 +1,5 @@
 ---
-title: Spicy Lamb and Lentils with Herbs
+title: Spicy Lamb and Lentils
 slug: spicy-lamb-and-lentils-with-herbs
 type: main
 status: to-try

@@ -1,5 +1,5 @@
 ---
-title: Strawberry-Basil Pavlova Negroni
+title: Strawberry Basil Negroni
 slug: strawberry-basil-pavlova-negroni
 type: cocktail
 status: favorite

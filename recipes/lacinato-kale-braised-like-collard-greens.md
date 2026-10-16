@@ -1,5 +1,5 @@
 ---
-title: Lacinato Kale Braised Like Collard Greens
+title: Braised Lacinato Kale
 slug: lacinato-kale-braised-like-collard-greens
 type: side
 status: to-try

@@ -1,5 +1,5 @@
 ---
-title: Panzanella with Lemon and Balsamic
+title: Panzanella
 slug: panzanella-with-lemon-and-balsamic
 type: side
 status: made

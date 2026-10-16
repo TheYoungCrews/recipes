@@ -1,5 +1,5 @@
 ---
-title: Asian Ground Turkey and Green Bean Stir Fry
+title: Turkey Green Bean Stir-Fry
 slug: asian-ground-turkey-green-bean-stir-fry
 type: main
 status: made

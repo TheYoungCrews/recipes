@@ -1,5 +1,5 @@
 ---
-title: Pork Tenderloin with Butternut Squash Purée, Farro and Buttered Pecans
+title: Pork Tenderloin with Squash
 slug: pork-tenderloin-with-butternut-squash-puree-farro-and
 type: main
 status: made

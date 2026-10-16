@@ -1,5 +1,5 @@
 ---
-title: Tuna Salad with Apple, Capers and Thai Chili
+title: Tuna Salad
 slug: tuna-salad-with-apple-capers-and-thai-chili
 type: main
 status: made

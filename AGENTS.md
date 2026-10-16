@@ -37,7 +37,7 @@ Email from known senders is filed automatically. Mail from anyone else is held f
 4. **Frontmatter** (flat, one line each, lists as `[a, b]`):
 ```yaml
 ---
-title: Crispy Gochujang Salmon Bites
+title: Crispy Gochujang Salmon Bites  # the short dish name, 2-4 words, no amounts, equipment, or ingredient lists
 slug: crispy-gochujang-salmon-bites
 type: main            # main|side|soup-bowl|breakfast|dessert|sauce|prep-component|snack|cocktail|mocktail
 status: to-try

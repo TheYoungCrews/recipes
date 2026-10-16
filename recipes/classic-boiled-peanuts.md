@@ -1,5 +1,5 @@
 ---
-title: Classic Boiled Peanuts
+title: Boiled Peanuts
 slug: classic-boiled-peanuts
 type: snack
 status: to-try

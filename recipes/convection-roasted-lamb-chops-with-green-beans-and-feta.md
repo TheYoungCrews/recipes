@@ -1,5 +1,5 @@
 ---
-title: Convection-Roasted Lamb Chops with Green Beans and Feta
+title: Roasted Lamb Chops
 slug: convection-roasted-lamb-chops-with-green-beans-and-feta
 type: main
 status: made
