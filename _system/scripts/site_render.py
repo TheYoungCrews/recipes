@@ -62,8 +62,8 @@ def card(r):
     stamp = "<span class=stamp>TO TRY</span>" if st == "to-try" else ""
     t = r["time_minutes"]
     return (f'<a class=card href="#r-{E(r["slug"])}" data-slug="{E(r["slug"])}">{stamp}{ph}<div class=bd>'
-            (f'<h3 class="tt hand">{E(r["title"])}</h3>' if r["photo"] else f'<h3 class=sr>{E(r["title"])}</h3>') + f'<div class=tags>{tags}</div>'
-            f'<div class=meta><span>{E(str(t))+" min" if t else "&nbsp;"}</span>{right}</div></div></a>')
+            + (f'<h3 class="tt hand">{E(r["title"])}</h3>' if r["photo"] else f'<h3 class=sr>{E(r["title"])}</h3>') + f'<div class=tags>{tags}</div>'
+            + f'<div class=meta><span>{E(str(t))+" min" if t else "&nbsp;"}</span>{right}</div></div></a>')
 
 
 DEV = re.compile(r"filed|captur|reconstruct|estimate|standing sub|taste.profile|our version updated|replaced with|marked made|not recorded|recorded part|incomplete|version was|removed|mix-up|original|cooks:|recipe-specific|not a global|kitchen/|\bstatus\b|time_minutes|inbox/|email \d", re.I)
