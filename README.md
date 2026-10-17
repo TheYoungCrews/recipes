@@ -3,7 +3,7 @@
 Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, the family ones we don't want to lose, and Anna's favorite cocktails.
 Each one keeps the creator's original plus our version, which gets a little better every time we cook it and rate it.
 
-Browse, search and rate them at **[blind-tiger.pages.dev](https://blind-tiger.pages.dev)**. So far: 39 [recipes](recipes/) and 23 [cocktails](cocktails/).
+Browse, search and rate them at **[blind-tiger.pages.dev](https://blind-tiger.pages.dev)**. So far: 39 [recipes](recipes/) and 24 [cocktails](cocktails/).
 
 ## Our kitchen
 
