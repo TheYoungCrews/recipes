@@ -2,7 +2,7 @@
 title: Sausage Gravy
 slug: sausage-gravy
 type: sauce
-status: to-try
+status: made
 tags: [pork, southern, stovetop, quick-20]
 ingredients: [pork breakfast sausage, flour, milk, red pepper flakes, salt, black pepper]
 serves: 6
@@ -17,11 +17,13 @@ via: muse
 input_type: web-page
 owner: Sam Merritt (Sugar Spun Run)
 credit: "Sugar Spun Run"
-last_made:
-rating:
-cooks: 0
+last_made: 2026-10-18
+rating: 4.5
+cooks: 1
 ---
 Classic old-fashioned sausage (sawmill) gravy from Sam Merritt at Sugar Spun Run: four ingredients, 15 minutes, made for biscuits.
+
+![Made 2026-10-18](photos/sausage-gravy-2026-10-18.jpg)
 
 ## Original
 Prep 5 min, cook 10 min, serves 6.
@@ -59,5 +61,6 @@ Tips from the post: break up flour clumps before adding milk. It looks runny at 
 6. Leftovers keep overnight in the fridge. Reheat in a skillet over medium-low with a splash of milk.
 
 ## Notes
+- 2026-10-18 (crews via site, 4.5/5): classic for a reason
 - 2026-10-18 (filed by grok-bot): from email 1024851. Title shortened to Sausage Gravy. Dropped breakfast, biscuits-and-gravy and comfort tags (not in TAGS.md) and added southern. Our version follows the original as written; biscuits added to the checklist since the source serves it over them.
 - 2026-10-18 (via muse): captured from a Sugar Spun Run link sent by Crews. Source page read in full; the video was not viewed.
