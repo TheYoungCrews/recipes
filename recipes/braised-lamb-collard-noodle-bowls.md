@@ -16,11 +16,13 @@ added_by: crews
 via: chatgpt (Apple Notes import by grok-bot)
 input_type: text
 owner: crews
-last_made:
-rating:
-cooks: 1
+last_made: 2026-10-18
+rating: 2.5
+cooks: 2
 ---
 Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised collards and egg white noodles, finished with herbs and a cold dollop of cottage cheese.
+
+![Made 2026-10-18](photos/braised-lamb-collard-noodle-bowls-2026-10-18.jpg)
 
 ## Original
 
@@ -51,6 +53,7 @@ Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised 
 Same as original. Edit here after feedback.
 
 ## Notes
+- 2026-10-18 (crews via site, 2.5/5): lose the bone broth and stay more italian
 - 2026-10-16 (grok-bot): cooking again tonight. Still to buy: collard greens, Thai basil, green onions.
 - 2026-10-14 (grok-bot): time_minutes is an estimate; the Apple Notes brief gave no time.
 - 2026-10-13 (import): from Crews's Apple Notes; he liked it. Rating not recorded yet.
