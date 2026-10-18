@@ -1,10 +1,10 @@
 ---
-title: Lamb Organ Meatball Bowl
+title: Braised Lamb Meatballs
 slug: braised-lamb-collard-noodle-bowls
-type: soup-bowl
+type: main
 status: made
-tags: [lamb, organ, fusion, dutch-oven, braise, high-protein, fall, winter, weekend-project]
-ingredients: [sourdough, collard greens, thai basil, green onion, egg white spaghetti, anchovy paste, tomato paste, ground beef organ blend, ground lamb, lime, cottage cheese, bone broth, garlic, milk, salt, black pepper]
+tags: [lamb, organ, italian, dutch-oven, braise, high-protein, fall, weekend-project]
+ingredients: [ground lamb, ground beef organ blend, sourdough, milk, parmesan, garlic, parsley, fennel seed, dried oregano, onion, red pepper flakes, tomato paste, anchovy paste, dry white wine, chicken broth, collard greens, basil, ricotta, olive oil, crusty bread, salt, black pepper]
 serves: 4
 time_minutes: 50
 prep_minutes:
@@ -20,7 +20,7 @@ last_made: 2026-10-18
 rating: 2.5
 cooks: 2
 ---
-Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised collards and egg white noodles, finished with herbs and a cold dollop of cottage cheese.
+Seared lamb and organ meatballs braised Italian style with garlicky collards in a light tomato broth, finished with parmesan, basil and a cold spoon of ricotta. Bread or polenta on the side.
 
 ![Made 2026-10-18](photos/braised-lamb-collard-noodle-bowls-2026-10-18.jpg)
 
@@ -50,9 +50,39 @@ Turmeric-ginger and tomato broth with seared lamb/beef-organ meatballs, braised 
 7. **Assemble:** heat off, juice of one lime into the broth. Ladle over noodles, cold cottage cheese in the center, green onion tops and Thai basil.
 
 ## Our version
-Same as original. Edit here after feedback.
+
+**Ingredients**
+- [ ] ground lamb (1 lb)
+- [ ] ground beef/organ blend (1 lb)
+- [x] sourdough (2 slices, crusts off)
+- [ ] milk (1/4 cup)
+- [x] parmesan (1/2 cup grated, plus more to finish)
+- [x] garlic (6 cloves: 3 minced, 3 sliced)
+- [ ] parsley (1/4 cup chopped)
+- [ ] fennel seed (1 tsp, lightly crushed)
+- [ ] dried oregano (1 tsp)
+- [x] olive oil (2 tbsp, plus more to finish)
+- [x] onion (1, diced)
+- [x] red pepper flakes (1/2 tsp)
+- [x] tomato paste (2 tbsp)
+- [x] anchovy paste (1 tsp)
+- [ ] dry white wine (1/2 cup, optional)
+- [ ] unsalted plain chicken broth (2 cups)
+- [ ] collard greens (1 large bunch, stems removed, chopped)
+- [ ] fresh basil (a handful, torn)
+- [ ] whole-milk ricotta or full-fat cottage cheese (for serving)
+- [ ] crusty bread or soft polenta (for serving)
+- [x] salt (1 1/2 tsp) and black pepper
+
+**Steps**
+1. **Mix:** soak the bread in the milk and mash to a paste. Mix with the lamb, organ blend, parmesan, minced garlic, parsley, fennel, oregano, salt and pepper. Roll golf-ball meatballs.
+2. **Sear:** olive oil in the Dutch oven over medium-high. Brown the meatballs well on all sides in batches, then set aside.
+3. **Base:** lower to medium. Cook the onion in the fat for 5 minutes, then add the sliced garlic and pepper flakes for 1 minute. Stir in the tomato paste and anchovy paste and cook 2 to 3 minutes until rust-colored.
+4. **Braise:** add the wine and scrape up the fond, let it bubble off for a minute, then add the broth. Stir in the collards, return the meatballs and juices, cover and simmer gently 15 to 20 minutes. Taste for salt.
+5. **Serve:** into shallow bowls with parmesan, torn basil, a drizzle of olive oil and a spoon of cold ricotta. Bread or polenta on the side for the broth.
 
 ## Notes
+- 2026-10-18 (grok-bot): rewrote Our version Italian per crews: the Asian flavors felt out of place, so no turmeric-ginger bone broth, lime, Thai basil, green onion or noodles; plain unsalted broth instead. Title was Lamb Organ Meatball Bowl.
 - 2026-10-18 (crews via site, 2.5/5): lose the bone broth and stay more italian
 - 2026-10-16 (grok-bot): cooking again tonight. Still to buy: collard greens, Thai basil, green onions.
 - 2026-10-14 (grok-bot): time_minutes is an estimate; the Apple Notes brief gave no time.

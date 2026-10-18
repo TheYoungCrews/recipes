@@ -14,7 +14,7 @@ Agents: read this before writing any "Our version". Update it after feedback, wi
 - Store info is for the separate grocery-list step only; recipes carry none.
 
 ## Standing substitutions
-Agents: apply these automatically in every `## Our version` (leave `## Original` faithful to the source). Mark the swap inline, e.g. `(liquid aminos; standing sub for soy sauce)`.
+Agents: apply these automatically in every `## Our version` (leave `## Original` faithful to the source). Write the swapped ingredient plainly with no inline note; put the reason in a dated Notes line if needed.
 - **Soy sauce -> liquid aminos** (always stocked). Same volume; if the recipe is unusually salty, taste and note it.
 - **Chili paste / chili garlic sauce / sriracha-as-heat -> sambal oelek** (always stocked). Match the volume; flag if the source heat level is unclear.
 
@@ -29,12 +29,13 @@ Agents: apply these automatically in every `## Our version` (leave `## Original`
 - Gear: Dutch oven, air fryer
 
 ## Dislikes / avoid
-- (none recorded yet)
+- Asian flavors bolted onto a non-Asian dish (ginger, lime, Thai basil, fish sauce and the like). Keep each dish in one cuisine lane. (Crews, braised-lamb-collard-noodle-bowls)
 
 ## Open questions
 - Spice ceiling? Anna's preferences vs Crews's?
 
 ## Change log
+- 2026-10-18: added one-cuisine-lane dislike from Crews (braised-lamb-collard-noodle-bowls went Italian); standing subs no longer marked inline
 - 2026-10-14: added Standing substitutions (soy -> liquid aminos; chili paste -> sambal oelek) from Crews; first applied on asian-ground-turkey-green-bean-stir-fry
 - 2026-10-14: stores removed from recipes; kept here and in staples.md for the grocery-list step (Crews)
 - 2026-10-14: added weeknight priority and stores (Crews)
