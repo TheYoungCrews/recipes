@@ -1,6 +1,6 @@
 import { verifyGoogleIdToken, whoFor } from "../_lib/auth.js";
 import { verifySiwe } from "../_lib/siwe.js";
-import { readSession } from "../_lib/session.js";
+import { readSessionFull, renewCookies } from "../_lib/session.js";
 import { commitCook } from "../_lib/github.js";
 import { todayNY } from "../_lib/recipe.js";
 const out = (status, body) => Response.json(body, { status, headers: { "cache-control": "no-store" } });
@@ -9,14 +9,15 @@ export async function onRequestPost({ request, env }) {
   if (!env.GITHUB_TOKEN || !((env.GOOGLE_CLIENT_ID && env.COOKS) || (env.COOKS_ETH && env.SESSION_SECRET))) return out(503, { error: "Sign-in isn't set up yet." });
   let b;
   try { b = await request.json(); } catch { return out(400, { error: "Bad request." }); }
-  let who, clear = false;
+  let who, clear = false, sess = null, via = "google";
   if (b && b.siwe) {
     if (!env.COOKS_ETH || !env.SESSION_SECRET) return out(503, { error: "Ethereum sign-in isn't set up yet." });
     let r;
     try { r = await verifySiwe({ message: String(b.siwe.message || ""), signature: String(b.siwe.signature || ""), cookie: request.headers.get("cookie"), secret: env.SESSION_SECRET, cooksEth: env.COOKS_ETH, domain: env.SITE_DOMAIN || "blind-tiger.pages.dev" }); }
     catch { return out(401, { error: "Please sign in again." }); }
-    who = r.who; clear = true;
-  } else if (!/^Bearer\s+[^n]/i.test(request.headers.get("authorization") || "") && (who = await readSession(request.headers.get("cookie"), env.SESSION_SECRET))) {
+    who = r.who; clear = true; via = "siwe";
+  } else if ((sess = await readSessionFull(request.headers.get("cookie"), env.SESSION_SECRET))) {
+    who = sess.who; via = "session";
     // signed in via session cookie (set after Google or SIWE sign-in)
   } else {
     if (!env.GOOGLE_CLIENT_ID || !env.COOKS) return out(503, { error: "Google sign-in isn't set up yet." });
@@ -39,7 +40,8 @@ export async function onRequestPost({ request, env }) {
   try {
     const r = await commitCook({ token: env.GITHUB_TOKEN, repo: env.GITHUB_REPO || "TheYoungCrews/recipes", slug, who, date: todayNY(), rating, note, photoB64 });
     const res = out(200, { ok: true, who, date: todayNY(), commit: r.sha.slice(0, 7) });
-    if (clear) res.headers.set("set-cookie", "siwe_nonce=; Path=/api; Max-Age=0; HttpOnly; Secure; SameSite=Strict");
+    for (const c of await renewCookies({ who, via, exp: sess && sess.exp }, env)) res.headers.append("set-cookie", c);
+    if (clear) res.headers.append("set-cookie", "siwe_nonce=; Path=/api; Max-Age=0; HttpOnly; Secure; SameSite=Strict");
     return res;
   } catch (e) {
     return out(e.status === 404 ? 404 : 502, { error: e.status === 404 ? "Recipe not found." : "Couldn't save to the recipe book. Try again in a minute." });

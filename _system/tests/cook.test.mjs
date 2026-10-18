@@ -149,14 +149,49 @@ test("recover matches known vector", () => {
 });
 
 // ---- Session cookie + AI budget
-import { makeSession, readSession } from "../../functions/_lib/session.js";
+import { makeSession, readSession, readSessionFull, renewCookies, SESSION_TTL } from "../../functions/_lib/session.js";
+import { onRequestGet as sessionGet } from "../../functions/api/session.js";
 import { reserve, neurons, MAX_ASKS, MAX_NEURONS, MAX_TOKENS } from "../../functions/_lib/budget.js";
 test("session roundtrip + tamper + expiry", async () => {
   const c = (await makeSession("s", "crews", NOW)).split(";")[0];
   assert.equal(await readSession(c, "s", NOW + 10), "crews");
   assert.equal(await readSession(c.replace("crews", "anna"), "s", NOW), null);
   assert.equal(await readSession(c, "other", NOW), null);
-  assert.equal(await readSession(c, "s", NOW + 13 * 3600), null);
+  assert.equal(await readSession(c, "s", NOW + 13 * 3600), "crews");
+  assert.equal(await readSession(c, "s", NOW + 29 * 86400), "crews");
+  assert.equal(await readSession(c, "s", NOW + 31 * 86400), null);
+});
+test("session cookie is a 30-day persistent cookie on Path=/", async () => {
+  const full = await makeSession("s", "crews", NOW);
+  assert.equal(SESSION_TTL, 2592000);
+  for (const a of ["Path=/;", "Max-Age=2592000;", "HttpOnly", "Secure", "SameSite=Lax", "Expires="]) assert.ok(full.includes(a), a);
+  assert.ok(!/Path=\/api/.test(full));
+});
+test("session slides: renewed after a day, not before; newest of two cookies wins", async () => {
+  const c = (await makeSession("s", "crews", NOW)).split(";")[0];
+  const env = { SESSION_SECRET: "s" };
+  const id1 = { ...(await readSessionFull(c, "s", NOW + 3600)), via: "session" };
+  assert.equal((await renewCookies(id1, env, NOW + 3600)).length, 0);
+  const id2 = { ...(await readSessionFull(c, "s", NOW + 2 * 86400)), via: "session" };
+  const r = await renewCookies(id2, env, NOW + 2 * 86400);
+  assert.ok(r[0].startsWith("cook_session=crews.") && r[0].includes("Max-Age=2592000"));
+  assert.ok(r[1].includes("Path=/api") && r[1].includes("Max-Age=0"));
+  const newer = r[0].split(";")[0];
+  const both = (await readSessionFull(c + "; " + newer, "s", NOW + 2 * 86400));
+  assert.equal(both.exp, NOW + 2 * 86400 + SESSION_TTL);
+  assert.equal((await renewCookies({ who: "crews", via: "google" }, env, NOW)).length, 2);
+});
+test("GET /api/session: 401 signed out, 200 and renewal with a day-old cookie", async () => {
+  const env = { SESSION_SECRET: "s" };
+  let res = await sessionGet({ request: new Request("https://x/api/session"), env });
+  assert.equal(res.status, 401);
+  const old = (await makeSession("s", "anna", Math.floor(Date.now() / 1000) - 2 * 86400)).split(";")[0];
+  res = await sessionGet({ request: new Request("https://x/api/session", { headers: { cookie: old } }), env });
+  assert.equal(res.status, 200); assert.equal((await res.json()).who, "anna");
+  assert.match(res.headers.get("set-cookie") || "", /Max-Age=2592000/);
+  const fresh = (await makeSession("s", "anna")).split(";")[0];
+  res = await sessionGet({ request: new Request("https://x/api/session", { headers: { cookie: fresh } }), env });
+  assert.equal(res.status, 200); assert.equal(res.headers.get("set-cookie"), null);
 });
 test("ai budget caps asks and neurons under free allocation", async () => {
   const m = new Map(), kv = { get: async k => m.get(k) ?? null, put: async (k, v) => m.set(k, v) };

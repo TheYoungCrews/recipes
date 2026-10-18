@@ -1,13 +1,14 @@
 // POST /api/ask {slug, question} or {mode:"search", question}. Signed-in cooks only. Read-only: never writes to the repo.
-import { identify } from "../_lib/session.js";
+import { identifyFull, renewCookies } from "../_lib/session.js";
 import { MODEL, MAX_TOKENS, MAX_Q, estTokens, neurons, reserve } from "../_lib/budget.js";
-const out = (status, body) => Response.json(body, { status, headers: { "cache-control": "no-store" } });
+const out = (status, body, cookies = []) => { const h = new Headers({ "cache-control": "no-store" }); for (const c of cookies) h.append("set-cookie", c); return Response.json(body, { status, headers: h }); };
 const asset = async (env, request, path) => { const r = await env.ASSETS.fetch(new URL(path, request.url)); if (!r.ok) throw new Error(path); return r.json(); };
 
 export async function onRequestPost({ request, env }) {
   if (!env.AI || !env.ASK_KV) return out(503, { error: "Ask isn't switched on yet." });
-  const who = await identify(request, env);
-  if (!who) return out(401, { error: "Sign in to ask." });
+  const id = await identifyFull(request, env);
+  if (!id) return out(401, { error: "Sign in to ask." });
+  const who = id.who;
   let b; try { b = await request.json(); } catch { return out(400, { error: "Bad request." }); }
   const question = String(b.question || "").trim().slice(0, MAX_Q);
   if (!question) return out(400, { error: "Ask something first." });
@@ -35,10 +36,10 @@ export async function onRequestPost({ request, env }) {
     res = await env.AI.run(MODEL, { messages: [{ role: "system", content: system }, { role: "user", content: user }], max_tokens: MAX_TOKENS, temperature: 0.4 });
   } catch { return out(502, { error: "The kitchen helper is busy. Try again in a minute." }); }
   const text = String(res && res.response != null ? (typeof res.response === "string" ? res.response : JSON.stringify(res.response)) : "").trim();
-  if (!search) return out(200, { answer: text });
+  if (!search) return out(200, { answer: text }, await renewCookies(id, env));
   let picks = [];
   try { const m = text.match(/\{[\s\S]*\}/); picks = (JSON.parse(m ? m[0] : text).picks || []); } catch {}
   const idx = new Set((await asset(env, request, "/recipes-index.json")).map(r => r.slug));
   picks = picks.filter(p => p && idx.has(p.slug)).slice(0, 3).map(p => ({ slug: p.slug, why: String(p.why || "").slice(0, 160) }));
-  return out(200, { picks });
+  return out(200, { picks }, await renewCookies(id, env));
 }

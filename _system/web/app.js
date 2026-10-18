@@ -86,16 +86,15 @@ $$('.ing input').forEach((cb,i)=>{const k="chk:"+cb.name;cb.checked=localStorage
 // Scroll to top when opening a recipe
 window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#r-'))window.scrollTo(0,0)});
 })();
-// ---- Sign-in (Google or Ethereum/SIWE) shared by Cooked it and Ask. Server issues a 12h HttpOnly session cookie.
+// ---- Sign-in (Google or Ethereum/SIWE) shared by Cooked it and Ask. The server keeps a 30-day HttpOnly session cookie that renews itself with use; signed-in state always comes from GET /api/session.
 (function(){
 let cfg=null,gsi=null;
 const getCfg=()=>cfg||(cfg=fetch("/api/config").then(r=>r.ok?r.json():{}).catch(()=>({})));
 const gtok=()=>{try{const t=JSON.parse(sessionStorage.getItem("gid")||"null");return t&&t.exp>Date.now()/1000+60?t.v:null}catch(e){return null}};
 const saveTok=v=>{try{const p=JSON.parse(atob(v.split(".")[1].replace(/-/g,"+").replace(/_/g,"/")));sessionStorage.setItem("gid",JSON.stringify({v,exp:p.exp}))}catch(e){}};
-const A=window.KAUTH={onSignedIn:[],headers:()=>({"content-type":"application/json",authorization:"Bearer "+gtok()})};
-const done=async()=>{await fetch("/api/session",{method:"POST",credentials:"same-origin",headers:A.headers()}).catch(()=>{});sessionStorage.setItem("ses",Date.now());A.onSignedIn.forEach(f=>{try{f()}catch(e){}})};
-A.signedIn=async()=>{if(gtok())return true;if(!sessionStorage.getItem("ses"))return false;
-  const r=await fetch("/api/session",{credentials:"same-origin"}).catch(()=>null);if(r&&r.ok)return true;sessionStorage.removeItem("ses");return false};
+const A=window.KAUTH={onSignedIn:[],headers:()=>{const t=gtok(),h={"content-type":"application/json"};if(t)h.authorization="Bearer "+t;return h}};
+const done=async()=>{await fetch("/api/session",{method:"POST",credentials:"same-origin",headers:A.headers()}).catch(()=>{});A.onSignedIn.forEach(f=>{try{f()}catch(e){}})};
+A.signedIn=async()=>{const r=await fetch("/api/session",{credentials:"same-origin",headers:A.headers()}).catch(()=>null);return !!(r&&r.ok)};
 function loadGsi(id){return gsi||(gsi=new Promise((ok,no)=>{const s=document.createElement("script");s.src="https://accounts.google.com/gsi/client";s.async=true;
   s.onload=()=>{google.accounts.id.initialize({client_id:id,callback:r=>{saveTok(r.credential);done()},auto_select:true,context:"signin"});ok()};s.onerror=no;document.head.appendChild(s)}))}
 const G_ICON='<svg viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 7l7.3 5.7c4.3-4 7-9.9 7-17.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.1-13.5-9.9l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>';
@@ -106,7 +105,7 @@ function loadWallet(){
     walletLoad=import("/wallet/wallet.js").then(()=>window.KWALLET)}
   return walletLoad;
 }
-function signedInNow(){sessionStorage.setItem("ses",Date.now());A.onSignedIn.forEach(f=>{try{f()}catch(e){}})}
+function signedInNow(){A.onSignedIn.forEach(f=>{try{f()}catch(e){}})}
 A.signIn=async(box,say)=>{
   const c=await getCfg(), g$=c.clientId&&c.ready, e$=!!c.eth;
   if(!g$&&!e$){say("Sign-in isn't switched on yet.");return false}
@@ -129,7 +128,7 @@ document.querySelectorAll("form.askr").forEach(f=>{
     say("Thinking…");
     const r=await fetch("/api/ask",{method:"POST",credentials:"same-origin",headers:A.headers(),body:JSON.stringify({slug:f.dataset.slug,question:qv})}).catch(()=>null);
     const j=r?await r.json().catch(()=>({})):{};
-    if(r&&r.status===401){sessionStorage.removeItem("ses");say("Sign in to ask.");A.onSignedIn.push(()=>go());return A.signIn(gs,say)}
+    if(r&&r.status===401){sessionStorage.removeItem("gid");say("Sign in to ask.");A.onSignedIn.push(()=>go());return A.signIn(gs,say)}
     say(r&&r.ok?j.answer:(j.error||"Couldn't ask right now."));
   }
   f.addEventListener("submit",e=>{e.preventDefault();go()});
@@ -172,11 +171,11 @@ $$("form.cook").forEach(f=>{
   $(".px",f).addEventListener("click",()=>{photo=null;$(".pv",f).hidden=true;$("input[type=file]",f).value=""});
   async function send(siwe){
     say("Saving…");save.disabled=true;
-    const h={"content-type":"application/json",authorization:"Bearer "+tok()};
+    const t=tok(),h={"content-type":"application/json"};if(t)h.authorization="Bearer "+t;
     const r=await fetch("/api/cook",{method:"POST",credentials:"same-origin",headers:h,
       body:JSON.stringify({slug:f.dataset.slug,rating:val,note:$("textarea",f).value,photo,siwe:siwe||undefined})}).catch(()=>null);
     const j=r?await r.json().catch(()=>({})):{};
-    if(r&&r.status===401){sessionStorage.removeItem("gid");sessionStorage.removeItem("ses");save.disabled=false;f.dataset.want=1;return ask()}
+    if(r&&r.status===401){sessionStorage.removeItem("gid");save.disabled=false;f.dataset.want=1;return ask()}
     if(!r||!r.ok){save.disabled=false;return say(j.error||"Couldn't save. Try again?")}
     $(".gsi",f).innerHTML="";
     say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`,true);
