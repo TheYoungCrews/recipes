@@ -50,8 +50,7 @@ Seared lamb and organ meatballs braised Italian style with garlicky collards in 
 7. **Assemble:** heat off, juice of one lime into the broth. Ladle over noodles, cold cottage cheese in the center, green onion tops and Thai basil.
 
 ## Our version
-
-**Ingredients**
+**Grocery & inventory check**
 - [ ] ground lamb (1 lb)
 - [ ] ground beef/organ blend (1 lb)
 - [x] sourdough (2 slices, crusts off)
