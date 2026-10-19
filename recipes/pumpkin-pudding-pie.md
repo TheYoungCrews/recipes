@@ -3,17 +3,17 @@ title: Pumpkin Pudding Pie
 slug: pumpkin-pudding-pie
 type: dessert
 status: to-try
-tags: [american, fall, holiday, hosting, crowd, make-ahead]
+tags: [american, fall, holiday, hosting, crowd, make-ahead, weekend-project]
 ingredients: [sugar, pumpkin purée, eggs, baking soda, flour, baking powder, cinnamon, vanilla, salt, milk, butter, pie crusts, orange, powdered sugar, heavy cream, cardamom, nutmeg]
 serves:
 time_minutes: 75
 source:
-source_type: social
+source_type: web
 added: 2026-10-19
 added_by: crews
 via: grok-bot
 input_type: text
-owner:
+owner: crews
 credit: "a post on X"
 last_made:
 rating:
