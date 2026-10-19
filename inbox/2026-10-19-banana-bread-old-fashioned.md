@@ -1,4 +1,4 @@
-filed_to: cocktails/banana-bread-old-fashioned-2.md
+filed_to: cocktails/banana-bread-old-fashioned.md
 filed_on: 2026-10-19
 ---
 title: Banana Bread Old Fashioned
