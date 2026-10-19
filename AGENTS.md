@@ -11,10 +11,12 @@ You don't need a GitHub account or token. Recipes get filed onto the site within
    - **To:** crews@mail.grokbot.com
    - **Subject:** `recipe: <Recipe Name>` (use `feedback: <Recipe Name>` for notes or a rating on a dish already in the repo)
    - **Body:** the title, the source link or creator, who it's from (`added_by: anna` or `crews`), your own name as `via:` (for example `via: chatgpt` or `via: instinct`), serves, time, ingredients with amounts, steps, and any notes. Plain text is fine; the frontmatter in section 1 is optional. Attach photos or screenshots if you have them.
+   - Sending more than a handful? Use the API in step 3 instead, or wait about 30 seconds between emails. A burst of dozens can be dropped as spam and never arrive.
    - If you can send email yourself, send it. If you can only draft, say so and tell the person to press Send. If you have no email, give them the finished email ready to copy plus a `mailto:` link.
 3. **Bulk option: API** (many recipes at once, e.g. a big ChatGPT dump). POST https://blind-tiger.pages.dev/api/recipes with a Bearer key from Crews. Schema: https://blind-tiger.pages.dev/openapi.json
    - JSON: `{ "recipes": [{ "title": "...", "ingredients": ["..."], "steps": ["..."], "source": "..." }] }` (up to 40)
    - Or markdown: `{ "markdown": "# Title\n\n..." }` (split on `---` or `#` headings)
+   - ChatGPT Work mode can call it from its terminal once Settings > Data controls > Work network access > Allow public internet access is on. Plain ChatGPT chat can't call it, so use email or the paste page there.
 4. **Human paste:** https://blind-tiger.pages.dev/add (signed in as Anna or Crews).
 5. Don't send repeats: check https://blind-tiger.pages.dev/recipes-index.json or https://github.com/TheYoungCrews/recipes/tree/main/recipes first if you can browse.
 
@@ -90,13 +92,14 @@ via: muse
 4. **Our version:** edit only for a specific fix, with the smallest change, in place. Our version is the recipe as we cook it now: edit it in place and keep it clean, with no inline change annotations (no `(changed ...)`, `(was ...)`, "swapped from", "standing sub" asides). Put the reason for a change in a dated Notes line instead (`- YYYY-MM-DD (grok-bot): swapped Averna for Cynar per crews.`). Git keeps the history. The site shows only Our version (falling back to Original only when Our version has no list/steps) plus personal cook-diary Notes from crews/anna; Original and agent notes are never shown. Original stays untouched.
 5. **kitchen/taste-profile.md:** add general preferences only, with who + slug and a Change log line.
 
-## 3. Email path (fallback): crews@mail.grokbot.com
+## 3. Email path (default): crews@mail.grokbot.com
 For people, and agents without GitHub access. Subjects: `recipe: <what>`, `cocktail: <what>`, `made: <title> N/5`, `recipe-raw: <what>`. Body: the link, plus the full markdown file (agents) or plain words (people). Attach photos as they are. Grok Bot puts these into inbox/ and files them.
 
 ## 4. Delivery (outside agents, in this order)
 1. **GitHub contents API, create-only:** `PUT https://api.github.com/repos/TheYoungCrews/recipes/contents/inbox/YYYY-MM-DD-<slug>.md`. Headers: `Authorization: Bearer <token>`, `Accept: application/vnd.github+json`. Body: `{"message":"inbox: <title> (via <agent>)","content":"<base64 of the file>","branch":"main"}`. **Never send `sha`**, so an existing file is never overwritten. A 422 means the name exists: add `-2` and retry once, or treat it as a duplicate.
    The token is fine-grained: TheYoungCrews/recipes only, Contents read/write. Keep it out of files, commits and chat.
-2. **Email** crews@mail.grokbot.com (section 3).
+2. **Recipe API** for batches (Start here, step 3).
+3. **Email** crews@mail.grokbot.com (section 3).
 Then reply to the sender in one line: what you saved, what to buy, and anything you guessed.
 
 **Grok Bot (filing routine, hourly):** for each new inbox file, dedupe, run `_system/scripts/build.py` checks, write `recipes/<slug>.md` (or apply the feedback), then add `filed_to: <path>` + date at the top of the inbox file. Inbox files are never deleted. Commit `file: <slug>`.
