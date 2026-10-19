@@ -2,7 +2,7 @@
 title: Banana Rum Punch
 slug: banana-rum-punch
 type: cocktail
-status: to-try
+status: favorite
 tags: [rum, shaken, fall, halloween]
 spirit: rum
 glass: double old fashioned
@@ -17,11 +17,13 @@ via: gemini/gemini-3-pro
 owner: @theeducatedbarfly
 credit: "Educated Barfly"
 input_type: screenshot
-last_made:
-rating:
-cooks: 0
+last_made: 2026-10-19
+rating: 5
+cooks: 1
 ---
 Spooky season warm-weather Jamaican banana and black tea rum punch (@theeducatedbarfly).
+
+![Made 2026-10-19](photos/banana-rum-punch-2026-10-19.jpg)
 
 ## Original
 - 1 oz (30ml) Smith And Cross
@@ -46,5 +48,6 @@ Spooky season warm-weather Jamaican banana and black tea rum punch (@theeducated
 2. Whip shake both rums, lemon juice, banana liqueur, and black tea syrup with 3-4 pebble ice cubes, dump into a DOF glass packed with pebble/crushed ice, and grate fresh nutmeg over top.
 
 ## Notes
+- 2026-10-19 (crews via site, 5/5): awesome drink, bit tangy w the lime. could use stronger syrup imo
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-banana-rum-punch.md. Swapped food tags [quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.
 - 2026-10-14 (via gemini): captured, sent by crews.
