@@ -207,6 +207,10 @@ def render(items, staples, root):
     # Minimal KAUTH bootstrap reused from app.js sign-in block is loaded via inline extract:
     # include shared app.js for KAUTH (full kitchen JS is fine; page only uses KAUTH).
     app_js = (SITE / "app.js").read_text()
+    # Only the shared sign-in block: the kitchen code expects the home page DOM and data,
+    # and throwing there would stop KAUTH from ever being defined on /add.
+    a, b = app_js.index("// ---- Sign-in"), app_js.index("// ---- Cooked it")
+    app_js = app_js[a:b]
     add_page = add_tpl.replace("<!--STYLE-->", f"<style>{css}</style>").replace(
         '<script src="/add-app.js"></script>\n<!--ADDJS-->',
         f"<script>{app_js}</script><script>{add_js}</script>",
