@@ -48,4 +48,5 @@ Batched smoky rosemary paloma topped with Ciao! sparkling water for hosting.
 2. Build over ice in highball glasses, top with Ciao!, and garnish with slapped rosemary.
 
 ## Notes
+- 2026-10-19 (grok-bot): cocktails/the-italian-job-smoky-rosemary-paloma.md was intentionally removed in commit f7cb839 ("Remove Italian Job paloma... from Crews"). Do not refile unless Crews asks.
 - 2026-10-14 (via gemini): captured, sent by crews.
