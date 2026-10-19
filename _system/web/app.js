@@ -166,8 +166,15 @@ function resize(file){
 $$("form.cook").forEach(f=>{
   let val=0, photo=null; const msg=$(".cmsg",f), save=$(".b2",f), say=(t,ok)=>{msg.textContent=t;msg.className="cmsg"+(ok?" ok":"")};
   $$(".rate button",f).forEach(b=>b.addEventListener("click",()=>{const n=+b.dataset.v;val=val===n?n-.5:n;if(val<1)val=n;stars(f,val);save.disabled=false;getCfg()}));
-  $("input[type=file]",f).addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;say("Shrinking photo…");
-    try{photo=await resize(file);$(".pv img",f).src=photo;$(".pv",f).hidden=false;say("")}catch(err){say("Couldn't read that photo.")}});
+  async function usePhoto(file){if(!file)return;if(!/^image\//.test(file.type||"")&&!/\.(heic|heif|jpe?g|png|webp|gif)$/i.test(file.name||""))return say("That's not a photo.");say("Shrinking photo…");
+    try{photo=await resize(file);$(".pv img",f).src=photo;$(".pv",f).hidden=false;say("")}catch(err){say("Couldn't read that photo.")}}
+  $("input[type=file]",f).addEventListener("change",e=>usePhoto(e.target.files[0]));
+  // Drag a photo anywhere onto the Cooked it form
+  let dz=0;const hasFile=e=>[...(e.dataTransfer&&e.dataTransfer.types||[])].includes("Files");
+  f.addEventListener("dragenter",e=>{if(!hasFile(e))return;e.preventDefault();dz++;f.classList.add("drop")});
+  f.addEventListener("dragover",e=>{if(!hasFile(e))return;e.preventDefault();e.dataTransfer.dropEffect="copy"});
+  f.addEventListener("dragleave",()=>{if(--dz<=0){dz=0;f.classList.remove("drop")}});
+  f.addEventListener("drop",e=>{if(!hasFile(e))return;e.preventDefault();dz=0;f.classList.remove("drop");usePhoto(e.dataTransfer.files[0])});
   $(".px",f).addEventListener("click",()=>{photo=null;$(".pv",f).hidden=true;$("input[type=file]",f).value=""});
   async function send(siwe){
     say("Saving…");save.disabled=true;

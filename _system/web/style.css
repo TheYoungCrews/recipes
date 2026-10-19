@@ -169,3 +169,5 @@ form .signrow .sbtn,.signrow .sbtn{position:relative;display:flex;align-items:ce
 .addmsg.ok{color:var(--sage-d);font:700 20px/1.35 Hand,cursive}
 .addfoot{text-align:center;margin:18px 0 0;font-size:13px}.addfoot a{color:var(--mute)}
 @media (min-width:640px){.addcard{padding:28px 28px 30px}.addcard textarea{min-height:280px}}
+
+form.cook.drop{outline:3px dashed var(--sage,#7f9a7a);outline-offset:4px;background:rgba(127,154,122,.08)}

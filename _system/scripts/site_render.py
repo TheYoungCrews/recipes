@@ -150,7 +150,7 @@ def recipe_view(r, staples):
 <div class=rate role=radiogroup aria-label="Rating">{"".join(f'<button type=button data-v="{i}" aria-label="{i} stars">★</button>' for i in range(1,6))}<span class=rv></span></div>
 <textarea name=note maxlength=1000 placeholder="How'd it go? (optional)"></textarea>
 <div class=pv hidden><img alt=""><button type=button class=px aria-label="Remove photo">×</button></div>
-<div class=r><label class=b1>📷 Add photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>
+<div class=r><label class=b1>📷 Add or drop photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>
 <div class=gsi></div><p class=cmsg role=status></p></form>
 <form class=askr data-slug="{E(r["slug"])}"><h4 class=hand>Ask about this</h4><div class=askrow><input maxlength=500 placeholder="Out of something? Doubling it?" aria-label="Ask about this recipe"><button aria-label=Ask>↑</button></div><p class=askans role=status hidden></p><div class=gsi></div></form>
 {src}</div></div></div></article>'''
