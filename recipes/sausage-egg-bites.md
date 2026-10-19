@@ -2,7 +2,7 @@
 title: Sausage Egg Bites
 slug: sausage-egg-bites
 type: breakfast
-status: to-try
+status: made
 tags: [chicken, stovetop, high-protein, weekend-project]
 ingredients: [egg whites, cottage cheese, shredded sharp cheddar gruyère, maple chicken sausage patties, flavor bomb tomatoes, finely diced onion, olive oil, garlic powder, ⅛ tsp freshly ground, ⅛–¼ tsp salt, dried thyme pinch sage]
 serves:
@@ -16,11 +16,13 @@ added_by: anna
 via: api
 input_type: text
 owner: anna
-last_made:
-rating:
-cooks: 0
+last_made: 2026-10-19
+rating: 4.5
+cooks: 1
 ---
 Creamy, Starbucks-inspired egg white bites made with cottage cheese, maple chicken sausage, sweet sautéed Flavor Bomb tomatoes, golden onions, and sharp cheddar. High in protein and perfect for meal prep!
+
+![Made 2026-10-19](photos/sausage-egg-bites-2026-10-19.jpg)
 
 ## Original
 
@@ -80,4 +82,5 @@ Creamy, Starbucks-inspired egg white bites made with cottage cheese, maple chick
 12. Cool:** Carefully remove the muffin tin from the water bath. Let egg bites rest for 5–10 minutes before gently loosening and removing them.
 
 ## Notes
+- 2026-10-19 (anna via site, 4.5/5): cooked it.
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-sausage-egg-white-bites.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).
