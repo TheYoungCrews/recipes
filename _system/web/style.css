@@ -147,3 +147,25 @@ form .signrow .sbtn,.signrow .sbtn{position:relative;display:flex;align-items:ce
 .gsiover{position:absolute;inset:0;opacity:.001;display:flex;align-items:center;justify-content:center}
 .gsiover iframe{transform:scale(1.15)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;margin:0;padding:0}
+
+/* ---- Add recipes (/add) ---- */
+.addpage{min-height:100vh;padding:18px 0 48px}
+.addback{margin:0 0 12px;font-size:14px}.addback a{color:var(--sage-d);font-weight:600;text-decoration:none}
+.addcard{padding:22px 18px 24px;max-width:640px;margin:0 auto}
+.addcard h1{margin:0 0 8px;font-size:36px;line-height:1;color:var(--sage-d)}
+.addlede{margin:0 0 16px;color:var(--mute);font-size:15px}
+.addhint{margin:0 0 12px;color:var(--ink)}
+.addsign{width:100%;max-width:280px;height:44px;margin:0 0 8px}
+.addlab{display:block;font-weight:600;margin:0 0 6px;font-size:14px}
+.addcard textarea{width:100%;min-height:220px;border:1.5px solid var(--sage);border-radius:12px;padding:12px 14px;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:var(--ink);resize:vertical}
+.addcard textarea:focus{outline:0;box-shadow:0 0 0 4px var(--sage-l)}
+.addprev{margin:14px 0;padding:12px 14px;border-radius:12px;background:var(--sage-l);border:1px solid var(--line)}
+.addcount{margin:0 0 8px;font-size:26px;color:var(--sage-d)}
+.addprev ol{margin:0;padding-left:1.2em;font-size:14px;color:var(--ink)}
+.addprev li{margin:4px 0}
+.addcard .b2{display:block;width:100%;margin-top:14px;height:48px;border:0;border-radius:12px;background:var(--sage-d);color:#fff;font:700 16px -apple-system,sans-serif;cursor:pointer}
+.addcard .b2:disabled{opacity:.45;cursor:not-allowed}
+.addmsg{margin:12px 0 0;white-space:pre-wrap;font-size:14px;color:var(--mute);min-height:1.2em}
+.addmsg.ok{color:var(--sage-d);font:700 20px/1.35 Hand,cursive}
+.addfoot{text-align:center;margin:18px 0 0;font-size:13px}.addfoot a{color:var(--mute)}
+@media (min-width:640px){.addcard{padding:28px 28px 30px}.addcard textarea{min-height:280px}}

@@ -4,16 +4,17 @@ Public repo `TheYoungCrews/recipes`. Plain markdown, $0. This page is enough on 
 
 
 ## Start here: adding a recipe without GitHub access (Anna's ChatGPT, Instinct, any assistant)
-You don't need a GitHub account or token. Recipes arrive by email and get filed into the repo within about an hour.
-1. Read the recipe from whatever you were given (link, video, photo, screenshot, text). Never invent amounts; write `(amount not given)`.
-2. Write one email per recipe:
-   - **To:** crews@mail.grokbot.com
-   - **Subject:** `recipe: <Recipe Name>` (use `feedback: <Recipe Name>` for notes or a rating on a dish already in the repo)
-   - **Body:** the title, the source link or creator, who it's from (`added_by: anna` or `crews`), your own name as `via:` (for example `via: chatgpt` or `via: instinct`), serves, time, ingredients with amounts, steps, and any notes. Plain text is fine; the frontmatter in section 1 is optional. Attach photos or screenshots if you have them.
-3. If you can send email yourself (for example ChatGPT with Gmail connected), actually send it, not just save a draft, then check the Sent folder and tell the person it went to crews@mail.grokbot.com. If you can only draft, say so plainly and tell the person to open the draft and press Send. If you have no email access, give them the finished email ready to copy, plus a `mailto:` link with the subject and body filled in.
-4. Don't send repeats: check https://github.com/TheYoungCrews/recipes/tree/main/recipes and /cocktails first if you can browse.
+You don't need a GitHub account. Prefer the API or the paste page. Email is a backup. Filed onto the site within about an hour.
 
-Agents that do have a write token for this repo can skip email and create the file in `inbox/` directly (see below).
+1. Read the recipe (link, video, photo, screenshot, text). Never invent amounts; write `(amount not given)`.
+2. **Preferred: API** - POST https://blind-tiger.pages.dev/api/recipes with a Bearer key from Crews. OpenAPI: https://blind-tiger.pages.dev/openapi.json
+   - JSON: `{ "recipes": [{ "title": "...", "ingredients": ["..."], "steps": ["..."], "source": "..." }] }` (up to 40)
+   - Or markdown: `{ "markdown": "# Title\n\n..." }` (split on `---` or `#` headings)
+3. **Or paste page:** give the person the finished recipes as plain text and tell them to open https://blind-tiger.pages.dev/add (signed in as Anna or Crews) and paste. No Gmail relay.
+4. **Email backup:** one email per recipe to crews@mail.grokbot.com, subject `recipe: <Name>`, body with title, source, `added_by: anna|crews`, ingredients, steps. Only if API and paste are unavailable.
+5. Don't send repeats: check https://blind-tiger.pages.dev/recipes-index.json first if you can.
+
+Agents with a repo write token can still create files in `inbox/` directly (see below).
 
 ## Voice and fast lookup
 For any question about what's in the book (what to cook, ingredients, steps, ratings, last made), fetch https://blind-tiger.pages.dev/recipes.json first instead of searching the repo. One request returns every recipe and cocktail as plain text: slug, title, type, status, tags, rating, cooks, last_made, serves, time_minutes, url, ingredients and steps (our version, falling back to original), and the latest 3 notes. For just a list, use https://blind-tiger.pages.dev/recipes-index.json (slug, title, tags, status). Both rebuild on every push and cache for 5 minutes.

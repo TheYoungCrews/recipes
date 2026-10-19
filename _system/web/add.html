@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Add recipes · Crews &amp; Anna's Kitchen</title>
+<meta name=theme-color content="#7f9a7a">
+<meta name=robots content="noindex">
+<link rel=apple-touch-icon href="/icon-180.png">
+<link rel=icon type=image/png href="/icon-180.png">
+<!--STYLE-->
+</head>
+<body class=addpage>
+<div class=wrap>
+  <p class=addback><a href="/">← Kitchen</a></p>
+  <div class="sheet addcard">
+    <h1 class=hand>Add recipes</h1>
+    <p class=addlede>Paste one recipe or a bunch. We split them up and drop them in the inbox. They show up on the site within about an hour.</p>
+
+    <div id=gate>
+      <p class=addhint>Sign in with Google or your wallet (Crews and Anna only).</p>
+      <button type=button id=signin class="sbtn addsign">Sign in</button>
+      <div class=gsi></div>
+    </div>
+
+    <form id=form hidden>
+      <label class=addlab for=paste>Paste recipes</label>
+      <textarea id=paste name=text maxlength=200000 rows=16 placeholder="Paste from ChatGPT or anywhere. Separate recipes with a line of --- or start each with a Title: / # heading."></textarea>
+      <div id=preview class=addprev hidden>
+        <p id=count class="hand addcount"></p>
+        <ol id=titles></ol>
+      </div>
+      <button type=submit id=save class=b2 disabled>Save to inbox</button>
+    </form>
+    <p id=msg class=addmsg role=status></p>
+  </div>
+  <p class=addfoot><a href="/">Back to the kitchen</a> · <a href="/openapi.json">API for assistants</a></p>
+</div>
+<script src="/add-app.js"></script>
+<!--ADDJS-->
+</body>
+</html>

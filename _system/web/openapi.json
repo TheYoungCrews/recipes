@@ -1,0 +1,143 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Crews & Anna Recipe Book",
+    "version": "1.0.0",
+    "description": "Add recipes to Crews and Anna's kitchen inbox. They get filed onto https://blind-tiger.pages.dev within about an hour. For assistants and Custom GPT Actions."
+  },
+  "servers": [{ "url": "https://blind-tiger.pages.dev" }],
+  "paths": {
+    "/api/recipes": {
+      "post": {
+        "operationId": "addRecipes",
+        "summary": "Add one or many recipes",
+        "description": "Commit recipes into the public recipe inbox as create-only files. Prefer JSON recipes[]. Markdown also works. Do not invent amounts; use (amount not given).",
+        "security": [{ "ApiKeyAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddRecipesRequest" },
+              "examples": {
+                "jsonBatch": {
+                  "summary": "Structured recipes",
+                  "value": {
+                    "recipes": [
+                      {
+                        "title": "Egg Bites",
+                        "ingredients": ["6 eggs", "1/2 cup cottage cheese", "salt"],
+                        "steps": ["Blend eggs and cottage cheese.", "Bake in muffin tin at 350F for 20 min."],
+                        "source": "Anna",
+                        "notes": "Made this morning"
+                      }
+                    ]
+                  }
+                },
+                "markdown": {
+                  "summary": "Markdown paste",
+                  "value": { "markdown": "# Egg Bites\n\n## Ingredients\n- 6 eggs\n\n## Steps\n1. Bake." }
+                }
+              }
+            },
+            "text/markdown": {
+              "schema": { "type": "string" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved to inbox",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AddRecipesResponse" }
+              }
+            }
+          },
+          "401": { "description": "Missing or bad API key / session" },
+          "413": { "description": "Payload too large" },
+          "429": { "description": "Daily cap reached" }
+        }
+      }
+    },
+    "/api/add": {
+      "post": {
+        "operationId": "addRecipesAlias",
+        "summary": "Alias of addRecipes",
+        "security": [{ "ApiKeyAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddRecipesRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved to inbox",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AddRecipesResponse" }
+              }
+            }
+          },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Per-person API key from Crews (Bearer token). Never share publicly."
+      }
+    },
+    "schemas": {
+      "Recipe": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": { "type": "string", "description": "Short dish name, 2-4 words" },
+          "ingredients": {
+            "type": "array",
+            "items": { "oneOf": [{ "type": "string" }, { "type": "object" }] }
+          },
+          "steps": {
+            "type": "array",
+            "items": { "oneOf": [{ "type": "string" }, { "type": "object" }] }
+          },
+          "source": { "type": "string" },
+          "notes": { "type": "string" },
+          "type": { "type": "string", "description": "main, side, cocktail, etc." },
+          "body": { "type": "string", "description": "Optional full markdown body instead of ingredients/steps" },
+          "markdown": { "type": "string" }
+        }
+      },
+      "AddRecipesRequest": {
+        "type": "object",
+        "properties": {
+          "recipes": {
+            "type": "array",
+            "maxItems": 40,
+            "items": { "$ref": "#/components/schemas/Recipe" }
+          },
+          "markdown": { "type": "string", "description": "One or many recipes as markdown; split on --- or # headings" },
+          "text": { "type": "string", "description": "Alias of markdown" }
+        }
+      },
+      "AddRecipesResponse": {
+        "type": "object",
+        "properties": {
+          "ok": { "type": "boolean" },
+          "who": { "type": "string" },
+          "count": { "type": "integer" },
+          "titles": { "type": "array", "items": { "type": "string" } },
+          "commit": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}
