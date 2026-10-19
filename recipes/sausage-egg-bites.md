@@ -1,5 +1,5 @@
 ---
-title: Sausage Egg Bites
+title: Egg White Bites
 slug: sausage-egg-bites
 type: breakfast
 status: made
