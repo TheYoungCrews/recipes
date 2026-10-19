@@ -1,3 +1,5 @@
+filed_to: recipes/turkey-farro-soup.md
+filed_on: 2026-10-19
 ---
 title: Turkey Kale Farro Soup
 slug: turkey-kale-farro-soup

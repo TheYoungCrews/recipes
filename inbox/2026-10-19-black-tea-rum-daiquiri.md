@@ -1,3 +1,5 @@
+filed_to: cocktails/black-tea-daiquiri.md
+filed_on: 2026-10-19
 ---
 title: Black Tea Rum Daiquiri
 slug: black-tea-rum-daiquiri

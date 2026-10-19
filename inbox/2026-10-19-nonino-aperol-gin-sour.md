@@ -1,3 +1,5 @@
+filed_to: cocktails/nonino-aperol-gin-sour.md
+filed_on: 2026-10-19
 ---
 title: Nonino Aperol Gin Sour
 slug: nonino-aperol-gin-sour

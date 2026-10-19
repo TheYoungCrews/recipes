@@ -1,3 +1,5 @@
+filed_to: cocktails/gin-tomatotini.md
+filed_on: 2026-10-19
 ---
 title: London Dry Gin Tomatotini
 slug: london-dry-gin-tomatotini

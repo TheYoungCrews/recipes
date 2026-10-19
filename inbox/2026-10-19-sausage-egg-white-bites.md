@@ -1,3 +1,5 @@
+filed_to: recipes/sausage-egg-bites.md
+filed_on: 2026-10-19
 ---
 title: Sausage Egg White Bites
 slug: sausage-egg-white-bites

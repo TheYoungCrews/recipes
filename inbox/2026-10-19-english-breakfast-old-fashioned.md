@@ -1,3 +1,5 @@
+filed_to: cocktails/breakfast-old-fashioned.md
+filed_on: 2026-10-19
 ---
 title: English Breakfast Old Fashioned
 slug: english-breakfast-old-fashioned

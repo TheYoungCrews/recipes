@@ -1,3 +1,5 @@
+filed_to: cocktails/brown-sugar-old-fashioned.md
+filed_on: 2026-10-19
 ---
 title: Brown Sugar Old Fashioned
 slug: brown-sugar-old-fashioned

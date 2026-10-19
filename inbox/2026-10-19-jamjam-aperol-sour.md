@@ -1,3 +1,5 @@
+filed_to: cocktails/jamjam-aperol-sour.md
+filed_on: 2026-10-19
 ---
 title: JamJam Aperol Sour
 slug: jamjam-aperol-sour

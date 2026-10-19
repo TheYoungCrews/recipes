@@ -1,3 +1,5 @@
+filed_to: recipes/greek-orzo-bowls.md
+filed_on: 2026-10-19
 ---
 title: Greek Beef Orzo Bowls
 slug: greek-beef-orzo-bowls

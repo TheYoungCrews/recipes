@@ -1,3 +1,5 @@
+filed_to: recipes/lemon-chive-dip.md
+filed_on: 2026-10-19
 ---
 title: Lemon Chive Dip
 slug: lemon-chive-dip

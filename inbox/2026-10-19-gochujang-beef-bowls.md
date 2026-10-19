@@ -1,3 +1,5 @@
+filed_to: recipes/gochujang-beef-bowls.md
+filed_on: 2026-10-19
 ---
 title: Gochujang Beef Bowls
 slug: gochujang-beef-bowls

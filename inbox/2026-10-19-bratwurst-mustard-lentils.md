@@ -1,3 +1,5 @@
+filed_to: recipes/bratwurst-lentils.md
+filed_on: 2026-10-19
 ---
 title: Bratwurst Mustard Lentils
 slug: bratwurst-mustard-lentils

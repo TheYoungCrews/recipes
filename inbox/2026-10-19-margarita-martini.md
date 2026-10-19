@@ -1,3 +1,5 @@
+filed_to: cocktails/margarita-martini.md
+filed_on: 2026-10-19
 ---
 title: Margarita Martini
 slug: margarita-martini

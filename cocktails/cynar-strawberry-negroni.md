@@ -1,0 +1,55 @@
+---
+title: Cynar Strawberry Negroni
+slug: cynar-strawberry-negroni
+type: cocktail
+status: to-try
+tags: [gin, stirred, quick-20]
+spirit: gin
+glass:
+ingredients: [jamjam gin, chambéryzette, cynar, campari, lemon peel]
+serves: 1
+time_minutes:
+source: 
+source_type: own
+added: 2026-10-19
+added_by: anna
+via: api
+input_type: text
+owner: anna
+last_made:
+rating:
+cooks: 0
+---
+An herbal, strawberry-forward Negroni variation. Cynar adds earthy bitterness while a smaller amount of Campari gives the drink a brighter bitter edge and keeps it recognizably Negroni-like.
+
+## Original
+
+**Ingredients**
+- 1 1/2 oz JamJam Gin
+- 3/4 oz Chambéryzette
+- 1/2 oz Cynar
+- 1/4 oz Campari
+- Lemon peel, for garnish (amount not given)
+
+**Steps**
+1. Add the JamJam Gin, Chambéryzette, Cynar, and Campari to a mixing glass filled with ice.
+2. Stir for about 20–25 seconds, until well chilled.
+3. Strain over a large ice cube in a rocks glass.
+4. Express a lemon peel over the drink and use it as garnish.
+
+## Our version
+**Grocery & inventory check**
+- [ ] 1 1/2 oz JamJam Gin
+- [ ] 3/4 oz Chambéryzette
+- [ ] 1/2 oz Cynar
+- [ ] 1/4 oz Campari
+- [ ] Lemon peel, for garnish (amount not given)
+
+**Steps**
+1. Add the JamJam Gin, Chambéryzette, Cynar, and Campari to a mixing glass filled with ice.
+2. Stir for about 20–25 seconds, until well chilled.
+3. Strain over a large ice cube in a rocks glass.
+4. Express a lemon peel over the drink and use it as garnish.
+
+## Notes
+- 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-cynar-strawberry-negroni.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).

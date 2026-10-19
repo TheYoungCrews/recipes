@@ -1,3 +1,5 @@
+filed_to: cocktails/english-garden-collins.md
+filed_on: 2026-10-19
 ---
 title: English Garden Collins
 slug: english-garden-collins

@@ -1,3 +1,5 @@
+filed_to: recipes/chocolate-chip-cookies.md
+filed_on: 2026-10-19
 ---
 title: Chocolate Chip Cookies
 slug: chocolate-chip-cookies

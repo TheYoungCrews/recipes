@@ -1,3 +1,5 @@
+filed_to: cocktails/fitzgerald-paper-plane.md
+filed_on: 2026-10-19
 ---
 title: Old Fitzgerald Paper Plane
 slug: old-fitzgerald-paper-plane

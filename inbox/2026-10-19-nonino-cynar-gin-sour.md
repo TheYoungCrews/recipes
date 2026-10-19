@@ -1,3 +1,5 @@
+filed_to: cocktails/nonino-cynar-gin-sour.md
+filed_on: 2026-10-19
 ---
 title: Nonino Cynar Gin Sour
 slug: nonino-cynar-gin-sour

@@ -1,3 +1,5 @@
+filed_to: recipes/goolsby-sausage-gravy.md
+filed_on: 2026-10-19
 ---
 title: Goolsby’s Sausage Gravy
 slug: goolsbys-sausage-gravy

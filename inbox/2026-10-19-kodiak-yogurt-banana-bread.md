@@ -1,3 +1,5 @@
+filed_to: recipes/yogurt-banana-bread.md
+filed_on: 2026-10-19
 ---
 title: Kodiak Yogurt Banana Bread
 slug: kodiak-yogurt-banana-bread

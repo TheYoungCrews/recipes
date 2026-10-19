@@ -1,3 +1,5 @@
+filed_to: cocktails/breakfast-bourbon-sour.md
+filed_on: 2026-10-19
 ---
 title: English Breakfast Bourbon Sour
 slug: english-breakfast-bourbon-sour

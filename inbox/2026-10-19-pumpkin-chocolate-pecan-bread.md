@@ -1,3 +1,5 @@
+filed_to: recipes/pumpkin-pecan-bread.md
+filed_on: 2026-10-19
 ---
 title: Pumpkin Chocolate Pecan Bread
 slug: pumpkin-chocolate-pecan-bread

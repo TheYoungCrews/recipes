@@ -1,3 +1,5 @@
+filed_to: cocktails/cynar-strawberry-negroni.md
+filed_on: 2026-10-19
 ---
 title: Cynar Strawberry Negroni
 slug: cynar-strawberry-negroni

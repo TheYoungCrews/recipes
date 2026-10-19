@@ -1,3 +1,5 @@
+filed_to: cocktails/campari-elderflower-sour.md
+filed_on: 2026-10-19
 ---
 title: Campari Elderflower Sour
 slug: campari-elderflower-sour

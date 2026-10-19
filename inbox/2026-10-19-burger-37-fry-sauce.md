@@ -1,3 +1,5 @@
+filed_to: recipes/burger-fry-sauce.md
+filed_on: 2026-10-19
 ---
 title: Burger 37 Fry Sauce
 slug: burger-37-fry-sauce

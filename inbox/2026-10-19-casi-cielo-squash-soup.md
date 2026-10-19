@@ -1,3 +1,5 @@
+filed_to: recipes/squash-soup.md
+filed_on: 2026-10-19
 ---
 title: Casi Cielo Squash Soup
 slug: casi-cielo-squash-soup

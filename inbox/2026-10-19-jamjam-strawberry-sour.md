@@ -1,3 +1,5 @@
+filed_to: cocktails/jamjam-strawberry-sour.md
+filed_on: 2026-10-19
 ---
 title: JamJam Strawberry Sour
 slug: jamjam-strawberry-sour

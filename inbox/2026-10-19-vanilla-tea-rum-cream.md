@@ -1,3 +1,5 @@
+filed_to: cocktails/vanilla-rum-cream.md
+filed_on: 2026-10-19
 ---
 title: Vanilla Tea Rum Cream
 slug: vanilla-tea-rum-cream

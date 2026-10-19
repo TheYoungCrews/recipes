@@ -1,3 +1,5 @@
+filed_to: cocktails/earl-grey-rum.md
+filed_on: 2026-10-19
 ---
 title: Earl Grey Rum Cocktail
 slug: earl-grey-rum-cocktail

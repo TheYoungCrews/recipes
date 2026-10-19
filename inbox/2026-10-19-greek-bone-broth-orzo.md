@@ -1,3 +1,5 @@
+filed_to: recipes/bone-broth-orzo.md
+filed_on: 2026-10-19
 ---
 title: Greek Bone Broth Orzo
 slug: greek-bone-broth-orzo

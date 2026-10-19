@@ -1,3 +1,5 @@
+filed_to: cocktails/amaro-nonino-sour.md
+filed_on: 2026-10-19
 ---
 title: Amaro Nonino Sour
 slug: amaro-nonino-sour

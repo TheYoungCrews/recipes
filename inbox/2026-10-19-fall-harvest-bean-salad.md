@@ -1,3 +1,5 @@
+filed_to: recipes/harvest-bean-salad.md
+filed_on: 2026-10-19
 ---
 title: Fall Harvest Bean Salad
 slug: fall-harvest-bean-salad

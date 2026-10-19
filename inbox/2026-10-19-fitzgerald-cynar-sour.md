@@ -1,3 +1,5 @@
+filed_to: cocktails/fitzgerald-cynar-sour.md
+filed_on: 2026-10-19
 ---
 title: Fitzgerald Cynar Sour
 slug: fitzgerald-cynar-sour

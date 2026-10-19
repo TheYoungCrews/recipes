@@ -1,3 +1,5 @@
+filed_to: recipes/italian-bean-salad.md
+filed_on: 2026-10-19
 ---
 title: Champagne Italian Bean Salad
 slug: champagne-italian-bean-salad

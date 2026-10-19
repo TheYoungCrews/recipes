@@ -1,3 +1,5 @@
+filed_to: recipes/lemon-garlic-chicken.md
+filed_on: 2026-10-19
 ---
 title: Lemony Garlic Chicken
 slug: lemony-garlic-chicken

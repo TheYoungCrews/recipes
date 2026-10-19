@@ -1,3 +1,5 @@
+filed_to: cocktails/tulsi-americano-sour.md
+filed_on: 2026-10-19
 ---
 title: Tulsi Americano Sour
 slug: tulsi-americano-sour

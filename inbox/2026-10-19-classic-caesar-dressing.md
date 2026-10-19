@@ -1,3 +1,5 @@
+filed_to: recipes/caesar-dressing.md
+filed_on: 2026-10-19
 ---
 title: Classic Caesar Dressing
 slug: classic-caesar-dressing

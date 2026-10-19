@@ -1,3 +1,5 @@
+filed_to: recipes/miso-sablefish.md
+filed_on: 2026-10-19
 ---
 title: Ginger-Miso Glazed Sablefish
 slug: ginger-miso-glazed-sablefish

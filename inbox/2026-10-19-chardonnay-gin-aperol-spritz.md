@@ -1,3 +1,5 @@
+filed_to: cocktails/chardonnay-aperol-spritz.md
+filed_on: 2026-10-19
 ---
 title: Chardonnay Gin Aperol Spritz
 slug: chardonnay-gin-aperol-spritz

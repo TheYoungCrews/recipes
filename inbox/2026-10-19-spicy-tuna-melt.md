@@ -1,3 +1,5 @@
+filed_to: recipes/spicy-tuna-melt.md
+filed_on: 2026-10-19
 ---
 title: Spicy Tuna Melt
 slug: spicy-tuna-melt

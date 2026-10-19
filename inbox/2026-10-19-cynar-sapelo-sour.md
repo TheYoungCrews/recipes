@@ -1,3 +1,5 @@
+filed_to: cocktails/cynar-sapelo-sour.md
+filed_on: 2026-10-19
 ---
 title: Cynar Sapelo Sour
 slug: cynar-sapelo-sour

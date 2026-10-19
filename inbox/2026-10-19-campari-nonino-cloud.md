@@ -1,3 +1,5 @@
+filed_to: cocktails/campari-nonino-cloud.md
+filed_on: 2026-10-19
 ---
 title: Campari Nonino Cloud
 slug: campari-nonino-cloud

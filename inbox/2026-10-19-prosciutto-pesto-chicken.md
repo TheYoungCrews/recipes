@@ -1,3 +1,5 @@
+filed_to: recipes/pesto-prosciutto-chicken.md
+filed_on: 2026-10-19
 ---
 title: Prosciutto Pesto Chicken
 slug: prosciutto-pesto-chicken

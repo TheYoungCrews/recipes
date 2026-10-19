@@ -1,3 +1,5 @@
+filed_to: recipes/memere-mushroom-soup.md
+filed_on: 2026-10-19
 ---
 title: Memere’s Mushroom Soup
 slug: memeres-mushroom-soup

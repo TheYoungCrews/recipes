@@ -1,3 +1,5 @@
+filed_to: cocktails/jamjam-paper-plane.md
+filed_on: 2026-10-19
 ---
 title: JamJam Paper Plane
 slug: jamjam-paper-plane

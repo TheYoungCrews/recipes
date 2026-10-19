@@ -1,3 +1,5 @@
+filed_to: cocktails/cynar-gin-sour.md
+filed_on: 2026-10-19
 ---
 title: Aquafaba Cynar Gin Sour
 slug: aquafaba-cynar-gin-sour

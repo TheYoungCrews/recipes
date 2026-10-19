@@ -1,3 +1,5 @@
+filed_to: cocktails/bourbon-division-bell.md
+filed_on: 2026-10-19
 ---
 title: Bourbon Division Bell
 slug: bourbon-division-bell

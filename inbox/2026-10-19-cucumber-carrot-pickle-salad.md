@@ -1,3 +1,5 @@
+filed_to: recipes/pickle-carrot-salad.md
+filed_on: 2026-10-19
 ---
 title: Cucumber Carrot Pickle Salad
 slug: cucumber-carrot-pickle-salad
