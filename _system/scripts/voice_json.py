@@ -55,7 +55,7 @@ def write(items, out):
 
 ## For AI agents
 - Read recipes: https://blind-tiger.pages.dev/recipes.json (full) or https://blind-tiger.pages.dev/recipes-index.json (list)
-- Add recipes: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or have a person paste at https://blind-tiger.pages.dev/add
-- Playbook: https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md
-- Email to crews@mail.grokbot.com is a backup only
+- Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
+- Bulk add: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or paste at https://blind-tiger.pages.dev/add
+- Agents with repo write access commit to inbox/ in https://github.com/TheYoungCrews/recipes
 """)
