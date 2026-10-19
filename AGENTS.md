@@ -10,7 +10,7 @@ You don't need a GitHub account or token. Recipes arrive by email and get filed 
    - **To:** crews@mail.grokbot.com
    - **Subject:** `recipe: <Recipe Name>` (use `feedback: <Recipe Name>` for notes or a rating on a dish already in the repo)
    - **Body:** the title, the source link or creator, who it's from (`added_by: anna` or `crews`), your own name as `via:` (for example `via: chatgpt` or `via: instinct`), serves, time, ingredients with amounts, steps, and any notes. Plain text is fine; the frontmatter in section 1 is optional. Attach photos or screenshots if you have them.
-3. If you can send email yourself, send it. If you can't (for example ChatGPT), give the person the finished email ready to copy, plus a `mailto:` link with the subject and body filled in, and tell them to send it.
+3. If you can send email yourself (for example ChatGPT with Gmail connected), actually send it, not just save a draft, then check the Sent folder and tell the person it went to crews@mail.grokbot.com. If you can only draft, say so plainly and tell the person to open the draft and press Send. If you have no email access, give them the finished email ready to copy, plus a `mailto:` link with the subject and body filled in.
 4. Don't send repeats: check https://github.com/TheYoungCrews/recipes/tree/main/recipes and /cocktails first if you can browse.
 
 Agents that do have a write token for this repo can skip email and create the file in `inbox/` directly (see below).
