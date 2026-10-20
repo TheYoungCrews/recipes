@@ -1,3 +1,5 @@
+filed_to: recipes/french-onion-scalloped-potatoes.md
+filed_at: 2026-10-20
 ---
 title: French Onion Scalloped Potatoes
 slug: french-onion-scalloped-potatoes
