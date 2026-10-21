@@ -1,3 +1,5 @@
+filed_to: recipes/honey-ginger-chicken-brothy-rice-bowls.md
+filed_at: 2026-10-20
 ---
 title: Honey Ginger Chicken Brothy Rice Bowls
 slug: honey-ginger-chicken-brothy-rice-bowls
