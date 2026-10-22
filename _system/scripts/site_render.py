@@ -129,10 +129,10 @@ def recipe_view(r, staples):
     hero = f'<div class=hero style="background-image:url({E(r["photo"])})"></div>' if r["photo"] else ""
     tags = "".join(f"<span class=tag>{E(t)}</span>" for t in [r["type"]] + r["tags"][:4])
     cooks = r.get("cooks") or "0"
-    facts = [(f'{r["time_minutes"]}m' if r["time_minutes"] else "–", "time"), (r["serves"] or "–", "serves"),
-             ((r["owner"] or "–").replace("anna+crews", "both").title(), "owner"),
+    facts = [(E(f'{r["time_minutes"]}m') if r["time_minutes"] else "–", "time"), (E(str(r["serves"] or "–")), "serves"),
+             (E(str(r["owner"] or "–").replace("anna+crews", "both").title()), "owner"),
              (stars(r["rating"]) or E(r["status"].replace("-", " ")), f'{cooks} cook{"s" if str(cooks)!="1" else ""}')]
-    facts_html = "".join(f"<div><b>{v if '<' in str(v) else E(str(v))}</b>{E(k)}</div>" for v, k in facts)
+    facts_html = "".join(f"<div><b>{v}</b>{E(k)}</div>" for v, k in facts)
     orig_html = ""  # Original stays in the file, never on the site
     from credit import credit as _cr
     ct, ch = _cr(r)
