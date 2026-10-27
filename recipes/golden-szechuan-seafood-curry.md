@@ -54,7 +54,7 @@ Serves 2, about 40 minutes. If serving with rice, start it first.
 - [ ] 1 tsp turmeric
 - [ ] ½ tsp white pepper
 - [x] 2 cups bone broth
-- [ ] 1 can (13.5 oz) full-fat coconut milk
+- [ ] 1 can (13.5 oz) full-fat coconut milk (not reduced fat or light)
 - [ ] 1 can bamboo shoots, drained
 - [x] 1 lime
 - [ ] 1½ tbsp neutral oil
@@ -75,6 +75,7 @@ Serves 2, about 40 minutes. If serving with rice, start it first.
 
 ## Notes
 - 2026-10-27 (crews): cooked it tonight, ended up ok. Had to add sugar and vinegar to balance it, and the sauce didn't have enough time for the flavors to meld. Air-fried the carrot and zucchini ribbons before adding them; roasting would be better. Next time: brown the onion longer, fry the spices in the coconut cream, add fish sauce plus a little sugar and lime, simmer the sauce 20 to 30 minutes (or make it ahead) before the seafood, and roast the veg and fold it in at the end.
+- 2026-10-27 (crews): used reduced-fat coconut cream this time, which was a big problem (thin sauce, flat flavor). Use full-fat only.
 - 2026-10-27 (grok-bot): added optional carrot ribbons (in with the fish) and zucchini ribbons (in with the shrimp), per crews.
 - 2026-10-27 (grok-bot): added a yellow onion, sweated before the aromatics, per crews.
 - 2026-10-27 (grok-bot): rewrote Our version with prep, times and step order per crews; added oil, salt and cilantro, which the original used but didn't list.
