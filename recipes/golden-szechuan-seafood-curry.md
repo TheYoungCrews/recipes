@@ -4,7 +4,7 @@ slug: golden-szechuan-seafood-curry
 type: soup-bowl
 status: favorite
 tags: [fish, shellfish, chinese, dutch-oven, weeknight-30]
-ingredients: [barramundi, shrimp, ginger, garlic, serrano pepper, yellow curry powder, turmeric, white pepper, bone broth, coconut milk, bamboo shoots, lime]
+ingredients: [barramundi, shrimp, onion, ginger, garlic, serrano pepper, yellow curry powder, turmeric, white pepper, bone broth, coconut milk, bamboo shoots, lime]
 serves: 2
 time_minutes: 30
 source: Crews (Gemini)
@@ -41,11 +41,12 @@ Brothy, aromatic Dutch oven seafood curry layering bloomed yellow curry, turmeri
 5. Kill the heat and finish with fresh lime juice and herbs.
 
 ## Our version
-Serves 2, about 35 minutes. If serving with rice, start it first.
+Serves 2, about 40 minutes. If serving with rice, start it first.
 
 **Grocery & inventory check**
 - [ ] 1 lb barramundi or flounder, in 1½ to 2 inch chunks
 - [ ] ½ lb raw peeled shrimp
+- [ ] 1 medium yellow onion, diced or thinly sliced
 - [ ] 1 tbsp fresh ginger, minced
 - [x] 4 cloves garlic, minced
 - [ ] 1 to 2 serrano peppers, sliced (seeded for milder)
@@ -61,16 +62,18 @@ Serves 2, about 35 minutes. If serving with rice, start it first.
 - [ ] Cilantro, to finish
 
 **Steps**
-1. Prep (10 min): pat the fish and shrimp very dry and salt them lightly. Mince the ginger and garlic, slice the serranos, and mix the curry powder, turmeric and white pepper in a small bowl.
+1. Prep (10 min): dice the onion. Pat the fish and shrimp very dry and salt them lightly. Mince the ginger and garlic, slice the serranos, and mix the curry powder, turmeric and white pepper in a small bowl.
 2. Heat the oil in the Dutch oven over medium until it shimmers, about 1 minute.
-3. Add the ginger, garlic and serrano and stir 60 to 90 seconds, until fragrant but not browned.
-4. Drop to medium-low, add the spice mix and stir constantly 30 to 45 seconds. Add a splash of broth if it sticks.
-5. Pour in the broth and scrape the bottom. Stir in the coconut milk and bamboo shoots, bring to a simmer (3 to 4 min), then simmer gently 8 to 10 minutes. Salt to taste, usually ½ to 1 tsp.
-6. Lower the heat to a bare simmer. Nestle in the fish, cover and cook 3 minutes.
-7. Add the shrimp, cover and cook 2 to 3 minutes more, until the shrimp are pink and the fish flakes. Stir gently.
-8. Off the heat, squeeze in half the lime, taste and add more if needed. Top with cilantro and serve.
+3. Add the onion with a pinch of salt and cook 4 to 5 minutes, stirring now and then, until soft and translucent.
+4. Add the ginger, garlic and serrano and stir 60 to 90 seconds, until fragrant but not browned.
+5. Drop to medium-low, add the spice mix and stir constantly 30 to 45 seconds. Add a splash of broth if it sticks.
+6. Pour in the broth and scrape the bottom. Stir in the coconut milk and bamboo shoots, bring to a simmer (3 to 4 min), then simmer gently 8 to 10 minutes. Salt to taste, usually ½ to 1 tsp.
+7. Lower the heat to a bare simmer. Nestle in the fish, cover and cook 3 minutes.
+8. Add the shrimp, cover and cook 2 to 3 minutes more, until the shrimp are pink and the fish flakes. Stir gently.
+9. Off the heat, squeeze in half the lime, taste and add more if needed. Top with cilantro and serve.
 
 ## Notes
+- 2026-10-27 (grok-bot): added a yellow onion, sweated before the aromatics, per crews.
 - 2026-10-27 (grok-bot): rewrote Our version with prep, times and step order per crews; added oil, salt and cilantro, which the original used but didn't list.
 - 2026-10-14 (filed by grok-bot): filed from email 486995. Added chinese cuisine tag (Szechuan). Checklist marks match kitchen/staples.md (only garlic, bone broth, lime currently stapled). No standing soy/chili-paste subs in this recipe.
 - 2026-10-14 (via gemini): captured, sent by crews. status favorite, cooks: 1 as sent (last_made and rating blank).
