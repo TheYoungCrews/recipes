@@ -41,23 +41,37 @@ Brothy, aromatic Dutch oven seafood curry layering bloomed yellow curry, turmeri
 5. Kill the heat and finish with fresh lime juice and herbs.
 
 ## Our version
-- [ ] 1 lb barramundi or flounder
-- [ ] 0.5 lb shrimp
-- [ ] 1 tbsp fresh ginger
-- [x] 4 cloves garlic
-- [ ] 1-2 serrano peppers
-- [ ] 1.5 tbsp yellow curry powder
-- [ ] 1 tsp turmeric
-- [ ] 0.5 tsp white pepper
-- [x] 2 cups bone broth
-- [ ] 1 can full-fat coconut milk
-- [ ] 1 can bamboo shoots
-- [x] 1 lime
+Serves 2, about 35 minutes. If serving with rice, start it first.
 
-1. Sweat aromatics in the Dutch oven, bloom the curry powder, turmeric, and white pepper, then simmer with bone broth, coconut milk, and bamboo shoots.
-2. Poach the white fish and shrimp gently at the end and finish with lime juice.
+**Grocery & inventory check**
+- [ ] 1 lb barramundi or flounder, in 1½ to 2 inch chunks
+- [ ] ½ lb raw peeled shrimp
+- [ ] 1 tbsp fresh ginger, minced
+- [x] 4 cloves garlic, minced
+- [ ] 1 to 2 serrano peppers, sliced (seeded for milder)
+- [ ] 1½ tbsp yellow curry powder
+- [ ] 1 tsp turmeric
+- [ ] ½ tsp white pepper
+- [x] 2 cups bone broth
+- [ ] 1 can (13.5 oz) full-fat coconut milk
+- [ ] 1 can bamboo shoots, drained
+- [x] 1 lime
+- [ ] 1½ tbsp neutral oil
+- [ ] Salt
+- [ ] Cilantro, to finish
+
+**Steps**
+1. Prep (10 min): pat the fish and shrimp very dry and salt them lightly. Mince the ginger and garlic, slice the serranos, and mix the curry powder, turmeric and white pepper in a small bowl.
+2. Heat the oil in the Dutch oven over medium until it shimmers, about 1 minute.
+3. Add the ginger, garlic and serrano and stir 60 to 90 seconds, until fragrant but not browned.
+4. Drop to medium-low, add the spice mix and stir constantly 30 to 45 seconds. Add a splash of broth if it sticks.
+5. Pour in the broth and scrape the bottom. Stir in the coconut milk and bamboo shoots, bring to a simmer (3 to 4 min), then simmer gently 8 to 10 minutes. Salt to taste, usually ½ to 1 tsp.
+6. Lower the heat to a bare simmer. Nestle in the fish, cover and cook 3 minutes.
+7. Add the shrimp, cover and cook 2 to 3 minutes more, until the shrimp are pink and the fish flakes. Stir gently.
+8. Off the heat, squeeze in half the lime, taste and add more if needed. Top with cilantro and serve.
 
 ## Notes
+- 2026-10-27 (grok-bot): rewrote Our version with prep, times and step order per crews; added oil, salt and cilantro, which the original used but didn't list.
 - 2026-10-14 (filed by grok-bot): filed from email 486995. Added chinese cuisine tag (Szechuan). Checklist marks match kitchen/staples.md (only garlic, bone broth, lime currently stapled). No standing soy/chili-paste subs in this recipe.
 - 2026-10-14 (via gemini): captured, sent by crews. status favorite, cooks: 1 as sent (last_made and rating blank).
 - 2026-10-14 (crews): made a few times last winter; 4 stars. (cooks: 3 is an estimate of "a few".)
