@@ -55,7 +55,7 @@ async function run(){
   const v=q.value.trim(), box=$('#answer'); if(!v){box.hidden=true;filter();return}
   const out=await ask(v); box.hidden=false;
   box.innerHTML=`<div class=q>You asked: <b>"${esc(v)}"</b></div>`+(out.length?out.map((x,i)=>{const r=bySlug[x.slug];
-    return `<a class=ans href="#r-${r.slug}" style="text-decoration:none;color:inherit"><span class=n>${i+1}</span><div><div class="t hand">${esc(r.title)}</div><div class=w>${esc(x.why)}</div></div><span class=go>Open →</span></a>`}).join("")
+    return `<a class=ans href="/r/${r.slug}" data-slug="${r.slug}" style="text-decoration:none;color:inherit"><span class=n>${i+1}</span><div><div class="t hand">${esc(r.title)}</div><div class=w>${esc(x.why)}</div></div><span class=go>Open →</span></a>`}).join("")
     :`<div class=empty>Nothing in our book matches that yet. Try an ingredient, like "chicken" or "rye".</div>`)+
     `<div class=note>${window.ASK_AI_USED?"Picked by the kitchen helper from our book.":"Simple keyword and pantry matching. It only suggests recipes already in our book."}</div>`;
   filter();
@@ -84,6 +84,8 @@ $('#pick').addEventListener('click',()=>{
 // Ingredient checkboxes remember state per recipe on this device
 $$('.ing input').forEach((cb,i)=>{const k="chk:"+cb.name;cb.checked=localStorage.getItem(k)==="1";cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?"1":"0"))});
 // Scroll to top when opening a recipe
+// Cards and answers link to the plain /r/<slug> page (so copied links work everywhere); a plain click opens the in-page view instead.
+document.addEventListener('click',e=>{const a=e.target.closest('a.card,a.ans');if(!a||!a.dataset.slug||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();location.hash='r-'+a.dataset.slug});
 window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#r-'))window.scrollTo(0,0)});
 })();
 // ---- Sign-in (Google or Ethereum/SIWE) shared by Cooked it and Ask. The server keeps a 30-day HttpOnly session cookie that renews itself with use; signed-in state always comes from GET /api/session.

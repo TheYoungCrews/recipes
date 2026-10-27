@@ -55,6 +55,7 @@ footer{text-align:center;color:var(--mute);font-size:12px;margin-top:30px}.heart
 
 .rc{max-width:760px;margin:16px auto;overflow:hidden}
 .back{display:inline-block;margin:14px 0 0;color:var(--sage-d);text-decoration:none;font-weight:600;font-size:14px}
+.plainlink{display:inline-block;margin:14px 0 0 12px;color:var(--mute);font-size:13px}
 .hero{height:300px;background:url(bowl.jpg) center 55%/cover}@media(min-width:800px){.hero{height:400px}}
 .in{padding:18px 20px 24px}.in h1{font-size:42px;line-height:.95;margin:0 0 8px}
 .lede{color:#4b463e;margin:0 0 12px}

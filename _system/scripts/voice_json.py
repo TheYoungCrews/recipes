@@ -38,7 +38,8 @@ def entry(r):
     return {"slug": r["slug"], "title": r["title"], "type": r["type"], "status": r["status"],
             "tags": r["tags"], "rating": r["rating"] or None, "cooks": r["cooks"] or 0,
             "last_made": r["last_made"] or None, "serves": r["serves"] or None,
-            "time_minutes": r["time_minutes"] or None, "url": f'{SITE}/#r-{r["slug"]}', "credit": _credit(r)[0], "credit_url": _credit(r)[1],
+            "time_minutes": r["time_minutes"] or None, "url": f'{SITE}/r/{r["slug"]}' if r["status"] != "retired" else None,
+            "md_url": f'{SITE}/r/{r["slug"]}.md' if r["status"] != "retired" else None, "credit": _credit(r)[0], "credit_url": _credit(r)[1],
             "ingredients": yi or oi, "steps": ys or os_, "notes": notes[:3]}
 
 def write(items, out):
@@ -46,8 +47,9 @@ def write(items, out):
     (out/"kitchen.json").write_text(json.dumps({"taste": (root/"kitchen/taste-profile.md").read_text(), "staples": (root/"kitchen/staples.md").read_text()}, ensure_ascii=False))
     full = [entry(r) for r in items]
     (out/"recipes.json").write_text(json.dumps({"site": SITE, "count": len(full), "items": full}, indent=1, ensure_ascii=False))
-    (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status")} for e in full], ensure_ascii=False))
+    (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status","url")} for e in full], ensure_ascii=False))
     hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json"))
+    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n"
     (out/"_headers").write_text(hdr)
     (out/"llms.txt").write_text("""# Crews & Anna's Kitchen
 
@@ -55,7 +57,11 @@ def write(items, out):
 
 ## For AI agents
 - Read recipes: https://blind-tiger.pages.dev/recipes.json (full) or https://blind-tiger.pages.dev/recipes-index.json (list)
+- One recipe as a plain page (no JavaScript): https://blind-tiger.pages.dev/r/<slug>, or as markdown: https://blind-tiger.pages.dev/r/<slug>.md
+- A link like https://blind-tiger.pages.dev/#r-<slug> is the same recipe; fetch /r/<slug> instead. List of every page: https://blind-tiger.pages.dev/r/ and https://blind-tiger.pages.dev/sitemap.xml
 - Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
 - Bulk add: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or paste at https://blind-tiger.pages.dev/add
 - Agents with repo write access commit to inbox/ in https://github.com/TheYoungCrews/recipes
-""")
+
+## Recipes
+""" + "".join(f'- [{e["title"]}]({e["url"]}): markdown {e["md_url"]}\n' for e in sorted(full, key=lambda e: e["title"].lower()) if e["url"]))

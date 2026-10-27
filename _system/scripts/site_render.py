@@ -61,7 +61,7 @@ def card(r):
     right = stars(r["rating"]) or {"favorite":"<span class=fav>favorite</span>","made":"made it"}.get(st, "")
     stamp = "<span class=stamp>TO TRY</span>" if st == "to-try" else ""
     t = r["time_minutes"]
-    return (f'<a class=card href="#r-{E(r["slug"])}" data-slug="{E(r["slug"])}">{stamp}{ph}<div class=bd>'
+    return (f'<a class=card href="/r/{E(r["slug"])}" data-slug="{E(r["slug"])}">{stamp}{ph}<div class=bd>'
             + (f'<h3 class="tt hand">{E(r["title"])}</h3>' if r["photo"] else f'<h3 class=sr>{E(r["title"])}</h3>') + f'<div class=tags>{tags}</div>'
             + f'<div class=meta><span>{E(str(t))+" min" if t else "&nbsp;"}</span>{right}</div></div></a>')
 
@@ -86,24 +86,18 @@ def ours_prose(lines):
         if s and not s.startswith("**Grocery"): out.append(s[0].upper()+s[1:] if not s.startswith(("-", "*")) else s)
     return out
 
-def recipe_view(r, staples):
+def recipe_parts(r):
+    """Everything the public site shows for one recipe, as plain data. Used by the modal, /r/<slug> pages and /r/<slug>.md."""
     sec = sections(r["body"])
     orig, ours, notes = sec.get("original", []), sec.get("our version", []), sec.get("notes", [])
     ou_ul, ou_ol = lists(ours); or_ul, or_ol = lists(orig)
     ours_checks = [x for x in ou_ul if re.match(r"\[[ x]\]", x)]
-    ings = ours_checks or [x for x in or_ul if not re.match(r"\d{4}-", x)]
+    ings = []
+    for x in ours_checks or [x for x in or_ul if not re.match(r"\d{4}-", x)]:
+        m = re.match(r"\[([ x])\]\s*(.*)", x)
+        ings.append((clean(m.group(2) if m else x), bool(m and m.group(1) == "x")))
     steps = ou_ol or or_ol
-    ing_html = ""
-    for i, x in enumerate(ings):
-        m = re.match(r"\[([ x])\]\s*(.*)", x); txt = m.group(2) if m else x
-        have = '<span class=have>on hand</span>' if (m and m.group(1) == "x") else ""
-        ing_html += f'<label><input type=checkbox name="{E(r["slug"])}-{i}"><span>{inline(clean(txt))}</span>{have}</label>'
-    def step(s):
-        m = re.match(r"^\*\*(.+?)\*\*:?\s*(.*)", s)
-        return f"<li><div><b>{E(m.group(1).rstrip(':'))}</b>{inline(m.group(2))}</div></li>" if m else f"<li><div>{inline(clean(s))}</div></li>"
-    step_html = "".join(step(s) for s in steps)
     extra = ours_prose([l for l in ours if not re.match(r"^\s*(- \[[ x]\]|\d+\.\s)", l)])
-    ours_html = f'<h3 class="sec hand">Notes from us</h3><div class=ours>{md_block(extra)}</div>' if extra else ""
     diary = []
     for l in notes:
         m = re.match(r"^\s*- (\d{4}-\d{2}-\d{2})\s*(\(([^)]*)\))?:?\s*(.*)", l)
@@ -119,13 +113,36 @@ def recipe_view(r, staples):
         txt = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", raw) if not DEV.search(x)))
         if txt and txt[0].islower(): txt = txt[0].upper() + txt[1:]
         if not txt and not rate and not pm: continue
-        d = datetime.date.fromisoformat(m.group(1)).strftime("%b %-d")
-        st = stars(rate.group(1)) if rate else ""
-        th = f'<img class=dthumb src="{E(pm.group(1))}" alt="" loading=lazy>' if pm else ""
-        diary.append(f'<div class=dent><span class="dd hand">{d}</span><div><div class=dwho><b>{person.group(1).title()}</b>{st}</div>{f"<p>{inline(txt)}</p>" if txt else ""}{th}</div></div>')
-    diary_html = "".join(diary) or "<p class=diary-empty>Not cooked yet.</p>"
+        diary.append({"date": m.group(1), "who": person.group(1).title(), "rating": rate.group(1) if rate else "",
+                      "text": txt, "photo": pm.group(1) if pm else ""})
     intro = " ".join(l.strip() for l in sec["_intro"] if l.strip() and not l.strip().startswith("!["))
     intro = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", intro) if not DEV.search(x)))
+    from credit import credit as _cr
+    ct, ch = _cr(r)
+    return {"ings": ings, "steps": steps, "extra": extra, "diary": diary, "intro": intro, "credit": ct, "credit_url": ch}
+
+def step_html(s, inl=None):
+    m = re.match(r"^\*\*(.+?)\*\*:?\s*(.*)", s)
+    return f"<li><div><b>{E(m.group(1).rstrip(':'))}</b>{inline(m.group(2))}</div></li>" if m else f"<li><div>{inline(clean(s))}</div></li>"
+
+def recipe_view(r, staples):
+    P = recipe_parts(r)
+    ing_html = ""
+    for i, (txt, onhand) in enumerate(P["ings"]):
+        have = '<span class=have>on hand</span>' if onhand else ""
+        ing_html += f'<label><input type=checkbox name="{E(r["slug"])}-{i}"><span>{inline(txt)}</span>{have}</label>'
+    steps_html = "".join(step_html(s) for s in P["steps"])
+    extra = P["extra"]
+    ours_html = f'<h3 class="sec hand">Notes from us</h3><div class=ours>{md_block(extra)}</div>' if extra else ""
+    diary = []
+    for d0 in P["diary"]:
+        d = datetime.date.fromisoformat(d0["date"]).strftime("%b %-d")
+        st = stars(d0["rating"]) if d0["rating"] else ""
+        th = f'<img class=dthumb src="{E(d0["photo"])}" alt="" loading=lazy>' if d0["photo"] else ""
+        txt = d0["text"]
+        diary.append(f'<div class=dent><span class="dd hand">{d}</span><div><div class=dwho><b>{d0["who"]}</b>{st}</div>{f"<p>{inline(txt)}</p>" if txt else ""}{th}</div></div>')
+    intro = P["intro"]
+    diary_html = "".join(diary) or "<p class=diary-empty>Not cooked yet.</p>"
     hero = f'<div class=hero style="background-image:url({E(r["photo"])})"></div>' if r["photo"] else ""
     tags = "".join(f"<span class=tag>{E(t)}</span>" for t in [r["type"]] + r["tags"][:4])
     cooks = r.get("cooks") or "0"
@@ -134,15 +151,14 @@ def recipe_view(r, staples):
              (stars(r["rating"]) or E(r["status"].replace("-", " ")), f'{cooks} cook{"s" if str(cooks)!="1" else ""}')]
     facts_html = "".join(f"<div><b>{v}</b>{E(k)}</div>" for v, k in facts)
     orig_html = ""  # Original stays in the file, never on the site
-    from credit import credit as _cr
-    ct, ch = _cr(r)
+    ct, ch = P["credit"], P["credit_url"]
     src = (f'<p class=src><a href="{E(ch)}" rel=noopener target=_blank>{E(ct)}</a></p>' if ch else f'<p class=src>{E(ct)}</p>') if ct else ""
-    return f'''<article class=view id="r-{E(r["slug"])}"><div class=wrap><a class=back href="#top">← Kitchen</a>
+    return f'''<article class=view id="r-{E(r["slug"])}"><div class=wrap><a class=back href="#top">← Kitchen</a> <a class=plainlink href="/r/{E(r["slug"])}">plain page</a>
 <div class="sheet rc">{hero}<div class=in><div class=tags>{tags}</div>
 <h1 class=hand style="margin-top:10px">{E(r["title"])}</h1>{f"<p class=lede>{inline(intro)}</p>" if intro else ""}
 <div class=facts>{facts_html}</div>
 {f'<h3 class="sec hand">Ingredients</h3><div class="ing ruled">{ing_html}</div>' if ing_html else ""}
-{f'<h3 class="sec hand">{"Method" if r["type"] in DRINK else "Steps"}</h3><ol class=st>{step_html}</ol>' if step_html else ""}
+{f'<h3 class="sec hand">{"Method" if r["type"] in DRINK else "Steps"}</h3><ol class=st>{steps_html}</ol>' if steps_html else ""}
 {ours_html}{orig_html}
 <h3 class="sec hand">Cook diary</h3><div class=diary>{diary_html}</div>
 <form class=cook data-slug="{E(r["slug"])}" data-title="{E(r["title"])}"><h4 class=hand>Cooked it?</h4>
@@ -192,15 +208,16 @@ def render(items, staples, root):
 {f'<section class=bar id=bar><h2 class=hand>The bar cart <small>{len(bar)} cocktails</small></h2><div class=grid>{"".join(card(r) for r in bar)}</div></section>' if bar else ""}
 <p id=add class="addline hand">Got one we should try? <a href="/add">Add recipes</a> · <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">for AI assistants</a></p>
 <footer>made at home <span class=heart>♥</span> {len(live)} recipes · <a href="https://github.com/TheYoungCrews/recipes">the recipe files</a></footer>
-<noscript><p>Search and the dinner picker need JavaScript; every recipe still opens.</p></noscript></div></section>'''
+<noscript><p>Search and the dinner picker need JavaScript; every recipe still opens. Plain pages for every recipe: <a href="/r/">all recipes</a>.</p></noscript></div></section>'''
     views = "\n".join(recipe_view(r, staples) for r in live)
     page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Crews &amp; Anna's Kitchen</title><meta name=theme-color content="#7f9a7a"><meta name=apple-mobile-web-app-capable content=yes>
-<meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:type" content="website"><meta property="og:url" content="https://blind-tiger.pages.dev/"><meta property="og:image" content="https://blind-tiger.pages.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta name="twitter:image" content="https://blind-tiger.pages.dev/og.jpg"><link rel="alternate" type="application/json" href="/recipes.json" title="All recipes for agents"><link rel="help" href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md"><meta name="agent-instructions" content="AI agents: read /recipes.json. To add a recipe follow AGENTS.md and email crews@mail.grokbot.com (recipe: in the subject). Bulk: POST /api/recipes (OpenAPI /openapi.json) or paste at /add.">
+<meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:type" content="website"><meta property="og:url" content="https://blind-tiger.pages.dev/"><link rel=canonical href="https://blind-tiger.pages.dev/"><link rel=sitemap type="application/xml" href="/sitemap.xml"><meta property="og:image" content="https://blind-tiger.pages.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta name="twitter:image" content="https://blind-tiger.pages.dev/og.jpg"><link rel="alternate" type="application/json" href="/recipes.json" title="All recipes for agents"><link rel="help" href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md"><meta name="agent-instructions" content="AI agents: read /recipes.json. To add a recipe follow AGENTS.md and email crews@mail.grokbot.com (recipe: in the subject). Bulk: POST /api/recipes (OpenAPI /openapi.json) or paste at /add.">
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="/icon-180.png"><link rel=icon type=image/png href="/icon-180.png"><style>{css}</style></head>
-<body><div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><h2>For AI agents</h2><p>Read recipes from <a href="/recipes.json">/recipes.json</a>. To add one, follow <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">AGENTS.md</a> and email crews@mail.grokbot.com with "recipe:" in the subject. Bulk: POST <a href="/openapi.json">/api/recipes</a> or paste at <a href="/add">/add</a>.</p></div><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="/add">+ add one</a></p></div></header>{home}{views}
+<body><div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><h2>For AI agents</h2><p>Read recipes from <a href="/recipes.json">/recipes.json</a>. To add one, follow <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">AGENTS.md</a> and email crews@mail.grokbot.com with "recipe:" in the subject. Bulk: POST <a href="/openapi.json">/api/recipes</a> or paste at <a href="/add">/add</a>.</p><p>Every recipe has a plain page with no JavaScript at /r/&lt;slug&gt; and markdown at /r/&lt;slug&gt;.md. A link like /#r-&lt;slug&gt; is the same recipe as /r/&lt;slug&gt;. Full list: <a href="/r/">/r/</a> and <a href="/sitemap.xml">/sitemap.xml</a>.</p><ul>{"".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a></li>' for r in sorted(live, key=lambda r: r["title"].lower()))}</ul></div><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="/add">+ add one</a></p></div></header>{home}{views}
 <script>window.KITCHEN={data};</script><script>{js}</script></body></html>'''
     (out/"index.html").write_text(page)
+    static_pages(live, out)
     # /add paste page (human fallback) + OpenAPI for GPT Actions / agents
     add_tpl = (SITE / "add.html").read_text()
     add_js = (SITE / "add.js").read_text()
@@ -218,3 +235,117 @@ def render(items, staples, root):
     (out / "add.html").write_text(add_page)
     shutil.copy2(SITE / "openapi.json", out / "openapi.json")
 
+
+# ---- Static recipe pages for people and LLMs that don't run JavaScript: /r/<slug> (HTML) and /r/<slug>.md
+BASE = "https://blind-tiger.pages.dev"
+PAGE_CSS = """@font-face{font-family:Hand;src:url(/caveat.woff2) format('woff2');font-weight:400 700;font-display:swap}
+body{margin:0;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#2a2723;background:#fbf6ea;
+background-image:linear-gradient(90deg,rgba(127,154,122,.10) 50%,transparent 50%),linear-gradient(rgba(127,154,122,.10) 50%,transparent 50%);background-size:28px 28px}
+main{max-width:720px;margin:24px auto;padding:24px 22px 32px;background:#fffdf6;border:1px solid #e9e1cf;border-radius:14px}
+h1,h2{font-family:Hand,"Bradley Hand",cursive;color:#4f6b4c;line-height:1.1}h1{font-size:44px;margin:4px 0 6px}h2{font-size:30px;margin:28px 0 8px}
+a{color:#4f6b4c}.meta,.credit,nav{color:#7a7266;font-size:15px}.credit{margin:0 0 6px}img.hero{width:100%;border-radius:10px;margin:8px 0}
+li{margin:4px 0}.diary li img{display:block;max-width:180px;border-radius:8px;margin-top:4px}footer{max-width:720px;margin:0 auto 32px;padding:0 22px;color:#7a7266;font-size:14px}"""
+
+def plain_md(s):
+    return re.sub(r"\s+", " ", re.sub(r"\*\*(.+?)\*\*", r"\1", s)).strip()
+
+def _facts(r):
+    out = []
+    if r["serves"]: out.append(f'Serves {r["serves"]}')
+    if r["time_minutes"]: out.append(f'{r["time_minutes"]} min')
+    out.append({"favorite": "Favorite", "made": "Made it", "to-try": "To try"}.get(r["status"], r["status"].title()))
+    try: out.append(f'Rated {float(r["rating"]):g}/5')
+    except (TypeError, ValueError): pass
+    c = str(r.get("cooks") or "0")
+    if c not in ("", "0"): out.append(f'Cooked {c} time{"s" if c != "1" else ""}')
+    return out
+
+def _date(d): return datetime.date.fromisoformat(d).strftime("%b %-d, %Y")
+
+def recipe_md(r, P):
+    url = f'{BASE}/r/{r["slug"]}'
+    L = [f'# {r["title"]}', ""]
+    if P["credit"]: L += [(f'{P["credit"]} ({P["credit_url"]})' if P["credit_url"] else P["credit"]), ""]
+    L += [" · ".join(_facts(r)), ""]
+    if P["intro"]: L += [plain_md(P["intro"]), ""]
+    if P["ings"]: L += ["## Ingredients", ""] + [f"- {plain_md(t)}" for t, _ in P["ings"]] + [""]
+    if P["steps"]: L += ["## " + ("Method" if r["type"] in DRINK else "Steps"), ""] + [f"{i}. {plain_md(clean(s))}" for i, s in enumerate(P["steps"], 1)] + [""]
+    if P["extra"]: L += ["## Notes from us", ""] + [x if x.startswith(("- ", "* ")) else x for x in P["extra"]] + [""]
+    if P["diary"]:
+        L += ["## Cook diary", ""]
+        for d in P["diary"]:
+            bits = [_date(d["date"]), d["who"]] + ([f'{float(d["rating"]):g}/5'] if d["rating"] else [])
+            L.append(f'- {", ".join(bits)}' + (f': {plain_md(d["text"])}' if d["text"] else ""))
+        L.append("")
+    L += [f"Page: {url}", f"Kitchen: {BASE}/", ""]
+    return "\n".join(L)
+
+def recipe_page(r, P):
+    slug, title = r["slug"], r["title"]
+    url = f"{BASE}/r/{slug}"
+    facts = " · ".join(_facts(r))
+    desc_src = plain_md(P["intro"]) or (("Ingredients: " + ", ".join(plain_md(t) for t, _ in P["ings"])) if P["ings"] else title)
+    desc = (" ".join(x for x in [P["credit"] + "." if P["credit"] else "", facts + ".", desc_src] if x))
+    desc = desc if len(desc) <= 200 else desc[:197].rsplit(" ", 1)[0] + "..."
+    img = f'{BASE}/{r["photo"]}' if r["photo"] else f"{BASE}/og.jpg"
+    credit = ""
+    if P["credit"]:
+        credit = f'<p class=credit><a href="{E(P["credit_url"])}" rel=noopener>{E(P["credit"])}</a></p>' if P["credit_url"] else f'<p class=credit>{E(P["credit"])}</p>'
+    ld = {"@context": "https://schema.org", "@type": "Recipe", "name": title, "url": url, "image": img,
+          "recipeIngredient": [plain_md(t) for t, _ in P["ings"]],
+          "recipeInstructions": [{"@type": "HowToStep", "text": plain_md(clean(s))} for s in P["steps"]],
+          "recipeCategory": r["type"], "keywords": ", ".join(r["tags"])}
+    if P["credit"]: ld["author"] = {"@type": "Person", "name": re.sub(r"^By ", "", P["credit"])}
+    if r["serves"]: ld["recipeYield"] = str(r["serves"])
+    if r["time_minutes"]: ld["totalTime"] = f'PT{r["time_minutes"]}M'
+    if P["intro"]: ld["description"] = plain_md(P["intro"])
+    ldj = json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
+    body = [f'<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/r/{E(slug)}.md">Markdown</a> · <a href="/#r-{E(slug)}">Open in the kitchen</a></nav>',
+            f"<h1>{E(title)}</h1>", credit, f"<p class=meta>{E(facts)}</p>"]
+    if r["photo"]: body.append(f'<img class=hero src="/{E(r["photo"])}" alt="{E(title)}">')
+    if P["intro"]: body.append(f"<p>{inline(P['intro'])}</p>")
+    if P["ings"]: body.append("<h2>Ingredients</h2><ul>" + "".join(f"<li>{inline(t)}</li>" for t, _ in P["ings"]) + "</ul>")
+    if P["steps"]:
+        body.append(f'<h2>{"Method" if r["type"] in DRINK else "Steps"}</h2><ol>'
+                    + "".join(re.sub(r"</?div>", "", step_html(s)).replace("</b>", "</b> ", 1) if s.startswith("**") else re.sub(r"</?div>", "", step_html(s)) for s in P["steps"]) + "</ol>")
+    if P["extra"]: body.append("<h2>Notes from us</h2>" + md_block(P["extra"]))
+    body.append("<h2>Cook diary</h2>")
+    if P["diary"]:
+        items = []
+        for d in P["diary"]:
+            bits = [_date(d["date"]), d["who"]] + ([f'{float(d["rating"]):g}/5'] if d["rating"] else [])
+            items.append(f'<li><b>{E(", ".join(bits))}</b>' + (f": {inline(d['text'])}" if d["text"] else "")
+                         + (f'<img src="/{E(d["photo"])}" alt="" loading=lazy>' if d["photo"] else "") + "</li>")
+        body.append("<ul class=diary>" + "".join(items) + "</ul>")
+    else: body.append("<p>Not cooked yet.</p>")
+    t, dsc = E(title), E(desc)
+    return f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="{dsc}"><link rel=canonical href="{url}">
+<link rel=alternate type="text/markdown" href="/r/{E(slug)}.md"><meta name=theme-color content="#7f9a7a">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Crews &amp; Anna's Kitchen"><meta property="og:title" content="{t}"><meta property="og:description" content="{dsc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{E(img)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{dsc}"><meta name="twitter:image" content="{E(img)}">
+<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png"><style>{PAGE_CSS}</style>
+<script type="application/ld+json">{ldj}</script></head>
+<body><main>
+{chr(10).join(x for x in body if x)}
+</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer></body></html>'''
+
+def static_pages(live, out):
+    rdir = out / "r"; shutil.rmtree(rdir, ignore_errors=True); rdir.mkdir(parents=True)
+    shutil.copy2(SITE / "caveat.woff2", out / "caveat.woff2")
+    for r in live:
+        P = recipe_parts(r)
+        (rdir / f'{r["slug"]}.html').write_text(recipe_page(r, P))
+        (rdir / f'{r["slug"]}.md').write_text(recipe_md(r, P))
+    by = sorted(live, key=lambda r: r["title"].lower())
+    food = [r for r in by if r["type"] not in DRINK]; bar = [r for r in by if r["type"] in DRINK]
+    li = lambda rs: "<ul>" + "".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a></li>' for r in rs) + "</ul>"
+    (rdir / "index.html").write_text(f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>All recipes · Crews &amp; Anna's Kitchen</title><meta name=description content="Every recipe and cocktail in Crews &amp; Anna's Kitchen as a plain page."><link rel=canonical href="{BASE}/r/"><style>{PAGE_CSS}</style></head>
+<body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a></nav><h1>All recipes</h1><p class=meta>{len(food)} recipes and {len(bar)} cocktails. Each page has a plain markdown copy at the same address plus .md.</p>
+<h2>Recipes</h2>{li(food)}<h2>Cocktails</h2>{li(bar)}</main></body></html>''')
+    today = datetime.date.today().isoformat()
+    urls = [f"{BASE}/", f"{BASE}/r/"] + [f'{BASE}/r/{r["slug"]}' for r in by]
+    (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                                     + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {BASE}/sitemap.xml\n")
