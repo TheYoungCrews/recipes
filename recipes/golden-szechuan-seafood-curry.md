@@ -16,9 +16,11 @@ owner: crews
 input_type: text
 last_made: 2026-10-27
 rating: 4
-cooks: 4
+cooks: 5
 ---
 Brothy, aromatic Dutch oven seafood curry layering bloomed yellow curry, turmeric, and Szechuan-style white pepper heat with poached barramundi and shrimp.
+
+![Made 2026-10-27](photos/golden-szechuan-seafood-curry-2026-10-27.jpg)
 
 ## Original
 - 1 lb Barramundi (or firm white fish), cut into large chunks
@@ -74,6 +76,7 @@ Serves 2, about 40 minutes. If serving with rice, start it first.
 9. Off the heat, squeeze in half the lime, taste and add more lime or salt if needed (extra vegetables thin the broth). Top with cilantro and serve.
 
 ## Notes
+- 2026-10-27 (crews via site, 4/5): cooked it.
 - 2026-10-27 (crews): cooked it tonight, ended up ok. Had to add sugar and vinegar to balance it, and the sauce didn't have enough time for the flavors to meld. Air-fried the carrot and zucchini ribbons before adding them; roasting would be better. Next time: brown the onion longer, fry the spices in the coconut cream, add fish sauce plus a little sugar and lime, simmer the sauce 20 to 30 minutes (or make it ahead) before the seafood, and roast the veg and fold it in at the end.
 - 2026-10-27 (crews): used reduced-fat coconut cream this time, which was a big problem (thin sauce, flat flavor). Use full-fat only.
 - 2026-10-27 (grok-bot): added optional carrot ribbons (in with the fish) and zucchini ribbons (in with the shrimp), per crews.
