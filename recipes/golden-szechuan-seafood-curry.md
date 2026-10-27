@@ -60,6 +60,7 @@ Serves 2, about 40 minutes. If serving with rice, start it first.
 - [ ] 1½ tbsp neutral oil
 - [ ] Salt
 - [ ] Cilantro, to finish
+- [ ] Optional: a few handfuls of carrot and zucchini ribbons
 
 **Steps**
 1. Prep (10 min): dice the onion. Pat the fish and shrimp very dry and salt them lightly. Mince the ginger and garlic, slice the serranos, and mix the curry powder, turmeric and white pepper in a small bowl.
@@ -68,11 +69,12 @@ Serves 2, about 40 minutes. If serving with rice, start it first.
 4. Add the ginger, garlic and serrano and stir 60 to 90 seconds, until fragrant but not browned.
 5. Drop to medium-low, add the spice mix and stir constantly 30 to 45 seconds. Add a splash of broth if it sticks.
 6. Pour in the broth and scrape the bottom. Stir in the coconut milk and bamboo shoots, bring to a simmer (3 to 4 min), then simmer gently 8 to 10 minutes. Salt to taste, usually ½ to 1 tsp.
-7. Lower the heat to a bare simmer. Nestle in the fish, cover and cook 3 minutes.
-8. Add the shrimp, cover and cook 2 to 3 minutes more, until the shrimp are pink and the fish flakes. Stir gently.
-9. Off the heat, squeeze in half the lime, taste and add more if needed. Top with cilantro and serve.
+7. Lower the heat to a bare simmer. If using, stir in the carrot ribbons. Nestle in the fish, cover and cook 3 minutes.
+8. Add the shrimp, and lay any zucchini ribbons on top. Cover and cook 2 to 3 minutes more, until the shrimp are pink and the fish flakes. Stir gently.
+9. Off the heat, squeeze in half the lime, taste and add more lime or salt if needed (extra vegetables thin the broth). Top with cilantro and serve.
 
 ## Notes
+- 2026-10-27 (grok-bot): added optional carrot ribbons (in with the fish) and zucchini ribbons (in with the shrimp), per crews.
 - 2026-10-27 (grok-bot): added a yellow onion, sweated before the aromatics, per crews.
 - 2026-10-27 (grok-bot): rewrote Our version with prep, times and step order per crews; added oil, salt and cilantro, which the original used but didn't list.
 - 2026-10-14 (filed by grok-bot): filed from email 486995. Added chinese cuisine tag (Szechuan). Checklist marks match kitchen/staples.md (only garlic, bone broth, lime currently stapled). No standing soy/chili-paste subs in this recipe.
