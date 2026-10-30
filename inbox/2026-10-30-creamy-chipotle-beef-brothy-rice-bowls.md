@@ -1,3 +1,5 @@
+filed_to: recipes/creamy-chipotle-beef-brothy-rice-bowls.md
+filed_at: 2026-10-30
 ---
 title: Creamy Chipotle Beef Brothy Rice Bowls
 slug: creamy-chipotle-beef-brothy-rice-bowls
