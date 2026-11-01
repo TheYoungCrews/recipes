@@ -58,3 +58,26 @@ Commit message: `inbox: <title> (via <agent>)`. Grok Bot's hourly routine valida
 ## Times
 `time_minutes` is the total. `prep_minutes` and `cook_minutes` are optional whole numbers, copied from the source only (blank if the source doesn't say). The build warns if prep + cook differs from the total, and suggests the time tag from the total: 20 or less is `quick-20`, 30 or less `weeknight-30`, 45 or less `weeknight-45`, anything longer `weekend-project`.
 **Conflicts round down:** when sources or fields disagree on time, keep the LOWER total in `time_minutes`, keep sourced prep/cook as written, and add a Notes line explaining it. The build then only prints an info line.
+
+## Weekly plans (`plans/`)
+One file per week, named by ISO week: `plans/YYYY-Www.md` (for example `plans/2026-W45.md` for Mon Nov 2 to Sun Nov 8, 2026). Same flat frontmatter rules as recipes.
+
+```yaml
+---
+week: 2026-W45            # required, = filename without .md
+starts: 2026-11-02        # required, the Monday of that week (YYYY-MM-DD)
+serves: 2                 # usually 2 (Crews and Anna)
+recipes: [picanha-with-red-wine-mushrooms, picanha-over-polenta]   # required, slugs from recipes/ or cocktails/
+nights: [mon, wed]        # optional, rough night for each recipe in the same order: mon..sun or any
+on_hand: [picanha]        # optional, things already in the fridge; matching grocery lines are dropped
+add: []                   # optional, extra shopping lines, e.g. ["1 dozen eggs"]
+---
+A line or two about the week (shown on /week/).
+```
+
+- The grocery list comes from each recipe's `## Our version` checklist, never from Original. `python3 _system/scripts/groceries.py` prints it (add `--json` for JSON).
+- Duplicates merge only when it's clearly the same item in compatible units (lb and oz, cups/tbsp/tsp, or the same count unit). Ranges and lines without an amount are never summed.
+- Anything in `kitchen/staples.md` is left off (and listed under "staples we're counting on"), and so is anything matching `on_hand`.
+- Lines are grouped as produce, meat and seafood, dairy, pantry, frozen, other, with an Optional group for `Optional:` checklist lines.
+- The site shows the current plan at /week/ (plus /week.md and /week.json): the plan whose week contains today, else the next one coming up, else the latest. The build fails on an unknown slug or a bad date.
+- To change the week, edit the plan file (swap a slug, move a night, add to `on_hand`). Old plan files stay as the record.

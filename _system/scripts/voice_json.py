@@ -48,8 +48,8 @@ def write(items, out):
     full = [entry(r) for r in items]
     (out/"recipes.json").write_text(json.dumps({"site": SITE, "count": len(full), "items": full}, indent=1, ensure_ascii=False))
     (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status","url")} for e in full], ensure_ascii=False))
-    hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json"))
-    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n"
+    hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json", "week.json", "week.md"))
+    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n/week.md\n  Content-Type: text/markdown; charset=utf-8\n/week/*\n  Cache-Control: public, max-age=300\n"
     (out/"_headers").write_text(hdr)
     (out/"llms.txt").write_text("""# Crews & Anna's Kitchen
 
@@ -61,6 +61,7 @@ def write(items, out):
 - A link like https://blind-tiger.pages.dev/#r-<slug> is the same recipe; fetch /r/<slug> instead. List of every page: https://blind-tiger.pages.dev/r/ and https://blind-tiger.pages.dev/sitemap.xml
 - Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
 - Bulk add: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or paste at https://blind-tiger.pages.dev/add
+- This week's dinners and grocery list: https://blind-tiger.pages.dev/week/ (markdown https://blind-tiger.pages.dev/week.md, JSON https://blind-tiger.pages.dev/week.json)
 - Agents with repo write access commit to inbox/ in https://github.com/TheYoungCrews/recipes
 
 ## Recipes

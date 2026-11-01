@@ -134,6 +134,10 @@ def main():
             items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made","source_type","added_by","credit"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body), "body": body, "cooks": fm.get("cooks", "")})
+    sys.path.insert(0, str(ROOT/"_system/scripts")); import groceries
+    slugs = {r["slug"] for r in items}
+    for f, pfm, _ in groceries.plans():
+        errs += [e for e in groceries.validate(f, pfm, {s: None for s in slugs})]
     for i in infos: print("info:", i, "(lower total kept: round-down rule)")
     for w in warns: print("WARN:", w)
     if errs:

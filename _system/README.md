@@ -18,6 +18,8 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `_system/skills/recipe-feedback/SKILL.md` | Feedback skill: 'we made it' -> Notes, Our version, taste profile |
 | `_system/docs/CLOUDFLARE.md` | Chosen hosting: Cloudflare Pages + Access (email PIN, private, $0) |
 | `_system/docs/HOSTING.md` | Alternative: spare laptop + Tailscale |
+| `plans/` | One weekly meal plan per file (`YYYY-Www.md`); the site shows the current one at /week/ with its grocery list |
+| `_system/scripts/groceries.py` | Plan -> grocery list (merged, minus staples and on-hand, by store section); markdown or `--json` |
 | `inbox/` | Where outside agents drop new recipes/feedback (create-only); filed hourly into `recipes/` |
 | `_system/templates/` | Copy these to start a new brief |
 | `_system/scripts/build.py` | Builds `site/index.html` (+ `site/photos/`), `site/recipes.json` and the root `README.md` (no dependencies, Python 3). Design lives in `_system/web/` (style.css, app.js, Caveat font, banner); HTML is rendered by `_system/scripts/site_render.py` |

@@ -32,7 +32,7 @@ Email from known senders is filed automatically. Mail from anyone else is held f
 
 ## Hard rules
 - **Never delete, rename or overwrite** a file. Only create new ones or make small edits as described below. To drop a recipe, set `status: retired`.
-- The repo is public: never commit secrets, tokens, emails or private info. Never buy anything or edit shopping lists.
+- The repo is public: never commit secrets, tokens, emails or private info. Never buy anything. The shared grocery list is written by Grok Bot from /week.json (section 5), nobody else.
 - Never invent amounts, ratings or feedback. Write `(amount not given)`, and say what you couldn't see.
 - Never edit `## Original` after capture. Never force-push.
 - **Agents outside the repo (Muse, Instinct, ...) write ONLY to `inbox/`.** One new file per recipe or feedback, created with the GitHub contents API (create-only). Grok Bot's hourly filing routine validates inbox files and files them into `recipes/` / `cocktails/`. Never edit or delete any other path.
@@ -105,3 +105,10 @@ For people, and agents without GitHub access. Subjects: `recipe: <what>`, `cockt
 Then reply to the sender in one line: what you saved, what to buy, and anything you guessed.
 
 **Grok Bot (filing routine, hourly):** for each new inbox file, dedupe, run `_system/scripts/build.py` checks, write `recipes/<slug>.md` (or apply the feedback), then add `filed_to: <path>` + date at the top of the inbox file. Inbox files are never deleted. Commit `file: <slug>`.
+
+## 5. Weekly plan and grocery list (Grok Bot)
+1. **Plan (Sunday):** Crews says the vibe and what's already in the fridge. Suggest 3 or 4 dinners from the book (to-try plus well-rated ones, no repeats from the last 2 weeks), filling gaps with new recipes filed the normal way. Nothing is written until Crews approves.
+2. **Write** `plans/YYYY-Www.md` (schema in `_system/SCHEMA.md`, "Weekly plans"): recipe slugs, rough nights, servings, `on_hand`. Run `python3 _system/scripts/build.py` (it validates the plan) and push. Commit `plan: YYYY-Www`.
+3. **Grocery list:** `python3 _system/scripts/groceries.py` (or fetch https://blind-tiger.pages.dev/week.json). Each line is short and standalone (`1 lb cremini mushrooms`). Grok Bot adds those lines to the shared Apple Reminders "Groceries" list; staples are left off on purpose.
+4. **Midweek changes:** edit the plan file (move a night, swap or drop a slug, add to `on_hand`), rebuild and push. Tell Crews which lines to add to or remove from Reminders.
+5. **After cooking:** feedback goes into the recipe's Notes as in section 2. The page for the week is https://blind-tiger.pages.dev/week/.
