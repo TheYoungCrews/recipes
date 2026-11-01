@@ -95,6 +95,10 @@ def key(name):
     n = re.sub(r"\bchicken broth\b", "chicken stock", n)   # same thing on the shelf
     return re.sub(r"(?<=[a-z])(es|s)$", "", n) if not n.endswith(("ss", "us")) else n
 
+def have_key(name):
+    """What the site's 'already have' checkbox stores in on_hand: the merge key, safe for a flat [a, b] list."""
+    return re.sub(r"\s+", " ", re.sub(r"[\[\],#\"'`]", " ", key(name))).strip()
+
 # ---- staples and on-hand matching
 DESCRIPTORS = {"yellow", "white", "red", "sweet", "large", "medium", "small", "fresh", "kosher", "flaky", "sea", "fine", "coarse",
                "unsalted", "salted", "whole", "grated", "freshly", "ground", "cracked", "cold", "good", "extra-virgin", "extra", "virgin",
@@ -155,7 +159,8 @@ def merge(entries):
                 name = plural(e0["name"]) if total > 1 and not u else e0["name"]
                 u = (u if total <= 1 or u.endswith("s") else UNITS_PLURAL.get(u, u + "s")) if u else None
                 line = " ".join(x for x in [fmt(total), u, sz, name] if x)
-        out.append({"line": pretty(line), "item": e0["name"], "section": section(e0["name"]), "recipes": recipes,
+        nice = re.sub(r"\s+", " ", re.sub(r"[\[\],#\"'`]", " ", PREP.sub("", e0["name"]).lower())).strip()
+        out.append({"line": pretty(line), "item": e0["name"], "key": nice if have_key(nice) == have_key(e0["name"]) else have_key(e0["name"]), "section": section(e0["name"]), "recipes": recipes,
                     "optional": all(e["optional"] for e in es), "from": [e["raw"] for e in es]})
     return out
 
@@ -238,7 +243,11 @@ def build(plan=None, today=None):
     f, fm, body = p
     rs = load_recipes(); errs = validate(f, fm, rs)
     if errs: raise ValueError("; ".join(errs))
-    st = staples(); on_hand = [x.lower() for x in fm.get("on_hand") or []]
+    st = staples(); on_hand = [x for x in fm.get("on_hand") or [] if x.strip()]
+    def have_hit(e):   # which on_hand entry covers this line: same merge key, or the older loose match ('picanha')
+        k = key(e["name"])
+        return next((o for o in on_hand if k == have_key(o)), None) or next(
+            (o for o in on_hand if matches(e["name"], o.lower()) or re.search(rf"\b{re.escape(o.lower())}", e["name"].lower())), None)
     entries, skipped_staples, skipped_onhand, meals = [], [], [], []
     nights = fm.get("nights") or ["any"] * len(fm["recipes"])
     extras = fm.get("extras") or []
@@ -250,22 +259,30 @@ def build(plan=None, today=None):
             if line.startswith("#"): continue
             e = parse_line(line); e["recipe"] = slug
             if not e["name"]: continue
-            if any(matches(e["name"], s) or re.search(rf"\b{re.escape(s)}", e["name"].lower()) for s in on_hand): skipped_onhand.append(e); continue
             parts = re.split(r"\s+(?:and|&)\s+", e["name"])
             hit = next((s for s in st if matches(e["name"], s)), None) or (
                 ", ".join(h for h in (next((s for s in st if matches(x, s)), None) for x in parts)) if len(parts) > 1 and all(any(matches(x, s) for s in st) for x in parts) else None)
             if hit: e["staple"] = hit; skipped_staples.append(e); continue
+            h = have_hit(e)
+            if h: e["have"] = h; skipped_onhand.append(e); continue
             entries.append(e)
     for x in fm.get("add") or []:
-        e = parse_line(x); e["recipe"] = "added"; entries.append(e)
+        e = parse_line(x); e["recipe"] = "added"
+        h = have_hit(e)
+        if h: e["have"] = h; skipped_onhand.append(e)
+        else: entries.append(e)
     items = merge(entries)
     grouped = {s: [i for i in items if i["section"] == s and not i["optional"]] for s in SECTIONS}
     optional = [i for i in items if i["optional"]]
     check = sorted({x for e in skipped_staples for x in e["staple"].split(", ")})
+    have = []   # 'Already have': the lines each on_hand entry took off the list (or the entry itself if it matched nothing)
+    for o in on_hand:
+        got = merge([e for e in skipped_onhand if e["have"] == o])
+        have += [{"line": i["line"], "on_hand": o} for i in got] or [{"line": o, "on_hand": o}]
     return {"week": fm["week"], "starts": fm["starts"], "serves": fm.get("serves", "2"), "plan_file": f"plans/{f.name}",
             "meals": meals, "on_hand": fm.get("on_hand") or [], "note": body.strip(),
             "sections": [{"section": s, "items": [i["line"] for i in grouped[s]]} for s in SECTIONS if grouped[s]],
-            "optional": [i["line"] for i in optional], "staples_assumed": check,
+            "optional": [i["line"] for i in optional], "staples_assumed": check, "have": have,
             "detail": items}
 
 def to_md(g, base="https://blind-tiger.pages.dev"):
@@ -275,12 +292,12 @@ def to_md(g, base="https://blind-tiger.pages.dev"):
     L += [f"- {m['night']}: {m['title']} ({base}/r/{m['slug']})" for m in g["meals"] if m["kind"] == "dinner"] + [""]
     ex = [m for m in g["meals"] if m["kind"] == "extra"]
     if ex: L += ["## Also this week (bakes, sides, anytime)", ""] + [f"- {m['title']} ({base}/r/{m['slug']})" for m in ex] + [""]
-    if g["on_hand"]: L += ["Already have: " + ", ".join(g["on_hand"]), ""]
     L += ["## Grocery list", ""]
     for s in g["sections"]:
         L += [f"### {s['section'].capitalize()}", ""] + [f"- {x}" for x in s["items"]] + [""]
     if not g["sections"]: L += ["Nothing to buy beyond staples.", ""]
     if g["optional"]: L += ["### Optional", ""] + [f"- {x}" for x in g["optional"]] + [""]
+    if g["have"]: L += ["## Already have (not on the list)", ""] + [f"- [x] {h['line']}" for h in g["have"]] + [""]
     if g["staples_assumed"]: L += ["## Staples we're counting on", "", ", ".join(g["staples_assumed"]), ""]
     return "\n".join(L)
 

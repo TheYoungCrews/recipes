@@ -363,7 +363,9 @@ def static_pages(live, out):
 WEEK_CSS = """.meals{list-style:none;padding:0}.wk h2 small{font:15px -apple-system,BlinkMacSystemFont,sans-serif;color:#7a7266}.meals li{margin:8px 0}.meals b{font-family:Hand,cursive;font-size:24px;color:#4f6b4c;font-weight:700}
 .gl h3{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#7f9a7a;margin:18px 0 4px}.gl ul{list-style:none;padding:0;margin:0}
 .gl li{padding:6px 0 6px 30px;border-bottom:1px dashed #e9e1cf;position:relative}.gl li:before{content:"";position:absolute;left:4px;top:10px;width:14px;height:14px;border:2px solid #7f9a7a;border-radius:4px}
-.staples{color:#7a7266;font-size:15px}"""
+.staples{color:#7a7266;font-size:15px}.gl label{display:block;cursor:pointer}.gl ul.got span,.gl li.done span{text-decoration:line-through;color:#9a9286}
+.gl ul.got li.undone span{text-decoration:none;color:inherit}.gl ul.got li:before{content:"✓";color:#7f9a7a;font-weight:700;text-align:center;line-height:14px}.havemode .gl li:before{display:none}.havemode .gl li{padding-left:4px}
+.gl input.have{width:18px;height:18px;margin:0 10px 0 0;vertical-align:-3px;accent-color:#7f9a7a}.havemsg{font-size:13px;color:#7a7266;min-height:1em}"""
 def week_page(live, out):
     import groceries
     wdir = out / "week"; shutil.rmtree(wdir, ignore_errors=True); wdir.mkdir(parents=True)
@@ -384,19 +386,22 @@ def week_page(live, out):
         r = by.get(m["slug"]); facts = " · ".join(_facts(r)) if r else ""
         li = f'<li><b><a href="/r/{E(m["slug"])}">{E(m["title"])}</a></b>{wkbtn(m["slug"], True)}<br><span class=meta>{E(m["night"]) + " · " if m.get("kind") != "extra" else ""}{E(facts)}</span></li>'
         (extras if m.get("kind") == "extra" else meals).append(li)
-    gl = "".join(f'<h3>{E(sec["section"])}</h3><ul>' + "".join(f"<li>{E(x)}</li>" for x in sec["items"]) + "</ul>" for sec in g["sections"]) or "<p>Nothing to buy beyond staples.</p>"
-    if g["optional"]: gl += "<h3>optional</h3><ul>" + "".join(f"<li>{E(x)}</li>" for x in g["optional"]) + "</ul>"
+    keys = {i["line"]: i["key"] for i in g["detail"]}
+    # Each line gets a hidden 'already have' checkbox; week-btn.js shows them for signed-in cooks (plain list otherwise).
+    gli = lambda x: f'<li><label><input type=checkbox class=have data-have="{E(keys.get(x, ""))}" hidden><span>{E(x)}</span></label></li>' if keys.get(x) else f"<li>{E(x)}</li>"
+    gl = "".join(f'<h3>{E(sec["section"])}</h3><ul>' + "".join(gli(x) for x in sec["items"]) + "</ul>" for sec in g["sections"]) or "<p>Nothing to buy beyond staples.</p>"
+    if g["optional"]: gl += "<h3>optional</h3><ul>" + "".join(gli(x) for x in g["optional"]) + "</ul>"
+    if g["have"]: gl += ('<h3>Already have</h3><ul class=got>' + "".join(f'<li><label><input type=checkbox class=have data-have="{E(h["on_hand"])}" checked hidden><span>{E(h["line"])}</span></label></li>' for h in g["have"]) + "</ul>")
     body = [nav, f'<h1>This week</h1><p class=meta>{E(span)} · dinners for {E(str(g["serves"]))}</p>']
     if g["note"]: body.append(f"<p>{inline(plain_md(g['note']))}</p>")
     body.append('<h2>Dinners</h2><ul class=meals>' + "".join(meals) + "</ul>")
     if extras: body.append('<h2>Also this week <small>bakes, sides, anytime</small></h2><ul class=meals>' + "".join(extras) + "</ul>")
-    if g["on_hand"]: body.append(f'<p class=meta>Already have: {E(", ".join(g["on_hand"]))}</p>')
-    body.append(f'<h2>Grocery list</h2><div class=gl>{gl}</div>')
+    body.append(f'<h2>Grocery list</h2><p class=havemsg role=status hidden>Check what you already have. It moves to Already have after the next rebuild (about a minute).</p><div class=gl>{gl}</div>')
     if g["staples_assumed"]: body.append(f'<p class=staples>Not on the list because we keep them stocked: {E(", ".join(g["staples_assumed"]))}. Running low? Add them.</p>')
     (wdir / "index.html").write_text(head(f"This week, {span}") + "<body><main class=wk>\n" + "\n".join(body)
         + f'\n</main><footer>From <a href="/">Crews &amp; Anna\'s Kitchen</a>. Plan: <a href="https://github.com/TheYoungCrews/recipes/blob/main/{E(g["plan_file"])}">{E(g["plan_file"])}</a> · plain text: <a href="/week.md">/week.md</a></footer><script src="/week-btn.js" defer></script></body></html>')
     (out / "week.md").write_text(groceries.to_md(g, BASE) + f"\nPage: {BASE}/week/\n")
     g2 = {k: v for k, v in g.items() if k != "detail"}
     g2["url"], g2["md_url"] = f"{BASE}/week/", f"{BASE}/week.md"
-    g2["items"] = [{"line": i["line"], "section": i["section"], "optional": i["optional"], "recipes": i["recipes"]} for i in g["detail"]]
+    g2["items"] = [{"line": i["line"], "key": i["key"], "section": i["section"], "optional": i["optional"], "recipes": i["recipes"]} for i in g["detail"]]
     (out / "week.json").write_text(json.dumps(g2, ensure_ascii=False, indent=1))

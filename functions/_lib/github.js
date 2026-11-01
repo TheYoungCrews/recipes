@@ -80,7 +80,8 @@ export async function commitInboxBatch({ token, repo = "TheYoungCrews/recipes", 
 }
 
 /** Add or remove one recipe in the current week's plan file (plans/YYYY-Www.md), one commit. Never touches other paths. */
-export async function commitPlanEdit({ token, repo = "TheYoungCrews/recipes", branch = "main", slug, action, as, night, who, via = "site", today, fetchFn = fetch }) {
+export async function commitPlanEdit({ token, repo = "TheYoungCrews/recipes", branch = "main", slug, item, action, as, night, who, via = "site", today, fetchFn = fetch }) {
+  const haveMode = action === "have" || action === "unhave";
 
   const api = async (path, init = {}) => {
     const r = await fetchFn(`https://api.github.com/repos/${repo}${path}`, { ...init, headers: {
@@ -88,10 +89,24 @@ export async function commitPlanEdit({ token, repo = "TheYoungCrews/recipes", br
     if (!r.ok) { const e = new Error(`github ${r.status} ${path}`); e.status = r.status; throw e; }
     return r.json();
   };
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 0; attempt < 6; attempt++) {
+    if (attempt) await new Promise(r => setTimeout(r, 150 * attempt + Math.floor(Math.random() * 200)));   // someone else committed first: re-read and retry
     const head = (await api(`/git/ref/heads/${branch}`)).object.sha;
     const commit = await api(`/git/commits/${head}`);
     let recipe = null;
+    if (haveMode) {
+      let names = [];
+      try { names = (await api(`/contents/plans?ref=${head}`)).map(f => f.name); } catch (e) { if (e.status !== 404) throw e; }
+      const wk = P.pickWeek(names, today), path = `plans/${wk.week}.md`;
+      if (!wk.exists) { const e = new Error("no plan this week"); e.status = 409; e.noPlan = true; throw e; }
+      const r = P.editHave(dec((await api(`/contents/${path}?ref=${head}`)).content), { action, item });
+      const plan = P.readPlan(r.md);
+      if (!r.changed) return { sha: null, changed: false, week: wk.week, path, plan };
+      const t = await api(`/git/trees`, { method: "POST", body: JSON.stringify({ base_tree: commit.tree.sha, tree: [{ path, mode: "100644", type: "blob", content: r.md }] }) });
+      const c = await api(`/git/commits`, { method: "POST", body: JSON.stringify({ message: `plan: ${action} ${P.cleanItem(item)} ${wk.week} (${who} via ${via})`, tree: t.sha, parents: [head] }) });
+      try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, changed: true, week: wk.week, path, plan }; }
+      catch (e) { if (e.status !== 422 && e.status !== 409) throw e; continue; }
+    }
     try { recipe = await api(`/contents/recipes/${slug}.md?ref=${head}`); } catch (e) { if (e.status !== 404) throw e; }   // food only, not cocktails/
     if (!recipe) { const e = new Error("unknown recipe"); e.status = 404; throw e; }
     let names = [];
@@ -123,6 +138,6 @@ export async function readCurrentPlan({ token, repo = "TheYoungCrews/recipes", b
   let names = [];
   try { names = (await api(`/contents/plans?ref=${branch}`)).map(f => f.name); } catch (e) { if (e.status !== 404) throw e; }
   const wk = P.pickWeek(names, today);
-  const plan = wk.exists ? P.readPlan(dec((await api(`/contents/plans/${wk.week}.md?ref=${branch}`)).content)) : { recipes: [], nights: [], extras: [] };
+  const plan = wk.exists ? P.readPlan(dec((await api(`/contents/plans/${wk.week}.md?ref=${branch}`)).content)) : { recipes: [], nights: [], extras: [], on_hand: [] };
   return { week: wk.week, starts: wk.starts, path: `plans/${wk.week}.md`, exists: wk.exists, ...plan };
 }

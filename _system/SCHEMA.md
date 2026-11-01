@@ -70,7 +70,7 @@ serves: 2                 # usually 2 (Crews and Anna)
 recipes: [picanha-with-red-wine-mushrooms, picanha-over-polenta]   # dinners: slugs from recipes/
 nights: [mon, wed]        # optional, rough night for each recipe in the same order: mon..sun or any
 extras: [pumpkin-pecan-bread]   # optional, bakes, sides or anything without a night; also feeds the grocery list
-on_hand: [picanha]        # optional, things already in the fridge; matching grocery lines are dropped
+on_hand: [picanha]        # optional, things already in the kitchen; matching grocery lines move to "Already have"
 add: []                   # optional, extra shopping lines, e.g. ["1 dozen eggs"]
 ---
 A line or two about the week (shown on /week/).
@@ -83,4 +83,5 @@ A line or two about the week (shown on /week/).
 - The site shows the current plan at /week/ (plus /week.md and /week.json): the plan whose week contains today, else the next one coming up, else the latest. The build fails on an unknown slug or a bad date.
 - `extras` show on /week/ under "Also this week" with no night. A slug can't be in both `recipes` and `extras`. A plan needs at least one of them.
 - To change the week, edit the plan file (swap a slug, move a night, add to `on_hand`). Old plan files stay as the record.
+- **Already have checkboxes:** signed in on /week/, each grocery line has a checkbox. Checking it adds the line's name key (`items[].key` in /week.json, like `chicken stock`) to `on_hand` through `POST /api/plan` (`action: have`); unchecking removes it (`unhave`). After the rebuild the line moves to an "Already have" section (in /week.md and `have` in /week.json too). An `on_hand` entry covers a line when its name key matches (same key the list merges by) or, for hand-written entries like `picanha`, when the name contains it. Staples are checked first.
 - **Add to this week button:** signed in on the site, every food recipe (its /r/<slug> page, the /r/ list, the recipe view on the home page, and /week/) has a "+ Add to this week" button. A tap calls `POST /api/plan`, which commits a one-line change to the current plan file (`plan: add <slug> to YYYY-Www (<who> via site)`). `main` and `soup-bowl` go into `recipes` with night `any`; everything else goes into `extras`. Tapping again removes it. If there's no plan for the week yet it creates one (next week's on a Sunday). The deploy then rebuilds /week/ and the grocery list in about a minute. Signed out or without JavaScript the button never shows.

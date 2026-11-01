@@ -46,7 +46,7 @@ function setList(fm, key, list) {
 }
 export function readPlan(md) {
   const [fm] = split(md);
-  return { recipes: getList(fm, "recipes"), nights: getList(fm, "nights"), extras: getList(fm, "extras") };
+  return { recipes: getList(fm, "recipes"), nights: getList(fm, "nights"), extras: getList(fm, "extras"), on_hand: getList(fm, "on_hand") };
 }
 /** action add|remove. as: "dinner" | "extra". night: mon..sun|any (dinners only). Returns { md, changed, as }. */
 export function editPlan(md, { action, slug, as = "dinner", night = "any" }) {
@@ -65,5 +65,17 @@ export function editPlan(md, { action, slug, as = "dinner", night = "any" }) {
   } else throw new Error("bad action");
   fm = setList(setList(setList(fm, "recipes", recipes), "nights", nights), "extras", extras);
   return { md: `---\n${fm}\n---\n${body}`, changed: true, as };
+}
+/** Grocery items already in the kitchen. item: the line's key from /week.json (e.g. "chicken stock"). */
+export const cleanItem = s => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
+export const okItem = s => /^[^\[\],#"'`\n\r]{1,80}$/.test(s);
+export function editHave(md, { action, item }) {
+  let [fm, body] = split(md);
+  const it = cleanItem(item), list = getList(fm, "on_hand"), has = list.some(x => cleanItem(x) === it);
+  if (!okItem(it)) throw new Error("bad item");
+  if (action === "have" ? has : !has) return { md, changed: false };
+  const next = action === "have" ? [...list, it] : list.filter(x => cleanItem(x) !== it);
+  fm = setList(fm, "on_hand", next);
+  return { md: `---\n${fm}\n---\n${body}`, changed: true };
 }
 export const typeOf = md => ((/^type:[ \t]*([a-z-]+)/m.exec(md) || [])[1] || "");
