@@ -2,7 +2,7 @@
 title: Chocolate Chip Cookies
 slug: chocolate-chip-cookies
 type: dessert
-status: to-try
+status: favorite
 tags: [egg, sheet-pan, quick-20]
 ingredients: [butter, light brown sugar, granulated sugar, egg, egg yolk, vanilla extract, all-purpose flour, baking soda, fine sea salt, semisweet chocolate chips]
 serves:
@@ -14,9 +14,9 @@ added_by: anna
 via: api
 input_type: text
 owner: anna
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-01
+rating: 5
+cooks: 1
 ---
 Soft and chewy chocolate chip cookies with lightly crisp edges. This version uses mostly light brown sugar with a little granulated sugar for balance, and slightly less total sugar than the original recipe. No chilling r
 
@@ -74,4 +74,5 @@ Soft and chewy chocolate chip cookies with lightly crisp edges. This version use
 11. Let cookies cool on the baking sheet for about 5 minutes before transferring to a wire rack to finish cooling.
 
 ## Notes
+- 2026-11-01 (crews via site, 5/5): cooked it.
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-chocolate-chip-cookies.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).
