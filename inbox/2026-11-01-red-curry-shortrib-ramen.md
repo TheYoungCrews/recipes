@@ -1,3 +1,5 @@
+filed_to: recipes/red-curry-shortrib-ramen.md
+filed_at: 2026-11-01
 ---
 title: Red Curry Shortrib Ramen
 slug: red-curry-shortrib-ramen
