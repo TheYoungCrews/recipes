@@ -67,8 +67,9 @@ One file per week, named by ISO week: `plans/YYYY-Www.md` (for example `plans/20
 week: 2026-W45            # required, = filename without .md
 starts: 2026-11-02        # required, the Monday of that week (YYYY-MM-DD)
 serves: 2                 # usually 2 (Crews and Anna)
-recipes: [picanha-with-red-wine-mushrooms, picanha-over-polenta]   # required, slugs from recipes/ or cocktails/
+recipes: [picanha-with-red-wine-mushrooms, picanha-over-polenta]   # dinners: slugs from recipes/
 nights: [mon, wed]        # optional, rough night for each recipe in the same order: mon..sun or any
+extras: [pumpkin-pecan-bread]   # optional, bakes, sides or anything without a night; also feeds the grocery list
 on_hand: [picanha]        # optional, things already in the fridge; matching grocery lines are dropped
 add: []                   # optional, extra shopping lines, e.g. ["1 dozen eggs"]
 ---
@@ -80,4 +81,6 @@ A line or two about the week (shown on /week/).
 - Anything in `kitchen/staples.md` is left off (and listed under "staples we're counting on"), and so is anything matching `on_hand`.
 - Lines are grouped as produce, meat and seafood, dairy, pantry, frozen, other, with an Optional group for `Optional:` checklist lines.
 - The site shows the current plan at /week/ (plus /week.md and /week.json): the plan whose week contains today, else the next one coming up, else the latest. The build fails on an unknown slug or a bad date.
+- `extras` show on /week/ under "Also this week" with no night. A slug can't be in both `recipes` and `extras`. A plan needs at least one of them.
 - To change the week, edit the plan file (swap a slug, move a night, add to `on_hand`). Old plan files stay as the record.
+- **Add to this week button:** signed in on the site, every food recipe (its /r/<slug> page, the /r/ list, the recipe view on the home page, and /week/) has a "+ Add to this week" button. A tap calls `POST /api/plan`, which commits a one-line change to the current plan file (`plan: add <slug> to YYYY-Www (<who> via site)`). `main` and `soup-bowl` go into `recipes` with night `any`; everything else goes into `extras`. Tapping again removes it. If there's no plan for the week yet it creates one (next week's on a Sunday). The deploy then rebuilds /week/ and the grocery list in about a minute. Signed out or without JavaScript the button never shows.

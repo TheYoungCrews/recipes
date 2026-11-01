@@ -7,6 +7,10 @@
   },
   "servers": [{ "url": "https://blind-tiger.pages.dev" }],
   "paths": {
+    "/api/plan": {
+      "get": {"operationId": "getWeekPlan", "summary": "This week's plan, live from the repo", "security": [{"ApiKeyAuth": []}], "responses": {"200": {"description": "Current plan", "content": {"application/json": {"schema": {"type": "object", "properties": {"week": {"type": "string", "example": "2026-W45"}, "starts": {"type": "string", "example": "2026-11-02"}, "path": {"type": "string"}, "exists": {"type": "boolean"}, "recipes": {"type": "array", "items": {"type": "string"}}, "nights": {"type": "array", "items": {"type": "string"}}, "extras": {"type": "array", "items": {"type": "string"}}}}}}}, "401": {"description": "No key or session"}}},
+      "post": {"operationId": "editWeekPlan", "summary": "Add or remove a recipe on this week's plan (feeds the grocery list)", "security": [{"ApiKeyAuth": []}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["slug"], "properties": {"slug": {"type": "string", "description": "Recipe slug from recipes/", "example": "squash-soup"}, "action": {"type": "string", "enum": ["add", "remove"], "default": "add"}, "as": {"type": "string", "enum": ["dinner", "extra"], "description": "Default: main and soup-bowl are dinners, other types are extras"}, "night": {"type": "string", "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun", "any"], "default": "any"}}}}}}, "responses": {"200": {"description": "Saved (or already set). /week/ rebuilds in about a minute.", "content": {"application/json": {"schema": {"type": "object", "properties": {"ok": {"type": "boolean"}, "changed": {"type": "boolean"}, "week": {"type": "string"}, "as": {"type": "string"}, "in_plan": {"type": "boolean"}, "commit": {"type": "string", "nullable": true}}}}}}, "400": {"description": "Bad input"}, "401": {"description": "No key or session"}, "404": {"description": "Unknown recipe"}}}
+    },
     "/api/recipes": {
       "post": {
         "operationId": "addRecipes",

@@ -112,3 +112,9 @@ Then reply to the sender in one line: what you saved, what to buy, and anything 
 3. **Grocery list:** `python3 _system/scripts/groceries.py` (or fetch https://blind-tiger.pages.dev/week.json). Each line is short and standalone (`1 lb cremini mushrooms`). Grok Bot adds those lines to the shared Apple Reminders "Groceries" list; staples are left off on purpose.
 4. **Midweek changes:** edit the plan file (move a night, swap or drop a slug, add to `on_hand`), rebuild and push. Tell Crews which lines to add to or remove from Reminders.
 5. **After cooking:** feedback goes into the recipe's Notes as in section 2. The page for the week is https://blind-tiger.pages.dev/week/.
+6. **Bakes and sides:** anything without a night goes in `extras: [slug]`, not `recipes`. It still feeds the grocery list.
+7. **Plan API (agents with a Recipe API key, and the site's "+ Add to this week" button):**
+   - `GET https://blind-tiger.pages.dev/api/plan` with `Authorization: Bearer <key>` returns the live plan from the repo: `{week, starts, path, exists, recipes, nights, extras}`. Without auth, read https://blind-tiger.pages.dev/week.json instead (it lags a build behind).
+   - `POST https://blind-tiger.pages.dev/api/plan` with the same header and JSON `{"slug": "squash-soup", "action": "add"}`. `action` is `add` or `remove`. Optional `as`: `dinner` or `extra` (default: `main` and `soup-bowl` are dinners, other types are extras). Optional `night`: `mon`..`sun` or `any` (default `any`).
+   - Reply: `{ok, changed, week, path, as, in_plan, plan, commit}`. It commits only `plans/YYYY-Www.md` (`plan: add <slug> to YYYY-Www (<who> via api)`), creating the week's file if needed. 401 without a key or session, 404 for a slug not in recipes/.
+   - Keys come from Crews and never go in files, commits or chat logs.

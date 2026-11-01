@@ -62,6 +62,7 @@ def write(items, out):
 - Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
 - Bulk add: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or paste at https://blind-tiger.pages.dev/add
 - This week's dinners and grocery list: https://blind-tiger.pages.dev/week/ (markdown https://blind-tiger.pages.dev/week.md, JSON https://blind-tiger.pages.dev/week.json)
+- Add or remove a recipe on this week's plan: POST https://blind-tiger.pages.dev/api/plan with {"slug": "<slug>", "action": "add"|"remove"} (Bearer key; GET /api/plan reads the live plan; details in AGENTS.md section 5)
 - Agents with repo write access commit to inbox/ in https://github.com/TheYoungCrews/recipes
 
 ## Recipes

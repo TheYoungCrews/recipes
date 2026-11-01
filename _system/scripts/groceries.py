@@ -62,8 +62,13 @@ def parse_line(line):
     raw = line
     s = line
     for k, v in UNI.items(): s = re.sub(rf"(\d){k}", rf"\1 {v}", s).replace(k, v)
-    optional = bool(re.match(r"(?i)optional:?\s*", s)) or bool(re.search(r"(?i)\(optional\)", s))
+    optional = bool(re.match(r"(?i)optional:?\s*", s)) or bool(re.search(r"(?i)\(optional\)|,\s*optional\b", s))
     s = re.sub(r"(?i)^optional:?\s*", "", s); s = re.sub(r"(?i)\s*\(optional\)", "", s)
+    if not re.match(NUM, s):                       # 'chicken thighs (1.5 lb boneless)' -> '1.5 lb chicken thighs'
+        pm = re.match(rf"^([^(]+?)\s*\(\s*({NUM})(?:\s+([A-Za-z]+))?[^)]*\)", s)
+        if pm:
+            u = pm.group(3) if pm.group(3) and pm.group(3).lower() in UNITS else ""
+            s = " ".join(x for x in [pm.group(2), u, pm.group(1).strip()] if x) + s[pm.end():]
     s = re.sub(r"\s*\([^)]*\)", "", s)           # parentheticals
     s = s.split(",")[0].split(";")[0].strip()     # prep notes after the comma
     s = re.sub(r"(?i)\s+(?:to finish|to taste|for serving)$", "", s)
@@ -85,17 +90,20 @@ def parse_line(line):
 
 def key(name):
     n = name.lower()
-    n = re.sub(r"\b(fresh|freshly|kosher|flaky|cold|grated|good|unsalted|thinly|sliced|chopped|minced|dry|dried)\b", lambda m: m.group(0) if m.group(0) in ("dry", "dried") else "", n)
+    n = re.sub(r"\b(fresh|freshly|kosher|flaky|cold|grated|good|unsalted|thinly|finely|roughly|sliced|chopped|minced|diced|dry|dried)\b", lambda m: m.group(0) if m.group(0) in ("dry", "dried") else "", n)
     n = re.sub(r"\s+", " ", n).strip()
+    n = re.sub(r"\bchicken broth\b", "chicken stock", n)   # same thing on the shelf
     return re.sub(r"(?<=[a-z])(es|s)$", "", n) if not n.endswith(("ss", "us")) else n
 
 # ---- staples and on-hand matching
 DESCRIPTORS = {"yellow", "white", "red", "sweet", "large", "medium", "small", "fresh", "kosher", "flaky", "sea", "fine", "coarse",
                "unsalted", "salted", "whole", "grated", "freshly", "ground", "cracked", "cold", "good", "extra-virgin", "extra", "virgin",
-               "light", "regular", "block", "shaved", "shredded", "softened", "melted", "low-sodium", "full-fat", "plain", "of"}
+               "light", "regular", "block", "shaved", "chopped", "diced", "sliced", "minced", "thinly", "finely", "shredded", "softened", "melted", "low-sodium", "full-fat", "plain", "of"}
+ALIASES = {"chili crunch": "chili crisp", "chili oil or chili crunch": "chili crisp", "chilli crisp": "chili crisp"}
 def matches(item, staple):
     """True when the item IS the staple, allowing only descriptor words before it ('kosher salt', 'large yellow onions').
     'coconut milk' does not match 'milk'; 'rice vinegar' does not match 'rice'."""
+    item = ALIASES.get(item.lower().strip(), item)
     it = [w for w in re.sub(r"[^a-z\- ]", " ", item.lower()).split() if w not in ("clove", "cloves")]; st = staple.lower().split()
     sing = lambda w: re.sub(r"(?<=[a-z])(es|s)$", "", w) if not w.endswith(("ss", "us")) else w
     it, st = [sing(w) for w in it], [sing(w) for w in st]
@@ -112,8 +120,8 @@ def section(name):
        and not re.search(r"\b(stock|broth|bouillon|sauce|paste)\b", n): return "meat and seafood"
     if re.search(r"\b(butter|milk|cream|cheese|parmesan|pecorino|feta|mozzarella|ricotta|yogurt|eggs?|cottage|mascarpone|crème fraîche|sour cream)\b", n) \
        and not re.search(r"\b(coconut|peanut|almond|oat|apple) (milk|cream|butter)\b", n): return "dairy"
-    if re.search(r"\b(dried|ground|powder|flakes|canned|can)\b", n): return "pantry"
-    if re.search(r"\b(onions?|shallots?|garlic|mushrooms?|cremini|shiitake|potato(es)?|thyme|rosemary|sage|parsley|cilantro|basil|mint|dill|chives|limes?|lemons?|ginger|carrots?|zucchini|celery|serranos?|jalapeños?|bell peppers?|scallions?|green onions?|spinach|kale|lettuce|arugula|cabbage|tomato(es)?|squash|apples?|avocados?|cucumbers?|herbs?|greens|leeks?|fennel|broccoli|cauliflower|green beans|corn)\b", n): return "produce"
+    if re.search(r"\b(dried|ground|powder|flakes|canned|can|oil|purée|puree|extract|chips|pecans|walnuts|almonds|nuts|seeds|mix|crunch|crisp)\b", n): return "pantry"
+    if re.search(r"\b(onions?|shallots?|garlic|mushrooms?|cremini|shiitake|potato(es)?|thyme|rosemary|sage|parsley|cilantro|basil|mint|dill|chives|limes?|lemons?|ginger|carrots?|zucchini|celery|serranos?|jalapeños?|bell peppers?|scallions?|green onions?|spinach|kale|lettuce|arugula|cabbage|tomato(es)?|squash|apples?|avocados?|cucumbers?|herbs?|greens|leeks?|fennel|broccoli|cauliflower|green beans|corn|broccolini|snap peas|bok choy|sweet potato(es)?)\b", n): return "produce"
     if re.search(r"\b(stock|broth|polenta|grits|rice|pasta|orzo|spaghetti|couscous|quinoa|oats|farro|tortillas|chickpeas|olives|capers|noodles?|flour|sugar|vinegar|oil|mustard|dijon|sauce|paste|spice|salt|pepper|curry|turmeric|cumin|paprika|honey|beans|lentils|bamboo shoots|coconut milk|aminos|sambal|breadcrumbs|panko)\b", n): return "pantry"
     return "other"
 
@@ -123,7 +131,7 @@ def merge(entries):
     groups = {}
     for e in entries:
         k = (key(e["name"]), e["kind"] if e["kind"] in ("w", "v") else (e["kind"], e["unit"] and UNITS[e["unit"]][0], e["size"]))
-        if e["qty"] is None or e["range"]: k = k + (id(e),)      # no amount or a range: never summed
+        if e["qty"] is None or (e["range"] and e["kind"] not in ("w", "v")): k = k + (id(e),)   # no amount, or a count range: never summed
         groups.setdefault(k, []).append(e)
     out = []
     for k, es in groups.items():
@@ -132,8 +140,15 @@ def merge(entries):
             line = clean_line(e0)
         else:
             if e0["kind"] in ("w", "v"):
-                base = sum(e["qty"] * UNITS[e["unit"]][1] for e in es)
-                line = f"{fmt_amount(base, e0['kind'])} {e0['name']}"
+                lo = sum((e["qty"][0] if e["range"] else e["qty"]) * UNITS[e["unit"]][1] for e in es)
+                hi = sum((e["qty"][1] if e["range"] else e["qty"]) * UNITS[e["unit"]][1] for e in es)
+                name = max((e["name"] for e in es), key=lambda n: ("fresh" in n.lower(), -len(n)))
+                if section(name) == "produce": name = PREP.sub("", name)
+                if lo == hi: line = f"{fmt_amount(hi, e0['kind'])} {name}"
+                else:
+                    u = fmt_amount(hi, e0["kind"]).split(" ", 1)[1]; m = {"lb": 16, "oz": 1, "cup": 48, "cups": 48, "tbsp": 3, "tsp": 1}[u]
+                    if m > 1 and ((lo / m) % F(1, 4) or (hi / m) % F(1, 4)): u, m = ("oz", 1) if e0["kind"] == "w" else ("tsp", 1)
+                    line = f"{fmt(lo / m)} to {fmt(hi / m)} {u} {name}"
             else:
                 total = sum(e["qty"] for e in es)
                 u = e0["unit"]; sz = e0["size"]
@@ -162,8 +177,12 @@ def pretty(s):
     for k, v in UNI.items(): s = re.sub(rf"\b{v}\b", k, s)
     return s
 
+SHORT = {"tablespoon": "tbsp", "tablespoons": "tbsp", "teaspoon": "tsp", "teaspoons": "tsp", "pound": "lb", "pounds": "lb", "ounce": "oz", "ounces": "oz"}
+PREP = re.compile(r"\b(?:thinly |finely |roughly )?(?:sliced|minced|chopped|diced|grated)\s+", re.I)
 def clean_line(e):
     """One standalone shopping line, prep notes and parentheticals dropped: '8 oz cremini mushrooms'."""
+    if section(e["name"]) == "produce": e = {**e, "name": PREP.sub("", e["name"])}
+    if e["unit"]: e = {**e, "unit": SHORT.get(e["unit"], e["unit"])}
     if e["qty"] is None: return e["name"][0].upper() + e["name"][1:] if e["name"] else e["raw"]
     q = e["qty"]
     qs = f"{fmt(q[0])} to {fmt(q[1])}" if e["range"] else fmt(q)
@@ -198,12 +217,14 @@ def load_recipes():
 
 def validate(f, fm, rs):
     errs = []
-    for k in ["week", "starts", "recipes"]:
+    for k in ["week", "starts"]:
         if not fm.get(k): errs.append(f"{f.name}: missing {k}")
+    dup = [s for s in set((fm.get("recipes") or []) + (fm.get("extras") or [])) if ((fm.get("recipes") or []) + (fm.get("extras") or [])).count(s) > 1]
+    if dup: errs.append(f"{f.name}: listed twice: {', '.join(dup)}")
     if fm.get("week") and fm["week"] != f.stem: errs.append(f"{f.name}: week != filename")
     try: datetime.date.fromisoformat(fm.get("starts", ""))
     except ValueError: errs.append(f"{f.name}: starts must be YYYY-MM-DD")
-    for s in fm.get("recipes") or []:
+    for s in (fm.get("recipes") or []) + (fm.get("extras") or []):
         if s not in rs: errs.append(f"{f.name}: unknown recipe slug '{s}'")
     n = fm.get("nights") or []
     if n and len(n) != len(fm.get("recipes") or []): errs.append(f"{f.name}: nights must line up with recipes (same count)")
@@ -220,10 +241,11 @@ def build(plan=None, today=None):
     st = staples(); on_hand = [x.lower() for x in fm.get("on_hand") or []]
     entries, skipped_staples, skipped_onhand, meals = [], [], [], []
     nights = fm.get("nights") or ["any"] * len(fm["recipes"])
-    for slug, night in zip(fm["recipes"], nights):
+    extras = fm.get("extras") or []
+    for slug, night in list(zip(fm["recipes"], nights)) + [(x, "extra") for x in extras]:
         rfm, rbody = rs[slug]
-        meals.append({"slug": slug, "title": rfm.get("title", slug), "night": NIGHTS.get(night, "Any night"), "serves": rfm.get("serves", ""),
-                      "time_minutes": rfm.get("time_minutes", "")})
+        meals.append({"slug": slug, "title": rfm.get("title", slug), "night": NIGHTS.get(night, "Any night" if night != "extra" else "Anytime"),
+                      "kind": "extra" if night == "extra" else "dinner", "serves": rfm.get("serves", ""), "time_minutes": rfm.get("time_minutes", "")})
         for line in checklist(rbody):
             if line.startswith("#"): continue
             e = parse_line(line); e["recipe"] = slug
@@ -250,7 +272,9 @@ def to_md(g, base="https://blind-tiger.pages.dev"):
     d = datetime.date.fromisoformat(g["starts"])
     L = [f"# This week: {d.strftime('%b %-d')} to {(d + datetime.timedelta(days=6)).strftime('%b %-d, %Y')}", "",
          f"Dinners for {g['serves']}. Plan file: {g['plan_file']}", "", "## Dinners", ""]
-    L += [f"- {m['night']}: {m['title']} ({base}/r/{m['slug']})" for m in g["meals"]] + [""]
+    L += [f"- {m['night']}: {m['title']} ({base}/r/{m['slug']})" for m in g["meals"] if m["kind"] == "dinner"] + [""]
+    ex = [m for m in g["meals"] if m["kind"] == "extra"]
+    if ex: L += ["## Also this week (bakes, sides, anytime)", ""] + [f"- {m['title']} ({base}/r/{m['slug']})" for m in ex] + [""]
     if g["on_hand"]: L += ["Already have: " + ", ".join(g["on_hand"]), ""]
     L += ["## Grocery list", ""]
     for s in g["sections"]:
