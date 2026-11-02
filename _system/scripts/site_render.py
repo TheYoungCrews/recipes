@@ -341,6 +341,7 @@ def recipe_page(r, P):
 def static_pages(live, out):
     rdir = out / "r"; shutil.rmtree(rdir, ignore_errors=True); rdir.mkdir(parents=True)
     shutil.copy2(SITE / "caveat.woff2", out / "caveat.woff2"); shutil.copy2(SITE / "week-btn.js", out / "week-btn.js")
+    if (SITE / "sync-groceries.shortcut").exists(): shutil.copy2(SITE / "sync-groceries.shortcut", out / "sync-groceries.shortcut")   # signed Shortcut, source in _system/shortcuts/
     for r in live:
         P = recipe_parts(r)
         (rdir / f'{r["slug"]}.html').write_text(recipe_page(r, P))
@@ -378,7 +379,7 @@ def week_page(live, out):
     nav = '<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/week.md">Markdown</a> · <a href="/week.json">JSON</a> · <a href="/r/">All recipes</a></nav>'
     if not g:
         (wdir / "index.html").write_text(head("This week") + f"<body><main class=wk>{nav}<h1>This week</h1><p>No plan yet.</p></main></body></html>")
-        (out / "week.md").write_text("# This week\n\nNo plan yet.\n"); (out / "week.json").write_text("null"); return
+        (out / "week.md").write_text("# This week\n\nNo plan yet.\n"); (out / "week.json").write_text("null"); (out / "groceries.txt").write_text(""); return
     d = datetime.date.fromisoformat(g["starts"]); end = d + datetime.timedelta(days=6)
     span = f'{d.strftime("%b %-d")} to {end.strftime("%b %-d") if end.month != d.month else end.strftime("%-d")}'
     meals, extras = [], []
@@ -403,5 +404,6 @@ def week_page(live, out):
     (out / "week.md").write_text(groceries.to_md(g, BASE) + f"\nPage: {BASE}/week/\n")
     g2 = {k: v for k, v in g.items() if k != "detail"}
     g2["url"], g2["md_url"] = f"{BASE}/week/", f"{BASE}/week.md"
-    g2["items"] = [{"line": i["line"], "key": i["key"], "section": i["section"], "optional": i["optional"], "recipes": i["recipes"]} for i in g["detail"]]
+    g2["items"] = [{"line": i["line"], "short": i["short"], "key": i["key"], "section": i["section"], "optional": i["optional"], "recipes": i["recipes"]} for i in g["detail"]]
     (out / "week.json").write_text(json.dumps(g2, ensure_ascii=False, indent=1))
+    (out / "groceries.txt").write_text(groceries.to_txt(g))   # feed for the Sync Groceries Shortcut

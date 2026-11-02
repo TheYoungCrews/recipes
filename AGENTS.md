@@ -32,7 +32,7 @@ Email from known senders is filed automatically. Mail from anyone else is held f
 
 ## Hard rules
 - **Never delete, rename or overwrite** a file. Only create new ones or make small edits as described below. To drop a recipe, set `status: retired`.
-- The repo is public: never commit secrets, tokens, emails or private info. Never buy anything. The shared grocery list is written by Grok Bot from /week.json (section 5), nobody else.
+- The repo is public: never commit secrets, tokens, emails or private info. Never buy anything. The shared grocery list is written by Grok Bot from /week.json and by the Sync Groceries Shortcut from /groceries.txt (section 5), nobody else.
 - Never invent amounts, ratings or feedback. Write `(amount not given)`, and say what you couldn't see.
 - Never edit `## Original` after capture. Never force-push.
 - **Agents outside the repo (Muse, Instinct, ...) write ONLY to `inbox/`.** One new file per recipe or feedback, created with the GitHub contents API (create-only). Grok Bot's hourly filing routine validates inbox files and files them into `recipes/` / `cocktails/`. Never edit or delete any other path.
@@ -110,6 +110,7 @@ Then reply to the sender in one line: what you saved, what to buy, and anything 
 1. **Plan (Sunday):** Crews says the vibe and what's already in the fridge. Suggest 3 or 4 dinners from the book (to-try plus well-rated ones, no repeats from the last 2 weeks), filling gaps with new recipes filed the normal way. Nothing is written until Crews approves.
 2. **Write** `plans/YYYY-Www.md` (schema in `_system/SCHEMA.md`, "Weekly plans"): recipe slugs, rough nights, servings, `on_hand`. Run `python3 _system/scripts/build.py` (it validates the plan) and push. Commit `plan: YYYY-Www`.
 3. **Grocery list:** `python3 _system/scripts/groceries.py` (or fetch https://blind-tiger.pages.dev/week.json). Each line is short and standalone (`1 lb cremini mushrooms`). Grok Bot adds those lines to the shared Apple Reminders "Groceries" list; staples are left off on purpose.
+   - **Sync Groceries Shortcut:** https://blind-tiger.pages.dev/groceries.txt is the same list as plain text, one short generic name per line ("Cremini mushrooms", "Lentils"): no amounts, no optional lines, no staples, nothing in `on_hand`. `python3 _system/scripts/groceries.py --txt` prints it, and `items[].short` in /week.json has the same name per line. Crews's "Sync Groceries" Shortcut (installed from https://blind-tiger.pages.dev/sync-groceries.shortcut) reads it and adds each name that isn't already in Reminders "Groceries" (open, or checked off in the last week; whole-title match, any case). When a short name reads wrong, add `- <key> | <Short name>` to `kitchen/grocery-names.md`. Grok Bot uses the short names too when it writes to Reminders.
 4. **Midweek changes:** edit the plan file (move a night, swap or drop a slug, add to `on_hand`), rebuild and push. Tell Crews which lines to add to or remove from Reminders.
 5. **After cooking:** feedback goes into the recipe's Notes as in section 2. The page for the week is https://blind-tiger.pages.dev/week/.
 6. **Bakes and sides:** anything without a night goes in `extras: [slug]`, not `recipes`. It still feeds the grocery list.

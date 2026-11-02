@@ -3,6 +3,7 @@
 
   python3 _system/scripts/groceries.py              # current plan, markdown list
   python3 _system/scripts/groceries.py --json       # current plan, JSON
+  python3 _system/scripts/groceries.py --txt        # current plan, short names only (= /groceries.txt)
   python3 _system/scripts/groceries.py plans/2026-W45.md
 
 Reads the chosen recipes' Our version checklists, merges clear duplicates (same item, compatible units),
@@ -193,6 +194,40 @@ def clean_line(e):
     qs = f"{fmt(q[0])} to {fmt(q[1])}" if e["range"] else fmt(q)
     return " ".join(x for x in [qs, e["unit"], e["size"], e["name"]] if x)
 
+# ---- short names for the shared list (/groceries.txt, items[].short)
+def grocery_names():
+    """kitchen/grocery-names.md: '- <key> | <Short name>' overrides, keyed by items[].key."""
+    f = ROOT / "kitchen/grocery-names.md"
+    if not f.exists(): return {}
+    out = {}
+    for l in f.read_text().splitlines():
+        if l.startswith("- ") and " | " in l:
+            k, v = l[2:].split(" | ", 1)
+            if k.strip() and v.strip(): out[have_key(k.strip())] = v.strip()
+    return out
+
+DROP = re.compile(r"(?i)\b(?:fresh|freshly|boneless|skinless|organic)\b\s*")
+CONTAINER = re.compile(r"(?i)^(?:packages?|bags?|jars?|boxes|box|bottles?|containers?|tubs?)\s+(?:of\s+)?")
+def short_name(name, k=None, names=None):
+    """'1 lb Yukon Gold potatoes' item -> 'Yukon Gold potatoes'. Override map first (by merge key), else a cleaned, capitalized name."""
+    names = grocery_names() if names is None else names
+    for kk in [k, have_key(name)]:
+        if kk and have_key(kk) in names: return names[have_key(kk)]
+    n = CONTAINER.sub("", PREP.sub("", name)); n = DROP.sub("", n)
+    n = re.sub(r"\s+", " ", n).strip(" ,;-")
+    return n[:1].upper() + n[1:] if n else name
+
+def to_txt(g):
+    """Plain feed for the Sync Groceries Shortcut: one short name per line, non-optional items only,
+    staples and on_hand already left off by build(). Deduped case-insensitively, in store-section order."""
+    seen, out = set(), []
+    for s in SECTIONS:
+        for i in g["detail"]:
+            if i["section"] != s or i["optional"]: continue
+            if i["short"].lower() in seen: continue
+            seen.add(i["short"].lower()); out.append(i["short"])
+    return "\n".join(out) + ("\n" if out else "")
+
 # ---- plans
 def plans():
     out = []
@@ -272,6 +307,8 @@ def build(plan=None, today=None):
         if h: e["have"] = h; skipped_onhand.append(e)
         else: entries.append(e)
     items = merge(entries)
+    names = grocery_names()
+    for i in items: i["short"] = short_name(i["item"], i["key"], names)
     grouped = {s: [i for i in items if i["section"] == s and not i["optional"]] for s in SECTIONS}
     optional = [i for i in items if i["optional"]]
     check = sorted({x for e in skipped_staples for x in e["staple"].split(", ")})
@@ -309,5 +346,6 @@ if __name__ == "__main__":
         fm, body = parse_fm(f.read_text()); plan = (f, fm, body)
     g = build(plan)
     if not g: print("No plans in plans/."); sys.exit(1)
+    if "--txt" in sys.argv: print(to_txt(g), end=""); sys.exit(0)
     if "--json" in sys.argv: g.pop("detail") if "--short" in sys.argv else None; print(json.dumps(g, ensure_ascii=False, indent=2))
     else: print(to_md(g))

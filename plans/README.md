@@ -8,3 +8,4 @@ One file per week, `YYYY-Www.md` (ISO week, starting Monday). It lists the dinne
 - On the site: https://blind-tiger.pages.dev/week/ (also /week.md and /week.json).
 - Signed in on /week/, tick a grocery line to mark it "already have" (it goes into `on_hand`).
 - Signed in on the site, "+ Add to this week" on any recipe adds or removes it here (through `POST /api/plan`, see AGENTS.md section 5).
+- Short list for Reminders: https://blind-tiger.pages.dev/groceries.txt (one generic name per line, `groceries.py --txt`). The "Sync Groceries" Shortcut on Crews's phone reads it and adds what's missing to the shared "Groceries" list. Fix a bad name in `kitchen/grocery-names.md`.

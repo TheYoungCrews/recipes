@@ -50,6 +50,8 @@ def write(items, out):
     (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status","url")} for e in full], ensure_ascii=False))
     hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json", "week.json", "week.md"))
     hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n/week.md\n  Content-Type: text/markdown; charset=utf-8\n/week/*\n  Cache-Control: public, max-age=300\n"
+    hdr += "/groceries.txt\n  Content-Type: text/plain; charset=utf-8\n  Cache-Control: no-cache\n  Access-Control-Allow-Origin: *\n"   # Sync Groceries Shortcut feed
+    hdr += '/sync-groceries.shortcut\n  Content-Type: application/octet-stream\n  Content-Disposition: attachment; filename="Sync Groceries.shortcut"\n  Cache-Control: public, max-age=300\n'
     (out/"_headers").write_text(hdr)
     (out/"llms.txt").write_text("""# Crews & Anna's Kitchen
 
