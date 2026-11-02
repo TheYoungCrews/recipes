@@ -5,7 +5,8 @@
 
 Flow: Get https://blind-tiger.pages.dev/groceries.txt -> split by new lines -> Find Reminders in "Groceries"
 (open, plus checked off in the last week) -> one lowercase text "|title|title|" -> for each feed line, if that text
-does not contain "|line|" (whole-title match, any case), add a reminder to "Groceries" -> notify what was added.
+does not contain "|line|" (whole-title match, any case), add a reminder to "Groceries" and bump AddedCount
+-> notify "Added N: a, b" when N > 0, else "Nothing new to add".
 The file has to be signed on a Mac (`shortcuts sign --mode anyone`) before iOS will import it; the signed copy
 lives at _system/web/sync-groceries.shortcut and is served at /sync-groceries.shortcut."""
 import plistlib, sys, uuid
@@ -42,7 +43,7 @@ def find_reminders(uid, completed, last_week=False):
         "WFSerializationType": "WFContentPredicateTableTemplate"})
 
 def build():
-    A, B, C, D, E, F, G, J, K, M, N = (U(x) for x in "download split open done titles bars lower item wrapped add count".split())
+    A, B, C, D, E, F, G, J, K, M, N, P, Z = (U(x) for x in "download split open done titles bars lower item wrapped add joined plusone zero".split())
     LOOP, IF1, IF2 = U("loop"), U("if-new"), U("if-any")
     a = [
         act("comment", WFCommentActionText="Sync Groceries: adds this week's cookbook grocery list (blind-tiger.pages.dev/groceries.txt) to the shared Reminders list Groceries. Skips anything already there, open or checked off in the last week."),
@@ -56,6 +57,9 @@ def build():
             WFReplaceTextRegularExpression=True, WFReplaceTextCaseSensitive=False),
         act("text.changecase", UUID=G, text=att(out(F, "Updated Text")), WFCaseType="lowercase"),
         act("setvariable", WFVariableName="Have", WFInput=att(out(G, "Updated Text"))),
+        # Counter starts at 0 and only goes up inside the branch that really adds a reminder.
+        act("number", UUID=Z, WFNumberActionNumber="0"),
+        act("setvariable", WFVariableName="AddedCount", WFInput=att(out(Z, "Number"))),
         act("repeat.each", UUID=LOOP + "-S", GroupingIdentifier=LOOP, WFControlFlowMode=0, WFInput=att(out(B, "Split Text"))),
         act("text.changecase", UUID=J, text=att(var("Repeat Item")), WFCaseType="lowercase"),
         act("gettext", UUID=K, WFTextActionText=tokens("|", out(J, "Updated Text"), "|")),
@@ -64,15 +68,17 @@ def build():
         act("addnewreminder", UUID=M, WFCalendarItemTitle=tokens(var("Repeat Item")), WFCalendarDescriptor=dict(LIST),
             WFCalendarItemCalendar="Groceries", WFAlertEnabled="No Alert"),
         act("appendvariable", WFVariableName="Added", WFInput=att(var("Repeat Item"))),
+        act("math", UUID=P, WFInput=att(var("AddedCount")), WFMathOperation="+", WFMathOperand="1"),
+        act("setvariable", WFVariableName="AddedCount", WFInput=att(out(P, "Calculation Result"))),
         act("conditional", UUID=IF1 + "-E", GroupingIdentifier=IF1, WFControlFlowMode=2),
         act("repeat.each", UUID=LOOP + "-E", GroupingIdentifier=LOOP, WFControlFlowMode=2),
-        act("count", UUID=N, Input=att(var("Added")), WFInput=att(var("Added")), WFCountType="Items"),
-        act("conditional", GroupingIdentifier=IF2, WFControlFlowMode=0, WFCondition=2, WFInput=cond_input(out(N, "Count")), WFNumberValue="0"),
-        act("notification", WFNotificationActionTitle=tokens("Added ", out(N, "Count"), " to Groceries"),
-            WFNotificationActionBody=tokens(var("Added")), WFNotificationActionSound=False),
+        act("conditional", GroupingIdentifier=IF2, WFControlFlowMode=0, WFCondition=2, WFInput=cond_input(var("AddedCount")), WFNumberValue="0"),
+        act("text.combine", UUID=N, text=att(var("Added")), WFTextSeparator="Custom", WFTextCustomSeparator=", "),
+        act("notification", WFNotificationActionTitle=tokens("Sync Groceries"),
+            WFNotificationActionBody=tokens("Added ", var("AddedCount"), ": ", out(N, "Combined Text")), WFNotificationActionSound=False),
         act("conditional", GroupingIdentifier=IF2, WFControlFlowMode=1),
-        act("notification", WFNotificationActionTitle=tokens("Groceries is up to date"),
-            WFNotificationActionBody=tokens("Nothing new from the cookbook this time."), WFNotificationActionSound=False),
+        act("notification", WFNotificationActionTitle=tokens("Sync Groceries"),
+            WFNotificationActionBody=tokens("Nothing new to add"), WFNotificationActionSound=False),
         act("conditional", UUID=IF2 + "-E", GroupingIdentifier=IF2, WFControlFlowMode=2),
     ]
     return {"WFWorkflowActions": a, "WFWorkflowName": "Sync Groceries",
