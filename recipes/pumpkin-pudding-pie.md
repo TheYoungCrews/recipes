@@ -40,11 +40,11 @@ A runny pumpkin batter that bakes up into a soft, pudding-like pie, finished wit
 - About 1 tsp powdered sugar, for dusting
 
 1. Heat the oven to 325°F.
-2. Mix the sugar, pumpkin, eggs and baking soda.
+2. Mix the sugar, pumpkin, eggs and baking soda in a large bowl. With a stand mixer, use the paddle.
 3. Add the flour, baking powder, cinnamon, vanilla and salt, and mix well.
-4. Whisk in the milk and melted butter. The batter will be runny, which is normal because it sets in the oven.
+4. Whisk in the milk and melted butter (switch to the whisk attachment on a mixer). The batter will be runny, which is normal because it sets in the oven.
 5. Fill the crusts to the edge and bake 55 minutes.
-6. Let them cool, dust with sifted powdered sugar, and zest the orange over the top.
+6. Let them cool, dust with sifted powdered sugar, and zest the orange over the top. A microplane works best. For the prettiest finish, peel the orange and finely dice the peel instead.
 
 **Cardamom whipped cream**
 - 1 cup heavy cream
@@ -80,11 +80,11 @@ Makes about 3 pies. Halve everything for one.
 
 **Steps**
 1. Heat the oven to 325°F.
-2. Mix the sugar, pumpkin, eggs and baking soda.
+2. Mix the sugar, pumpkin, eggs and baking soda in a large bowl. With a stand mixer, use the paddle.
 3. Add the flour, baking powder, cinnamon, vanilla and salt, and mix well.
-4. Whisk in the milk and melted butter. The batter will be runny, which is normal because it sets in the oven.
+4. Whisk in the milk and melted butter (switch to the whisk attachment on a mixer). The batter will be runny, which is normal because it sets in the oven.
 5. Fill the crusts to the edge and bake 55 minutes.
-6. Let them cool, dust with sifted powdered sugar, and zest the orange over the top.
+6. Let them cool, dust with sifted powdered sugar, and zest the orange over the top. A microplane works best. For the prettiest finish, peel the orange and finely dice the peel instead.
 7. For the cream: chill a metal bowl and whisk for 15 minutes.
 8. Whisk the sugar and spices together, add the cream, and whip to stiff peaks. Serve on the pie.
 
