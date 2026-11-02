@@ -2,7 +2,7 @@
 title: Aged Eggnog
 slug: aged-eggnog
 type: cocktail
-status: to-try
+status: favorite
 tags: [rum, egg, no-cook, weekend-project]
 spirit: rum
 ingredients: [eggs, jamaican rum, cognac, bourbon, whole milk, sugar, nutmeg, half-and-half, heavy cream]
@@ -16,11 +16,13 @@ via: muse
 input_type: web-page
 owner: crews
 credit: "Alton Brown"
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-02
+rating: 5
+cooks: 1
 ---
 Alton Brown's aged eggnog: rum, cognac and bourbon blended with yolks, sugar and nutmeg, aged in two phases for about 90 days. Strong, rich, and a great holiday batch if you start by mid-October.
+
+![Made 2026-11-02](photos/aged-eggnog-2026-11-02.jpg)
 
 ## Original
 Phase 1:
@@ -68,4 +70,5 @@ The first phase stays above 20% ABV, which cuts any salmonella by over 99%. For 
 Same as original. Start by mid-October for Christmas: 30 days for phase 1, then 50-60 for phase 2.
 
 ## Notes
+- 2026-11-02 (crews via site, 5/5): cooked it.
 - 2026-10-17 (via muse): from Alton Brown's site. Active time about 15 minutes; total about 90 days with aging.
