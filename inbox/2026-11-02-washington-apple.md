@@ -1,3 +1,5 @@
+filed_to: cocktails/washington-apple.md
+filed_at: 2026-11-02
 ---
 title: Washington Apple
 slug: washington-apple
