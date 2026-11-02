@@ -124,7 +124,7 @@ def section(name):
        and not re.search(r"\b(stock|broth|bouillon|sauce|paste)\b", n): return "meat and seafood"
     if re.search(r"\b(butter|milk|cream|cheese|parmesan|pecorino|feta|mozzarella|ricotta|yogurt|eggs?|cottage|mascarpone|crème fraîche|sour cream)\b", n) \
        and not re.search(r"\b(coconut|peanut|almond|oat|apple) (milk|cream|butter)\b", n): return "dairy"
-    if re.search(r"\b(dried|ground|powder|flakes|canned|can|oil|purée|puree|extract|chips|pecans|walnuts|almonds|nuts|seeds|mix|crunch|crisp)\b", n): return "pantry"
+    if re.search(r"\b(dried|ground|powder|flakes|canned|can|oil|purée|puree|extract|chips|pecans|walnuts|almonds|nuts|seeds|mix|crunch|crisp|tortillas|vinegar|salsa)\b", n): return "pantry"
     if re.search(r"\b(onions?|shallots?|garlic|mushrooms?|cremini|shiitake|potato(es)?|thyme|rosemary|sage|parsley|cilantro|basil|mint|dill|chives|limes?|lemons?|ginger|carrots?|zucchini|celery|serranos?|jalapeños?|bell peppers?|scallions?|green onions?|spinach|kale|lettuce|arugula|cabbage|tomato(es)?|squash|apples?|avocados?|cucumbers?|herbs?|greens|leeks?|fennel|broccoli|cauliflower|green beans|corn|broccolini|snap peas|bok choy|sweet potato(es)?)\b", n): return "produce"
     if re.search(r"\b(stock|broth|polenta|grits|rice|pasta|orzo|spaghetti|couscous|quinoa|oats|farro|tortillas|chickpeas|olives|capers|noodles?|flour|sugar|vinegar|oil|mustard|dijon|sauce|paste|spice|salt|pepper|curry|turmeric|cumin|paprika|honey|beans|lentils|bamboo shoots|coconut milk|aminos|sambal|breadcrumbs|panko)\b", n): return "pantry"
     return "other"
