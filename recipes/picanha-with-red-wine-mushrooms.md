@@ -45,7 +45,7 @@ Serves 2, about 75 minutes, plus salting the steaks ahead. One oven does both jo
 2. Heat the oven to 425°F. Toss the potatoes with the olive oil, salt and pepper on a sheet pan. Roast 35 to 40 minutes, flipping halfway, until browned and crisp.
 3. When the potatoes are nearly done, set a dry cast iron over medium. Stand the steaks fat side down (lean them against each other or the pan wall) and render the fat 6 to 8 minutes, until golden and crisp. Pour off all but about 2 tbsp of the fat and save it.
 4. Turn the heat to high and sear the steaks 1 to 2 minutes per side, until deeply browned.
-5. Take the potatoes out and keep them on the pan. Lower the oven to 275°F and prop the door open a few minutes so it cools. Put the skillet of steaks in and cook until they read 125°F inside, about 10 to 20 minutes depending on thickness. Start checking at 8 minutes.
+5. Use a thermometer and pull at 120°F for medium rare (it climbs to about 125°F while resting). Steaks thinner than about 1½ inches stay on the stove over medium, flipping every minute; start checking right after the sear. Thicker steaks: take the potatoes out, lower the oven to 275°F with the door propped open a few minutes, put the skillet in and start checking at 3 minutes, then every 2 minutes.
 6. Move the steaks to a board to rest 10 minutes. Turn the oven back up to 425°F and slide the potatoes back in to rewarm while you make the sauce.
 7. Set the skillet over medium (the handle is hot). Add the onion with a pinch of salt and cook in the beef fat, stirring now and then, until soft and jammy, 8 to 10 minutes. Add a spoon of the saved fat if the pan looks dry.
 8. Push the onion aside, turn the heat to medium-high and add the mushrooms in one layer. Leave them alone 3 minutes to brown, then stir and cook 3 to 4 minutes more, until browned all over.
@@ -57,3 +57,4 @@ If the air fryer is free, cook the potatoes there instead (400°F, 20 to 25 minu
 
 ## Notes
 - 2026-11-01 (grok-bot): written from Crews's fall picanha idea (mushrooms, onion, red wine). Amounts are ours for 2 steaks. Planned for the week of 2026-11-02.
+- 2026-11-03 (grok-bot): the polenta picanha overcooked after 5 minutes at 275°F, so step 5 now skips the oven for steaks under about 1½ inches and checks temperature much earlier.
