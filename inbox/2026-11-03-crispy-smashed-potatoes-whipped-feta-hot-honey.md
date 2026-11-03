@@ -1,3 +1,5 @@
+filed_to: recipes/crispy-smashed-potatoes-whipped-feta-hot-honey.md
+filed_at: 2026-11-03
 ---
 title: Crispy Smashed Potatoes with Whipped Feta & Chilli Salt Hot Honey
 slug: crispy-smashed-potatoes-whipped-feta-hot-honey
