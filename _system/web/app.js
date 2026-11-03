@@ -1,6 +1,6 @@
-// Crews & Anna's Kitchen: search/ask, filters, dinner picker. Data: window.KITCHEN = {items, staples}.
+// Crews & Anna's Kitchen: search/ask, filters, dinner picker. Data: window.KITCHEN = {items, staples, inventory}.
 (function(){
-const K=window.KITCHEN, items=K.items, staples=new Set(K.staples), bySlug={};
+const K=window.KITCHEN, items=K.items, staples=new Set([...K.staples, ...(K.inventory||[])]), bySlug={};
 items.forEach(r=>bySlug[r.slug]=r);
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 // Rotating placeholders
@@ -35,7 +35,7 @@ function localAsk(question){
     if(r.status==="favorite")score+=.6; if(r.rating)score+=parseFloat(r.rating)/10;
     const why=[]; const uniq=[...new Set(hits)].slice(0,3);
     if(uniq.length)why.push("Uses "+uniq.join(", "));
-    if(ings.length&&!isDrink)why.push(`${have} of ${ings.length} ingredients usually on hand`);
+    if(ings.length&&!isDrink)why.push(`${have} of ${ings.length} ingredients on hand`);
     if(r.time_minutes&&!isDrink)why.push(r.time_minutes+" min");
     if(r.status==="favorite")why.push("a favorite"); else if(r.status==="to-try")why.push("still on the to-try list");
     if(r.rating)why.push(`last rated ${r.rating}★`);

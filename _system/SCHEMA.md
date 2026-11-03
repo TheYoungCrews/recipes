@@ -79,6 +79,7 @@ A line or two about the week (shown on /week/).
 - The grocery list comes from each recipe's `## Our version` checklist, never from Original. `python3 _system/scripts/groceries.py` prints it (add `--json` for JSON).
 - Duplicates merge only when it's clearly the same item in compatible units (lb and oz, cups/tbsp/tsp, or the same count unit). Ranges and lines without an amount are never summed.
 - Anything in `kitchen/staples.md` is left off (and listed under "staples we're counting on"), and so is anything matching `on_hand`.
+- `kitchen/inventory.md` is the live on-hand list (`- item` lines under `## ` sections; a parenthetical like `(Kerrygold)` is ignored for matching). Grocery lines that match an item, by the same matching staples use, are left off and listed under "In the house" (`in_house` in /week.json). Agents remove a line when it runs out or a cooked dish uses it up. `staples.md` stays the always-restock list.
 - Lines are grouped as produce, meat and seafood, dairy, pantry, frozen, other, with an Optional group for `Optional:` checklist lines.
 - The site shows the current plan at /week/ (plus /week.md and /week.json): the plan whose week contains today, else the next one coming up, else the latest. The build fails on an unknown slug or a bad date.
 - `extras` show on /week/ under "Also this week" with no night. A slug can't be in both `recipes` and `extras`. A plan needs at least one of them.

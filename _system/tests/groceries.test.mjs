@@ -33,3 +33,19 @@ test("current plan feed has no amounts or on-hand items", () => {
   }
   assert.equal(r.txt.split("\n").filter(Boolean).length, new Set(r.txt.toLowerCase().split("\n").filter(Boolean)).size);
 });
+test("inventory.md: parentheticals dropped, matching items leave the list and show as in_house", () => {
+  const r = py(`import tempfile, pathlib
+f = pathlib.Path(tempfile.mkdtemp()) / "inv.md"
+f.write_text("# Inventory\\n\\n## Fridge\\n- butter (Kerrygold)\\n- broccolini\\n- picanha steaks (4: 2 salted for Tuesday, 2 for Friday)\\n- thyme\\n- whole milk\\n")
+inv = G.inventory(f)
+p = G.current()
+g = G.build(p, inv=["broccolini", "thyme", "cremini mushrooms"])
+g0 = G.build(p, inv=[])
+print(json.dumps({"inv": inv, "lines": [i["line"] for i in g["detail"]], "lines0": [i["line"] for i in g0["detail"]], "house": g["in_house"],
+  "m": [G.matches("broccolini", "broccolini"), G.matches("fresh thyme", "thyme"), G.matches("coconut milk", "whole milk"), G.matches("Yukon Gold potatoes", "gold potatoes")]}))`);
+  assert.deepEqual(r.inv, ["butter", "broccolini", "picanha steaks", "thyme", "whole milk"]);
+  assert.deepEqual(r.m, [true, true, false, true]);
+  for (const line of r.lines) assert.doesNotMatch(line, /broccolini|thyme|cremini/i, line);
+  for (const h of r.house) { assert.ok(h.inventory, JSON.stringify(h)); assert.ok(r.lines0.includes(h.line), h.line); }
+  assert.equal(r.lines0.length - r.lines.length, r.house.length);
+});

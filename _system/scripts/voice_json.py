@@ -44,7 +44,8 @@ def entry(r):
 
 def write(items, out):
     root = out.parent
-    (out/"kitchen.json").write_text(json.dumps({"taste": (root/"kitchen/taste-profile.md").read_text(), "staples": (root/"kitchen/staples.md").read_text()}, ensure_ascii=False))
+    (out/"kitchen.json").write_text(json.dumps({"taste": (root/"kitchen/taste-profile.md").read_text(), "staples": (root/"kitchen/staples.md").read_text(),
+        "inventory": (root/"kitchen/inventory.md").read_text() if (root/"kitchen/inventory.md").exists() else ""}, ensure_ascii=False))
     full = [entry(r) for r in items]
     (out/"recipes.json").write_text(json.dumps({"site": SITE, "count": len(full), "items": full}, indent=1, ensure_ascii=False))
     (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status","url")} for e in full], ensure_ascii=False))

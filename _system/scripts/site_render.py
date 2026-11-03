@@ -178,6 +178,11 @@ def recipe_view(r, staples):
 <form class=askr data-slug="{E(r["slug"])}"><h4 class=hand>Ask about this</h4><div class=askrow><input maxlength=500 placeholder="Out of something? Doubling it?" aria-label="Ask about this recipe"><button aria-label=Ask>↑</button></div><p class=askans role=status hidden></p><div class=gsi></div></form>
 {src}</div></div></div></article>'''
 
+def groceries_inventory(root):
+    """kitchen/inventory.md names for the home page's 'on hand' scoring (app.js)."""
+    import groceries
+    return groceries.inventory(pathlib.Path(root) / "kitchen/inventory.md")
+
 def render(items, staples, root):
     root = pathlib.Path(root); out = root / "site"
     (out / "photos").mkdir(parents=True, exist_ok=True)
@@ -201,7 +206,7 @@ def render(items, staples, root):
     chips = ["all"] + types + [s for s in ["favorite","to-try"] if any(r["status"]==s for r in food)] + [t for t in common if any(t in r["tags"] for r in food)]
     chip_html = "".join(f'<button class="chip{" on" if c=="all" else ""}" data-f="{E(c)}">{E(c.replace("-"," "))}</button>' for c in dict.fromkeys(chips))
     data = json.dumps({"items":[{k:r[k] for k in ["title","slug","type","status","tags","ingredients","time_minutes","rating"]} for r in live],
-                       "staples":staples}, ensure_ascii=False).replace("</","<\\/")
+                       "staples":staples, "inventory":groceries_inventory(root)}, ensure_ascii=False).replace("</","<\\/")
     js = (SITE/"app.js").read_text()
     home = f'''<section id=home><div class=wrap>
 <form id=askform class="sheet ask" role=search><h1 class=hand>What's cooking?</h1>
@@ -393,6 +398,7 @@ def week_page(live, out):
     gl = "".join(f'<h3>{E(sec["section"])}</h3><ul>' + "".join(gli(x) for x in sec["items"]) + "</ul>" for sec in g["sections"]) or "<p>Nothing to buy beyond staples.</p>"
     if g["optional"]: gl += "<h3>optional</h3><ul>" + "".join(gli(x) for x in g["optional"]) + "</ul>"
     if g["have"]: gl += ('<h3>Already have</h3><ul class=got>' + "".join(f'<li><label><input type=checkbox class=have data-have="{E(h["on_hand"])}" checked hidden><span>{E(h["line"])}</span></label></li>' for h in g["have"]) + "</ul>")
+    if g.get("in_house"): gl += ('<h3>In the house</h3><ul class=got>' + "".join(f'<li><span>{E(h["line"])}</span></li>' for h in g["in_house"]) + "</ul>")
     body = [nav, f'<h1>This week</h1><p class=meta>{E(span)} · dinners for {E(str(g["serves"]))}</p>']
     if g["note"]: body.append(f"<p>{inline(plain_md(g['note']))}</p>")
     body.append('<h2>Dinners</h2><ul class=meals>' + "".join(meals) + "</ul>")

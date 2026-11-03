@@ -29,6 +29,11 @@ def allowed_tags():
 def staples():
     return [l[2:].split(" | ")[0].strip().lower() for l in (ROOT/"kitchen/staples.md").read_text().splitlines() if l.startswith("- ")]
 
+def inventory():
+    """kitchen/inventory.md: what's in the house now (parentheticals dropped)."""
+    sys.path.insert(0, str(ROOT/"_system/scripts")); import groceries
+    return groceries.inventory()
+
 def md_to_html(md):
     out, inlist = [], None
     for line in md.splitlines():
@@ -61,7 +66,7 @@ def static_html(items, st):
         m = miss(r)
         return (f'<li class="sc"><a href="#r-{e(r["slug"])}"><b>{"🍸 " if r["dir"]=="cocktails" else ""}{e(r["title"])}</b></a>'
                 f'<br><small>{e(r["status"])} · {e(r["type"])}{" · "+e(str(r["time_minutes"]))+" min" if r["time_minutes"] else ""}'
-                f'<br>{"Need: "+e(", ".join(m)) if m else "Have all staples"}</small></li>')
+                f'<br>{"Need: "+e(", ".join(m)) if m else "Have everything"}</small></li>')
     def sec(i, title, rs):
         return f'<h2 id="{i}">{e(title)} ({len(rs)})</h2><ul class="sl">' + ("".join(card(r) for r in rs) or "<li>None</li>") + '</ul><p><a href="#top">↑ Top</a></p>'
     tags = sorted({t for r in items for t in r["tags"]})
@@ -69,7 +74,7 @@ def static_html(items, st):
               ("g-drinks", "Drinks", [r for r in items if r["dir"]=="cocktails"]),
               ("g-try", "To try", [r for r in items if r["status"]=="to-try"]),
               ("g-fav", "Favorites + made", [r for r in items if r["status"] in ("favorite","made")]),
-              ("g-have", "Can make now (have all staples)", [r for r in items if not miss(r)]),
+              ("g-have", "Can make now (staples plus what's in the house)", [r for r in items if not miss(r)]),
               ("g-near", "Missing 1 to 2 items", [r for r in items if 1 <= len(miss(r)) <= 2])]
     nav = " · ".join(f'<a href="#{i}">{e(t)}</a>' for i, t, _ in groups)
     tagnav = " · ".join(f'<a href="#t-{e(t)}">{e(t)}</a>' for t in tags)
@@ -142,7 +147,7 @@ def main():
     for w in warns: print("WARN:", w)
     if errs:
         print("VALIDATION ERRORS:\n  " + "\n  ".join(errs)); sys.exit(1)
-    data = json.dumps({"items": items, "staples": staples()}).replace("</", "<\\/")
+    data = json.dumps({"items": items, "staples": staples() + inventory()}).replace("</", "<\\/")
     out = ROOT/"site"; out.mkdir(exist_ok=True)
     sys.path.insert(0, str(ROOT/"_system/scripts")); import site_render
     site_render.render(items, staples(), ROOT)

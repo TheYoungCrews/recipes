@@ -7,7 +7,7 @@
   python3 _system/scripts/groceries.py plans/2026-W45.md
 
 Reads the chosen recipes' Our version checklists, merges clear duplicates (same item, compatible units),
-drops kitchen/staples.md items and the plan's on_hand items, and sorts what's left by store section.
+drops kitchen/staples.md items, the plan's on_hand items and anything in kitchen/inventory.md, and sorts what's left by store section.
 Plan format: _system/SCHEMA.md ("Weekly plans")."""
 import datetime, json, pathlib, re, sys
 from fractions import Fraction as F
@@ -31,6 +31,17 @@ def parse_fm(text):
 
 def staples():
     return [l[2:].split(" | ")[0].strip().lower() for l in (ROOT / "kitchen/staples.md").read_text().splitlines() if l.startswith("- ")]
+
+def inventory(path=None):
+    """kitchen/inventory.md: what's in the house now. '- picanha steaks (4: ...)' -> 'picanha steaks' (parentheticals and ' | notes' dropped)."""
+    f = pathlib.Path(path) if path else ROOT / "kitchen/inventory.md"
+    if not f.exists(): return []
+    out = []
+    for l in f.read_text().splitlines():
+        if not l.startswith("- "): continue
+        n = re.sub(r"\s*\([^)]*\)", "", l[2:].split(" | ")[0]).strip().lower()
+        if n and n not in out: out.append(n)
+    return out
 
 def checklist(body):
     """Ingredient lines from ## Our version (checkbox lines only)."""
@@ -103,7 +114,7 @@ def have_key(name):
 # ---- staples and on-hand matching
 DESCRIPTORS = {"yellow", "white", "red", "sweet", "large", "medium", "small", "fresh", "kosher", "flaky", "sea", "fine", "coarse",
                "unsalted", "salted", "whole", "grated", "freshly", "ground", "cracked", "cold", "good", "extra-virgin", "extra", "virgin",
-               "light", "regular", "block", "shaved", "chopped", "diced", "sliced", "minced", "thinly", "finely", "shredded", "softened", "melted", "low-sodium", "full-fat", "plain", "of"}
+               "light", "regular", "block", "shaved", "chopped", "diced", "sliced", "minced", "thinly", "finely", "shredded", "softened", "melted", "low-sodium", "full-fat", "plain", "yukon", "of"}
 ALIASES = {"chili crunch": "chili crisp", "chili oil or chili crunch": "chili crisp", "chilli crisp": "chili crisp"}
 def matches(item, staple):
     """True when the item IS the staple, allowing only descriptor words before it ('kosher salt', 'large yellow onions').
@@ -272,18 +283,22 @@ def validate(f, fm, rs):
         if x not in NIGHTS and x != "any": errs.append(f"{f.name}: bad night '{x}' (mon..sun or any)")
     return errs
 
-def build(plan=None, today=None):
+def build(plan=None, today=None, inv=None):
     p = plan or current(today)
     if not p: return None
     f, fm, body = p
     rs = load_recipes(); errs = validate(f, fm, rs)
     if errs: raise ValueError("; ".join(errs))
-    st = staples(); on_hand = [x for x in fm.get("on_hand") or [] if x.strip()]
+    st = staples(); inv = inventory() if inv is None else inv; on_hand = [x for x in fm.get("on_hand") or [] if x.strip()]
     def have_hit(e):   # which on_hand entry covers this line: same merge key, or the older loose match ('picanha')
         k = key(e["name"])
         return next((o for o in on_hand if k == have_key(o)), None) or next(
             (o for o in on_hand if matches(e["name"], o.lower()) or re.search(rf"\b{re.escape(o.lower())}", e["name"].lower())), None)
-    entries, skipped_staples, skipped_onhand, meals = [], [], [], []
+    def inv_hit(e):    # which inventory.md line covers this grocery line (same matching as staples, any 'X and Y' part list)
+        parts = re.split(r"\s+(?:and|&)\s+", e["name"])
+        return next((s for s in inv if matches(e["name"], s)), None) or (
+            ", ".join(next(s for s in inv if matches(x, s)) for x in parts) if len(parts) > 1 and all(any(matches(x, s) for s in inv) for x in parts) else None)
+    entries, skipped_staples, skipped_onhand, skipped_inv, meals = [], [], [], [], []
     nights = fm.get("nights") or ["any"] * len(fm["recipes"])
     extras = fm.get("extras") or []
     for slug, night in list(zip(fm["recipes"], nights)) + [(x, "extra") for x in extras]:
@@ -300,11 +315,15 @@ def build(plan=None, today=None):
             if hit: e["staple"] = hit; skipped_staples.append(e); continue
             h = have_hit(e)
             if h: e["have"] = h; skipped_onhand.append(e); continue
+            h = inv_hit(e)
+            if h: e["inventory"] = h; skipped_inv.append(e); continue
             entries.append(e)
     for x in fm.get("add") or []:
         e = parse_line(x); e["recipe"] = "added"
         h = have_hit(e)
-        if h: e["have"] = h; skipped_onhand.append(e)
+        if h: e["have"] = h; skipped_onhand.append(e); continue
+        h = inv_hit(e)
+        if h: e["inventory"] = h; skipped_inv.append(e)
         else: entries.append(e)
     items = merge(entries)
     names = grocery_names()
@@ -316,10 +335,12 @@ def build(plan=None, today=None):
     for o in on_hand:
         got = merge([e for e in skipped_onhand if e["have"] == o])
         have += [{"line": i["line"], "on_hand": o} for i in got] or [{"line": o, "on_hand": o}]
+    in_house = [{"line": i["line"], "short": short_name(i["item"], i["key"], names), "inventory": ", ".join(sorted({e["inventory"] for e in skipped_inv if have_key(e["name"]) == have_key(i["item"])}))}
+                for i in merge(skipped_inv)]   # lines kitchen/inventory.md took off the list
     return {"week": fm["week"], "starts": fm["starts"], "serves": fm.get("serves", "2"), "plan_file": f"plans/{f.name}",
             "meals": meals, "on_hand": fm.get("on_hand") or [], "note": body.strip(),
             "sections": [{"section": s, "items": [i["line"] for i in grouped[s]]} for s in SECTIONS if grouped[s]],
-            "optional": [i["line"] for i in optional], "staples_assumed": check, "have": have,
+            "optional": [i["line"] for i in optional], "staples_assumed": check, "have": have, "in_house": in_house,
             "detail": items}
 
 def to_md(g, base="https://blind-tiger.pages.dev"):
@@ -335,6 +356,7 @@ def to_md(g, base="https://blind-tiger.pages.dev"):
     if not g["sections"]: L += ["Nothing to buy beyond staples.", ""]
     if g["optional"]: L += ["### Optional", ""] + [f"- {x}" for x in g["optional"]] + [""]
     if g["have"]: L += ["## Already have (not on the list)", ""] + [f"- [x] {h['line']}" for h in g["have"]] + [""]
+    if g.get("in_house"): L += ["## In the house (kitchen/inventory.md, not on the list)", ""] + [f"- [x] {h['line']}" for h in g["in_house"]] + [""]
     if g["staples_assumed"]: L += ["## Staples we're counting on", "", ", ".join(g["staples_assumed"]), ""]
     return "\n".join(L)
 
