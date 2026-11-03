@@ -1,6 +1,6 @@
 # Inventory (what's in the house now)
 
-Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which lists what we always restock. The grocery list skips anything listed here. Remove a line when it runs out. Last full count: 2026-11-03 (pantry only so far).
+Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which lists what we always restock. The grocery list skips anything listed here and shows it under "In the house". Remove a line when it runs out or a cooked dish uses it up. Last full count: 2026-11-03 (pantry, fridge and freezer).
 
 ## Pantry: produce
 - sweet potatoes
@@ -75,7 +75,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - psyllium husk
 
 ## Fridge
-- picanha steaks (4: 2 salted for tonight, 2 for later this week)
+- picanha steaks (4: 2 salted for Tuesday, 2 for Friday)
 - whole milk
 - butter (Kerrygold)
 - heavy cream
