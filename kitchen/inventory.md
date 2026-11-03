@@ -98,7 +98,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - cremini mushrooms
 - butternut squash
 - carrots
-- jalapeño
+- jalapeño pepper
 - chicken thighs (for Thursday)
 - Monterey Jack
 - gateau basque

@@ -9,6 +9,7 @@
 Reads the chosen recipes' Our version checklists, merges clear duplicates (same item, compatible units),
 drops kitchen/staples.md items, the plan's on_hand items and anything in kitchen/inventory.md, and sorts what's left by store section.
 Plan format: _system/SCHEMA.md ("Weekly plans")."""
+import unicodedata
 import datetime, json, pathlib, re, sys
 from fractions import Fraction as F
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -120,6 +121,8 @@ def matches(item, staple):
     """True when the item IS the staple, allowing only descriptor words before it ('kosher salt', 'large yellow onions').
     'coconut milk' does not match 'milk'; 'rice vinegar' does not match 'rice'."""
     item = ALIASES.get(item.lower().strip(), item)
+    fold = lambda x: unicodedata.normalize("NFKD", x).encode("ascii", "ignore").decode()   # jalapeño -> jalapeno
+    item, staple = fold(item), fold(staple)
     it = [w for w in re.sub(r"[^a-z\- ]", " ", item.lower()).split() if w not in ("clove", "cloves")]; st = staple.lower().split()
     sing = lambda w: re.sub(r"(?<=[a-z])(es|s)$", "", w) if not w.endswith(("ss", "us")) else w
     it, st = [sing(w) for w in it], [sing(w) for w in st]
