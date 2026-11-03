@@ -24,6 +24,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
 - mezzi rigatoni
+- polenta
 - egg roll wrappers
 - pancake mix (Kodiak)
 
@@ -94,6 +95,12 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - broccolini
 - kale
 - snap peas
+- cremini mushrooms
+- butternut squash
+- carrots
+- jalapeño
+- chicken thighs (for Thursday)
+- Monterey Jack
 - gateau basque
 - salsa
 - olives
