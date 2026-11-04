@@ -1,3 +1,5 @@
+filed_to: recipes/high-protein-buffalo-chicken-dip.md
+filed_at: 2026-11-04
 ---
 title: High Protein Buffalo Chicken Dip
 slug: high-protein-buffalo-chicken-dip
