@@ -24,7 +24,6 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
 - mezzi rigatoni
-- polenta
 - egg roll wrappers
 - pancake mix (Kodiak)
 
@@ -76,7 +75,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - psyllium husk
 
 ## Fridge
-- picanha steaks (4: 2 salted for Tuesday, 2 for Friday)
+- picanha steaks (2, for Friday)
 - whole milk
 - butter (Kerrygold)
 - heavy cream
