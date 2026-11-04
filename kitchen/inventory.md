@@ -94,7 +94,6 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - broccolini
 - kale
 - snap peas
-- cremini mushrooms
 - butternut squash
 - carrots
 - jalapeño pepper
