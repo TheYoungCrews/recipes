@@ -2,7 +2,7 @@
 title: Picanha over Polenta
 slug: picanha-over-polenta
 type: main
-status: to-try
+status: made
 tags: [beef, italian, stovetop, fall, make-ahead, weekend-project]
 ingredients: [picanha, salt, black pepper, onion, butter, olive oil, cremini mushrooms, garlic, thyme, red wine, dijon mustard, polenta, beef stock, milk, parmesan]
 serves: 2
@@ -14,11 +14,13 @@ added_by: crews
 via: grok-bot
 owner: crews
 input_type: text
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-03
+rating: 4.5
+cooks: 1
 ---
 Sliced seared picanha over creamy parmesan polenta, piled with slow caramelized onions and red wine mushrooms.
+
+![Made 2026-11-03](photos/picanha-over-polenta-2026-11-03.jpg)
 
 ## Original
 Our own recipe. Crews's second fall picanha dinner: polenta, onions, mushrooms and red wine. See Our version.
@@ -58,5 +60,6 @@ Serves 2, about 60 minutes, or about 45 if the onions are made a day ahead. Salt
 10. Spoon the polenta into bowls. Slice the steak thin against the grain and lay it on top, then pile on the onions and mushrooms.
 
 ## Notes
+- 2026-11-03 (crews via site, 4.5/5): great dish! overcooked my steak a bit but enjoyed sliced thin with heaps of mushroom onion & red wine
 - 2026-11-01 (grok-bot): written from Crews's fall picanha idea (polenta, onions, mushrooms, red wine). Amounts are ours for 2 steaks. Planned for the week of 2026-11-02.
 - 2026-11-03 (grok-bot): first cook. Thin steaks overcooked after 5 minutes in the oven, because the fat render and sear had already cooked them most of the way. Steps 3 and 6 now skip the oven for steaks under about 1½ inches and check temperature much earlier.
