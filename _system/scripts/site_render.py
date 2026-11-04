@@ -132,6 +132,19 @@ def wkbtn(slug, short=False):
     if short: return f' <button type=button class=wkbtn data-short data-week-slug="{E(slug)}" hidden>+ this week</button><span class=wkmsg role=status></span>'
     return f'<p class=wkrow><button type=button class=wkbtn data-week-slug="{E(slug)}" hidden>+ Add to this week</button><span class=wkmsg role=status></span></p>'
 
+def cook_form(r, hidden=False):
+    """The one "Cooked it?" form (rate + note + photo -> /api/cook), shared by the home page view and /r/<slug>.
+    The Cooked it block of app.js (served alone as /cook.js on /r/ pages) wires it up. hidden=True keeps it off
+    the page without JavaScript; the script unhides it."""
+    return (f'<form class=cook data-slug="{E(r["slug"])}" data-title="{E(r["title"])}"{" hidden" if hidden else ""}><h4 class=hand>Cooked it?</h4>\n'
+            '<p class=cooksub>Rate it and it logs as cooked today.</p>\n'
+            '<div class=rate role=radiogroup aria-label="Rating">' + "".join(f'<button type=button data-v="{i}" aria-label="{i} stars">★</button>' for i in range(1, 6)) + '<span class=rv></span></div>\n'
+            '<textarea name=note maxlength=1000 placeholder="How\'d it go? (optional)"></textarea>\n'
+            '<div class=pv hidden><img alt=""><button type=button class=px aria-label="Remove photo">×</button></div>\n'
+            '<div class=r><label class=b1>📷 Add or drop photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>\n'
+            '<div class=gsi></div><p class=cmsg role=status></p></form>')
+
+
 def recipe_view(r, staples):
     P = recipe_parts(r)
     ing_html = ""
@@ -168,13 +181,7 @@ def recipe_view(r, staples):
 {f'<h3 class="sec hand">{"Method" if r["type"] in DRINK else "Steps"}</h3><ol class=st>{steps_html}</ol>' if steps_html else ""}
 {ours_html}{orig_html}
 <h3 class="sec hand">Cook diary</h3><div class=diary>{diary_html}</div>
-<form class=cook data-slug="{E(r["slug"])}" data-title="{E(r["title"])}"><h4 class=hand>Cooked it?</h4>
-<p class=cooksub>Rate it and it logs as cooked today.</p>
-<div class=rate role=radiogroup aria-label="Rating">{"".join(f'<button type=button data-v="{i}" aria-label="{i} stars">★</button>' for i in range(1,6))}<span class=rv></span></div>
-<textarea name=note maxlength=1000 placeholder="How'd it go? (optional)"></textarea>
-<div class=pv hidden><img alt=""><button type=button class=px aria-label="Remove photo">×</button></div>
-<div class=r><label class=b1>📷 Add or drop photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>
-<div class=gsi></div><p class=cmsg role=status></p></form>
+{cook_form(r)}
 <form class=askr data-slug="{E(r["slug"])}"><h4 class=hand>Ask about this</h4><div class=askrow><input maxlength=500 placeholder="Out of something? Doubling it?" aria-label="Ask about this recipe"><button aria-label=Ask>↑</button></div><p class=askans role=status hidden></p><div class=gsi></div></form>
 {src}</div></div></div></article>'''
 
@@ -331,21 +338,39 @@ def recipe_page(r, P):
                          + (f'<img src="/{E(d["photo"])}" alt="" loading=lazy>' if d["photo"] else "") + "</li>")
         body.append("<ul class=diary>" + "".join(items) + "</ul>")
     else: body.append("<p>Not cooked yet.</p>")
+    body.append(cook_form(r, hidden=True))   # same form + /api/cook as the home page; cook.js shows it, so no-JS readers see a plain page
     t, dsc = E(title), E(desc)
     return f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="{dsc}"><link rel=canonical href="{url}">
 <link rel=alternate type="text/markdown" href="/r/{E(slug)}.md"><meta name=theme-color content="#7f9a7a">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Crews &amp; Anna's Kitchen"><meta property="og:title" content="{t}"><meta property="og:description" content="{dsc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{E(img)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{dsc}"><meta name="twitter:image" content="{E(img)}">
-<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png"><style>{PAGE_CSS}{WKCSS}</style>
+<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png"><style>{PAGE_CSS}{WKCSS}{cook_css()}</style>
 <script type="application/ld+json">{ldj}</script></head>
 <body><main>
 {chr(10).join(x for x in body if x)}
-</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/week-btn.js" defer></script></body></html>'''
+</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script></body></html>'''
+
+def cook_js():
+    """/cook.js: app.js's shared sign-in block and its Cooked it block, unchanged, so /r/<slug> pages log cooks
+    through the same code, /api/cook endpoint and sign-in as the home page (no second implementation)."""
+    js = (SITE / "app.js").read_text()
+    return js[js.index("// ---- Sign-in"):]
+
+_COOK_CSS = None
+def cook_css():
+    """The Cooked it form's rules from style.css (plus its color variables), for the plain /r/<slug> pages."""
+    global _COOK_CSS
+    if _COOK_CSS is None:
+        keys = (":root{", ".cook", ".rate", ".pv{", ".gsi", "signrow", ".sbtn", ".gsiover", ".b1", ".b2", ".hand{")
+        rows = [l for l in (SITE / "style.css").read_text().splitlines() if l.startswith(keys) or any(k in l for k in keys[1:-1])]
+        _COOK_CSS = "\n".join(l for l in rows if not l.startswith((".addcard", ".addr", ".addback"))) + "\n.cook,.cook *{box-sizing:border-box}"
+    return _COOK_CSS
 
 def static_pages(live, out):
     rdir = out / "r"; shutil.rmtree(rdir, ignore_errors=True); rdir.mkdir(parents=True)
     shutil.copy2(SITE / "caveat.woff2", out / "caveat.woff2"); shutil.copy2(SITE / "week-btn.js", out / "week-btn.js")
+    (out / "cook.js").write_text(cook_js())
     if (SITE / "sync-groceries.shortcut").exists(): shutil.copy2(SITE / "sync-groceries.shortcut", out / "sync-groceries.shortcut")   # signed Shortcut, source in _system/shortcuts/
     for r in live:
         P = recipe_parts(r)

@@ -166,6 +166,7 @@ function resize(file){
     return c.toDataURL("image/jpeg",.84)});
 }
 $$("form.cook").forEach(f=>{
+  f.hidden=false;   // plain /r/<slug> pages ship it hidden so the page reads fine without JavaScript
   let val=0, photo=null; const msg=$(".cmsg",f), save=$(".b2",f), say=(t,ok)=>{msg.textContent=t;msg.className="cmsg"+(ok?" ok":"")};
   $$(".rate button",f).forEach(b=>b.addEventListener("click",()=>{const n=+b.dataset.v;val=val===n?n-.5:n;if(val<1)val=n;stars(f,val);save.disabled=false;getCfg()}));
   async function usePhoto(file){if(!file)return;if(!/^image\//.test(file.type||"")&&!/\.(heic|heif|jpe?g|png|webp|gif)$/i.test(file.name||""))return say("That's not a photo.");say("Shrinking photo…");
@@ -188,7 +189,7 @@ $$("form.cook").forEach(f=>{
     if(!r||!r.ok){save.disabled=false;return say(j.error||"Couldn't save. Try again?")}
     $(".gsi",f).innerHTML="";
     say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`,true);
-    const d=$(".diary",f.closest("article"));if(d){$(".diary-empty",d)?.remove();const row=document.createElement("div");
+    const art=f.closest("article"),d=art&&$(".diary",art);if(d){$(".diary-empty",d)?.remove();const row=document.createElement("div");
       row.innerHTML=`<span>today</span><div><b>${j.who}</b>: ${val}/5 ${$("textarea",f).value.replace(/[<&]/g,"")}</div>`;d.prepend(row)}
   }
   async function ask(){
