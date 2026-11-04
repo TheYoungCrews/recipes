@@ -1,3 +1,5 @@
+filed_to: recipes/stanley-tucci-desert-island-sandwich.md
+filed_at: 2026-11-04
 ---
 title: Stanley Tucci's Desert Island Sandwich
 slug: stanley-tucci-desert-island-sandwich

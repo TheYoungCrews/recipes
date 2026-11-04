@@ -1,3 +1,5 @@
+filed_to: recipes/toasted-pecan-maple-syrup.md
+filed_at: 2026-11-04
 ---
 title: Toasted Pecan Maple Syrup
 slug: toasted-pecan-maple-syrup
