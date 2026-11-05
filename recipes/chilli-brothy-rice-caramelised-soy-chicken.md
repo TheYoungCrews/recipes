@@ -2,7 +2,7 @@
 title: Soy Chicken Brothy Rice
 slug: chilli-brothy-rice-caramelised-soy-chicken
 type: soup-bowl
-status: to-try
+status: made
 tags: [chicken, fusion, stovetop, weeknight-30, high-protein, dairy-free]
 ingredients: [chicken thighs, liquid aminos, honey, ginger, rice, chicken broth, garlic, chili crisp, broccolini, snap peas, sesame seeds, avocado oil, lime]
 serves: 4
@@ -15,11 +15,13 @@ via: muse
 input_type: instagram-video
 owner: @thegoodbite
 credit: "@thegoodbite"
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-04
+rating: 4
+cooks: 1
 ---
 Cosy chilli-spiked broth over rice with sticky caramelised soy chicken and crisp greens. Creator: @thegoodbite.
+
+![Made 2026-11-04](photos/chilli-brothy-rice-caramelised-soy-chicken-2026-11-04.jpg)
 
 ## Original
 > Best-guess reconstruction: the creator keeps the exact recipe in their app, so this is inferred from the video. All amounts below are estimates.
@@ -73,6 +75,7 @@ Cosy chilli-spiked broth over rice with sticky caramelised soy chicken and crisp
 5. Invert a packed cup of rice into each wide bowl, ladle broth around it, fan the chicken alongside, add the greens, and finish with chili crisp, sesame seeds and plenty of lime.
 
 ## Notes
+- 2026-11-04 (crews via site, 4/5): burnt the chicken bc honey marinade has too much sugar for a hard sear. also needs more funk like dried mushroom or fish sauce. but really good bones
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-chilli-brothy-rice-caramelised-soy-chicken.md. Wrote Our version (Muse sent "Same as original"): soy sauce -> liquid aminos per kitchen/taste-profile.md, Dutch oven sear so the broth picks up the fond; normalized ingredient wording (white rice -> rice, chilli crisp -> chili crisp, chicken stock -> chicken broth); added dairy-free.
 - 2026-10-14 (via muse): captured from instagram-video. Recipe gated in the creator's app; reconstructed from the video as a best guess. Video audio and on-screen text not reviewed.
 - 2026-11-04 (grok-bot): first cook. The honey marinade burned on a hard sear and the chicken came out black outside and raw inside, so step 2 now scrapes the marinade, sears over medium and glazes at the end. The broth needed more funk, so Crews added dried shiitake, fish sauce and miso to Our version.
