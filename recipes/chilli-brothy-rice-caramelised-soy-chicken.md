@@ -61,14 +61,18 @@ Cosy chilli-spiked broth over rice with sticky caramelised soy chicken and crisp
 - [x] sesame seeds (1 tbsp)
 - [ ] avocado oil (1 tbsp; neutral oil works)
 - [x] lime (1)
+- [ ] dried shiitake mushrooms (a small handful)
+- [ ] fish sauce (to taste)
+- [x] miso paste (to taste)
 
 **Steps**
 1. Marinate the chicken in liquid aminos (standing sub for soy sauce), honey and grated ginger for at least 20 minutes; start the rice meanwhile.
-2. Sear the chicken hard in the Dutch oven in the oil until deeply caramelised and sticky at the edges. Rest, then slice.
-3. In the same pot, soften sliced garlic and ginger in the rendered fat, scrape up the fond, add the broth and chili crisp, and simmer a few minutes.
+2. Scrape the marinade off the chicken, keep it, and pat the thighs dry. Sear them in the oil over medium, not high, because the honey burns fast. Cook until golden and cooked through, about 5 to 6 minutes per side. Brush on the saved marinade for the last minute and flip so it turns sticky without scorching. Rest, then slice. If the pot bottom has gone black, wipe it out before step 3.
+3. In the same pot, soften sliced garlic and ginger in the rendered fat, scrape up the fond, add the broth, the dried shiitake and the chili crisp, and simmer until the shiitake are soft, about 10 minutes. Slice the shiitake and return them. Off the heat, whisk in miso and fish sauce to taste.
 4. Drop in the broccolini and snap peas for the last 2-3 minutes.
 5. Invert a packed cup of rice into each wide bowl, ladle broth around it, fan the chicken alongside, add the greens, and finish with chili crisp, sesame seeds and plenty of lime.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-chilli-brothy-rice-caramelised-soy-chicken.md. Wrote Our version (Muse sent "Same as original"): soy sauce -> liquid aminos per kitchen/taste-profile.md, Dutch oven sear so the broth picks up the fond; normalized ingredient wording (white rice -> rice, chilli crisp -> chili crisp, chicken stock -> chicken broth); added dairy-free.
 - 2026-10-14 (via muse): captured from instagram-video. Recipe gated in the creator's app; reconstructed from the video as a best guess. Video audio and on-screen text not reviewed.
+- 2026-11-04 (grok-bot): first cook. The honey marinade burned on a hard sear and the chicken came out black outside and raw inside, so step 2 now scrapes the marinade, sears over medium and glazes at the end. The broth needed more funk, so Crews added dried shiitake, fish sauce and miso to Our version.

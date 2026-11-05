@@ -91,13 +91,10 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - cilantro
 - parsley
 - thyme
-- broccolini
 - kale
-- snap peas
 - butternut squash
 - carrots
 - jalapeño pepper
-- chicken thighs (for Thursday)
 - Monterey Jack
 - gateau basque
 - salsa
@@ -111,6 +108,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - anchovy paste
 - tomato paste
 - gochujang
+- miso paste
 - chili crunch
 - maple syrup (bourbon barrel aged)
 - black tea (Trader Joe's, iced)
