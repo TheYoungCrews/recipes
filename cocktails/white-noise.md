@@ -2,7 +2,7 @@
 title: White Noise
 slug: white-noise
 type: cocktail
-status: made
+status: favorite
 tags: [built, highball, quick-20]
 spirit: aperitivo wine
 glass: wine
@@ -16,11 +16,13 @@ added_by: crews
 via: grok-bot
 input_type: email
 owner: crews
-last_made:
-rating:
-cooks: 1
+last_made: 2026-11-05
+rating: 5
+cooks: 2
 ---
 Cocchi Americano and St-Germain topped with soda and a grapefruit peel. Light, low-proof, built in the glass.
+
+![Made 2026-11-05](photos/white-noise-2026-11-05.jpg)
 
 ## Original
 Yield: 1 drink.
@@ -48,4 +50,5 @@ Yield: 1 drink.
 Same as original.
 
 ## Notes
+- 2026-11-05 (crews via site, 5/5): easy drinker, crushable but elegant
 - 2026-10-14 (filed by grok-bot): historical recovery from email 488561 (recipe-raw, sent by Crews; no agent named, so via is grok-bot as the file writer). Amounts and uncertainties kept as the email gave them. cooks set to 1 (made at least once; exact count not recorded). No spirit tag fits an aperitivo-wine base, so tags are style only; last_made date not recorded.
