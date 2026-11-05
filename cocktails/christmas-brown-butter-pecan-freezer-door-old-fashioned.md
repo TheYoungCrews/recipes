@@ -16,11 +16,13 @@ added_by: crews
 via: gemini/gemini-3-pro
 owner: crews
 input_type: text
-last_made: 2025-12-25
-rating:
-cooks: 1
+last_made: 2026-11-05
+rating: 5
+cooks: 2
 ---
 Holiday freezer-door batch built on brown-butter fat-washed high-proof bourbon, spicy rye, toasted pecan syrup, and a trilogy of bitters.
+
+![Made 2026-11-05](photos/christmas-brown-butter-pecan-freezer-door-old-fashioned-2026-11-05.jpg)
 
 ## Original
 - 500 ml Brown-Butter Fat-Washed Bourbon (Old Forester 1920 / Old Grand-Dad)
@@ -48,5 +50,6 @@ Holiday freezer-door batch built on brown-butter fat-washed high-proof bourbon, 
 2. For a single glass: stir 1.5 oz fat-washed bourbon, 0.5 oz Rittenhouse Rye, 0.25 oz pecan syrup, 2 dashes Angostura, and 2 dashes Black Walnut bitters over a large rock.
 
 ## Notes
+- 2026-11-05 (crews via site, 5/5): incredible christmas cocktail
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-christmas-brown-butter-pecan-freezer-door-old-fashioned.md. Swapped food tags [make-ahead, freezer-friendly, no-cook, weekend-project] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.
 - 2026-10-14 (via gemini): captured, sent by crews.
