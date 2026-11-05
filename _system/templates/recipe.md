@@ -33,9 +33,9 @@ One-line description.
 ## Our version
 
 **Grocery & inventory check**
-- [ ] 
+- [ ] ingredient (amount, prep)
 
 **Steps**
-1. 
+1. Add the ingredient (amount, prep). Put each amount inline at the step that uses it, copied from the list.
 
 ## Notes

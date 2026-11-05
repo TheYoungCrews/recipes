@@ -94,12 +94,14 @@ One-line pitch. Creator: @handle. (Note what you could and couldn't see.)
 
 ## Our version
 **Grocery & inventory check**
-- [x] soy sauce          <- [x] if it's in kitchen/staples.md, else [ ]
-- [ ] salmon
+- [x] liquid aminos (2 tbsp)   <- [x] if it's in kitchen/staples.md, else [ ]
+- [ ] salmon (2 fillets, about 1 lb)
+- [ ] ginger (1 tbsp, grated)
 **Steps**
-1. ... adapted to a Dutch oven / air fryer and kitchen/taste-profile.md (brothy, charred, umami, lime/herb finish, high-protein) when that fits.
+1. Brush the salmon (2 fillets) with the liquid aminos (2 tbsp) and ginger (1 tbsp, grated). Amount inline at every step that uses an ingredient, copied from the list above; never invent one.
+2. ... adapted to a Dutch oven / air fryer and kitchen/taste-profile.md (brothy, charred, umami, lime/herb finish, high-protein) when that fits.
 
-(Write Our version clean and self-contained: no `(changed ...)`/`(was ...)`/"standing sub for" asides and no "as in the Original" references. Explain substitutions in a dated Notes line; the site never shows Original or agent notes.)
+(Write Our version clean and self-contained: no `(changed ...)`/`(was ...)`/"standing sub for" asides and no "as in the Original" references. Explain substitutions in a dated Notes line; the site never shows Original or agent notes. Crews cooks from a touchscreen, so each step carries its own amounts: `Add the ginger (1 tbsp, grated) and garlic (3 cloves, minced).` No amount in the list means none in the step.)
 
 ## Notes
 - YYYY-MM-DD (via muse): captured from Instagram, sent by anna.

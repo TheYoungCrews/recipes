@@ -4,7 +4,7 @@ Every file in `recipes/` and `cocktails/` starts with YAML frontmatter. Keep val
 
 ```yaml
 ---
-title: Chili Crisp Chicken Noodle Bowl     # required — the short dish name, 2-4 words, no amounts, equipment, or ingredient lists
+title: Chili Crisp Chicken Noodle Bowl     # required: the short dish name, 2-4 words, no amounts, equipment, or ingredient lists
 slug: chili-crisp-chicken-noodle-bowl      # required, = filename without .md
 type: soup-bowl                            # required, one _system/TAGS.md "type"
 status: to-try                             # required: to-try | made | favorite | retired
@@ -32,6 +32,7 @@ cooks: 0                                   # times made
 1. One-line description.
 2. `## Original` - faithful to the source (ingredients + steps). For AI-born recipes, the first draft.
 3. `## Our version` - adapted to our staples, gear (Dutch oven, air fryer) and taste-profile. Grocery checklist with `- [ ]` items, then steps. Our version is the recipe as we cook it now: edit it in place and keep it clean, with no inline change annotations (no `(changed ...)`, `(was ...)`, "swapped from", "standing sub" asides). Put the reason for a change in a dated Notes line instead (`- YYYY-MM-DD (grok-bot): swapped Averna for Cynar per crews.`). Git keeps the history. The site shows only Our version (falling back to Original only when Our version has no list/steps) plus personal cook-diary Notes from crews/anna; Original and agent notes are never shown.
+   **Amounts inline in steps:** Every step that adds or uses a listed ingredient writes its amount inline at that step, copied exactly from the checklist, e.g. `Add the ginger (1 tbsp, grated) and garlic (3 cloves, minced).` If an ingredient is split across steps, give the part used in that step. Never invent an amount: if the list has none (or says `to taste`), leave the mention bare or use the list's own words. Crews reads these on a kitchen touchscreen and should not have to scroll back to the list. The build warns (does not fail) when a step mentions a listed ingredient without its amount; `python3 _system/scripts/inline_amounts.py` lists them.
 4. `## Notes` - dated feedback log, newest first: `- 2026-10-20 (Crews, 4/5): too salty; halve chili crisp.`
 
 Cocktails add optional `spirit:` and `glass:` fields.

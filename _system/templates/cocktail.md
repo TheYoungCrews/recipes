@@ -25,9 +25,9 @@ One-line description.
 - 
 
 ## Our version (using kitchen/bar.md)
-- 
+- 2 oz spirit
 
 **Method**
-1. 
+1. Shake the spirit (2 oz) and lemon juice (¾ oz) with ice. Put each amount inline, copied from the list.
 
 ## Notes
