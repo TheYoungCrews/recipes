@@ -17,11 +17,13 @@ via: gemini/gemini-3-pro
 owner: @theeducatedbarfly
 credit: "Educated Barfly"
 input_type: text
-last_made:
-rating:
-cooks: 1
+last_made: 2026-11-05
+rating: 5
+cooks: 2
 ---
 Equal-parts split-base rum, Punt e Mes, and Cynar stirred cocktail (@theeducatedbarfly).
+
+![Made 2026-11-05](photos/the-desk-job-2026-11-05.jpg)
 
 ## Original
 - 0.75 oz Smith & Cross Traditional Jamaica Rum
@@ -43,5 +45,6 @@ Equal-parts split-base rum, Punt e Mes, and Cynar stirred cocktail (@theeducated
 2. Strain into a chilled coupe or over a large rock and express a lime twist over top.
 
 ## Notes
+- 2026-11-05 (crews via site, 5/5): one of my all time favorite cocktails
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-the-desk-job.md. Swapped food tags [quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.
 - 2026-10-14 (via gemini): captured, sent by crews.
