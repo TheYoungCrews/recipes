@@ -79,11 +79,11 @@ Dish: Harvest Bean Salad.
 - [ ] 1–2 cups cooked quinoa
 
 **Steps**
-1. Preheat oven to 400°F. Toss diced squash with a little olive oil, salt and pepper. Spread on a sheet pan and roast for 25–30 minutes, turning halfway.
-2. During the final 7–10 minutes, add finely chopped kale tossed with a light drizzle of olive oil and salt, spreading it beside the squash in a single layer. Watch closely so the kale gets tender with crisp edges without burning.
-3. Whisk or shake together the dressing ingredients.
-4. Let roasted vegetables cool slightly. In a large bowl combine the three drained beans, squash, kale, diced apple, cranberries or pomegranate, toasted nuts and red onion.
-5. Gently toss with dressing and adjust seasoning. Add optional cheese just before serving.
+1. Preheat oven to 400°F. Toss the squash (2 cups, diced) with a little olive oil, salt and pepper. Spread on a sheet pan and roast for 25–30 minutes, turning halfway.
+2. During the final 7–10 minutes, add the kale (1 packed cup, finely chopped) tossed with a light drizzle of olive oil and salt, spreading it beside the squash in a single layer. Watch closely so the kale gets tender with crisp edges without burning.
+3. Whisk or shake together the dressing: olive oil (1/4 cup), apple cider vinegar (3 tbsp), maple syrup (1 tbsp), Dijon (1 tbsp), a pinch of cinnamon or nutmeg, and salt and pepper.
+4. Let roasted vegetables cool slightly. In a large bowl combine the three drained beans (1 can each), squash, kale, apple (1 large, diced), cranberries or pomegranate (1/2 cup), toasted nuts (3/4 cup) and red onion (1/2 small, finely chopped).
+5. Gently toss with dressing and adjust seasoning. Add optional cheese (1/2 cup) just before serving.
 
 ## Notes
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-fall-harvest-bean-salad.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).

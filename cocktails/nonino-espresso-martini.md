@@ -45,7 +45,7 @@ A citrus-free espresso cocktail with Amaro Nonino, coffee, and a silky aquafaba 
 - [ ] ½ oz aquafaba
 
 **Steps**
-1. Add all ingredients to a shaker without ice.
+1. Add the Amaro Nonino (1½ oz), espresso (1 oz, cooled), simple syrup (¼–½ oz) and aquafaba (½ oz) to a shaker without ice.
 2. Dry shake vigorously for about 20 seconds.
 3. Add ice and shake for another 15 seconds.
 4. Double strain into a chilled coupe.

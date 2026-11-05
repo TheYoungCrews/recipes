@@ -68,11 +68,11 @@ Cosy chilli-spiked broth over rice with sticky caramelised soy chicken and crisp
 - [x] miso paste (to taste)
 
 **Steps**
-1. Marinate the chicken in liquid aminos (standing sub for soy sauce), honey and grated ginger for at least 20 minutes; start the rice meanwhile.
-2. Scrape the marinade off the chicken, keep it, and pat the thighs dry. Sear them in the oil over medium, not high, because the honey burns fast. Cook until golden and cooked through, about 5 to 6 minutes per side. Brush on the saved marinade for the last minute and flip so it turns sticky without scorching. Rest, then slice. If the pot bottom has gone black, wipe it out before step 3.
-3. In the same pot, soften sliced garlic and ginger in the rendered fat, scrape up the fond, add the broth, the dried shiitake and the chili crisp, and simmer until the shiitake are soft, about 10 minutes. Slice the shiitake and return them. Off the heat, whisk in miso and fish sauce to taste.
-4. Drop in the broccolini and snap peas for the last 2-3 minutes.
-5. Invert a packed cup of rice into each wide bowl, ladle broth around it, fan the chicken alongside, add the greens, and finish with chili crisp, sesame seeds and plenty of lime.
+1. Marinate the chicken (1.5 lb boneless thighs) in the liquid aminos (3 tbsp), honey (2 tbsp) and grated ginger (1 tbsp) for at least 20 minutes; start the rice (2 cups white) meanwhile.
+2. Scrape the marinade off the chicken, keep it, and pat the thighs dry. Sear them in the oil (1 tbsp) over medium, not high, because the honey burns fast. Cook until golden and cooked through, about 5 to 6 minutes per side. Brush on the saved marinade for the last minute and flip so it turns sticky without scorching. Rest, then slice. If the pot bottom has gone black, wipe it out before step 3.
+3. In the same pot, soften the sliced garlic (a few cloves) and the rest of the ginger (a little, sliced) in the rendered fat, scrape up the fond, add the broth (4 cups), the dried shiitake (a small handful) and the chili crisp (2 tbsp), and simmer until the shiitake are soft, about 10 minutes. Slice the shiitake and return them. Off the heat, whisk in miso and fish sauce to taste.
+4. Drop in the broccolini (1 bunch) and snap peas (1 cup) for the last 2-3 minutes.
+5. Invert a packed cup of rice into each wide bowl, ladle broth around it, fan the chicken alongside, add the greens, and finish with more chili crisp, sesame seeds (1 tbsp) and plenty of lime (1).
 
 ## Notes
 - 2026-11-04 (crews via site, 4/5): burnt the chicken bc honey marinade has too much sugar for a hard sear. also needs more funk like dried mushroom or fish sauce. but really good bones

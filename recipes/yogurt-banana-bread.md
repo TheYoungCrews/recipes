@@ -63,10 +63,10 @@ Dish: Yogurt Banana Bread.
 
 **Steps**
 1. Preheat oven:** Set oven to 350°F (175°C). Grease a loaf pan or line with parchment paper.
-2. Combine dry ingredients:** In a medium bowl, whisk together Kodiak Cakes mix, baking soda, cinnamon, and salt.
-3. Combine wet ingredients:** In a large bowl, mash the ripe bananas. Stir in Greek yogurt, sweetener, egg, and vanilla extract until combined.
+2. Combine dry ingredients:** In a medium bowl, whisk together Kodiak Cakes mix (1½ cups), baking soda (1 tsp), cinnamon (½ tsp, optional), and salt (¼ tsp).
+3. Combine wet ingredients:** In a large bowl, mash the ripe bananas (2 large, about 1 cup mashed). Stir in Greek yogurt (½ cup), sweetener (¼ cup honey, maple syrup, or brown sugar), egg (1 large), and vanilla extract (1 tsp) until combined.
 4. Make the batter:** Add dry ingredients to wet ingredients and gently fold until just combined. Avoid overmixing. If the batter is excessively thick, add 2–3 tablespoons of milk.
-5. Add mix-ins:** Gently fold in chocolate chips or chopped nuts, if using.
+5. Add mix-ins:** Gently fold in chocolate chips or chopped nuts (½ cup), if using.
 6. Fill loaf pan:** Transfer batter to prepared pan and smooth the surface.
 7. Bake:** Bake for 35–45 minutes, or until a toothpick inserted into the center comes out mostly clean.
 8. Cool:** Allow to cool in the pan for at least 15 minutes before slicing.

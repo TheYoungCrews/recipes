@@ -41,16 +41,16 @@ Serves 2, about 75 minutes, plus salting the steaks ahead. One oven does both jo
 - [x] 2 tbsp cold butter, cubed
 
 **Steps**
-1. Ahead (4 hours to overnight, or at least 45 minutes): score the fat cap in a crosshatch, cutting through the fat but not into the meat. Salt the steaks all over and leave them uncovered on a rack in the fridge.
-2. Heat the oven to 425°F. Toss the potatoes with the olive oil, salt and pepper on a sheet pan. Roast 35 to 40 minutes, flipping halfway, until browned and crisp.
+1. Ahead (4 hours to overnight, or at least 45 minutes): score the fat cap in a crosshatch, cutting through the fat but not into the meat. Salt the steaks (2) all over with kosher salt (about ¾ tsp per steak) and leave them uncovered on a rack in the fridge.
+2. Heat the oven to 425°F. Toss the potatoes (1 lb, in 1 inch chunks) with the olive oil (2 tbsp), salt and pepper on a sheet pan. Roast 35 to 40 minutes, flipping halfway, until browned and crisp.
 3. When the potatoes are nearly done, set a dry cast iron over medium. Stand the steaks fat side down (lean them against each other or the pan wall) and render the fat 6 to 8 minutes, until golden and crisp. Pour off all but about 2 tbsp of the fat and save it.
 4. Turn the heat to high and sear the steaks 1 to 2 minutes per side, until deeply browned.
 5. Use a thermometer and pull at 120°F for medium rare (it climbs to about 125°F while resting). Steaks thinner than about 1½ inches stay on the stove over medium, flipping every minute; start checking right after the sear. Thicker steaks: take the potatoes out, lower the oven to 275°F with the door propped open a few minutes, put the skillet in and start checking at 3 minutes, then every 2 minutes.
 6. Move the steaks to a board to rest 10 minutes. Turn the oven back up to 425°F and slide the potatoes back in to rewarm while you make the sauce.
-7. Set the skillet over medium (the handle is hot). Add the onion with a pinch of salt and cook in the beef fat, stirring now and then, until soft and jammy, 8 to 10 minutes. Add a spoon of the saved fat if the pan looks dry.
-8. Push the onion aside, turn the heat to medium-high and add the mushrooms in one layer. Leave them alone 3 minutes to brown, then stir and cook 3 to 4 minutes more, until browned all over.
-9. Add the garlic and thyme leaves and stir 30 seconds. Pour in the wine, scrape up the browned bits, and boil until reduced by half, 4 to 5 minutes.
-10. Add the stock and simmer 1 to 2 minutes. Take the pan off the heat and swirl in the cold butter a few cubes at a time until glossy. Taste for salt and pepper.
+7. Set the skillet over medium (the handle is hot). Add the onion (1 large, thinly sliced) with a pinch of salt and cook in the beef fat, stirring now and then, until soft and jammy, 8 to 10 minutes. Add a spoon of the saved fat if the pan looks dry.
+8. Push the onion aside, turn the heat to medium-high and add the mushrooms (8 oz, sliced) in one layer. Leave them alone 3 minutes to brown, then stir and cook 3 to 4 minutes more, until browned all over.
+9. Add the garlic (3 cloves, minced) and thyme leaves (4 sprigs) and stir 30 seconds. Pour in the wine (1 cup), scrape up the browned bits, and boil until reduced by half, 4 to 5 minutes.
+10. Add the stock (½ cup) and simmer 1 to 2 minutes. Take the pan off the heat and swirl in the cold butter (2 tbsp, cubed) a few cubes at a time until glossy. Taste for salt and pepper.
 11. Slice the steaks thin against the grain, spoon the sauce over and serve with the potatoes.
 
 If the air fryer is free, cook the potatoes there instead (400°F, 20 to 25 minutes, shaking twice) and skip the oven swap.

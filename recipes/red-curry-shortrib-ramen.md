@@ -72,14 +72,14 @@ Steps:
 - [x] green onion
 
 **Steps**
-1. Pat the short rib dry and season all sides with salt and pepper.
-2. Sear it hard like a steak, basting with the butter, 2 garlic cloves and the liquid aminos, until it reaches your doneness. Pull the meat and garlic and rest the meat, leaving about half the garlic butter in the pan.
-3. Over medium heat, add the curry paste, the remaining garlic and the ginger to the pan and cook until fragrant, scraping up the fond.
-4. Stir in the coconut milk and 800 ml water and bring to a gentle simmer.
-5. Season with the bouillon, fish sauce, sugar and lime juice, tasting as you go. The curry paste is already salty, so go easy on the bouillon.
+1. Pat the short rib (400-500 g) dry and season all sides with salt and pepper.
+2. Sear it hard like a steak, basting with the butter (3 tbsp), 2 garlic cloves and the liquid aminos (1 tbsp), until it reaches your doneness. Pull the meat and garlic and rest the meat, leaving about half the garlic butter in the pan.
+3. Over medium heat, add the curry paste (3 tbsp), the remaining garlic (2-3 cloves) and the ginger (1 tsp) to the pan and cook until fragrant, scraping up the fond.
+4. Stir in the coconut milk (1 can, 13.5 oz) and 800 ml water and bring to a gentle simmer.
+5. Season with the bouillon (1 tsp), fish sauce (a few drops), sugar (1 tbsp) and lime juice (half a lime), tasting as you go. The curry paste is already salty, so go easy on the bouillon.
 6. Cook the ramen in a separate pot, then finish it in the broth with the bok choy so the broth stays clean.
-7. Optional jammy eggs: boil 6 minutes 30 seconds, then straight into an ice bath.
-8. Slice the short rib and serve it over the noodles and broth with chili crisp, green onion and a halved egg.
+7. Optional jammy eggs (2): boil 6 minutes 30 seconds, then straight into an ice bath.
+8. Slice the short rib and serve it over the noodles (200 g) and broth with chili crisp, green onion and a halved egg.
 
 ## Notes
 

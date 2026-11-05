@@ -46,7 +46,7 @@ An herbal, strawberry-forward Negroni variation. Cynar adds earthy bitterness wh
 - [ ] Lemon peel, for garnish (amount not given)
 
 **Steps**
-1. Add the JamJam Gin, Chambéryzette, Cynar, and Campari to a mixing glass filled with ice.
+1. Add the JamJam Gin (1 1/2 oz), Chambéryzette (3/4 oz), Cynar (1/2 oz), and Campari (1/4 oz) to a mixing glass filled with ice.
 2. Stir for about 20–25 seconds, until well chilled.
 3. Strain over a large ice cube in a rocks glass.
 4. Express a lemon peel over the drink and use it as garnish.

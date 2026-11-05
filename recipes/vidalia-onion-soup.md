@@ -60,9 +60,9 @@ Serves 6.
 - [x] black pepper (1 tsp)
 
 **Steps**
-1. Tie the thyme into a bundle.
-2. Melt the butter in the Dutch oven over medium, add the onions, salt and pepper, and cook, stirring often, about 45 minutes until deep caramel.
-3. Turn to medium-high, add the thyme and garlic for 1 minute, then the ale and sherry; scrape the bottom and cook 10 minutes until syrupy. Drop to medium, stir in the flour for 3 minutes, then add the stock. Bring to a light boil and simmer on low 15 minutes. Pull the thyme.
+1. Tie the thyme (3 sprigs) into a bundle.
+2. Melt the butter (6 tbsp unsalted) in the Dutch oven over medium, add the onions (6 medium, thinly sliced), salt (1 tsp kosher) and pepper, and cook, stirring often, about 45 minutes until deep caramel.
+3. Turn to medium-high, add the thyme and garlic (4 cloves, minced) for 1 minute, then the ale (1 cup) and sherry (1/2 cup); scrape the bottom and cook 10 minutes until syrupy. Drop to medium, stir in the flour (3 tbsp) for 3 minutes, then add the stock (6 cups). Bring to a light boil and simmer on low 15 minutes. Pull the thyme.
 4. Ladle into broiler-safe bowls, top each with 2 toasts and 1/3 cup cheese, and broil 30-60 seconds until bubbly.
 
 ## Notes

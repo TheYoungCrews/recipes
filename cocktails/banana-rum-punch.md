@@ -44,8 +44,8 @@ Spooky season warm-weather Jamaican banana and black tea rum punch (@theeducated
 - [x] 0.5 oz black tea simple syrup (2 black tea bags steeped 2 min in 150ml water + 150g sugar)
 - [x] freshly grated nutmeg
 
-1. Steep black tea simple syrup and chill.
-2. Whip shake both rums, lemon juice, banana liqueur, and black tea syrup with 3-4 pebble ice cubes, dump into a DOF glass packed with pebble/crushed ice, and grate fresh nutmeg over top.
+1. Make the black tea simple syrup (2 black tea bags steeped 2 min in 150ml water + 150g sugar) and chill.
+2. Whip shake both rums (1 oz each), lemon juice (1 oz), banana liqueur (0.5 oz) and black tea syrup (0.5 oz) with 3-4 pebble ice cubes, dump into a DOF glass packed with pebble/crushed ice, and grate fresh nutmeg over top.
 
 ## Notes
 - 2026-10-19 (crews via site, 5/5): awesome drink, bit tangy w the lime. could use stronger syrup imo

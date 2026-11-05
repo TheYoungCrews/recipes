@@ -42,8 +42,8 @@ A rum and honey cousin of the French 75, topped with Champagne. Made for celebra
 - [ ] lime peel
 
 **Steps**
-1. Shake the lime juice, honey syrup and rum with ice for 8 to 10 seconds.
-2. Strain into a chilled Champagne flute, then add the Champagne.
+1. Shake the lime juice (1/2 oz), honey syrup (1/2 oz) and rum (1 oz) with ice for 8 to 10 seconds.
+2. Strain into a chilled Champagne flute, then top with the Champagne (2 oz).
 3. Zest the lime twist over the drink and garnish.
 
 ## Notes

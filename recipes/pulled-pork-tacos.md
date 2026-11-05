@@ -40,11 +40,11 @@ Serves 2, about 20 minutes. Uses leftover pulled pork and guacamole.
 - [ ] Optional: fresh cilantro, a small handful
 
 **Steps**
-1. Quick pickle: put the onion in a jar or bowl. Warm the vinegar with the sugar and salt just until they dissolve, pour it over the onion and let it sit at least 15 minutes while you do the rest.
-2. Heat the oil in a large skillet over medium-high until it shimmers. Spread the pork in one layer and leave it alone 3 to 4 minutes, until the bottom is browned and crisp.
-3. Flip it in sections, add the broth or juices, and cook 1 to 2 minutes more, until the liquid is gone and the edges are crisp again. Taste for salt.
-4. Warm the tortillas in a dry skillet or over a gas flame, about 30 seconds per side, and keep them wrapped in a towel.
-5. Fill each tortilla with pork, a spoon of guacamole and some drained pickled onion. Add cilantro if you have it and serve with lime wedges.
+1. Quick pickle: put the onion (1 small, thinly sliced) in a jar or bowl. Warm the vinegar (½ cup) with the sugar (1 tsp) and salt (½ tsp) just until they dissolve, pour it over the onion and let it sit at least 15 minutes while you do the rest.
+2. Heat the oil (1 tbsp) in a large skillet over medium-high until it shimmers. Spread the pork (2 cups) in one layer and leave it alone 3 to 4 minutes, until the bottom is browned and crisp.
+3. Flip it in sections, add the broth or juices (2 tbsp), and cook 1 to 2 minutes more, until the liquid is gone and the edges are crisp again. Taste for salt.
+4. Warm the tortillas (6) in a dry skillet or over a gas flame, about 30 seconds per side, and keep them wrapped in a towel.
+5. Fill each tortilla with pork, a spoon of guacamole (about 1 serving total) and some drained pickled onion. Add cilantro (a small handful) if you have it and serve with lime wedges (1 lime).
 
 The guacamole only keeps a day or two, so make these first. Leftover pickled onion keeps a week in the fridge.
 

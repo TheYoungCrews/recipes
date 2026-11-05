@@ -65,12 +65,12 @@ A moist, lightly sweet pumpkin bread made with Kodiak Protein Power Cakes mix, w
 
 **Steps**
 1. Preheat the oven:** Set oven to 350°F. Grease a loaf pan or line it with parchment paper.
-2. Mix the wet ingredients:** In a large bowl, whisk together pumpkin purée, maple syrup or honey, whole milk yogurt, 2–3 tbsp milk, vanilla extract, fresh ginger, and optional oil or melted butter.
+2. Mix the wet ingredients:** In a large bowl, whisk together pumpkin purée (1 cup), maple syrup or honey (⅓ cup), whole milk yogurt (¼ cup), 2–3 tbsp milk, vanilla extract (1 tsp), fresh ginger (1–1½ tsp, finely grated), and optional oil or melted butter (1–2 tbsp).
 3. Adjust sweetness and spice:** Taste the wet mixture before adding the eggs. Adjust maple syrup, ginger, or spices according to preference.
-4. Add eggs:** Whisk in both eggs until fully incorporated.
-5. Add dry ingredients:** Fold in the Kodiak Power Cakes mix and pumpkin pie spice until just combined. Avoid overmixing.
+4. Add eggs:** Whisk in both eggs (2 large) until fully incorporated.
+5. Add dry ingredients:** Fold in the Kodiak Power Cakes mix (2 cups) and pumpkin pie spice (1 tsp) until just combined. Avoid overmixing.
 6. Check consistency:** The batter should be thick but scoopable, similar to banana bread batter. If too stiff, add milk 1 tbsp at a time.
-7. Fold in mix-ins:** Gently incorporate the dark chocolate chips and chopped pecans.
+7. Fold in mix-ins:** Gently incorporate the dark chocolate chips (⅓ cup) and chopped pecans (⅓ cup).
 8. Bake:** Transfer batter to the prepared loaf pan and smooth the top. Bake for approximately 40–50 minutes, or until a toothpick inserted into the center comes out without wet batter.
 9. Cool:** Allow the bread to cool in the pan for 10 minutes before transferring to a wire rack.
 10. Serve:** Slice once mostly cooled. Enjoy plain, warmed, or with a little butter.

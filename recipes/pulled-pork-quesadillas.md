@@ -39,10 +39,10 @@ Serves 2, about 20 minutes. Uses leftover pulled pork.
 - [x] Optional: leftover guacamole, if any is left
 
 **Steps**
-1. Heat the oil in a large skillet over medium-high. Spread the pork in one layer and leave it alone 3 to 4 minutes, until browned and crisp on the bottom. Flip, add the broth or juices and cook 1 to 2 minutes more, until the liquid is gone. Move the pork to a plate and wipe out the pan.
-2. Lay out the tortillas. Cover half of each with cheese, then pork and green onion, then a little more cheese on top so it glues shut. Fold over.
-3. Set the pan over medium and melt a bit of the butter. Cook two quesadillas at a time, 2 to 3 minutes per side, pressing with a spatula, until golden and the cheese is melted. Add more butter for the second batch.
-4. Rest 1 minute, cut into wedges and serve with salsa, plus Greek yogurt or any guacamole that's left.
+1. Heat the oil (1 tbsp) in a large skillet over medium-high. Spread the pork (2 cups) in one layer and leave it alone 3 to 4 minutes, until browned and crisp on the bottom. Flip, add the broth or juices (2 tbsp) and cook 1 to 2 minutes more, until the liquid is gone. Move the pork to a plate and wipe out the pan.
+2. Lay out the tortillas (4 large). Cover half of each with cheese (8 oz total, shredded), then pork and green onion (2, thinly sliced), then a little more cheese on top so it glues shut. Fold over.
+3. Set the pan over medium and melt a bit of the butter (1 tbsp). Cook two quesadillas at a time, 2 to 3 minutes per side, pressing with a spatula, until golden and the cheese is melted. Add more butter for the second batch.
+4. Rest 1 minute, cut into wedges and serve with salsa (½ cup), plus Greek yogurt (½ cup) or any guacamole that's left.
 
 ## Notes
 - 2026-11-01 (grok-bot): written from Crews's idea for leftover pulled pork. Amounts are ours for 2. Planned for Friday night, 2026-11-06.

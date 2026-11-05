@@ -64,10 +64,10 @@ The page lists amounts and ingredients as two separate columns; paired here in t
 - [x] black pepper (1 1/2 tsp)
 
 **Steps**
-1. Season the legs with salt and pepper and dust with flour. Brown them in the oil in the Dutch oven over medium-high; set aside.
-2. Cook the onion and carrots 6-7 minutes until they start to caramelize. Add the garlic for about 45 seconds.
-3. Deglaze with the wine, let it reduce a little, then squeeze in the lemon. Stir in the cream, mustard and tarragon.
-4. Add the potatoes, nestle the chicken back in, cover and simmer on low 45 minutes until the meat falls off the bone. Season to taste.
+1. Season the legs (1 pack) with salt (1 tbsp kosher) and pepper (1 1/2 tsp) and dust with flour (2 tbsp). Brown them in the oil (2 tbsp) in the Dutch oven over medium-high; set aside.
+2. Cook the onion (1) and carrots (1 lb) 6-7 minutes until they start to caramelize. Add the garlic (3 cloves) for about 45 seconds.
+3. Deglaze with the wine (3/4 cup), let it reduce a little, then squeeze in the lemon (1). Stir in the cream (1/2 cup), mustard (1 tbsp) and tarragon (2 tsp).
+4. Add the potatoes (3/4 lb red, 3/4 lb gold), nestle the chicken back in, cover and simmer on low 45 minutes until the meat falls off the bone. Season to taste.
 
 ## Notes
 - 2026-10-15 (via grok-bot): captured from White Oak Pastures. The page's ingredient table is split into an amounts column and a names column; they line up 15 to 15 and were paired in order. Steps say "Dijon" while the list says coarse grain mustard. Serves and total time not given (45-minute simmer plus browning).

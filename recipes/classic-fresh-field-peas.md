@@ -47,9 +47,9 @@ Makes 4 cups.
 - [x] black pepper (1 tsp)
 
 **Steps**
-1. Simmer the hocks in 2 qt water in the Dutch oven for 1 1/2 to 2 hours until tender.
-2. Saute the onion in the drippings 6 minutes, add the garlic for 1 minute, then add it and the peas to the pot. Cover and simmer about 45 minutes until the peas are tender.
-3. Pull the hocks, drain the peas, season, and stir the chopped ham back in.
+1. Simmer the hocks (2) in 2 qt water in the Dutch oven for 1 1/2 to 2 hours until tender.
+2. Saute the onion (1 1/2 cups finely chopped) in the drippings (3 tbsp) 6 minutes, add the garlic (2 cloves, minced) for 1 minute, then add it and the peas (3 cups shelled, about 1 lb) to the pot. Cover and simmer about 45 minutes until the peas are tender.
+3. Pull the hocks, drain the peas, season with the salt (1 tsp kosher) and pepper (1 tsp), and stir the chopped ham back in.
 
 ## Notes
 - 2026-10-15 (via grok-bot): captured from Southern Living (190 min total per the page). Fresh field peas are a summer crop; frozen ones are the fall fallback. A make-ahead side next to the existing collard and okra recipes.

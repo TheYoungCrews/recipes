@@ -73,15 +73,15 @@ Dish: Memere Mushroom Soup.
 - [ ] Dairy sour cream, for serving (amount not given)
 
 **Steps**
-1. Rinse and pat dry the mushrooms. Finely chop ½ pound and slice the remaining ½ pound; set the sliced mushrooms aside.
-2. In a large saucepan, melt 4 tablespoons of the butter. Add the chopped mushrooms and sauté for 5 minutes.
-3. Add the carrots, celery, onions, and garlic; sauté for 5 minutes.
-4. Stir in the broth, water, tomato paste, salt, and black pepper.
-5. Tie together the parsley, celery leaves, and bay leaf; add to the saucepan.
+1. Rinse and pat dry the mushrooms (1 pound, divided). Finely chop ½ pound and slice the remaining ½ pound; set the sliced mushrooms aside.
+2. In a large saucepan, melt 4 tablespoons of the butter. Add the chopped mushrooms (½ pound) and sauté for 5 minutes.
+3. Add the carrots (2 cups, finely chopped), celery (2 cups, finely chopped), onions (1 cup, finely chopped), and garlic (1 clove, finely minced); sauté for 5 minutes.
+4. Stir in the broth (2 cans, 10½ ounces each), water (3 soup cans), tomato paste (3 tablespoons), salt (¼ teaspoon), and black pepper (¹⁄₁₆ teaspoon).
+5. Tie together the parsley (4 sprigs), celery leaves, and bay leaf (1); add to the saucepan.
 6. Bring to boiling point. Cover, reduce the heat, and simmer for 1 hour.
 7. Remove and discard the parsley, celery leaves, and bay leaf. Purée the soup in a blender or food mill, then return it to the saucepan.
-8. In a medium skillet, melt the remaining 2 tablespoons butter. Add the reserved sliced mushrooms and sauté for 5 minutes.
-9. Add the sautéed mushrooms to the soup along with the sherry; reheat.
+8. In a medium skillet, melt the remaining 2 tablespoons butter. Add the reserved sliced mushrooms (½ pound) and sauté for 5 minutes.
+9. Add the sautéed mushrooms to the soup along with the sherry (3 tablespoons); reheat.
 10. Serve with a dollop of sour cream.
 
 ## Notes

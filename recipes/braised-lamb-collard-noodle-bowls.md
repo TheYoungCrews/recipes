@@ -73,11 +73,11 @@ Seared lamb and organ meatballs simmered in a garlicky red sauce, finished with 
 - [x] salt (1 1/2 tsp) and black pepper
 
 **Steps**
-1. **Mix:** soak the bread in the milk and mash to a paste. Mix with the lamb, organ blend, parmesan, minced garlic, parsley, fennel, oregano, salt and pepper. Roll golf-ball meatballs.
-2. **Sear:** olive oil in the Dutch oven over medium-high. Brown the meatballs well on all sides in batches, then set aside.
-3. **Base:** lower to medium. Cook the onion in the fat for 5 minutes, then add the sliced garlic and pepper flakes for 1 minute. Stir in the tomato paste and anchovy paste and cook 2 to 3 minutes until rust-colored.
-4. **Braise:** add the wine and scrape up the fond, let it bubble off for a minute, then stir in the crushed tomatoes and about 1/2 cup water. Return the meatballs and juices, cover and simmer gently 15 to 20 minutes, until cooked through and the sauce has thickened a little. Taste for salt.
-5. **Serve:** into shallow bowls with parmesan, torn basil, a drizzle of olive oil and a spoon of cold ricotta. Bread or polenta on the side for the sauce.
+1. **Mix:** soak the bread (2 slices sourdough, crusts off) in the milk (1/4 cup) and mash to a paste. Mix with the lamb (1 lb), organ blend (1 lb), parmesan (1/2 cup grated), minced garlic (3 cloves), parsley (1/4 cup chopped), fennel (1 tsp, lightly crushed), oregano (1 tsp), salt (1 1/2 tsp) and pepper. Roll golf-ball meatballs.
+2. **Sear:** olive oil (2 tbsp) in the Dutch oven over medium-high. Brown the meatballs well on all sides in batches, then set aside.
+3. **Base:** lower to medium. Cook the onion (1, diced) in the fat for 5 minutes, then add the sliced garlic (3 cloves) and pepper flakes (1/2 tsp) for 1 minute. Stir in the tomato paste (2 tbsp) and anchovy paste (1 tsp) and cook 2 to 3 minutes until rust-colored.
+4. **Braise:** add the wine (1/2 cup, optional) and scrape up the fond, let it bubble off for a minute, then stir in the crushed tomatoes (one 28 oz can) and about 1/2 cup water. Return the meatballs and juices, cover and simmer gently 15 to 20 minutes, until cooked through and the sauce has thickened a little. Taste for salt.
+5. **Serve:** into shallow bowls with more parmesan, torn basil (a handful), a drizzle of olive oil and a spoon of cold ricotta. Bread or polenta on the side for the sauce.
 
 ## Notes
 - 2026-10-18 (grok-bot): per crews, no broth and no collards; now classic red sauce with a 28 oz can of crushed tomatoes plus 1/2 cup water, and red wine instead of white.

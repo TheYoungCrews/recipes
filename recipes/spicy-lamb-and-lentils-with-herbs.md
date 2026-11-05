@@ -63,12 +63,12 @@ Serves 4.
 - [x] black pepper
 
 **Steps**
-1. Heat the oil in a skillet over medium-high. Season the lamb and press it into one thin 1/4-inch patty; cook without moving, pressing now and then, until very crisp underneath, about 5 minutes.
+1. Heat the oil (1 tbsp) in a skillet over medium-high. Season the lamb (1/2 lb) and press it into one thin 1/4-inch patty; cook without moving, pressing now and then, until very crisp underneath, about 5 minutes.
 2. Pour off and save the fat. Flip and crisp the other side, about 5 minutes.
-3. Drop the heat, break the lamb up, stir in the garlic, pepper flakes and cumin, then cook on medium-high about 2 minutes. Lift it out with a slotted spoon.
-4. Crisp the lentils in 2 tbsp of the saved fat with salt and pepper, 5-8 minutes.
-5. Return the lamb, toss, then off heat fold in the cucumber, cilantro and parsley.
-6. Spread yogurt on plates, pile the lamb and lentils on top, add more herbs, and serve with lemon wedges and rice.
+3. Drop the heat, break the lamb up, stir in the garlic (2 cloves, thinly sliced), pepper flakes (1 tsp) and cumin (1/2 tsp seeds), then cook on medium-high about 2 minutes. Lift it out with a slotted spoon.
+4. Crisp the lentils (1.5 cups, from 1 cup dried) in 2 tbsp of the saved fat with salt and pepper, 5-8 minutes.
+5. Return the lamb, toss, then off heat fold in the cucumber (1/2, chopped), cilantro (1/4 cup chopped, plus leaves) and parsley (1/2 cup chopped, plus leaves).
+6. Spread yogurt (3/4 cup) on plates, pile the lamb and lentils on top, add more herbs, and serve with lemon wedges and rice.
 
 ## Notes
 - 2026-10-15 (via grok-bot): captured from White Oak Pastures. Total time not stated (cook steps add up to roughly 20-25 minutes with lentils already cooked). Flatbread or rice offered; rice listed since it's a staple.

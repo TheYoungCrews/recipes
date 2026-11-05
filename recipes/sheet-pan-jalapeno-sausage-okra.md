@@ -40,7 +40,7 @@ AI-generated, so there's no outside original. The recipe as sent is in Our versi
 - [ ] chili crisp
 
 1. Preheat the oven to 450°F (230°C) on convection.
-2. Slice the sausage into 1/2-inch coins. Cut the okra into a mix of thick rounds and lengthwise halves. Cut the onion into wedges (root intact) and the zucchini into thick half-moons.
+2. Slice the sausage (1 lb) into 1/2-inch coins. Cut the okra into a mix of thick rounds and lengthwise halves. Cut the onion (1) into wedges (root intact) and the zucchini (1) into thick half-moons.
 3. Toss the veggies in olive oil, paprika, garlic powder, onion powder, thyme, salt and pepper.
 4. Spread the sausage and veggies on heavy foil or parchment and roast 15-20 minutes until caramelized and blistered.
 5. Finish hot out of the oven with fresh lemon juice and chili crisp.

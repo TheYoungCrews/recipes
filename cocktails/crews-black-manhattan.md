@@ -37,7 +37,7 @@ House Black Manhattan riff splitting Cynar and Punt e Mes over 100-proof rye wit
 - [x] 2 dashes black walnut bitters
 - [x] 1 dash angostura bitters
 
-1. Combine rye, Cynar, Punt e Mes, Black Walnut bitters, and Angostura in a mixing glass with dense ice.
+1. Combine rye (2 oz), Cynar (0.5 oz), Punt e Mes (0.5 oz), Black Walnut bitters (2 dashes), and Angostura (1 dash) in a mixing glass with dense ice.
 2. Stir for 35 seconds, strain into a chilled Nick & Nora or coupe, and garnish with a Luxardo cherry.
 
 ## Notes

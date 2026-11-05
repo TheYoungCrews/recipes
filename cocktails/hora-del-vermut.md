@@ -34,8 +34,8 @@ Build in a double rocks glass filled with ice. Garnish with orange slice and 2 o
 - [ ] green olives (2)
 
 **Steps**
-1. Fill a double rocks glass with ice and pour in the vermouth.
-2. Garnish with the orange slice and 2 olives on a pick.
+1. Fill a double rocks glass with ice and pour in the vermouth (4 oz).
+2. Garnish with the orange slice (1) and 2 olives on a pick.
 3. Serve with Spanish potato chips, more olives, and anchovies if you like.
 
 ## Notes

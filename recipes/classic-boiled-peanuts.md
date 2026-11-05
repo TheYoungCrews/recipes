@@ -37,7 +37,7 @@ The Georgia roadside snack: peanuts in the shell simmered for hours in salty bri
 - [ ] kosher salt (1 1/2 cups, plus more to taste)
 
 **Steps**
-1. For raw peanuts, soak overnight in 2 gallons water with 1/2 cup salt, weighed down with a plate. Skip for green peanuts.
+1. For raw peanuts (2 lb), soak overnight in 2 gallons water with 1/2 cup salt, weighed down with a plate. Skip for green peanuts (3 lb).
 2. Drain, add 2 gallons fresh water and 1 cup salt, mark the water line, and boil, then simmer covered 5-8 hours (2-3 for green), topping up water as it drops.
 3. Taste from hour 3 (hour 1 for green) and every hour after; adjust salt by 1/4 cup or dilute with fresh water.
 4. Cool in the brine 1 hour (20 minutes for green), then drain. Keeps 7-10 days in the fridge or months frozen.

@@ -65,12 +65,12 @@ Serves 2, about 40 minutes. If serving with rice, start it first.
 - [ ] Optional: a few handfuls of carrot and zucchini ribbons
 
 **Steps**
-1. Prep (10 min): dice the onion. Pat the fish and shrimp very dry and salt them lightly. Mince the ginger and garlic, slice the serranos, and mix the curry powder, turmeric and white pepper in a small bowl.
-2. Heat the oil in the Dutch oven over medium until it shimmers, about 1 minute.
+1. Prep (10 min): dice the onion (1 medium). Pat the fish (1 lb, in 1½ to 2 inch chunks) and shrimp (½ lb) very dry and salt them lightly. Mince the ginger (1 tbsp) and garlic (4 cloves), slice the serranos (1 to 2), and mix the curry powder (1½ tbsp), turmeric (1 tsp) and white pepper (½ tsp) in a small bowl.
+2. Heat the oil (1½ tbsp) in the Dutch oven over medium until it shimmers, about 1 minute.
 3. Add the onion with a pinch of salt and cook 4 to 5 minutes, stirring now and then, until soft and translucent.
 4. Add the ginger, garlic and serrano and stir 60 to 90 seconds, until fragrant but not browned.
 5. Drop to medium-low, add the spice mix and stir constantly 30 to 45 seconds. Add a splash of broth if it sticks.
-6. Pour in the broth and scrape the bottom. Stir in the coconut milk and bamboo shoots, bring to a simmer (3 to 4 min), then simmer gently 8 to 10 minutes. Salt to taste, usually ½ to 1 tsp.
+6. Pour in the broth (2 cups) and scrape the bottom. Stir in the coconut milk (1 can, 13.5 oz) and bamboo shoots (1 can, drained), bring to a simmer (3 to 4 min), then simmer gently 8 to 10 minutes. Salt to taste, usually ½ to 1 tsp.
 7. Lower the heat to a bare simmer. If using, stir in the carrot ribbons. Nestle in the fish, cover and cook 3 minutes.
 8. Add the shrimp, and lay any zucchini ribbons on top. Cover and cook 2 to 3 minutes more, until the shrimp are pink and the fish flakes. Stir gently.
 9. Off the heat, squeeze in half the lime, taste and add more lime or salt if needed (extra vegetables thin the broth). Top with cilantro and serve.

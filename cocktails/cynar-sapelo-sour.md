@@ -51,7 +51,7 @@ An adventurous, earthy, bittersweet and orange-forward sour with gin, Cynar, Sap
 - [ ] Orange or lemon twist, optional (amount not given)
 
 **Steps**
-1. Add all ingredients to a shaker without ice.
+1. Add the gin (1 oz), Cynar (¾ oz), Sapelo Aperitivo (¾ oz), lemon juice (¾ oz), aquafaba (¾ oz) and simple syrup (¼ oz, optional) to a shaker without ice.
 2. Dry shake vigorously for about 20 seconds.
 3. Add ice and shake for another 12–15 seconds.
 4. Double strain into a chilled coupe.

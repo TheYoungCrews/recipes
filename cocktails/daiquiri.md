@@ -38,7 +38,7 @@ No preparation instructions are visible in the screenshot.
 - [x] lime (a wheel, for garnish)
 
 **Steps**
-1. Shake the rum, lime juice and simple syrup hard with ice.
+1. Shake the rum (2 oz), lime juice (3/4 oz) and simple syrup (3/4 oz) hard with ice.
 2. Double-strain into a chilled coupe and garnish with a lime wheel.
 
 ## Notes

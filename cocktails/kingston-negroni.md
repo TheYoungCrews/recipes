@@ -39,7 +39,7 @@ A Negroni with overproof aged Jamaican rum in place of gin. Simple and funky. Cr
 - [ ] orange wheel half
 
 **Steps**
-1. In a rocks glass with a big rock of ice, add the rum, Campari and vermouth and stir until chilled, about 45 seconds.
+1. In a rocks glass with a big rock of ice, add the rum (1 oz), Campari (1 oz) and vermouth (1 oz) and stir until chilled, about 45 seconds.
 2. Garnish with the orange wheel half.
 
 ## Notes

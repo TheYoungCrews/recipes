@@ -42,7 +42,7 @@ A big frittata baked in a crispy hash brown crust in a parchment-lined dish. The
 - [ ] cherry tomatoes on the vine, kale, feta (amount not given)
 
 **Steps**
-1. Line an oven-safe dish with parchment. Toss the hash browns with olive oil, salt and pepper and press them into the bottom and up the sides.
+1. Line an oven-safe dish with parchment. Toss the hash browns (1 bag) with olive oil, salt and pepper and press them into the bottom and up the sides.
 2. Bake 20 minutes at 400°F until the crust starts to crisp.
 3. Scatter in the kale, feta and tomatoes, then pour the eggs whisked with almond milk and seasoning over the top.
 4. Drop the oven to 350°F and bake about 1 hour, until the center is set.

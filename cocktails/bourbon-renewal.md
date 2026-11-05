@@ -44,7 +44,7 @@ A bourbon sour with a little creme de cassis for a dark-berry edge. Shaken, pour
 - [ ] lemon wheel, to garnish
 
 **Steps**
-1. Shake everything with ice.
+1. Shake the bourbon (2 oz), lemon juice (1 oz), creme de cassis (1/2 oz), simple syrup (1/2 oz) and aromatic bitters (1 dash) with ice.
 2. Strain into a rocks glass over fresh ice.
 3. Garnish with a lemon wheel.
 

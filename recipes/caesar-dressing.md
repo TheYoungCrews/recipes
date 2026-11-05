@@ -54,10 +54,10 @@ Dish: Caesar Dressing.
 - [ ] Optional: tiny dash Worcestershire sauce (amount not given)
 
 **Steps**
-1. Mash the garlic and anchovy together into a paste in a small bowl.
-2. Whisk in the Dijon, lemon juice, and egg yolk (or mayonnaise).
-3. Slowly drizzle in the olive oil while whisking continuously until thickened and glossy.
-4. Stir in Parmesan and black pepper. Add Worcestershire if using.
+1. Mash the garlic (1 small clove, finely minced) and anchovy (1 fillet, or ½ tsp anchovy paste) together into a paste in a small bowl.
+2. Whisk in the Dijon (1 tsp), lemon juice (1½ tsp, plus more to taste), and egg yolk (1, or 1 tbsp mayonnaise).
+3. Slowly drizzle in the olive oil (2 tbsp) while whisking continuously until thickened and glossy.
+4. Stir in Parmesan (1 tbsp) and black pepper. Add Worcestershire if using.
 5. Taste and adjust lemon or seasoning. Thin with a teaspoon of cold water if needed.
 6. Toss with one chopped romaine heart until evenly coated. Finish with extra Parmesan and freshly cracked black pepper. **Note:** For a no-raw-egg variation, use mayonnaise in place of the yolk.
 

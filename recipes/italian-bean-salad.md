@@ -68,9 +68,9 @@ Dish: Italian Bean Salad.
 - [x] Pinch of paprika (optional) (amount not given)
 
 **Steps**
-1. Prepare the salad:** Drain and rinse the black beans and garbanzo beans. Dice the cucumber, tomatoes, and red onion. Combine with the corn in a large serving bowl.
-2. Make the vinaigrette:** Whisk together champagne vinegar, Dijon mustard, honey, garlic powder, dried parsley, thyme, salt, black pepper, and optional paprika.
-3. Emulsify:** Slowly whisk in the olive oil until combined, or transfer everything to a jar and shake vigorously.
+1. Prepare the salad:** Drain and rinse the black beans (1 can, 15 oz) and garbanzo beans (1 can, 15 oz). Dice the cucumber (1 English), tomatoes (1–2 cups), and red onion (¼). Combine with the corn (1 cup, cooked and cooled) in a large serving bowl.
+2. Make the vinaigrette:** Whisk together champagne vinegar (¼ cup), Dijon mustard (1 tsp), honey (1 tsp), garlic powder (¾ tsp), dried parsley (1 tsp), thyme (¼ tsp), salt (½ tsp kosher, or ¼ tsp fine), black pepper (¼ tsp), and optional paprika (a pinch).
+3. Emulsify:** Slowly whisk in the olive oil (½ cup) until combined, or transfer everything to a jar and shake vigorously.
 4. Rest the dressing:** Let the vinaigrette sit for 10–15 minutes to allow the dried herbs to hydrate.
 5. Dress the salad:** Pour approximately ¾ of the vinaigrette over the vegetables and beans. Toss thoroughly.
 6. Taste and adjust:** Add additional salt, vinegar, or honey as needed. Reserve the remaining dressing to refresh the salad before serving.

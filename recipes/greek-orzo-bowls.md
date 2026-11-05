@@ -126,31 +126,31 @@ Dish: Greek Orzo Bowls.
 **Steps**
 1. Prepare the Tzatziki
 2. Grate ½ cucumber and squeeze out as much moisture as possible using a clean kitchen towel or paper towels.
-3. Combine Greek yogurt, grated cucumber, garlic, lemon juice, olive oil, and dill or mint.
+3. Combine Greek yogurt (1 cup), grated cucumber, garlic (1 small clove, finely grated), lemon juice (1 tbsp), olive oil (1 tbsp), and dill or mint (1 tbsp chopped, or 1 tsp dried).
 4. Season with salt and pepper.
 5. Refrigerate while preparing the remaining ingredients to allow the flavors to meld.
 6. Make the Toasted Orzo (Absorption Method)
 7. Heat 1 tbsp olive oil or butter in a medium saucepan over medium heat.
-8. Add dry orzo and toast for 2–3 minutes, stirring frequently, until lightly golden and fragrant.
+8. Add dry orzo (1½ cups) and toast for 2–3 minutes, stirring frequently, until lightly golden and fragrant.
 9. Carefully pour in 2¼ cups broth and season with salt.
 10. Bring to a gentle boil, then reduce heat to low and cover.
 11. Simmer for approximately 10–12 minutes, stirring once or twice toward the end to prevent sticking.
 12. If the orzo needs additional cooking time, add a splash of broth or water.
 13. Once tender and the liquid is absorbed, remove from heat and let rest, covered, for 5 minutes.
-14. Fluff gently with a fork. Optionally finish with lemon zest and juice for brightness.
+14. Fluff gently with a fork. Optionally finish with lemon zest and juice (½ lemon) for brightness.
 15. Cook the Za'atar Ground Beef
 16. Heat a large skillet over medium heat.
-17. Add diced red onion and sauté for 2–3 minutes until softened, using a little oil if needed.
-18. Add minced garlic and cook for another 30 seconds until fragrant.
-19. Add ground beef, breaking it into small pieces with a wooden spoon.
+17. Add the red onion (½ medium, finely diced) and sauté for 2–3 minutes until softened, using a little oil if needed.
+18. Add the garlic (2 cloves, minced) and cook for another 30 seconds until fragrant.
+19. Add ground beef (1 lb), breaking it into small pieces with a wooden spoon.
 20. Cook for approximately 6–8 minutes until browned and fully cooked. Drain excess fat if necessary.
-21. Stir in za'atar, cumin, smoked paprika, salt, black pepper, and optional cinnamon or allspice.
+21. Stir in za'atar (2 tsp), cumin (1 tsp), smoked paprika (½ tsp), salt (½ tsp), black pepper, and optional cinnamon or allspice (a pinch).
 22. Cook for another 1–2 minutes to bloom the spices and incorporate the flavors.
 23. Taste and adjust seasoning as needed.
 24. Prepare the Fresh Toppings
-25. Dice tomato and cucumber.
-26. Thinly slice red onion.
-27. Crumble feta and chop fresh herbs, if using.
+25. Dice the tomato (1 medium) and cucumber (½).
+26. Thinly slice the red onion (¼ cup).
+27. Crumble the feta (½ cup) and chop fresh herbs, if using.
 28. Assemble the Bowls
 29. Divide warm toasted orzo evenly among four bowls.
 30. Spoon seasoned ground beef over the orzo.

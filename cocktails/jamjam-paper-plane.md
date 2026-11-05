@@ -44,7 +44,7 @@ A gin-based riff inspired by the Paper Plane. JamJam Gin brings strawberry, citr
 - [ ] 3/4 oz fresh lemon juice
 
 **Steps**
-1. Add all ingredients to a cocktail shaker or mason jar with ice.
+1. Add the gin (1 oz), Aperol (3/4 oz), Amaro Nonino (3/4 oz) and lemon juice (3/4 oz) to a cocktail shaker or mason jar with ice.
 2. Shake vigorously for about 15 seconds, until well chilled.
 3. Strain into a chilled coupe or Nick & Nora glass.
 4. Serve immediately.

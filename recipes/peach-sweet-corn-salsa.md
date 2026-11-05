@@ -34,7 +34,7 @@ AI-generated, so there's no outside original. The recipe as sent is in Our versi
 - [ ] fresh cilantro or basil
 - [x] sea salt
 
-1. Dice the peaches, tomatoes, onions and bell pepper. Mince the jalapeño and chop the herbs.
+1. Dice the peaches, tomatoes, onions (1/2 Vidalia, 1/4 red) and bell pepper (1). Mince the jalapeño (1) and chop the herbs.
 2. Combine everything in a bowl.
 3. Toss generously with lime juice and sea salt to taste. Let it sit 10 minutes before serving.
 

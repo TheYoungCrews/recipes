@@ -62,11 +62,11 @@ Makes 4-6 servings.
 - [ ] dried oregano (1/8; unit not given)
 
 **Steps**
-1. Grits: bring 1 cup grits and 4 cups water to a boil, then simmer on low 30 minutes, stirring now and then so they don't stick. Stir in the Romano and set aside.
+1. Grits: bring 1 cup grits and 4 cups water to a boil, then simmer on low 30 minutes, stirring now and then so they don't stick. Stir in the Romano (1 cup shredded) and set aside.
 2. Shrimp: rinse and drain. Pinch off the head from the eyes forward, keeping as much of the orange fat attached to the body as you can.
-3. In a large skillet over medium heat, melt the butter with the garlic, Worcestershire, crab boil, Joe's Stuff and herbs.
-4. Add the shrimp and cook 2 minutes, shaking the pan back and forth.
-5. Add the beer and shake 1 minute more. Take it off the heat.
+3. In a large skillet over medium heat, melt the butter (1 stick plus 5 tbsp) with the garlic (1 tbsp minced), Worcestershire (2 tbsp), crab boil (1 tsp), Joe's Stuff (1 tbsp) and herbs (1/2 tsp thyme, 1/2 tsp crushed rosemary, and the oregano).
+4. Add the shrimp (2 dozen) and cook 2 minutes, shaking the pan back and forth.
+5. Add the beer (1/4 cup, room temperature) and shake 1 minute more. Take it off the heat.
 6. Spoon about 1 cup grits onto each plate, top with shrimp and plenty of sauce.
 
 ## Notes

@@ -49,8 +49,8 @@ Serves 4.
 - [x] neutral oil (1/4 cup)
 
 **Steps**
-1. Marinate the steak in the lemon juice, liquid aminos, pepper and salt for at least 3 hours.
-2. Cook the onion rings in the oil until translucent. Move them to a serving dish and leave the oil in the skillet.
+1. Marinate the steak (2 lb, cut into 1/4-inch pieces) in the lemon juice (2 tbsp), liquid aminos (3 tbsp), pepper (1/2 tsp) and salt for at least 3 hours.
+2. Cook the onion rings (1 cup) in the oil (1/4 cup) until translucent. Move them to a serving dish and leave the oil in the skillet.
 3. Lift the meat from the marinade (keep the marinade) and cook it over high heat, stirring often, until tender. Move it onto the onions.
 4. Pour the marinade and 1/2 cup water into the skillet, simmer 10 minutes, then pour over the meat and onions.
 

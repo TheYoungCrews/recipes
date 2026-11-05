@@ -82,11 +82,11 @@ Cilantro lime dressing
 - [x] black pepper
 
 **Steps**
-1. Ahead of time: rub the chicken with oil, salt and pepper, truss, and roast at 400°F about 45 minutes, checking every 10 minutes after until the thigh hits 165°F. Shred it.
-2. Dressing: blend the ranch mix, mayo, milk, tomatillos, cilantro, garlic, cumin, lime juice and jalapeno. Chill at least 30 minutes.
-3. Sizzle the garlic and chiles in the olive oil for 1 minute, add the spices and a pinch of salt for 1 minute more.
-4. Add the salsa, brown sugar and 1 cup water; simmer 5 minutes. Add the chicken and simmer until saucy, not soupy.
-5. Warm the tortillas, fill, top with whatever you like, and drizzle with the dressing.
+1. Ahead of time: rub the chicken (1 whole) with oil, salt and pepper, truss, and roast at 400°F about 45 minutes, checking every 10 minutes after until the thigh hits 165°F. Shred it.
+2. Dressing: blend the ranch mix (1 oz packet), mayo (1 cup), milk (1 cup whole), tomatillos (2-3 large), cilantro (1 bunch), garlic (1 tsp), cumin (1/4 tsp), lime juice (from 1 large lime) and jalapeno (1). Chill at least 30 minutes.
+3. Sizzle the garlic (1 clove, minced) and chiles (4 oz, drained) in the olive oil (3 tbsp) for 1 minute, add the spices (1 tsp ancho chile powder, 1 tsp cumin, 1 tsp paprika, 1/2 tsp oregano) and a pinch of salt for 1 minute more.
+4. Add the salsa (1 cup), brown sugar (1 tbsp) and 1 cup water; simmer 5 minutes. Add the chicken and simmer until saucy, not soupy.
+5. Warm the tortillas (1 package), fill, top with whatever you like, and drizzle with the dressing.
 
 ## Notes
 - 2026-10-15 (via grok-bot): captured from White Oak Pastures. Tagged make-ahead (the chicken can be roasted and shredded ahead). Serves and total time not stated; a whole roast chicken plus filling is weekend-length unless the chicken is done ahead.

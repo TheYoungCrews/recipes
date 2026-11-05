@@ -77,11 +77,11 @@ Quick weeknight stir fry: lean ground turkey and crisp green beans in a sweet-sp
 - [x] rice
 
 **Steps**
-1. In a large skillet, heat 1 tbsp olive oil over medium-high heat. Add green beans, season with salt and black pepper.
+1. In a large skillet, heat 1 tbsp olive oil over medium-high heat. Add green beans (1 lb, trimmed and chopped), season with salt and black pepper.
 2. Sauté about 6 minutes until lightly charred, tender but still crisp. Transfer to a bowl.
-3. Drizzle the remaining 1 tbsp olive oil into the skillet; add chopped onion. Sauté 2 to 3 minutes until translucent. Add garlic; sauté 30 seconds, don't burn.
-4. Add ground turkey; brown until crumbled and fully cooked.
-5. While the turkey cooks, whisk together liquid aminos, sambal oelek, honey, sesame oil, ginger, salt, black pepper, red pepper flakes, coriander and garlic (Crews's past seasoning mix for this dish).
+3. Drizzle the remaining 1 tbsp olive oil into the skillet; add the onion (1/2 cup, chopped). Sauté 2 to 3 minutes until translucent. Add garlic (3 cloves, minced); sauté 30 seconds, don't burn.
+4. Add ground turkey (1 lb); brown until crumbled and fully cooked.
+5. While the turkey cooks, whisk together liquid aminos (1/4 cup), sambal oelek (2 tsp), honey (2 tbsp), sesame oil (1 tsp), ginger (1 tsp, grated), salt, black pepper, red pepper flakes (1/4 tsp), coriander and garlic (Crews's past seasoning mix for this dish).
 6. Return green beans to the pan; pour in the sauce and mix to coat. Simmer 2 to 3 minutes until the sauce thickens. Serve over hot rice. Optional finish: sliced green onion and sesame seeds.
 
 ## Notes

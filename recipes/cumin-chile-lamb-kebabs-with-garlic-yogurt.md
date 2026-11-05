@@ -64,9 +64,9 @@ Lamb and assembly
 - [x] black pepper
 
 **Steps**
-1. Stir the garlic, lemon zest and lemon juice into the yogurt; season with salt and pepper.
-2. Coarsely grind the cumin, Sichuan peppercorns, caraway, pepper flakes and sugar.
-3. Set up a grill for two-zone medium-high heat and oil the grates. Thread the lamb onto 6-8 skewers with small gaps, salt it, and press the spice blend on generously.
+1. Stir the garlic (1 clove, grated), lemon zest and lemon juice (1 tbsp) into the yogurt (1 cup); season with salt and pepper.
+2. Coarsely grind the cumin, Sichuan peppercorns (2 tbsp), caraway (2 tsp), pepper flakes (2 tsp) and sugar (1 tsp).
+3. Set up a grill for two-zone medium-high heat and oil the grates. Thread the lamb (1.25 lb, in 1-inch pieces) onto 6-8 skewers with small gaps, salt it, and press the spice blend on generously.
 4. Grill over direct heat, turning every minute, until charred in spots, about 4 minutes. Move to the cool side for about 4 minutes more for medium-rare.
 5. Finish the yogurt with cracked pepper and lemon zest and serve with the lamb.
 

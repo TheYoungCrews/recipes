@@ -72,11 +72,11 @@ Steps:
 - [x] green onion, sesame seeds, chili crisp, lime (for serving)
 
 **Steps**
-1. Season the chicken with salt, pepper, garlic powder and ground ginger. Sear in olive oil 3 to 4 minutes per side until golden. Set aside.
-2. Cook the shallot, garlic and fresh ginger in the same pot until fragrant. Add the broth, liquid aminos, honey, rice vinegar and sesame oil, scraping up the browned bits.
+1. Season the chicken (1.5 to 2 lb thighs) with salt (3/4 tsp kosher), pepper (1/2 tsp), garlic powder (1/2 tsp) and ground ginger (1/4 tsp). Sear in olive oil (1 tbsp) 3 to 4 minutes per side until golden. Set aside.
+2. Cook the shallot (1), garlic (6 cloves) and fresh ginger (1 tbsp grated) in the same pot until fragrant. Add the broth (4 cups), liquid aminos (1/4 cup), honey (1/4 cup), rice vinegar (1 tbsp) and sesame oil (1 tsp), scraping up the browned bits.
 3. Return the chicken, cover and cook low until it shreds easily. The creator slow-cooked it and didn't give a time.
 4. Pull out the chicken, shred into large pieces, and return it to the broth.
-5. Stir in the coconut milk, add the broccolini, and cook just until tender and bright green. Adjust with more aminos, honey or lime.
+5. Stir in the coconut milk (1/2 can), add the broccolini (1 bunch), and cook just until tender and bright green. Adjust with more aminos, honey or lime.
 6. Serve over white rice with plenty of broth, topped with green onion, sesame seeds, chili crisp and a squeeze of lime.
 
 ## Notes

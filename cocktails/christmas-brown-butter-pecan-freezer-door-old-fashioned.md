@@ -44,7 +44,7 @@ Holiday freezer-door batch built on brown-butter fat-washed high-proof bourbon, 
 - [x] orange bitters
 - [x] sea salt (tiny pinch)
 
-1. For the 1L freezer batch: funnel all ingredients into a bottle, chill in the freezer until sub-zero, and pour over a single large rock with an expressed orange peel.
+1. For the 1L freezer batch: funnel the fat-washed bourbon (500 ml), rye (200 ml), pecan syrup (100 ml), cold filtered water (180 ml), the bitters and a tiny pinch of sea salt into a bottle, chill in the freezer until sub-zero, and pour over a single large rock with an expressed orange peel.
 2. For a single glass: stir 1.5 oz fat-washed bourbon, 0.5 oz Rittenhouse Rye, 0.25 oz pecan syrup, 2 dashes Angostura, and 2 dashes Black Walnut bitters over a large rock.
 
 ## Notes

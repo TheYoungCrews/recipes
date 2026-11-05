@@ -44,8 +44,8 @@ An Old Fashioned riff on a split base of rye and applejack with a demerara sugar
 - [ ] orange peel
 
 **Steps**
-1. In an old fashioned glass, douse the sugar cube with the bitters and a tiny dash of club soda. Muddle into a slightly gritty paste.
-2. Add the rye and applejack with a big rock of ice and stir until chilled, about 45 seconds.
+1. In an old fashioned glass, douse the sugar cube (1) with the orange bitters (2 dashes) and a tiny dash of club soda. Muddle into a slightly gritty paste.
+2. Add the rye (1 oz) and applejack (1 oz) with a big rock of ice and stir until chilled, about 45 seconds.
 3. Zest the orange peel over the glass and garnish with it.
 
 ## Notes

@@ -47,7 +47,7 @@ A warm, silky, citrusy, herbal sour with Amaro Nonino as the base spirit.
 - [ ] Lemon twist (amount not given)
 
 **Steps**
-1. Add all ingredients to a shaker without ice.
+1. Add the Amaro Nonino (2 oz), lemon juice (¾ oz), St-Germain (¼ oz) and aquafaba (¾ oz) to a shaker without ice.
 2. Dry shake vigorously for about 20 seconds.
 3. Add ice and shake for another 12–15 seconds.
 4. Double strain into a chilled coupe.

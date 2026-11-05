@@ -70,12 +70,12 @@ Adapted from Emeril Lagasse’s Butternut Squash Soup, with peanut oil, chipotle
 - [ ] Pumpkin seeds, optional (amount not given)
 
 **Steps**
-1. Cut the squash in half and scoop out the seeds. Peel and cut into 1-inch pieces.
-2. In a large pot, heat the peanut oil over medium heat. Add the onion and cook, stirring often, until it begins to brown, about 5 minutes. Add the garlic and cook for about 30 seconds.
-3. Add the carrot, cumin, salt, black pepper, and chipotle pepper flakes. Cook for 1 minute, then add the squash, jalapeño, and chicken stock.
+1. Cut the squash (1 butternut, about 2 pounds) in half and scoop out the seeds. Peel and cut into 1-inch pieces.
+2. In a large pot, heat the peanut oil (2 tablespoons) over medium heat. Add the onion (1 cup) and cook, stirring often, until it begins to brown, about 5 minutes. Add the garlic (1½ teaspoons) and cook for about 30 seconds.
+3. Add the carrot (½ cup, thinly sliced), cumin (½ teaspoon), salt (½ teaspoon, plus more to taste), black pepper (½ teaspoon), and chipotle pepper flakes (½ teaspoon, or ¼ teaspoon for less heat). Cook for 1 minute, then add the squash, jalapeño (1 tablespoon, finely minced), and chicken stock (2 cups).
 4. Bring to a boil, reduce the heat, and simmer for 15–20 minutes, or until the vegetables are tender.
 5. Remove from the heat and purée with an immersion blender until smooth. Alternatively, carefully blend in batches in a blender, allowing steam to escape.
-6. Return the soup to the heat, stir in the cream, and adjust the seasonings to taste.
+6. Return the soup to the heat, stir in the cream (¼ cup), and adjust the seasonings to taste.
 7. Serve topped with a dollop of crème fraîche or Greek yogurt and a drizzle of chili oil or a spoonful of Trader Joe’s Chili Crunch. Add pumpkin seeds if desired. Heat note: The ½ teaspoon of chipotle pepper flakes makes this soup a bit spicy, especially with the jalapeño and chili topping. Start with ¼ teaspoon if you prefer it milder.
 
 ## Notes

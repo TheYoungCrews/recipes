@@ -37,7 +37,7 @@ Anna's bittersweet shaken rye sour where Amaro Montenegro and a touch of Campari
 - [x] 0.25 oz Campari
 - [x] 0.75 oz fresh lemon juice
 
-1. Hard shake with ice for 12-15 seconds and double-strain into a chilled coupe.
+1. Hard shake the rye (1.5 oz), Amaro Montenegro (0.75 oz), Campari (0.25 oz) and lemon juice (0.75 oz) with ice for 12-15 seconds and double-strain into a chilled coupe.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-the-gilded-lion.md. Swapped food tags [quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.

@@ -48,9 +48,9 @@ Reposado tequila and honey syrup shaken with fresh lemon, served in a mezcal-rin
 - [ ] lemon peel (garnish)
 
 **Steps**
-1. Rinse a rocks glass with mezcal; discard the excess.
-2. Shake reposado, honey syrup, and lemon juice with ice until well-chilled.
-3. Strain over fresh ice; float the Angostura on top.
+1. Rinse a rocks glass with mezcal (1 dash); discard the excess.
+2. Shake the reposado (2 oz), honey syrup and lemon juice (3/4 oz) with ice until well-chilled.
+3. Strain over fresh ice; float the Angostura (2 dashes) on top.
 4. Garnish with a lemon peel.
 
 ## Notes

@@ -52,7 +52,7 @@ Cocktail: Gin Tomatotini.
 
 **Steps**
 1. Chill two coupe or martini glasses.
-2. Combine gin, tomato water, dry vermouth, lemon juice, and ¼ oz olive brine in a cocktail shaker.
+2. Combine gin (4 oz), tomato water (4 oz), dry vermouth (1 oz), lemon juice (½ oz) and olive brine (¼ oz to start, up to ½ oz to taste) in a cocktail shaker.
 3. Add ice and shake vigorously for 10–12 seconds.
 4. Double-strain into chilled glasses.
 5. Garnish with fresh basil or a cocktail olive. - Start with ¼ oz olive brine and increase to ½ oz for a more savory, dirty-martini-inspired variation. - For a more delicate, botanical cocktail, omit the brine and garnish with basil and freshly cracked black pepper. - Adjust the salt depending on whether the tomato water was seasoned during preparation.

@@ -81,10 +81,10 @@ Crispy caramelized beef and fluffy rice in a rich coconut curry broth, finished 
 
 **Steps**
 Weeknight version (aiming for about 30 minutes, Dutch oven, more lime/herbs/umami, high-protein):
-1. Rice: boil generously salted water, add rice, boil 10 minutes until tender. Drain, return to the dry pot, cover and steam until serving.
-2. Heat coconut oil in the Dutch oven over high heat. Brown the beef hard, undisturbed, for caramelized edges, then break up and finish browning.
-3. Shake 2 tsp cornstarch with 1/4 cup chicken broth until smooth, then add 2-1/2 tbsp liquid aminos, the sugar, sesame oil and white pepper; shake again. Lower heat to medium, add 1 tbsp each garlic and ginger, then the sauce, and cook until caramelized onto the beef. Remove the beef.
-4. Broth: same pot over low heat. Cook the remaining 1/2 tbsp each garlic and ginger 20 seconds. Stir in red curry paste and curry powder; cook 1 minute. Pour in coconut milk, scraping up the browned bits; whisk smooth. Add 1 cup chicken broth; boil 1 minute, then reduce to low. Stir in 1 tbsp liquid aminos, juice of 1/2 lime, and the cilantro.
+1. Rice: boil generously salted water, add the rice (1 cup basmati), boil 10 minutes until tender. Drain, return to the dry pot, cover and steam until serving.
+2. Heat coconut oil (1 tbsp) in the Dutch oven over high heat. Brown the beef (1 lb, 93/7) hard, undisturbed, for caramelized edges, then break up and finish browning.
+3. Shake 2 tsp cornstarch with 1/4 cup chicken broth until smooth, then add 2-1/2 tbsp liquid aminos, the sugar (2 tsp), sesame oil (1/2 tsp) and white pepper (1/4 tsp); shake again. Lower heat to medium, add 1 tbsp each minced garlic and ginger, then the sauce, and cook until caramelized onto the beef. Remove the beef.
+4. Broth: same pot over low heat. Cook the remaining 1/2 tbsp each garlic and ginger 20 seconds. Stir in red curry paste (2 tbsp) and curry powder (1 tsp); cook 1 minute. Pour in coconut milk (1 can, 13.66 oz), scraping up the browned bits; whisk smooth. Add 1 cup chicken broth; boil 1 minute, then reduce to low. Stir in 1 tbsp liquid aminos, juice of 1/2 lime, and the cilantro (1/2 cup chopped).
 5. Assemble bowls and finish each with extra lime juice, double the cilantro, and sambal oelek for heat.
 
 ## Notes

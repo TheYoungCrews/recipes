@@ -43,7 +43,7 @@ Gin Negroni split with Campari and Cynar, finished with black walnut and Angostu
 - [x] 2 dashes black walnut bitters
 - [x] 1 dash angostura bitters
 
-1. Combine gin, sweet vermouth, Campari, Cynar, 2 dashes Black Walnut bitters, and 1 dash Angostura bitters (3 dashes total in a 2:1 ratio) in a mixing glass with ice.
+1. Combine gin (2 oz), sweet vermouth (0.75 oz), Campari (0.5 oz), Cynar (0.5 oz), 2 dashes Black Walnut bitters, and 1 dash Angostura bitters (3 dashes total in a 2:1 ratio) in a mixing glass with ice.
 2. Stir for 35 seconds, strain over a large clear cube, and garnish with an expressed orange peel.
 
 ## Notes

@@ -48,7 +48,7 @@ Cocktail: English Garden Collins.
 - [ ] Rosemary sprig or lemon twist for garnish (amount not given)
 
 **Steps**
-1. Combine gin, lemon juice, and tea syrup in a cocktail shaker.
+1. Combine gin (2 oz), lemon juice (¾ oz) and tea syrup (½ oz) in a cocktail shaker.
 2. Fill with ice and shake until well chilled.
 3. Strain into a Collins glass filled with fresh ice.
 4. Top with 2–3 oz soda water.

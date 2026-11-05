@@ -45,7 +45,7 @@ An earthy, bittersweet gin sour with Cynar, lemon, and a small amount of Amaro N
 - [ ] Lemon twist, optional (amount not given)
 
 **Steps**
-1. Add all ingredients to a shaker with ice.
+1. Add the gin (1½ oz), Cynar (¾ oz), lemon juice (½ oz) and Amaro Nonino (¼ oz) to a shaker with ice.
 2. Shake until well chilled.
 3. Strain into a chilled coupe and serve up.
 

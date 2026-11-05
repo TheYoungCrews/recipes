@@ -62,13 +62,13 @@ Soft and chewy chocolate chip cookies with lightly crisp edges. This version use
 
 **Steps**
 1. Preheat oven to 350°F. Line a baking sheet with parchment paper.
-2. Melt the butter until just melted; it should not be piping hot.
-3. Add the light brown sugar and granulated sugar and stir well to combine.
+2. Melt the butter (1 cup, 227 g) until just melted; it should not be piping hot.
+3. Add the light brown sugar (240 g, packed) and granulated sugar (50 g) and stir well to combine.
 4. Let the butter-sugar mixture stand for 5 minutes.
-5. Add the egg and egg yolk and stir until thoroughly combined.
-6. Stir in the vanilla.
-7. Add the flour, baking soda, and salt. Stir by hand just until combined; do not overmix.
-8. Fold in the chocolate chips.
+5. Add the egg (1 large) and egg yolk (1 large) and stir until thoroughly combined.
+6. Stir in the vanilla (1 tablespoon).
+7. Add the flour (2 1/2 cups, about 300 g), baking soda (1 teaspoon), and salt (1/2 teaspoon). Stir by hand just until combined; do not overmix.
+8. Fold in the chocolate chips (10 oz, 283 g).
 9. Using a medium cookie scoop (about 1 1/2 tablespoons), portion dough onto the prepared baking sheet, leaving about 2 inches between cookies. Do not chill the dough.
 10. Bake for 7 minutes, until the edges are set but the centers still look soft and slightly underbaked.
 11. Let cookies cool on the baking sheet for about 5 minutes before transferring to a wire rack to finish cooling.

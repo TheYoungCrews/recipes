@@ -50,10 +50,10 @@ A tangy, lightly sweet, sesame-scented quick pickle to serve with gochujang beef
 - [x] 1–2 tsp sesame seeds
 
 **Steps**
-1. Thinly slice the cucumber and carrot (thin rounds, julienne, or ribbons all work).
-2. Whisk rice vinegar, sugar, and kosher salt in a bowl until dissolved.
+1. Thinly slice the cucumber (1 large) and carrots (1–2; thin rounds, julienne, or ribbons all work).
+2. Whisk rice vinegar (⅓ cup), sugar (1½ tbsp), and kosher salt (¾ tsp) in a bowl until dissolved.
 3. Add cucumber and carrot; toss thoroughly with the dressing.
-4. Add sesame oil and sesame seeds; toss again.
+4. Add sesame oil (1 tsp) and sesame seeds (1–2 tsp); toss again.
 5. Refrigerate for 15–30 minutes before serving; 10 minutes will work if rushed, but 20–30 gives a better quick-pickle flavor.
 6. Toss again before serving.
 

@@ -65,10 +65,10 @@ File is a fine green powder of young dried ground sassafras leaves, used in gumb
 - [ ] French bread, to serve
 
 **Steps**
-1. Season the chicken and brown it in about 1/4 cup of the fat in a large pot (Dutch oven) over medium heat. Add the sausage and saute with the chicken.
-2. In a skillet, make a roux with equal parts clean oil and flour, stirring until it reaches the color you want. Add the onion, celery and green pepper, then the garlic, stirring constantly. When the vegetables are tender, scrape it all into the pot with the chicken and sausage, stirring often.
-3. Slowly stir in the stock and bring to a boil. Drop to a simmer and cook an hour or more. Season to taste with Joe's Stuff and crab boil.
-4. About 10 minutes before serving, stir in the green onion. Serve over rice (or not) with French bread, and put file powder on the table so everyone can add 1/4 to 1/2 tsp to their bowl.
+1. Season the chicken (1 lb) and brown it in about 1/4 cup of the fat in a large pot (Dutch oven) over medium heat. Add the sausage (1 lb) and saute with the chicken.
+2. In a skillet, make a roux with equal parts clean oil (1/2 cup) and flour (1/2 cup), stirring until it reaches the color you want. Add the onion (2 cups chopped), celery (1 cup chopped) and green pepper (1 cup chopped), then the garlic (1 tbsp chopped), stirring constantly. When the vegetables are tender, scrape it all into the pot with the chicken and sausage, stirring often.
+3. Slowly stir in the stock (6 cups) and bring to a boil. Drop to a simmer and cook an hour or more. Season to taste with Joe's Stuff and crab boil.
+4. About 10 minutes before serving, stir in the green onion (1 cup chopped). Serve over rice (or not) with French bread, and put file powder on the table so everyone can add 1/4 to 1/2 tsp to their bowl.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): from email 497905. Added the `southern` tag to match shrimp-and-grits from the same school. Weekend-project because of the hour-plus simmer; total time and servings aren't stated. The sheet never says when to add the crab boil, so our version seasons with it alongside Joe's Stuff at the simmer; adjust after the first cook.

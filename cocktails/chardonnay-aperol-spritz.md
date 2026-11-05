@@ -50,10 +50,10 @@ A light, citrusy dinner cocktail somewhere between an Aperol Spritz and a French
 - [ ] Lemon wheel or twist (amount not given)
 
 **Steps**
-1. Add gin, Chardonnay, Aperol, and lemon juice to a shaker with ice.
+1. Add gin (1 oz), Chardonnay (1 oz), Aperol (½ oz), and lemon juice (½ oz) to a shaker with ice.
 2. Shake briefly, about 8 seconds.
 3. Strain into a wine glass filled with fresh ice.
-4. Top with sparkling water and stir gently.
+4. Top with sparkling water (2 oz) and stir gently.
 
 ## Notes
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-chardonnay-gin-aperol-spritz.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).

@@ -44,7 +44,7 @@ A split-base rye and cognac old fashioned sweetened with Licor 43 and coffee liq
 - [ ] large clear ice cube
 
 **Steps**
-1. Stir the Licor 43, coffee liqueur, cognac and rye with ice in a mixing glass until just chilled. Go a little light, since the big cube adds dilution.
+1. Stir the Licor 43 (1/4 oz), coffee liqueur (1/4 oz), cognac (1 oz) and rye (1 oz) with ice in a mixing glass until just chilled. Go a little light, since the big cube adds dilution.
 2. Let a large clear cube sit out a minute to temper so it won't crack, then set it in a rocks glass and pour over.
 3. Float 3 coffee beans on the ice.
 

@@ -38,7 +38,7 @@ Smoky, bitter stirred agave and amaro cocktail from The Hunt + Alpine Club (@the
 - [x] 1 oz Cynar
 - [ ] 0.5 oz Fernet-Branca
 
-1. Stir all ingredients with dense ice for 35 seconds and strain into a coupe or over a large rock with an expressed grapefruit peel.
+1. Stir the tequila (1 oz), mezcal (0.5 oz), Cynar (1 oz) and Fernet-Branca (0.5 oz) with dense ice for 35 seconds and strain into a coupe or over a large rock with an expressed grapefruit peel.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-smoke-and-bitters.md. Swapped food tags [quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.

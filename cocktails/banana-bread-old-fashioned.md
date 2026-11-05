@@ -49,7 +49,7 @@ cooks: 0
 - [ ] Orange peel for garnish (amount not given)
 
 **Steps**
-1. Combine bourbon, banana liqueur, tea syrup, and bitters in a mixing glass.
+1. Combine bourbon (2 oz), banana liqueur (¼ oz), tea syrup (1 barspoon), Angostura bitters (2 dashes) and orange bitters (1 dash, optional) in a mixing glass.
 2. Fill with ice and stir for 20–25 seconds until thoroughly chilled.
 3. Strain into a rocks glass over one large ice cube.
 4. Express an orange peel over the cocktail and drop it into the glass.

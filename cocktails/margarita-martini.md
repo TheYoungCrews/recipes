@@ -52,7 +52,7 @@ Cocktail: Margarita Martini.
 - [ ] As many olives as desired, for garnish (amount not given)
 
 **Steps**
-1. Add the tequila, orange liqueur, lime juice, olive brine, and optional simple syrup or agave and orange juice to a cocktail shaker.
+1. Add the tequila (2 oz), orange liqueur (1 oz), lime juice (1 oz), olive brine (1/2 oz), and optional simple syrup or agave (1/4–1/2 oz) and orange juice to a cocktail shaker.
 2. Add ice and shake until well chilled.
 3. Strain into a martini glass and serve up (without ice).
 4. Garnish with as many olives as desired.

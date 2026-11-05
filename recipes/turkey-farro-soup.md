@@ -85,12 +85,12 @@ Dish: Turkey Farro Soup.
 - [ ] Juice of ½ lemon
 
 **Steps**
-1. Brown the turkey.** Heat olive oil in a large Dutch oven over medium heat. Add ground turkey, season lightly with salt and pepper, and cook for 6–8 minutes, breaking into crumbles until browned and cooked through. Transfer to a plate.
-2. Sauté the vegetables.** In the same pot, add onion, carrots, and celery. Sauté for 5–7 minutes until softened and lightly golden. Add garlic and cook for another 30 seconds.
-3. Build the flavor.** Stir in tomato paste, Italian seasoning, crushed red pepper flakes, and fennel seeds. Cook for 1–2 minutes, stirring frequently, to deepen the flavors.
-4. Add farro and simmer.** Return turkey to the pot. Add Worcestershire sauce, chicken broth, and rinsed farro. Bring to a boil, then reduce heat to maintain a gentle simmer. Cook uncovered for approximately 25–30 minutes, stirring occasionally, until farro is tender but pleasantly chewy. Adjust cooking time according to the farro variety.
-5. Add kale and creaminess.** If using cornstarch, whisk it into the cold milk or half-and-half. Pour into the soup and stir in the kale. Simmer gently for another 5–7 minutes until the kale is tender and the broth is lightly creamy.
-6. Finish the soup.** Reduce heat to low. Gradually stir in Parmesan or Pecorino Romano, followed by lemon juice. Taste and adjust salt, pepper, and acidity as needed.
+1. Brown the turkey.** Heat olive oil (1 tbsp, plus more as needed) in a large Dutch oven over medium heat. Add ground turkey (1.5 lbs), season lightly with salt (1½ tsp) and pepper (½ tsp), and cook for 6–8 minutes, breaking into crumbles until browned and cooked through. Transfer to a plate.
+2. Sauté the vegetables.** In the same pot, add onion (1, diced), carrots (2–3 medium, peeled and diced), and celery (2 stalks, diced). Sauté for 5–7 minutes until softened and lightly golden. Add garlic (4 cloves, minced) and cook for another 30 seconds.
+3. Build the flavor.** Stir in tomato paste (1 tbsp), Italian seasoning (1 tsp), crushed red pepper flakes (½ tsp), and fennel seeds (½ tsp). Cook for 1–2 minutes, stirring frequently, to deepen the flavors.
+4. Add farro and simmer.** Return turkey to the pot. Add Worcestershire sauce (1 tsp), chicken broth (7 cups, plus more as needed), and rinsed farro (¾ cup). Bring to a boil, then reduce heat to maintain a gentle simmer. Cook uncovered for approximately 25–30 minutes, stirring occasionally, until farro is tender but pleasantly chewy. Adjust cooking time according to the farro variety.
+5. Add kale and creaminess.** If using cornstarch (2 tsp), whisk it into the cold milk or half-and-half (1 cup). Pour into the soup and stir in the kale (1 small bunch). Simmer gently for another 5–7 minutes until the kale is tender and the broth is lightly creamy.
+6. Finish the soup.** Reduce heat to low. Gradually stir in Parmesan or Pecorino Romano (½ cup), followed by lemon juice (½ lemon). Taste and adjust salt, pepper, and acidity as needed.
 7. Serve.** Ladle into bowls and finish with additional freshly grated Parmesan and cracked black pepper, if desired.
 
 ## Notes

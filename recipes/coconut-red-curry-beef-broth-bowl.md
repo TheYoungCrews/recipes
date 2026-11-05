@@ -65,11 +65,11 @@ Warming coconut-red curry broth over rice with sticky honey-soy beef mince and c
 - [x] lime (to finish; our addition)
 
 **Steps**
-1. Brown the beef hard in a hot pan with a little oil, leaving it undisturbed at first for crispy edges.
-2. Add garlic, ginger and sambal oelek (standing sub for chilli paste); fry a minute or two.
-3. Add honey and liquid aminos (standing sub for dark soy sauce) and cook until sticky. Dark soy is sweeter and darker than aminos, so taste and add a touch more honey if it needs it. Set aside.
-4. In a second pan, fry the red curry paste for a couple of minutes, then add coconut milk, broth and lime leaves; simmer 3-4 minutes.
-5. Bowl up rice and beef, pour the broth over, and top with cucumber, green onion, sesame seeds and a squeeze of lime.
+1. Brown the beef (200g, about 7 oz) hard in a hot pan with a little oil, leaving it undisturbed at first for crispy edges.
+2. Add garlic (1 large clove), ginger (1cm piece) and sambal oelek (1 tsp); fry a minute or two.
+3. Add honey (2 tsp) and liquid aminos (1 tbsp) and cook until sticky. Dark soy is sweeter and darker than aminos, so taste and add a touch more honey if it needs it. Set aside.
+4. In a second pan, fry the red curry paste (1 tbsp) for a couple of minutes, then add coconut milk (1/2 can), broth (200ml) and lime leaves (2, optional); simmer 3-4 minutes.
+5. Bowl up rice (1 serving, cooked) and beef, pour the broth over, and top with cucumber (a few slices), green onion (2), sesame seeds and a squeeze of lime.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-coconut-red-curry-beef-broth-bowl.md. Wrote Our version (Muse sent "Same as original"): dark soy sauce -> liquid aminos and chilli oil/paste -> sambal oelek per kitchen/taste-profile.md, plus a lime finish; normalized ingredient wording (beef mince -> ground beef, spring onions -> green onion, white rice -> rice, chicken stock -> chicken broth); time tag weeknight-30 -> quick-20 to match the 20-minute total; added dairy-free.

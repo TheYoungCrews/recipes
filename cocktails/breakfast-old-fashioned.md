@@ -47,7 +47,7 @@ Cocktail: Breakfast Old Fashioned.
 - [ ] Orange peel for garnish (amount not given)
 
 **Steps**
-1. Combine bourbon, tea syrup, and bitters in a mixing glass.
+1. Combine bourbon (2 oz), tea syrup (¼ oz), Angostura bitters (2 dashes) and orange bitters (1 dash, optional) in a mixing glass.
 2. Fill with ice and stir for 20–25 seconds until chilled and properly diluted.
 3. Strain into a rocks glass over one large ice cube.
 4. Express an orange peel over the drink to release its oils.

@@ -47,7 +47,7 @@ Scaled to one-quarter of the original recipe provided by VT Dining Services.
 - [ ] 1½ teaspoons jalapeño extract (see note)
 
 **Steps**
-1. Combine all ingredients in a mixing bowl and mix thoroughly.
+1. Combine the mayonnaise (1 cup), ketchup (4 oz by weight, about ⅓ cup plus 1 tablespoon), white vinegar (2¼ teaspoons), black pepper (scant ½ teaspoon), salt (1⅛ teaspoons), BBQ sauce (¼ cup) and jalapeño extract (1½ teaspoons) in a mixing bowl and mix thoroughly.
 2. Refrigerate until ready to serve. Serve with fries or burgers.
 
 ## Notes

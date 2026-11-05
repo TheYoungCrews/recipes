@@ -41,8 +41,8 @@ Coastal batch negroni riff built on basil-infused Murrell's Row Jam Jam gin, Dol
 - [x] 1 oz Campari (or 1 barspoon single)
 - [x] 4 oz cold filtered water (or 0.25 oz single)
 
-1. Infuse the gin with slapped basil for 45-60 minutes and strain clean.
-2. Batch with Chambéryzette, St-Germain, Campari, and water for the beach cooler, or stir the single-serve ratio over ice and strain over a rock.
+1. Infuse the gin (12 oz) with slapped basil for 45-60 minutes and strain clean.
+2. Batch with the Chambéryzette (8 oz), St-Germain (4 oz), Campari (1 oz) and cold filtered water (4 oz) for the beach cooler, or stir the single-serve ratio (1.25 oz gin, 1 oz Chambéryzette, 0.5 oz St-Germain, 1 barspoon Campari, 0.25 oz water) over ice and strain over a rock.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-strawberry-basil-pavlova-negroni.md. Swapped food tags [make-ahead, quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.

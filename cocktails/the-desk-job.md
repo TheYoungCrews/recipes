@@ -39,7 +39,7 @@ Equal-parts split-base rum, Punt e Mes, and Cynar stirred cocktail (@theeducated
 - [x] 0.75 oz Punt e Mes
 - [x] 0.75 oz Cynar
 
-1. Stir equal parts (0.75 oz each) with dense ice for 35-40 seconds—no bitters.
+1. Stir the Smith & Cross (0.75 oz), aged dark rum (0.75 oz), Punt e Mes (0.75 oz) and Cynar (0.75 oz) with dense ice for 35-40 seconds. No bitters.
 2. Strain into a chilled coupe or over a large rock and express a lime twist over top.
 
 ## Notes

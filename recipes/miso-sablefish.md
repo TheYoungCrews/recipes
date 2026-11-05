@@ -55,8 +55,8 @@ A gently roasted, honey-ginger miso black cod glaze made without mirin or sake. 
 - [x] 3 garlic cloves, minced or grated
 
 **Steps**
-1. Remove fish from any vacuum-sealed packaging before thawing safely in the refrigerator. Pat thawed fillets dry.
-2. Whisk miso, liquid aminos, water, honey, ginger, rice vinegar, sesame oil, and garlic until evenly blended.
+1. Remove fish from any vacuum-sealed packaging before thawing safely in the refrigerator. Pat thawed fillets (6, about 2½–3 lb total) dry.
+2. Whisk miso (6 tbsp), liquid aminos (1½ tbsp), water (3 tbsp), honey (2 tbsp), ginger (2 tbsp plus 1 tsp, freshly grated), rice vinegar (1½ tbsp), sesame oil (1½ tsp), and garlic (3 cloves, minced or grated) until evenly blended.
 3. Set aside about ¼ cup of the CLEAN glaze before it contacts raw fish to use for brushing near the end.
 4. Place the fillets in two bags or shallow covered containers with remaining glaze. Refrigerate 1–2 hours, three fillets per bag if using two bags.
 5. Preheat oven to 425°F. Set fish skin-side down on a suitable lined baking tray or rack over a tray.

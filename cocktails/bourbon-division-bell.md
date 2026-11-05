@@ -49,7 +49,7 @@ A bourbon variation of the classic mezcal-based Division Bell cocktail. This bri
 - [ ] Grapefruit or orange twist, for garnish (optional) (amount not given)
 
 **Steps**
-1. Add bourbon, Aperol, lime juice, and maraschino liqueur to a cocktail shaker.
+1. Add bourbon (1½ oz), Aperol (¾ oz), lime juice (¾ oz), and maraschino liqueur (½ oz) to a cocktail shaker.
 2. Fill with ice.
 3. Shake vigorously for 12–15 seconds until well chilled.
 4. Double strain into a chilled coupe glass.

@@ -46,7 +46,7 @@ Cocktail: Black Tea Daiquiri.
 - [x] Lime wheel or twist for garnish (amount not given)
 
 **Steps**
-1. Combine rum, lime juice, tea syrup, and optional bitters in a cocktail shaker.
+1. Combine rum (2 oz), lime juice (¾ oz), tea syrup (½ oz) and aromatic bitters (1 dash, optional) in a cocktail shaker.
 2. Fill with ice and shake vigorously for 10–15 seconds.
 3. Double-strain into a chilled coupe.
 4. Garnish with a lime wheel or twist. - Aged rum's caramel and vanilla characteristics complement the malty flavor of English breakfast tea. - Adjust the syrup slightly depending on the sweetness of the rum and tea syrup. - Aromatic bitters provide additional spice and depth but are not necessary.

@@ -49,7 +49,7 @@ Cocktail: Tulsi Americano Sour.
 - [ ] Lemon peel, optional garnish (amount not given)
 
 **Steps**
-1. Add Tulsi Gin, Cocchi Americano, lemon juice, and ¼ oz Sapelo Aperitivo to a cocktail shaker.
+1. Add the Tulsi Gin (1½ oz), Cocchi Americano (¾ oz), lemon juice (¾ oz) and Sapelo Aperitivo (¼ oz) to a cocktail shaker.
 2. Fill with ice and shake vigorously until well chilled.
 3. Double strain into a chilled coupe glass, or strain over fresh ice in a rocks glass.
 4. For a slightly sweeter, more citrus-forward cocktail, increase Sapelo Aperitivo to ½ oz.

@@ -41,7 +41,7 @@ A bourbon Negroni that sits halfway to a Manhattan, with chocolate bitters. The 
 - [ ] Luxardo cherry
 
 **Steps**
-1. Stir all ingredients in a mixing glass with ice until chilled, about 45 seconds.
+1. Stir the bourbon (1 1/2 oz), sweet vermouth (3/4 oz), Campari (3/4 oz) and chocolate bitters (2 dashes) in a mixing glass with ice until chilled, about 45 seconds.
 2. Strain into a chilled coupe or cocktail glass and garnish with a Luxardo cherry.
 
 ## Notes

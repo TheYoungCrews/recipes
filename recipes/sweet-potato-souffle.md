@@ -63,9 +63,9 @@ Pecan topping
 - [x] salt (1/4 tsp + 1/4 tsp kosher)
 
 **Steps**
-1. Roast the sweet potatoes wrapped in foil at 425°F for 1 1/2 hours; cool about 30 minutes and peel.
-2. Drop the oven to 350°F and grease a 9x13. Beat the sweet potatoes smooth, then the butter, sugars and cinnamon, then the eggs, milk, vanilla and salt. Spread in the dish.
-3. Mix the light brown sugar, flour, salt and cinnamon, toss with the pecans, stir in the melted butter, and scatter on top.
+1. Roast the sweet potatoes (4 large or 5 medium, about 6 cups mashed) wrapped in foil at 425°F for 1 1/2 hours; cool about 30 minutes and peel.
+2. Drop the oven to 350°F and grease a 9x13. Beat the sweet potatoes smooth, then the butter (1/2 cup softened), sugars (1 cup brown, 1/4 cup granulated) and cinnamon (2 tsp), then the eggs (2), milk (1/2 cup whole), vanilla (1 tbsp) and salt (1/4 tsp). Spread in the dish.
+3. Mix the light brown sugar (2/3 cup), flour (1/2 cup), salt (1/4 tsp kosher) and cinnamon (1/4 tsp), toss with the pecans (1 1/2 cups), stir in the melted butter (5 tbsp), and scatter on top.
 4. Bake 45-55 minutes until the center is set.
 
 ## Notes

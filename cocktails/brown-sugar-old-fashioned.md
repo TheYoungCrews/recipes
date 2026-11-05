@@ -50,8 +50,8 @@ Anna's feedback: “Yum it’s great!”
 - [x] Large ice (quantity not stated) (amount not given)
 
 **Steps**
-1. Dissolve the brown sugar in the hot water.
-2. Add the bitters and whiskey.
+1. Dissolve the brown sugar (2 tsp) in the hot water (1 tsp).
+2. Add the Angostura bitters (2–3 dashes), orange bitters (1 dash, optional) and whiskey (2 oz).
 3. Add the large ice and stir for 15–20 seconds.
 4. Express the orange peel over the drink.
 

@@ -49,8 +49,8 @@ Cocktail: Breakfast Bourbon Sour.
 - [ ] Lemon twist for garnish (amount not given)
 
 **Steps**
-1. Combine bourbon, lemon juice, tea syrup, and bitters in a cocktail shaker.
-2. If using egg white, add it and dry-shake without ice for 15 seconds.
+1. Combine bourbon (2 oz), lemon juice (¾ oz), tea syrup (½–¾ oz) and Angostura bitters (2 dashes) in a cocktail shaker.
+2. If using egg white (1 egg white or ¾ oz pasteurized), add it and dry-shake without ice for 15 seconds.
 3. Add ice and shake vigorously until thoroughly chilled.
 4. Double-strain into a chilled coupe.
 5. Garnish with a lemon twist. - Begin with ½ oz tea syrup and increase to ¾ oz depending on desired sweetness. - The tannins in English breakfast tea add depth and structure to a classic bourbon sour. - Egg white is optional but creates a silky texture and beautiful foam.

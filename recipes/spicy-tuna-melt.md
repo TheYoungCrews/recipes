@@ -77,16 +77,16 @@ Dish: Spicy Tuna Melt.
 
 **Steps**
 1. Prepare the tuna filling
-2. Drain the tuna, reserving 1 teaspoon of its spicy olive oil.
+2. Drain the tuna (1 tin), reserving 1 teaspoon of its spicy olive oil.
 3. Gently break up the tuna in a medium bowl.
-4. Add mayonnaise, Dijon mustard, diced red onion, chopped pickles, pickle juice, lemon juice, and reserved spicy olive oil.
-5. Stir in 1 tablespoon of freshly grated Parmesan.
+4. Add mayonnaise (2 tbsp), Dijon mustard (1 tsp), diced red onion (1 tbsp), chopped pickles (1 tbsp), pickle juice (1 tsp), lemon juice (1 tsp), and reserved spicy olive oil (1 tsp).
+5. Stir in 1 tablespoon of the Parmesan (2 tbsp total).
 6. Add freshly ground black pepper if desired. Mix gently until combined.
 7. Assemble the sandwiches
-8. Butter one side of each slice of sourdough bread.
+8. Butter one side of each slice of sourdough (4 slices).
 9. Place two slices buttered-side down.
 10. Divide the tuna mixture evenly between the two slices.
-11. Top each sandwich with 1½–2 oz shredded Gruyère Cheddar.
+11. Top each sandwich with 1½–2 oz shredded Gruyère Cheddar (3–4 oz total).
 12. Sprinkle the remaining Parmesan evenly over the cheese.
 13. Close with the remaining slices of bread, buttered-side up.
 14. Grill the sandwiches

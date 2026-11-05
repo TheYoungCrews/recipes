@@ -47,7 +47,7 @@ Original printed title: Asado Pork.
 - [x] salt (1 tsp)
 
 **Steps**
-1. Put the pork in the Dutch oven and pour over 3 cups water, the wine, liquid aminos, brown sugar, salt, garlic and anise.
+1. Put the pork (2 lb) in the Dutch oven and pour over 3 cups water, the wine (2 cups), liquid aminos (1/3 cup), brown sugar (1/3 cup), salt (1 tsp), garlic (2 cloves) and anise.
 2. Bring to a boil, then turn the heat to low, cover and simmer 2-3 hours, until fork-tender.
 3. Or cook it in a slow cooker for longer (time not given).
 

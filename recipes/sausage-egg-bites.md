@@ -69,11 +69,11 @@ Creamy, Starbucks-inspired egg white bites made with cottage cheese, maple chick
 
 **Steps**
 1. Preheat oven:** Preheat to 300°F using regular bake, not convection.
-2. Brown sausage:** Dice maple chicken sausage patties into small pieces. Brown in a skillet over medium heat until lightly golden. Remove and set aside.
-3. Sauté onions:** Heat olive oil in the same skillet over medium-low heat. Add diced onion and a pinch of salt. Sauté for 12–15 minutes, stirring occasionally, until golden and sweet.
-4. Cook tomatoes:** Add quartered Flavor Bomb tomatoes to the onions. Cook an additional 4–6 minutes until the tomatoes soften and become slightly jammy. Allow excess moisture to evaporate.
+2. Brown sausage:** Dice the maple chicken sausage patties (2–3) into small pieces. Brown in a skillet over medium heat until lightly golden. Remove and set aside.
+3. Sauté onions:** Heat olive oil (1 tsp) in the same skillet over medium-low heat. Add the diced onion (¼ cup) and a pinch of salt. Sauté for 12–15 minutes, stirring occasionally, until golden and sweet.
+4. Cook tomatoes:** Add the Flavor Bomb tomatoes (5–6, halved or quartered) to the onions. Cook an additional 4–6 minutes until the tomatoes soften and become slightly jammy. Allow excess moisture to evaporate.
 5. Combine fillings:** Mix the cooked sausage, onions, and tomatoes together. Set aside to cool slightly.
-6. Blend egg mixture:** In a blender, combine egg whites, cottage cheese, shredded cheddar, garlic powder, black pepper, salt, and optional herbs. Blend for 20–30 seconds until completely smooth and creamy.
+6. Blend egg mixture:** In a blender, combine egg whites (12 large, about 1½ cups), cottage cheese (¾ cup), shredded cheddar (½ cup), garlic powder (¼ tsp), black pepper (⅛ tsp), salt (⅛–¼ tsp, to taste), and optional herbs (¼ tsp dried thyme or a pinch of sage). Blend for 20–30 seconds until completely smooth and creamy.
 7. Rest mixture:** Allow the blended mixture to sit for 3–5 minutes so excess air bubbles can dissipate.
 8. Prepare muffin tin:** Generously grease a standard 12-cup metal muffin tin with butter or nonstick spray.
 9. Assemble:** Divide the sausage, tomato, and onion mixture evenly among the muffin cups. Pour the blended egg mixture over the fillings, filling each cup approximately ¾ full.

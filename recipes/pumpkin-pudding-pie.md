@@ -80,13 +80,13 @@ Makes about 3 pies. Halve everything for one.
 
 **Steps**
 1. Heat the oven to 325°F.
-2. Mix the sugar, pumpkin, eggs and baking soda in a large bowl. With a stand mixer, use the paddle.
-3. Add the flour, baking powder, cinnamon, vanilla and salt, and mix well.
-4. Whisk in the milk and melted butter (switch to the whisk attachment on a mixer). The batter will be runny, which is normal because it sets in the oven.
+2. Mix the sugar (2½ cups), pumpkin (1 can, 15 oz), eggs (2) and baking soda (½ tsp) in a large bowl. With a stand mixer, use the paddle.
+3. Add the flour (2 cups), baking powder (2 tsp), cinnamon (½ tsp), vanilla (¼ tsp) and salt (a pinch), and mix well.
+4. Whisk in the milk (2½ cups) and melted butter (4 tbsp). Switch to the whisk attachment on a mixer. The batter will be runny, which is normal because it sets in the oven.
 5. Fill the crusts to the edge and bake 55 minutes.
-6. Let them cool, dust with sifted powdered sugar, and zest the orange over the top. A microplane works best. For the prettiest finish, peel the orange and finely dice the peel instead.
+6. Let them cool, dust with sifted powdered sugar (about 1 tsp), and zest the orange (1) over the top. A microplane works best. For the prettiest finish, peel the orange and finely dice the peel instead.
 7. For the cream: chill a metal bowl and whisk for 15 minutes.
-8. Whisk the sugar and spices together, add the cream, and whip to stiff peaks. Serve on the pie.
+8. Whisk the powdered sugar (2 tbsp), cardamom (1 tsp) and nutmeg (a pinch) together, add the cream (1 cup), and whip to stiff peaks. Serve on the pie.
 
 ## Notes
 - 2026-10-19 (grok-bot): from a transcription of a recipe posted on X by a creator Crews didn't note; the original post had the recipe in images.

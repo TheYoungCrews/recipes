@@ -49,7 +49,7 @@ A classic modern cocktail featuring equal parts bourbon, Aperol, Amaro Nonino, a
 - [ ] Lemon twist, for garnish (optional) (amount not given)
 
 **Steps**
-1. Add bourbon, Aperol, Amaro Nonino, and fresh lemon juice to a cocktail shaker.
+1. Add bourbon (¾ oz), Aperol (¾ oz), Amaro Nonino (¾ oz), and fresh lemon juice (¾ oz) to a cocktail shaker.
 2. Fill the shaker with ice.
 3. Shake vigorously for 12–15 seconds until thoroughly chilled.
 4. Double strain into a chilled coupe glass.

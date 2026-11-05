@@ -45,8 +45,8 @@ A julep cousin: mint and lemon wedges muddled with sugar, whip-shaken with whisk
 - [ ] pebble or crushed ice
 
 **Steps**
-1. In a shaker, add the mint and lemon wedges peel side down, with the simple syrup and sugar cube. Muddle to crush the lemon and press the mint; crush the sugar cube too.
-2. Add the whiskey and ice and whip shake until you don't hear ice.
+1. In a shaker, add the mint (8-10 leaves) and lemon wedges (4) peel side down, with the simple syrup (1/2 oz) and sugar cube (1). Muddle to crush the lemon and press the mint; crush the sugar cube too.
+2. Add the whiskey (2 oz) and ice and whip shake until you don't hear ice.
 3. Dump everything into a larger rocks glass and top with pebble ice for a small snow cap. Garnish with a mint bouquet.
 
 ## Notes

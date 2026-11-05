@@ -47,7 +47,7 @@ A bright, botanical, slightly bitter gin sour with Aperol and dry vermouth.
 - [ ] Lemon twist (amount not given)
 
 **Steps**
-1. Add all ingredients to a shaker with ice.
+1. Add the gin (1½ oz), Aperol (¾ oz), dry vermouth (½ oz), lemon juice (½ oz) and honey syrup (¼ oz, optional) to a shaker with ice.
 2. Shake vigorously for 12–15 seconds.
 3. Double strain into a chilled coupe.
 

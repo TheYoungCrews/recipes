@@ -71,12 +71,12 @@ Brita's (@britacooks) fall-apart short ribs in a red curry coconut broth ladled 
 - [x] lime
 
 **Steps**
-1. Trim excess fat from the short ribs and salt them well on all sides. Sear hard in the oil on sauté until deeply browned all over, then move to a plate.
-2. Pour off all but about a tablespoon of fat. Cook the curry paste 2-3 minutes, scraping up the fond, until dark and fragrant.
-3. Stir in the halved shallots, smashed garlic and sliced ginger. Return the ribs, add the liquid aminos, fish sauce and brown sugar, and pour in enough stock to mostly cover the ribs.
+1. Trim excess fat from the short ribs (2-2.5 lbs) and salt them well on all sides. Sear hard in the oil (1 tbsp) on sauté until deeply browned all over, then move to a plate.
+2. Pour off all but about a tablespoon of fat. Cook the curry paste (3 tbsp) 2-3 minutes, scraping up the fond, until dark and fragrant.
+3. Stir in the halved shallots (2), smashed garlic (4-5 cloves) and sliced ginger (4-inch piece). Return the ribs, add the liquid aminos (2 tsp), fish sauce (1 tsp) and brown sugar (1 tbsp), and pour in enough stock (3-4 cups) to mostly cover the ribs.
 4. Pressure cook on high for 45 minutes, let it release naturally for 15, then quick-release the rest. No pressure cooker: do the same in the Dutch oven, covered at a low simmer, about 3 hours until the meat falls off the bone.
-5. Shred the meat off the bones. Strain the broth, discarding the aromatics, return it to the pot and stir in the coconut milk. Taste and adjust with more liquid aminos or fish sauce.
-6. Spoon rice into bowls, top with the short rib, ladle the broth over, and finish with Thai basil, green onion, sesame seeds, chili crisp and a squeeze of lime.
+5. Shred the meat off the bones. Strain the broth, discarding the aromatics, return it to the pot and stir in the coconut milk (1 can, 13.5 oz). Taste and adjust with more liquid aminos or fish sauce.
+6. Spoon rice (2 cups cooked) into bowls, top with the short rib, ladle the broth over, and finish with Thai basil, green onion, sesame seeds, chili crisp and a squeeze of lime.
 
 ## Notes
 - 2026-10-16 (grok-bot): filed from inbox. Title shortened to the dish name. Our version applies the standing sub (liquid aminos for soy sauce), uses neutral oil as the source says, chili crisp from staples in place of chili oil, and adds a lime finish per taste profile. Dutch oven timing (about 3 hours) is from the creator's blog alternate as reported by muse; no exact Dutch oven steps were captured.

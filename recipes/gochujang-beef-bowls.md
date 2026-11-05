@@ -81,9 +81,9 @@ A savory-sweet gochujang beef bowl with onion and bell pepper, served over rice 
 - [x] 1–2 tsp fresh lime juice, optional
 
 **Steps**
-1. Make the marinade. In a large bowl or container, stir together the gochujang, soy sauce, brown sugar, sesame oil, ginger, garlic, and water.
-2. Marinate the beef and vegetables. Add the beef, onion, and bell pepper and gently toss to coat. If using very thin shaved steak, marinate for up to 4 hours. If using slightly thicker sliced beef that will hold its shape better, marinate for up to 24 hours.
-3. Make the quick-pickled cucumber and carrot salad. Whisk together the rice vinegar, sugar, and salt until mostly dissolved. Add the cucumber and carrot and toss well. Stir in the sesame oil, sesame seeds, scallion, and lime juice if using. Refrigerate for at least 15–30 minutes before serving.
+1. Make the marinade. In a large bowl or container, stir together the gochujang (1 Tbsp), soy sauce (3 Tbsp), brown sugar (1 Tbsp), sesame oil (2 tsp), ginger (2 tsp, grated), garlic (2 tsp, grated), and water (1 Tbsp).
+2. Marinate the beef and vegetables. Add the beef (1 lb), onion (1 medium, thinly sliced), and bell pepper (1, thinly sliced) and gently toss to coat. If using very thin shaved steak, marinate for up to 4 hours. If using slightly thicker sliced beef that will hold its shape better, marinate for up to 24 hours.
+3. Make the quick-pickled cucumber and carrot salad. Whisk together the rice vinegar (1/3 cup), sugar (1 1/2 Tbsp), and salt (3/4 tsp kosher) until mostly dissolved. Add the cucumber (1 large, thinly sliced) and carrot (1–2) and toss well. Stir in the sesame oil (1 tsp), sesame seeds (1–2 tsp), scallion (1, thinly sliced), and lime juice (1–2 tsp) if using. Refrigerate for at least 15–30 minutes before serving.
 4. Cook the beef mixture. Heat a large skillet over medium-high to high heat. Add the marinated beef, onion, and bell pepper to the hot skillet. If the pan is crowded, cook in batches so the beef can sear rather than steam. Let the beef sit briefly against the hot pan before moving it, then gently turn and toss with tongs or a broad spatula until the beef is cooked through and the onions and peppers are tender.
 5. Assemble the bowls. Spoon cooked rice into bowls and top with the gochujang beef, onions, and peppers. Garnish with sliced green onions and sesame seeds. Serve with the quick-pickled cucumber and carrot salad alongside or on top.
 

@@ -50,7 +50,7 @@ Cocktail: Vanilla Rum Cream.
 
 **Steps**
 1. Chill a coupe glass.
-2. Combine rum, Licor 43, tea syrup, milk, and salt in a cocktail shaker.
+2. Combine rum (1½ oz), Licor 43 (½ oz), tea syrup (¼–½ oz), milk or half-and-half (1½ oz) and a tiny pinch of salt in a cocktail shaker.
 3. Add ice and shake vigorously until thoroughly chilled and lightly frothy.
 4. Double-strain into the chilled coupe.
 5. Garnish with freshly grated nutmeg. - Licor 43 adds vanilla, citrus, and warm spice notes that pair beautifully with black tea. - Start with ¼ oz tea syrup because Licor 43 already contributes sweetness. - Whole milk produces a lighter cocktail, while half-and-half creates a richer, dessert-like texture. - Serve immediately while cold and frothy.

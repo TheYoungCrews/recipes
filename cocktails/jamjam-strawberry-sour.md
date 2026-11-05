@@ -47,7 +47,7 @@ No simple syrup is needed—the Chambéryzette provides enough sweetness while r
 - [ ] Lemon twist or strawberry, for garnish (amount not given)
 
 **Steps**
-1. Add the JamJam Gin, lemon juice, Chambéryzette, and aquafaba to a cocktail shaker or tightly sealed mason jar.
+1. Add the JamJam Gin (2 oz), lemon juice (3/4 oz), Chambéryzette (3/4 oz), and aquafaba (3/4 oz) to a cocktail shaker or tightly sealed mason jar.
 2. Shake vigorously without ice for 15–20 seconds to build foam.
 3. Add ice and shake again for another 15–20 seconds, until thoroughly chilled.
 4. Double-strain into a coupe or cocktail glass.

@@ -47,7 +47,7 @@ Originally made to pair with Trader Joe’s Irish Garlic Potato Chips. The cool,
 - [x] Freshly ground black pepper, to taste (amount not given)
 
 **Steps**
-1. Add the sour cream, mayonnaise, and Dijon mustard to a small bowl and stir until smooth.
+1. Add the sour cream (1/2 cup), mayonnaise (1–2 teaspoons), and Dijon mustard (1 teaspoon) to a small bowl and stir until smooth.
 2. Add a squeeze of fresh lemon juice and mix well.
 3. Stir in chopped fresh chives and freshly ground black pepper to taste.
 4. Taste and adjust with additional lemon, chives, or black pepper as desired.

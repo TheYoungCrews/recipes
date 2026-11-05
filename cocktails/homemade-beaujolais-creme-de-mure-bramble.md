@@ -38,7 +38,7 @@ Classic gin bramble crowned with our annual April homemade Beaujolais-base black
 - [x] 0.375 oz simple syrup
 - [x] 0.75 oz homemade Beaujolais crème de mûre
 
-1. Whip shake gin, lemon juice, and simple syrup, dump over crushed/pebble ice in a DOF glass, and float the homemade blackberry liqueur across the top.
+1. Whip shake gin (2 oz), lemon juice (0.75 oz) and simple syrup (0.375 oz), dump over crushed/pebble ice in a DOF glass, and float the homemade blackberry liqueur (0.75 oz) across the top.
 
 ## Notes
 - 2026-10-14 (filed by grok-bot): filed from inbox/2026-10-14-homemade-beaujolais-creme-de-mure-bramble.md. Swapped food tags [quick-20, no-cook] for spirit/style tags from _system/TAGS.md and added spirit + glass; Original and Our version kept as sent.

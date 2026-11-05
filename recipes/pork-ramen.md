@@ -58,11 +58,11 @@ Fast weeknight ramen built on White Oak Pastures' pork (or poultry or beef) rame
 - [ ] yakisoba noodles (about 16 oz, 3 packages)
 
 **Steps**
-1. Cover the eggs with cold water by an inch, bring to a boil, boil 1 minute, then cover off heat up to 10 minutes. Cool, peel, halve.
-2. In the Dutch oven, cook the garlic and ginger in the oil over medium 1-2 minutes.
-3. Add 3 cups water, the broth, the shiitakes and the liquid aminos. Boil, then simmer about 10 minutes.
-4. Add the noodles and cook until soft (about 3 minutes for yakisoba).
-5. Stir in the spinach, chives and carrot until the spinach wilts, about 2 minutes. Top with the eggs.
+1. Cover the eggs (2 large) with cold water by an inch, bring to a boil, boil 1 minute, then cover off heat up to 10 minutes. Cool, peel, halve.
+2. In the Dutch oven, cook the garlic (4 cloves, minced) and ginger (1 tbsp grated) in the oil (2 tbsp) over medium 1-2 minutes.
+3. Add 3 cups water, the broth (4 cups), the shiitakes (4 oz or a little more) and the liquid aminos (1 tbsp). Boil, then simmer about 10 minutes.
+4. Add the noodles (about 16 oz, 3 packages) and cook until soft (about 3 minutes for yakisoba).
+5. Stir in the spinach (3 cups), chives (2 tbsp chopped) and carrot (1, grated) until the spinach wilts, about 2 minutes. Top with the eggs.
 
 ## Notes
 - 2026-10-15 (via grok-bot): captured from White Oak Pastures. Soy sauce is liquid aminos in Our version (standing substitution; the source suggests Bragg's aminos too). Serves and total time not stated (roughly 25 minutes of steps).
