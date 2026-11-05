@@ -140,6 +140,10 @@ def main():
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body), "body": body, "cooks": fm.get("cooks", "")})
     sys.path.insert(0, str(ROOT/"_system/scripts")); import groceries
+    import inline_amounts
+    for r in items:  # steps should carry each listed amount inline (SCHEMA.md); warn only, never fail
+        for it in inline_amounts.missing(r["body"]):
+            warns.append(f"{r['slug']}.md: step mentions '{it['name']}' without its amount ({it['amount']})")
     slugs = {r["slug"] for r in items}
     for f, pfm, _ in groceries.plans():
         errs += [e for e in groceries.validate(f, pfm, {s: None for s in slugs})]
