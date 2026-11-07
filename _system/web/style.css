@@ -30,7 +30,9 @@ h2 small{font:500 13px -apple-system,sans-serif;color:var(--mute)}
 .chips{display:flex;gap:7px;overflow-x:auto;padding:2px 0 6px}
 .chip{flex:none;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
 .chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.tools{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tools{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 10px}
+.tools .chips{flex:1 1 320px;min-width:0}
+.sort{flex:none;font-size:13px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
 .pick{flex:none;border:1.5px dashed var(--sage-d);background:var(--paper);color:var(--sage-d);border-radius:10px;padding:7px 12px;font-size:20px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}

@@ -73,6 +73,13 @@ function filter(){
     el.hidden=!(okChip&&okQ); if(!el.hidden)shown++});
   $('#nores').hidden=shown>0;
 }
+// ---- Sort by time. Recipes with no time go last; "our picks" restores the built order.
+const grid=$('#food'), base=$$('#food .card');
+const mins=el=>parseInt(bySlug[el.dataset.slug].time_minutes)||NaN;
+$('#sort').addEventListener('change',e=>{const m=e.target.value, dir=m==="long"?-1:1;
+  const order=!m?base:[...base].sort((a,b)=>{const x=mins(a),y=mins(b);
+    if(isNaN(x)||isNaN(y))return isNaN(x)-isNaN(y); return (x-y)*dir||base.indexOf(a)-base.indexOf(b)});
+  order.forEach(el=>grid.appendChild(el))});
 // ---- Dinner picker: random made/favorite/to-try main or bowl
 $('#pick').addEventListener('click',()=>{
   const pool=items.filter(r=>r.type!=="cocktail"&&r.type!=="mocktail"&&r.status!=="retired"); if(!pool.length)return;
