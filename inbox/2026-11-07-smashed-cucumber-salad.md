@@ -1,3 +1,5 @@
+filed_to: recipes/smashed-cucumber-salad.md
+filed_at: 2026-11-07
 ---
 title: Smashed Cucumber Salad (Pai Huang Gua)
 slug: smashed-cucumber-salad

@@ -1,3 +1,5 @@
+filed_to: recipes/miso-glazed-sablefish.md
+filed_at: 2026-11-07
 ---
 title: Miso Glazed Sablefish (Nobu Black Cod)
 slug: miso-glazed-sablefish

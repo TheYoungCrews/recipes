@@ -1,3 +1,5 @@
+filed_to: recipes/basque-cheesecake.md
+filed_at: 2026-11-07
 ---
 title: Basque Cheesecake (La Viña)
 slug: basque-cheesecake
