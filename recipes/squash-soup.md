@@ -2,7 +2,7 @@
 title: Squash Soup
 slug: squash-soup
 type: soup-bowl
-status: to-try
+status: favorite
 tags: [chicken, mediterranean, stovetop, fall, quick-20]
 ingredients: [butternut squash, peanut oil, chopped onion, chopped garlic, thinly sliced carrot, ground cumin, salt, black pepper, finely minced jalapeño pepper, chipotle pepper flakes, chicken stock, heavy cream, ## toppings, crème fraîche greek yogurt]
 serves:
@@ -15,11 +15,13 @@ via: api
 input_type: text
 owner: "Casi Cielo"
 credit: "Casi Cielo"
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-07
+rating: 5
+cooks: 1
 ---
 Adapted from Emeril Lagasse’s Butternut Squash Soup, with peanut oil, chipotle pepper flakes, and creamy, crunchy chili toppings.
+
+![Made 2026-11-07](photos/squash-soup-2026-11-07.jpg)
 
 ## Original
 
@@ -79,4 +81,5 @@ Adapted from Emeril Lagasse’s Butternut Squash Soup, with peanut oil, chipotle
 7. Serve topped with a dollop of crème fraîche or Greek yogurt and a drizzle of chili oil or a spoonful of Trader Joe’s Chili Crunch. Add pumpkin seeds if desired. Heat note: The ½ teaspoon of chipotle pepper flakes makes this soup a bit spicy, especially with the jalapeño and chili topping. Start with ¼ teaspoon if you prefer it milder.
 
 ## Notes
+- 2026-11-07 (crews via site, 5/5): great soup
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-casi-cielo-squash-soup.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).
