@@ -1,3 +1,5 @@
+filed_to: recipes/butter-chicken-garlic-butter-naan.md
+filed_at: 2026-11-07
 ---
 title: Butter Chicken and Garlic Butter Naan
 slug: butter-chicken-garlic-butter-naan
