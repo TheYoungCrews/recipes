@@ -1,3 +1,5 @@
+filed_to: recipes/peruvian-turkey-jalapeno-green-sauce.md
+filed_at: 2026-11-08
 ---
 title: Peruvian Turkey & Jalapeño Green Sauce
 slug: peruvian-turkey-jalapeno-green-sauce
