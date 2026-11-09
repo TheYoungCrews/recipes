@@ -38,8 +38,10 @@ export async function onRequestPost({ request, env }) {
     try {
       const r = await commitPlanEdit({ token: env.GITHUB_TOKEN, repo: env.GITHUB_REPO || "TheYoungCrews/recipes", item, action, who: auth.who, via: auth.via, today: todayNY() });
       const cookies = auth.id ? await renewCookies(auth.id, env) : [];
+      const inv = r.inventory || {};
       return out(200, { ok: true, who: auth.who, item, action, changed: r.changed, week: r.week, path: r.path, on_hand: r.plan.on_hand,
         have: r.plan.on_hand.some(x => cleanItem(x) === item), commit: r.sha ? r.sha.slice(0, 7) : null,
+        inventory: { added: (inv.added || []).map(a => a.name || a), removed: inv.removed || [], skipped_staples: inv.skipped_staples || [] },
         message: r.changed ? "Saved. /week/ rebuilds in about a minute." : "No change needed." }, cookies);
     } catch (e) {
       return out(e.noPlan ? 409 : 502, { error: e.noPlan ? "There's no plan for this week yet." : "Couldn't save. Try again in a minute." });

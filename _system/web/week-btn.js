@@ -44,7 +44,7 @@
       if (m) m.textContent = "Saving...";
       post({ action: want ? "have" : "unhave", item: x.dataset.have }).then(function (r) {
         if (!r.ok) { x.checked = !want; li.classList.toggle("done", !want); li.classList.toggle("undone", want); if (m) m.textContent = (r.j && r.j.error) || "Couldn't save. Try again."; return; }
-        if (m) m.textContent = (want ? "Got it: " : "Back on the list: ") + x.dataset.have + ". The page catches up after the rebuild (about a minute).";
+        if (m) m.textContent = (want ? "Got it: " : "Back on the list: ") + x.dataset.have + (want ? ". Added to the inventory." : ". Taken off the inventory.") + " The page catches up after the rebuild (about a minute).";
       }, function () { x.checked = !want; li.classList.toggle("done", !want); li.classList.toggle("undone", want); if (m) m.textContent = "Couldn't reach the kitchen. Try again."; });
     });
   });

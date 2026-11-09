@@ -1,6 +1,6 @@
 # Inventory (what's in the house now)
 
-Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which lists what we always restock. The grocery list skips anything listed here and shows it under "In the house". Remove a line when it runs out or a cooked dish uses it up. Last full count: 2026-11-03 (pantry, fridge and freezer).
+Updated by hand, and automatically when a dish is rated (used-up ingredients come off) or a grocery item is checked off on /week/ or posted by the Add Bought Groceries Shortcut. Staples are not quantity-tracked. Different from staples.md, which lists what we always restock. The grocery list skips anything listed here and shows it under "In the house". Last full count: 2026-11-03 (pantry, fridge and freezer).
 
 ## Pantry: produce
 - sweet potatoes

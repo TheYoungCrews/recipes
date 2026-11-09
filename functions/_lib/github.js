@@ -1,10 +1,15 @@
 // One atomic commit (recipe edit + optional photo) via the GitHub git data API.
 import * as P from "./plan.js";
 import { applyCook, photoName } from "./recipe.js";
+import { proposeRemovals, applySelectedRemovals, applyAdd, applyExactRemove } from "./inventory.js";
 const enc = s => btoa(unescape(encodeURIComponent(s)));
 const dec = b => decodeURIComponent(escape(atob(b.replace(/\n/g, ""))));
+async function readContent(api, path, ref) {
+  try { return dec((await api(`/contents/${path}?ref=${ref}`)).content); }
+  catch (e) { if (e.status !== 404) throw e; return null; }
+}
 
-export async function commitCook({ token, repo = "TheYoungCrews/recipes", branch = "main", slug, who, date, rating, note, photoB64, fetchFn = fetch }) {
+export async function commitCook({ token, repo = "TheYoungCrews/recipes", branch = "main", slug, who, date, rating, note, photoB64, remove, fetchFn = fetch }) {
   const api = async (path, init = {}) => {
     const r = await fetchFn(`https://api.github.com/repos/${repo}${path}`, { ...init, headers: {
       authorization: `Bearer ${token}`, accept: "application/vnd.github+json", "user-agent": "blind-tiger-cook", "content-type": "application/json" } });
@@ -30,12 +35,26 @@ export async function commitCook({ token, repo = "TheYoungCrews/recipes", branch
       tree.push({ path: `${dir}/photos/${name}`, mode: "100644", type: "blob", sha: blob.sha });
       photoRel = `photos/${name}`;
     }
-    const md = applyCook(dec(file.content), { date, who, rating, note, photo: photoRel });
+    const recipeMd = dec(file.content);
+    const md = applyCook(recipeMd, { date, who, rating, note, photo: photoRel });
     tree.push({ path: `${dir}/${slug}.md`, mode: "100644", type: "blob", content: md });
+    let inventory = { removed: [], subtracted: [] };
+    const invMd = await readContent(api, "kitchen/inventory.md", head);
+    const staplesMd = (await readContent(api, "kitchen/staples.md", head)) || "";
+    if (invMd != null) {
+      const proposed = proposeRemovals(invMd, recipeMd, staplesMd);
+      const applied = applySelectedRemovals(invMd, proposed, remove);
+      inventory = { removed: applied.removed, subtracted: applied.subtracted };
+      if (applied.changed) tree.push({ path: "kitchen/inventory.md", mode: "100644", type: "blob", content: applied.md });
+    }
     const t = await api(`/git/trees`, { method: "POST", body: JSON.stringify({ base_tree: commit.tree.sha, tree }) });
-    const msg = `file: made ${slug} (${who} via site${rating != null ? `, ${rating}/5` : ""})`;
+    let msg = `file: made ${slug} (${who} via site${rating != null ? `, ${rating}/5` : ""})`;
+    if (inventory.removed.length || inventory.subtracted.length) {
+      const bits = inventory.removed.concat(inventory.subtracted.map(s => `${s.name} (${s.left} left)`));
+      msg += `; inventory: used ${bits.join(", ")}`;
+    }
     const c = await api(`/git/commits`, { method: "POST", body: JSON.stringify({ message: msg, tree: t.sha, parents: [head] }) });
-    try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, photo: photoRel, path: `${dir}/${slug}.md` }; }
+    try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, photo: photoRel, path: `${dir}/${slug}.md`, inventory }; }
     catch (e) { if (e.status !== 422 && e.status !== 409) throw e; }  // someone pushed in between: retry
   }
   throw new Error("could not commit (busy), try again");
@@ -79,7 +98,7 @@ export async function commitInboxBatch({ token, repo = "TheYoungCrews/recipes", 
   throw new Error("could not commit (busy), try again");
 }
 
-/** Add or remove one recipe in the current week's plan file (plans/YYYY-Www.md), one commit. Never touches other paths. */
+/** Add or remove one recipe in the current week's plan file (plans/YYYY-Www.md), one commit. have/unhave also update kitchen/inventory.md. */
 export async function commitPlanEdit({ token, repo = "TheYoungCrews/recipes", branch = "main", slug, item, action, as, night, who, via = "site", today, fetchFn = fetch }) {
   const haveMode = action === "have" || action === "unhave";
 
@@ -101,10 +120,19 @@ export async function commitPlanEdit({ token, repo = "TheYoungCrews/recipes", br
       if (!wk.exists) { const e = new Error("no plan this week"); e.status = 409; e.noPlan = true; throw e; }
       const r = P.editHave(dec((await api(`/contents/${path}?ref=${head}`)).content), { action, item });
       const plan = P.readPlan(r.md);
-      if (!r.changed) return { sha: null, changed: false, week: wk.week, path, plan };
-      const t = await api(`/git/trees`, { method: "POST", body: JSON.stringify({ base_tree: commit.tree.sha, tree: [{ path, mode: "100644", type: "blob", content: r.md }] }) });
+      const files = [];
+      if (r.changed) files.push({ path, mode: "100644", type: "blob", content: r.md });
+      let inventory = { changed: false, added: [], removed: [], skipped_staples: [], already: [] };
+      const invMd = await readContent(api, "kitchen/inventory.md", head);
+      const staplesMd = (await readContent(api, "kitchen/staples.md", head)) || "";
+      if (invMd != null) {
+        inventory = action === "have" ? applyAdd(invMd, [item], staplesMd) : applyExactRemove(invMd, [item]);
+        if (inventory.changed) files.push({ path: "kitchen/inventory.md", mode: "100644", type: "blob", content: inventory.md });
+      }
+      if (!files.length) return { sha: null, changed: false, week: wk.week, path, plan, inventory };
+      const t = await api(`/git/trees`, { method: "POST", body: JSON.stringify({ base_tree: commit.tree.sha, tree: files }) });
       const c = await api(`/git/commits`, { method: "POST", body: JSON.stringify({ message: `plan: ${action} ${P.cleanItem(item)} ${wk.week} (${who} via ${via})`, tree: t.sha, parents: [head] }) });
-      try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, changed: true, week: wk.week, path, plan }; }
+      try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, changed: true, week: wk.week, path, plan, inventory }; }
       catch (e) { if (e.status !== 422 && e.status !== 409) throw e; continue; }
     }
     try { recipe = await api(`/contents/recipes/${slug}.md?ref=${head}`); } catch (e) { if (e.status !== 404) throw e; }   // food only, not cocktails/
@@ -140,4 +168,49 @@ export async function readCurrentPlan({ token, repo = "TheYoungCrews/recipes", b
   const wk = P.pickWeek(names, today);
   const plan = wk.exists ? P.readPlan(dec((await api(`/contents/plans/${wk.week}.md?ref=${branch}`)).content)) : { recipes: [], nights: [], extras: [], on_hand: [] };
   return { week: wk.week, starts: wk.starts, path: `plans/${wk.week}.md`, exists: wk.exists, ...plan };
+}
+
+/** Preview which inventory lines a recipe would take off. */
+export async function readInventoryPreview({ token, repo = "TheYoungCrews/recipes", branch = "main", slug, fetchFn = fetch }) {
+  const api = async path => {
+    const r = await fetchFn(`https://api.github.com/repos/${repo}${path}`, { headers: { authorization: `Bearer ${token}`, accept: "application/vnd.github+json", "user-agent": "blind-tiger-inventory" } });
+    if (!r.ok) { const e = new Error(`github ${r.status} ${path}`); e.status = r.status; throw e; }
+    return r.json();
+  };
+  let file = null;
+  for (const d of ["recipes", "cocktails"]) {
+    try { file = await api(`/contents/${d}/${slug}.md?ref=${branch}`); break; } catch (e) { if (e.status !== 404) throw e; }
+  }
+  if (!file) { const e = new Error("unknown recipe"); e.status = 404; throw e; }
+  const invMd = await readContent(api, "kitchen/inventory.md", branch);
+  const staplesMd = (await readContent(api, "kitchen/staples.md", branch)) || "";
+  const items = invMd != null ? proposeRemovals(invMd, dec(file.content), staplesMd) : [];
+  return { slug, items };
+}
+
+/** Add or remove grocery names in kitchen/inventory.md, one commit. Never touches staples. */
+export async function commitInventoryEdit({ token, repo = "TheYoungCrews/recipes", branch = "main", items, action, who, via = "api", fetchFn = fetch }) {
+  const api = async (path, init = {}) => {
+    const r = await fetchFn(`https://api.github.com/repos/${repo}${path}`, { ...init, headers: {
+      authorization: `Bearer ${token}`, accept: "application/vnd.github+json", "user-agent": "blind-tiger-inventory", "content-type": "application/json" } });
+    if (!r.ok) { const e = new Error(`github ${r.status} ${path}`); e.status = r.status; throw e; }
+    return r.json();
+  };
+  for (let attempt = 0; attempt < 6; attempt++) {
+    if (attempt) await new Promise(r => setTimeout(r, 150 * attempt + Math.floor(Math.random() * 200)));
+    const head = (await api(`/git/ref/heads/${branch}`)).object.sha;
+    const commit = await api(`/git/commits/${head}`);
+    const invMd = await readContent(api, "kitchen/inventory.md", head);
+    if (invMd == null) { const e = new Error("no inventory file"); e.status = 404; throw e; }
+    const staplesMd = (await readContent(api, "kitchen/staples.md", head)) || "";
+    const applied = action === "add" ? applyAdd(invMd, items, staplesMd) : applyExactRemove(invMd, items);
+    if (!applied.changed) return { sha: null, changed: false, ...applied };
+    const t = await api(`/git/trees`, { method: "POST", body: JSON.stringify({ base_tree: commit.tree.sha, tree: [{ path: "kitchen/inventory.md", mode: "100644", type: "blob", content: applied.md }] }) });
+    const names = (applied.added || []).map(a => a.name).concat(applied.removed || []);
+    const msg = `inventory: ${action} ${names.slice(0, 8).join(", ") || "items"} (${who} via ${via})`;
+    const c = await api(`/git/commits`, { method: "POST", body: JSON.stringify({ message: msg, tree: t.sha, parents: [head] }) });
+    try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, changed: true, ...applied }; }
+    catch (e) { if (e.status !== 422 && e.status !== 409) throw e; }
+  }
+  throw new Error("could not commit (busy), try again");
 }

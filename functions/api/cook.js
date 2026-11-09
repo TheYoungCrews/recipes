@@ -32,14 +32,18 @@ export async function onRequestPost({ request, env }) {
   let rating = b.rating == null || b.rating === "" ? null : Number(b.rating);
   if (rating != null && !(rating >= 1 && rating <= 5 && rating * 2 === Math.round(rating * 2))) return out(400, { error: "Rating must be 1 to 5." });
   const note = String(b.note || "").slice(0, 1000);
+  let remove = null;
+  if (Array.isArray(b.remove)) {
+    remove = b.remove.map(x => String(x).replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 80);
+  }
   let photoB64 = null;
   if (b.photo) {
     photoB64 = String(b.photo).replace(/^data:image\/jpeg;base64,/, "");
     if (!/^[A-Za-z0-9+/=]+$/.test(photoB64) || photoB64.length > 6_000_000 || !photoB64.startsWith("/9j/")) return out(400, { error: "Photo must be a JPEG under ~4 MB." });
   }
   try {
-    const r = await commitCook({ token: env.GITHUB_TOKEN, repo: env.GITHUB_REPO || "TheYoungCrews/recipes", slug, who, date: todayNY(), rating, note, photoB64 });
-    const res = out(200, { ok: true, who, date: todayNY(), commit: r.sha.slice(0, 7) });
+    const r = await commitCook({ token: env.GITHUB_TOKEN, repo: env.GITHUB_REPO || "TheYoungCrews/recipes", slug, who, date: todayNY(), rating, note, photoB64, remove });
+    const res = out(200, { ok: true, who, date: todayNY(), commit: r.sha.slice(0, 7), inventory: r.inventory || { removed: [], subtracted: [] } });
     for (const c of await renewCookies({ who, via, exp: sess && sess.exp }, env)) res.headers.append("set-cookie", c);
     if (clear) res.headers.append("set-cookie", "siwe_nonce=; Path=/api; Max-Age=0; HttpOnly; Secure; SameSite=Strict");
     return res;

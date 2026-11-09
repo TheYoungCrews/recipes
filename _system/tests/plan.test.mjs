@@ -94,6 +94,7 @@ test("have: rapid checks retry on a moved branch, nothing lost", async () => {
       if (fails-- > 0) { file = editHave(file, { action: "have", item: "other" + fails }).md; head++; return new Response("{}", { status: 422 }); }
       file = pendingTree; head++; return ok({});
     }
+    if (p.startsWith("/contents/")) return new Response("{}", { status: 404 });
     return new Response("{}", { status: 500 });
   };
   const r = await commitPlanEdit({ token: "x", repo: "o/r", item: "thyme", action: "have", who: "crews", today: "2026-11-03", fetchFn });

@@ -141,6 +141,7 @@ def cook_form(r, hidden=False):
             '<div class=rate role=radiogroup aria-label="Rating">' + "".join(f'<button type=button data-v="{i}" aria-label="{i} stars">★</button>' for i in range(1, 6)) + '<span class=rv></span></div>\n'
             '<textarea name=note maxlength=1000 placeholder="How\'d it go? (optional)"></textarea>\n'
             '<div class=pv hidden><img alt=""><button type=button class=px aria-label="Remove photo">×</button></div>\n'
+            '<div class=used hidden></div>\n'
             '<div class=r><label class=b1>📷 Add or drop photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>\n'
             '<div class=gsi></div><p class=cmsg role=status></p></form>')
 
@@ -428,7 +429,7 @@ def week_page(live, out):
     if g["note"]: body.append(f"<p>{inline(plain_md(g['note']))}</p>")
     body.append('<h2>Dinners</h2><ul class=meals>' + "".join(meals) + "</ul>")
     if extras: body.append('<h2>Also this week <small>bakes, sides, anytime</small></h2><ul class=meals>' + "".join(extras) + "</ul>")
-    body.append(f'<h2>Grocery list</h2><p class=havemsg role=status hidden>Check what you already have. It moves to Already have after the next rebuild (about a minute).</p><div class=gl>{gl}</div>')
+    body.append(f'<h2>Grocery list</h2><p class=havemsg role=status hidden>Check what you already have or just bought. It is added to the inventory and moves to Already have after the next rebuild (about a minute).</p><div class=gl>{gl}</div>')
     if g["staples_assumed"]: body.append(f'<p class=staples>Not on the list because we keep them stocked: {E(", ".join(g["staples_assumed"]))}. Running low? Add them.</p>')
     (wdir / "index.html").write_text(head(f"This week, {span}") + "<body><main class=wk>\n" + "\n".join(body)
         + f'\n</main><footer>From <a href="/">Crews &amp; Anna\'s Kitchen</a>. Plan: <a href="https://github.com/TheYoungCrews/recipes/blob/main/{E(g["plan_file"])}">{E(g["plan_file"])}</a> · plain text: <a href="/week.md">/week.md</a></footer><script src="/week-btn.js" defer></script></body></html>')

@@ -78,6 +78,12 @@ ol.st b{display:block}
 .rate{display:flex;gap:2px;align-items:center;font-size:38px;line-height:1}.rate button{flex:none!important;background:none!important;padding:0 2px!important;font:38px/1 serif!important;color:#4a453e;cursor:pointer;transition:transform .12s}.rate button:active{transform:scale(1.2)}.rate .rv{font:600 13px -apple-system,sans-serif;color:#bfb6a5;margin-left:8px}.rate .f{color:#e0a83a}
 .rate .h{background:linear-gradient(90deg,#e0a83a 50%,#4a453e 50%);-webkit-background-clip:text;color:transparent}
 .cook textarea{width:100%;margin:12px 0 8px;border-radius:10px;border:1px solid #4a453e;background:#34302b;color:var(--paper);font:inherit;padding:10px;height:70px}
+.cook .used{margin:12px 0 8px;padding-top:10px;border-top:1px dashed #4a453e}
+.cook .usedlab{margin:0;color:var(--paper);font:600 14px -apple-system,sans-serif}
+.cook .usedsub{margin:4px 0 8px;color:#bfb6a5;font-size:13px}
+.cook .used label{display:flex;align-items:flex-start;gap:8px;margin:6px 0;color:var(--paper);font-size:14px;cursor:pointer;text-align:left}
+.cook .used input{margin-top:3px;flex:none;accent-color:var(--sage)}
+.cook .used .why{display:block;color:#8f8676;font-size:12px;font-weight:400}
 .cook .r{display:flex;gap:8px}.cook button{flex:1;border:0;border-radius:10px;padding:11px;font:600 14px -apple-system,sans-serif}
 .cook label.b1{flex:1;border-radius:10px;padding:11px;font:600 14px -apple-system,sans-serif;text-align:center;cursor:pointer}.b1{background:#34302b;color:var(--paper)!important;border:1px dashed #6b645a!important}.b2{background:var(--sage);color:#fff}
 /* site additions */

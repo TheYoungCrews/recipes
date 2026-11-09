@@ -175,7 +175,21 @@ function resize(file){
 $$("form.cook").forEach(f=>{
   f.hidden=false;   // plain /r/<slug> pages ship it hidden so the page reads fine without JavaScript
   let val=0, photo=null; const msg=$(".cmsg",f), save=$(".b2",f), say=(t,ok)=>{msg.textContent=t;msg.className="cmsg"+(ok?" ok":"")};
-  $$(".rate button",f).forEach(b=>b.addEventListener("click",()=>{const n=+b.dataset.v;val=val===n?n-.5:n;if(val<1)val=n;stars(f,val);save.disabled=false;getCfg()}));
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+  async function loadUsed(){
+    const box=$(".used",f); if(!box||box.dataset.loaded)return;
+    try{
+      const h={}; const tk=tok(); if(tk)h.authorization="Bearer "+tk;
+      const r=await fetch("/api/inventory?slug="+encodeURIComponent(f.dataset.slug),{credentials:"same-origin",headers:h});
+      if(!r.ok)return;
+      const j=await r.json(); box.dataset.loaded="1";
+      if(!j.items||!j.items.length)return;
+      box.hidden=false;
+      box.innerHTML='<p class=usedlab>Used up from the inventory?</p><p class=usedsub>Checked items look used up. Uncheck anything you still have, or check anything you finished.</p>'
+        +j.items.map(it=>`<label><input type=checkbox value="${esc(it.name)}"${it.suggested?" checked":""}><span>${esc(it.name)}<span class=why>${esc(it.reason||"")}</span></span></label>`).join("");
+    }catch(e){}
+  }
+  $$(".rate button",f).forEach(b=>b.addEventListener("click",()=>{const n=+b.dataset.v;val=val===n?n-.5:n;if(val<1)val=n;stars(f,val);save.disabled=false;getCfg();loadUsed()}));
   async function usePhoto(file){if(!file)return;if(!/^image\//.test(file.type||"")&&!/\.(heic|heif|jpe?g|png|webp|gif)$/i.test(file.name||""))return say("That's not a photo.");say("Shrinking photo…");
     try{photo=await resize(file);$(".pv img",f).src=photo;$(".pv",f).hidden=false;say("")}catch(err){say("Couldn't read that photo.")}}
   $("input[type=file]",f).addEventListener("change",e=>usePhoto(e.target.files[0]));
@@ -189,13 +203,17 @@ $$("form.cook").forEach(f=>{
   async function send(siwe){
     say("Saving…");save.disabled=true;
     const t=tok(),h={"content-type":"application/json"};if(t)h.authorization="Bearer "+t;
+    const used=[...f.querySelectorAll(".used input[type=checkbox]")];
+    const payload={slug:f.dataset.slug,rating:val,note:$("textarea",f).value,photo,siwe:siwe||undefined};
+    if(used.length) payload.remove=used.filter(x=>x.checked).map(x=>x.value);
     const r=await fetch("/api/cook",{method:"POST",credentials:"same-origin",headers:h,
-      body:JSON.stringify({slug:f.dataset.slug,rating:val,note:$("textarea",f).value,photo,siwe:siwe||undefined})}).catch(()=>null);
+      body:JSON.stringify(payload)}).catch(()=>null);
     const j=r?await r.json().catch(()=>({})):{};
     if(r&&r.status===401){sessionStorage.removeItem("gid");save.disabled=false;f.dataset.want=1;return ask()}
     if(!r||!r.ok){save.disabled=false;return say(j.error||"Couldn't save. Try again?")}
     $(".gsi",f).innerHTML="";
-    say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`,true);
+    const taken=(j.inventory&&j.inventory.removed||[]).filter(Boolean);
+    say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`+(taken.length?" Took "+taken.join(", ")+" off the inventory.":""),true);
     const art=f.closest("article"),d=art&&$(".diary",art);if(d){$(".diary-empty",d)?.remove();const row=document.createElement("div");
       row.innerHTML=`<span>today</span><div><b>${j.who}</b>: ${val}/5 ${$("textarea",f).value.replace(/[<&]/g,"")}</div>`;d.prepend(row)}
   }
@@ -203,7 +221,7 @@ $$("form.cook").forEach(f=>{
     const ok=await window.KAUTH.signIn($(".gsi",f),say);
     if(ok===false)save.disabled=false;
   }
-  window.KAUTH.onSignedIn.push(()=>{if(f.dataset.want){delete f.dataset.want;send()}});
+  window.KAUTH.onSignedIn.push(()=>{loadUsed().then(()=>{if(!f.dataset.want)return; delete f.dataset.want; const box=$(".used",f); if(box&&!box.hidden&&box.querySelector("input")){save.disabled=false; return say("Check what you used up, then tap Log it.");} send();});});
   f.addEventListener("submit",async e=>{e.preventDefault();if(!val)return say("Pick some stars first.");if(await window.KAUTH.signedIn())return send();f.dataset.want=1;ask()});
 });
 })();
