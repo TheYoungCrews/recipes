@@ -62,6 +62,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - pistachio cream
 - brown mustard
 - sherry vinegar
+- dijon mustard
 
 ## Pantry: spices and salt
 - cinnamon
