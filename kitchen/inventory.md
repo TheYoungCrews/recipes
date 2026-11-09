@@ -21,6 +21,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - sardines
 - tinned oysters
 - razor clams
+- pumpkin pie spice
 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
