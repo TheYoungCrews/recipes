@@ -92,7 +92,6 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - parsley
 - thyme
 - kale
-- butternut squash
 - carrots
 - jalapeño pepper
 - Monterey Jack
