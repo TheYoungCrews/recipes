@@ -132,3 +132,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - ground lamb
 - wild blueberries
 - large clear ice cubes
+
+## New
+- fully cooked bratwurst
