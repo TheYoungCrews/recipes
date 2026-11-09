@@ -48,6 +48,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - potato chips
 - beef sticks (Chomps)
 - tortilla chips
+- pecans
 
 ## Pantry: oils, sauces, condiments
 - avocado oil
