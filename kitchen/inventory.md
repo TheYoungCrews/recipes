@@ -77,6 +77,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - oat milk
 - creatine
 - psyllium husk
+- kodiak cakes protein power cakes mix
 
 ## Fridge
 - picanha steaks (2, for Friday)
