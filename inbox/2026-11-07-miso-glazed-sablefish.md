@@ -1,3 +1,4 @@
+deleted: 2026-11-09 (crews asked to remove it; do not refile)
 filed_to: recipes/miso-glazed-sablefish.md
 filed_at: 2026-11-07
 ---
