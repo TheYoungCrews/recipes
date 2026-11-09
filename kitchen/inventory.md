@@ -31,6 +31,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - flour
 - baking soda
 - cornstarch
+- white sugar
 - dark chocolate baking chunks
 - vanilla extract
 - liquid stevia
@@ -48,7 +49,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 ## Pantry: oils, sauces, condiments
 - avocado oil
 - olive oil
-- sesame oil
+- toasted sesame oil
 - liquid aminos
 - hot sauce (Crystal)
 - red wine vinegar
@@ -65,6 +66,7 @@ Hand-kept, updated by Crews, Anna or an agent. Different from staples.md, which 
 - sea salt
 - black lava salt
 - black pepper
+- white pepper
 
 ## Pantry: drinks and protein
 - coffee beans (Evans Brothers)
