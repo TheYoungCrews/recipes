@@ -61,6 +61,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - honey (local)
 - pistachio cream
 - brown mustard
+- sherry vinegar
 
 ## Pantry: spices and salt
 - cinnamon
