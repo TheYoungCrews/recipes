@@ -124,6 +124,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - Coca-Cola
 - dry vermouth (Dolin)
 - fresh ginger
+- dry red wine
 
 ## Freezer
 - chicken nuggets (Bare)
