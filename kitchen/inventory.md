@@ -60,6 +60,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - red wine vinegar
 - honey (local)
 - pistachio cream
+- brown mustard
 
 ## Pantry: spices and salt
 - cinnamon
