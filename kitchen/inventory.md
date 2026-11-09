@@ -37,6 +37,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - dark chocolate baking chunks
 - vanilla extract
 - liquid stevia
+- dark chocolate chips
 
 ## Pantry: nuts, seeds, snacks
 - granola
