@@ -119,6 +119,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - Heineken
 - Coca-Cola
 - dry vermouth (Dolin)
+- fresh ginger
 
 ## Freezer
 - chicken nuggets (Bare)
