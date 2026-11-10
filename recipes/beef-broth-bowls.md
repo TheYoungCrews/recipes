@@ -4,7 +4,7 @@ slug: beef-broth-bowls
 type: soup-bowl
 status: to-try
 tags: [beef, thai, stovetop, dutch-oven, weeknight-45, high-protein, dairy-free]
-ingredients: [ground beef, ginger, garlic, cornstarch, chicken broth, liquid aminos, white sugar, toasted sesame oil, white pepper, red curry paste, yellow curry powder, coconut milk, lime, cilantro, rice, sesame seeds, cucumber, green onion, sambal oelek, coconut oil]
+ingredients: [ground beef, ginger, garlic, cornstarch, chicken broth, liquid aminos, white sugar, toasted sesame oil, white pepper, red curry paste, yellow curry powder, coconut milk, lime, cilantro, rice, sesame seeds, cucumber, green onion, eggs, chili crunch, thai basil, fish sauce, sambal oelek, coconut oil]
 serves: 4
 time_minutes: 35
 prep_minutes: 30
@@ -77,17 +77,23 @@ Crispy caramelized beef and fluffy rice in a rich coconut curry broth, finished 
 - [x] sesame seeds
 - [ ] cucumber (2 small Persian, diced)
 - [x] green onion (4, thinly sliced)
-- [x] sambal oelek (to taste; standing sub for chili crunch as the heat; amount not given)
+- [x] eggs (1 per bowl, jammy)
+- [x] chili crunch (to taste, for topping)
+- [ ] Thai basil (a handful, optional)
+- [ ] fish sauce (a splash, optional)
+- [x] sambal oelek (to taste, optional for extra heat)
 
 **Steps**
 Weeknight version (aiming for about 30 minutes, Dutch oven, more lime/herbs/umami, high-protein):
 1. Rice: boil generously salted water, add the rice (1 cup basmati), boil 10 minutes until tender. Drain, return to the dry pot, cover and steam until serving.
 2. Heat coconut oil (1 tbsp) in the Dutch oven over high heat. Brown the beef (1 lb, 93/7) hard, undisturbed, for caramelized edges, then break up and finish browning.
 3. Shake 2 tsp cornstarch with 1/4 cup chicken broth until smooth, then add 2-1/2 tbsp liquid aminos, the sugar (2 tsp), sesame oil (1/2 tsp) and white pepper (1/4 tsp); shake again. Lower heat to medium, add 1 tbsp each minced garlic and ginger, then the sauce, and cook until caramelized onto the beef. Remove the beef.
-4. Broth: same pot over low heat. Cook the remaining 1/2 tbsp each garlic and ginger 20 seconds. Stir in red curry paste (2 tbsp) and curry powder (1 tsp); cook 1 minute. Pour in coconut milk (1 can, 13.66 oz), scraping up the browned bits; whisk smooth. Add 1 cup chicken broth; boil 1 minute, then reduce to low. Stir in 1 tbsp liquid aminos, juice of 1/2 lime, and the cilantro (1/2 cup chopped).
-5. Assemble bowls and finish each with extra lime juice, double the cilantro, and sambal oelek for heat.
+4. Eggs: while the rice cooks, lower the eggs (1 per bowl) into boiling water for 6 1/2 minutes, then move them to ice water. Peel and halve.
+5. Broth: same pot over low heat. Cook the remaining 1/2 tbsp each garlic and ginger 20 seconds. Stir in red curry paste (2 tbsp) and curry powder (1 tsp); cook 1 minute. Pour in coconut milk (1 can, 13.66 oz), scraping up the browned bits; whisk smooth. Add 1 cup chicken broth; boil 1 minute, then reduce to low. Stir in 1 tbsp liquid aminos, juice of 1/2 lime, and the cilantro (1/2 cup chopped). Add a splash of fish sauce if using, then taste for salt.
+6. Assemble: rice, beef, hot broth, then a halved jammy egg. Finish each bowl with cucumber, green onion, sesame seeds, extra lime juice, more cilantro, torn Thai basil if using, and a spoon of chili crunch. Add sambal oelek for more heat.
 
 ## Notes
+- 2026-11-10 (grok-bot): per crews, added a jammy egg, chili crunch on top, and optional Thai basil and fish sauce to spruce it up. Kept rice, not noodles.
 - 2026-10-14 (grok-bot): Our version uses liquid aminos for the soy sauce and sambal oelek for the chili crunch (standing subs in kitchen/taste-profile.md).
 - 2026-10-14 (grok-bot): time conflict. Source page says prep 30 + cook 15 = 45 min total; captured total was 35. Kept 35 per the round-down rule (lower total wins); prep/cook left as sourced.
 - 2026-10-14 (filed by grok-bot): received by email from Crews (subject "recipe: Beef Broth Bowls"); raw copy at inbox/2026-10-14-beef-broth-bowls.md. Added grocery checklist, dairy-free and dutch-oven tags, and normalized ingredient wording to kitchen/staples.md.
