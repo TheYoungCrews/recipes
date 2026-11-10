@@ -32,7 +32,7 @@ Content-Type: application/json
 
 `action` may be `add` or `remove`. Up to 40 names. Staples are skipped. Names already in the inventory are skipped. Reply includes `added`, `removed`, `skipped_staples`, `already`, and `commit`.
 
-Do not delete completed Groceries reminders after posting. The Sync Groceries shortcut uses recently checked-off titles to avoid adding the same item twice.
+Deleting a Groceries reminder is safe. Sync Groceries logs each title it adds for the week in iCloud Drive/Shortcuts/Cookbook/groceries-sent-YYYY-Www.txt and will not add that title again until the next week. It also still skips open reminders and titles checked off in the last week.
 
 ### Build "Add Bought Groceries" on iPhone
 

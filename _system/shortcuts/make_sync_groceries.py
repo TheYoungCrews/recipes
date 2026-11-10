@@ -4,9 +4,12 @@
   python3 _system/shortcuts/make_sync_groceries.py /tmp/Sync\\ Groceries.shortcut
 
 Flow: Get https://blind-tiger.pages.dev/groceries.txt -> split by new lines -> Find Reminders in "Groceries"
-(open, plus checked off in the last week) -> one lowercase text "|title|title|" -> for each feed line, if that text
-does not contain "|line|" (whole-title match, any case), add a reminder to "Groceries" and bump AddedCount
--> notify "Added N: a, b" when N > 0, else "Nothing new to add".
+(open, plus checked off in the last week) -> read this week's sent log from iCloud Drive
+(Shortcuts/Cookbook/groceries-sent-YYYY-Www.txt; missing file is fine) -> one lowercase text
+"|title|title|" from reminder titles plus log lines -> for each feed line, if that text does not
+contain "|line|" (whole-title match, any case), add a reminder to "Groceries", append the title to
+the sent log, and bump AddedCount -> notify "Added N: a, b" when N > 0, else "Nothing new to add".
+Deleting a reminder will not make it come back the same week; new grocery lines still get added.
 The file has to be signed on a Mac (`shortcuts sign --mode anyone`) before iOS will import it; the signed copy
 lives at _system/web/sync-groceries.shortcut and is served at /sync-groceries.shortcut."""
 import plistlib, sys, uuid
@@ -14,6 +17,11 @@ import plistlib, sys, uuid
 FEED = "https://blind-tiger.pages.dev/groceries.txt"
 LIST = {"Title": "Groceries", "Identifier": "A99A9127-03ED-4C82-89C8-DFC3C297B14B", "IsAllCalendar": False}
 OBJ = "\ufffc"
+# Per-week log in the iCloud Drive Shortcuts folder. Append File paths are relative to
+# /Shortcuts/ (its field shows that prefix); Get File paths are from the iCloud Drive root.
+LOG_DIR = "Cookbook"
+LOG_PREFIX = "groceries-sent-"
+WEEK_FMT = "YYYY-'W'ww"
 U = lambda n: str(uuid.uuid5(uuid.NAMESPACE_URL, "sync-groceries/" + n)).upper()   # stable ids, so rebuilds diff cleanly
 
 def out(uid, name, prop=None):
@@ -44,15 +52,25 @@ def find_reminders(uid, completed, last_week=False):
 
 def build():
     A, B, C, D, E, F, G, J, K, M, N, P, Z = (U(x) for x in "download split open done titles bars lower item wrapped add joined plusone zero".split())
+    DATE, WEEK, LOG, TITLE = (U(x) for x in "date week logfile addtitle".split())
     LOOP, IF1, IF2 = U("loop"), U("if-new"), U("if-any")
+    week_tok = out(WEEK, "Formatted Date")
+    get_path = tokens("/Shortcuts/", LOG_DIR, "/", LOG_PREFIX, week_tok, ".txt")
+    append_path = tokens("/", LOG_DIR, "/", LOG_PREFIX, week_tok, ".txt")
     a = [
-        act("comment", WFCommentActionText="Sync Groceries: adds this week's cookbook grocery list (blind-tiger.pages.dev/groceries.txt) to the shared Reminders list Groceries. Skips anything already there, open or checked off in the last week."),
+        act("comment", WFCommentActionText="Sync Groceries: adds this week's cookbook grocery list (blind-tiger.pages.dev/groceries.txt) to the shared Reminders list Groceries. Skips anything already there, open or checked off in the last week, and anything already added this week (logged in iCloud Drive/Shortcuts/Cookbook/groceries-sent-YYYY-Www.txt). Deleting a reminder will not make it come back the same week."),
+        act("date", UUID=DATE, WFDateActionMode="Current Date"),
+        act("format.date", UUID=WEEK, WFDate=tokens(out(DATE, "Date")),
+            WFDateFormatStyle="Custom", WFDateFormat=WEEK_FMT, WFDateFormatString=WEEK_FMT),
         act("downloadurl", UUID=A, WFURL=FEED, WFHTTPMethod="GET"),
         act("text.split", UUID=B, text=att(out(A, "Contents of URL")), WFTextSeparator="New Lines"),
         find_reminders(C, False),
         find_reminders(D, True, last_week=True),
+        act("documentpicker.open", UUID=LOG, WFFileStorageService="iCloud Drive",
+            WFShowFilePicker=False, WFFileErrorIfNotFound=False, WFGetFilePath=get_path),
         # "||" up front so a blank feed line ("||") always counts as present and is skipped.
-        act("gettext", UUID=E, WFTextActionText=tokens("||\n", out(C, "Reminders", "Title"), "\n", out(D, "Reminders", "Title"), "\n")),
+        # Log file contents (empty if the file does not exist yet) are mixed in with reminder titles.
+        act("gettext", UUID=E, WFTextActionText=tokens("||\n", out(C, "Reminders", "Title"), "\n", out(D, "Reminders", "Title"), "\n", out(LOG, "File"), "\n")),
         act("text.replace", UUID=F, WFInput=tokens(out(E, "Text")), WFReplaceTextFind="\\s*\\n\\s*", WFReplaceTextReplace="|",
             WFReplaceTextRegularExpression=True, WFReplaceTextCaseSensitive=False),
         act("text.changecase", UUID=G, text=att(out(F, "Updated Text")), WFCaseType="lowercase"),
@@ -67,6 +85,9 @@ def build():
             WFInput=cond_input(var("Have")), WFConditionalActionString=tokens(out(K, "Text"))),
         act("addnewreminder", UUID=M, WFCalendarItemTitle=tokens(var("Repeat Item")), WFCalendarDescriptor=dict(LIST),
             WFCalendarItemCalendar="Groceries", WFAlertEnabled="No Alert"),
+        act("gettext", UUID=TITLE, WFTextActionText=tokens(var("Repeat Item"))),
+        act("file.append", WFInput=att(out(TITLE, "Text")), WFFileStorageService="iCloud Drive",
+            WFFilePath=append_path, WFAppendFileWriteMode="Append", WFAppendOnNewLine=True),
         act("appendvariable", WFVariableName="Added", WFInput=att(var("Repeat Item"))),
         act("math", UUID=P, WFInput=att(var("AddedCount")), WFMathOperation="+", WFMathOperand="1"),
         act("setvariable", WFVariableName="AddedCount", WFInput=att(out(P, "Calculation Result"))),
