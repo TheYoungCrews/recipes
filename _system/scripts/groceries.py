@@ -106,6 +106,7 @@ def key(name):
     n = re.sub(r"\b(fresh|freshly|kosher|flaky|cold|grated|good|unsalted|thinly|finely|roughly|sliced|chopped|minced|diced|dry|dried)\b", lambda m: m.group(0) if m.group(0) in ("dry", "dried") else "", n)
     n = re.sub(r"\s+", " ", n).strip()
     n = re.sub(r"\bchicken broth\b", "chicken stock", n)   # same thing on the shelf
+    n = re.sub(r"\bscallions?\b", "green onion", n)         # same thing on the shelf
     return re.sub(r"(?<=[a-z])(es|s)$", "", n) if not n.endswith(("ss", "us")) else n
 
 def have_key(name):
@@ -147,11 +148,14 @@ def section(name):
 # ---- merging
 def merge(entries):
     """entries: parsed lines (with 'recipe'). Merge same item when units are compatible; otherwise keep separate lines."""
-    groups = {}
+    groups, extra = {}, {}
     for e in entries:
         k = (key(e["name"]), e["kind"] if e["kind"] in ("w", "v") else (e["kind"], e["unit"] and UNITS[e["unit"]][0], e["size"]))
         if e["qty"] is None or (e["range"] and e["kind"] not in ("w", "v")): k = k + (id(e),)   # no amount, or a count range: never summed
         groups.setdefault(k, []).append(e)
+    for k in [k for k, es in groups.items() if es[0]["qty"] is None]:   # an amountless line ('green onions, for garnish') folds into a line with an amount
+        twin = next((j for j, js in groups.items() if j[0] == k[0] and js[0]["qty"] is not None), None)
+        if twin: extra.setdefault(twin, []).extend(groups.pop(k))
     out = []
     for k, es in groups.items():
         e0 = es[0]; recipes = sorted({e["recipe"] for e in es})
@@ -175,6 +179,7 @@ def merge(entries):
                 u = (u if total <= 1 or u.endswith("s") else UNITS_PLURAL.get(u, u + "s")) if u else None
                 line = " ".join(x for x in [fmt(total), u, sz, name] if x)
         nice = re.sub(r"\s+", " ", re.sub(r"[\[\],#\"'`]", " ", PREP.sub("", e0["name"]).lower())).strip()
+        es = es + extra.get(k, []); recipes = sorted({e["recipe"] for e in es})
         out.append({"line": pretty(line), "item": e0["name"], "key": nice if have_key(nice) == have_key(e0["name"]) else have_key(e0["name"]), "section": section(e0["name"]), "recipes": recipes,
                     "optional": all(e["optional"] for e in es), "from": [e["raw"] for e in es]})
     return out
@@ -311,7 +316,7 @@ def build(plan=None, today=None, inv=None):
         for line in checklist(rbody):
             if line.startswith("#"): continue
             e = parse_line(line); e["recipe"] = slug
-            if not e["name"]: continue
+            if not e["name"] or re.fullmatch(r"(?i)(cold |warm |hot |tap )?water", e["name"].strip()): continue   # never a grocery item
             parts = re.split(r"\s+(?:and|&)\s+", e["name"])
             hit = next((s for s in st if matches(e["name"], s)), None) or (
                 ", ".join(h for h in (next((s for s in st if matches(x, s)), None) for x in parts)) if len(parts) > 1 and all(any(matches(x, s) for s in st) for x in parts) else None)

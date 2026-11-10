@@ -49,3 +49,8 @@ print(json.dumps({"inv": inv, "lines": [i["line"] for i in g["detail"]], "lines0
   for (const h of r.house) { assert.ok(h.inventory, JSON.stringify(h)); assert.ok(r.lines0.includes(h.line), h.line); }
   assert.equal(r.lines0.length - r.lines.length, r.house.length);
 });
+test("water is never a grocery item; scallions merge with green onions, amountless twins fold in", () => {
+  const got = py(`e = [dict(G.parse_line(x), recipe="r") for x in ["4 green onions, thinly sliced", "1 scallion, thinly sliced", "Green onions, sliced, for garnish"]]
+print(json.dumps([i["line"] for i in G.merge(e)]))`);
+  assert.equal(got.length, 1); assert.match(got[0], /^5 green onions/);
+});

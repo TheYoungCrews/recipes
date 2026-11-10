@@ -8,7 +8,6 @@ Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` 
 - olive oil | costco
 - neutral oil
 - garlic
-- green onion
 - lime
 - tomato paste
 - anchovy paste | whole-foods
