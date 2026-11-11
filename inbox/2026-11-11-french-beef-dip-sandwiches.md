@@ -1,3 +1,5 @@
+filed_to: recipes/french-beef-dip-sandwiches.md
+filed_at: 2026-11-11
 ---
 title: French Beef Dip Sandwiches
 slug: french-beef-dip-sandwiches
