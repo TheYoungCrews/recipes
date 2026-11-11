@@ -5,6 +5,8 @@ Each one keeps the creator's original plus our version, which gets a little bett
 
 Browse, search and rate them at **[blind-tiger.pages.dev](https://blind-tiger.pages.dev)**. So far: 81 [recipes](recipes/) and 55 [cocktails](cocktails/).
 
+Want to hear when we add or rate a dish? [Follow along](https://blind-tiger.pages.dev/follow), or subscribe to the [RSS feed](https://blind-tiger.pages.dev/feed.xml).
+
 ## Our kitchen
 
 [What we like](kitchen/taste-profile.md) · [Pantry staples](kitchen/staples.md) · [Bar shelf](kitchen/bar.md)

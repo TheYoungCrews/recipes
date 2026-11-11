@@ -42,6 +42,16 @@ def entry(r):
             "md_url": f'{SITE}/r/{r["slug"]}.md' if r["status"] != "retired" else None, "credit": _credit(r)[0], "credit_url": _credit(r)[1],
             "ingredients": yi or oi, "steps": ys or os_, "notes": notes[:3]}
 
+
+def headers():
+    """Cloudflare Pages _headers for the JSON, markdown and RSS exports."""
+    hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json", "week.json", "week.md"))
+    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n/week.md\n  Content-Type: text/markdown; charset=utf-8\n/week/*\n  Cache-Control: public, max-age=300\n"
+    hdr += "/groceries.txt\n  Content-Type: text/plain; charset=utf-8\n  Cache-Control: no-cache\n  Access-Control-Allow-Origin: *\n"   # Sync Groceries Shortcut feed
+    hdr += '/sync-groceries.shortcut\n  Content-Type: application/octet-stream\n  Content-Disposition: attachment; filename="Sync Groceries.shortcut"\n  Cache-Control: public, max-age=300\n'
+    hdr += "/feed.xml\n  Content-Type: application/rss+xml; charset=utf-8\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n"
+    return hdr
+
 def write(items, out):
     root = out.parent
     (out/"kitchen.json").write_text(json.dumps({"taste": (root/"kitchen/taste-profile.md").read_text(), "staples": (root/"kitchen/staples.md").read_text(),
@@ -49,11 +59,7 @@ def write(items, out):
     full = [entry(r) for r in items]
     (out/"recipes.json").write_text(json.dumps({"site": SITE, "count": len(full), "items": full}, indent=1, ensure_ascii=False))
     (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status","url")} for e in full], ensure_ascii=False))
-    hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json", "week.json", "week.md"))
-    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n/week.md\n  Content-Type: text/markdown; charset=utf-8\n/week/*\n  Cache-Control: public, max-age=300\n"
-    hdr += "/groceries.txt\n  Content-Type: text/plain; charset=utf-8\n  Cache-Control: no-cache\n  Access-Control-Allow-Origin: *\n"   # Sync Groceries Shortcut feed
-    hdr += '/sync-groceries.shortcut\n  Content-Type: application/octet-stream\n  Content-Disposition: attachment; filename="Sync Groceries.shortcut"\n  Cache-Control: public, max-age=300\n'
-    (out/"_headers").write_text(hdr)
+    (out/"_headers").write_text(headers())
     (out/"llms.txt").write_text("""# Crews & Anna's Kitchen
 
 > Recipes and cocktails from Crews and Anna. Plain-text data for AI agents.

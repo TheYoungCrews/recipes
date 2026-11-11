@@ -101,6 +101,7 @@ def readme(items):
            "Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, the family ones we don't want to lose, and Anna's favorite cocktails.",
            "Each one keeps the creator's original plus our version, which gets a little better every time we cook it and rate it.", "",
            f"Browse, search and rate them at **[blind-tiger.pages.dev](https://blind-tiger.pages.dev)**. So far: {live('recipes')} [recipes](recipes/) and {live('cocktails')} [cocktails](cocktails/).", "",
+           "Want to hear when we add or rate a dish? [Follow along](https://blind-tiger.pages.dev/follow), or subscribe to the [RSS feed](https://blind-tiger.pages.dev/feed.xml).", "",
            "## Our kitchen", "",
            "[What we like](kitchen/taste-profile.md) · [Pantry staples](kitchen/staples.md) · [Bar shelf](kitchen/bar.md)", "",
            "Got one we should try? Email crews@mail.grokbot.com with \"recipe:\" and the name in the subject, or point your AI at [AGENTS.md](AGENTS.md).", "",
@@ -136,7 +137,7 @@ def main():
                 if have != [want]: warns.append(f"{f.name}: total {total} min suggests time tag '{want}' (has {have or 'none'})")
             if "stores" in fm: errs.append(f"{f.name}: 'stores:' not allowed in recipes (grocery-list step only)")
             if re.search(r"^- \[[ x]\] .* @[a-z-]+\s*$", body, re.M): errs.append(f"{f.name}: '@store' marks not allowed in checklists")
-            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made","source_type","added_by","credit"]},
+            items.append({**{k: fm.get(k, "") for k in ["title","slug","type","status","owner","rating","time_minutes","prep_minutes","cook_minutes","serves","source","last_made","source_type","added_by","credit","added"]},
                           "tags": fm.get("tags") or [], "ingredients": [i.lower() for i in fm.get("ingredients") or []],
                           "dir": d, "html": md_to_html(body), "body": body, "cooks": fm.get("cooks", "")})
     sys.path.insert(0, str(ROOT/"_system/scripts")); import groceries

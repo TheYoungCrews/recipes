@@ -227,18 +227,19 @@ def render(items, staples, root):
 <div id=food class=grid style="margin-top:10px">{"".join(card(r) for r in food)}</div><p id=nores class=nores hidden>No recipes match. Try another chip or word.</p>
 {f'<section class=bar id=bar><h2 class=hand>The bar cart <small>{len(bar)} cocktails</small></h2><div class=grid>{"".join(card(r) for r in bar)}</div></section>' if bar else ""}
 <p id=add class="addline hand"><a href="/week/">This week's dinners and grocery list</a> · Got one we should try? <a href="/add">Add recipes</a> · <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">for AI assistants</a></p>
-<footer>made at home <span class=heart>♥</span> {len(live)} recipes · <a href="https://github.com/TheYoungCrews/recipes">the recipe files</a></footer>
+<footer>made at home <span class=heart>♥</span> {len(live)} recipes · <a href="/follow">follow along</a> · <a href="https://github.com/TheYoungCrews/recipes">the recipe files</a></footer>
 <noscript><p>Search and the dinner picker need JavaScript; every recipe still opens. Plain pages for every recipe: <a href="/r/">all recipes</a>.</p></noscript></div></section>'''
     views = "\n".join(recipe_view(r, staples) for r in live)
     page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Crews &amp; Anna's Kitchen</title><meta name=theme-color content="#7f9a7a"><meta name=apple-mobile-web-app-capable content=yes>
-<meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:type" content="website"><meta property="og:url" content="https://blind-tiger.pages.dev/"><link rel=canonical href="https://blind-tiger.pages.dev/"><link rel=sitemap type="application/xml" href="/sitemap.xml"><meta property="og:image" content="https://blind-tiger.pages.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta name="twitter:image" content="https://blind-tiger.pages.dev/og.jpg"><link rel="alternate" type="application/json" href="/recipes.json" title="All recipes for agents"><link rel="help" href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md"><meta name="agent-instructions" content="AI agents: read /recipes.json. To add a recipe follow AGENTS.md and email crews@mail.grokbot.com (recipe: in the subject). Bulk: POST /api/recipes (OpenAPI /openapi.json) or paste at /add.">
+<meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:type" content="website"><meta property="og:url" content="https://blind-tiger.pages.dev/"><link rel=canonical href="https://blind-tiger.pages.dev/"><link rel=sitemap type="application/xml" href="/sitemap.xml">{RSS}<meta property="og:image" content="https://blind-tiger.pages.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta name="twitter:image" content="https://blind-tiger.pages.dev/og.jpg"><link rel="alternate" type="application/json" href="/recipes.json" title="All recipes for agents"><link rel="help" href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md"><meta name="agent-instructions" content="AI agents: read /recipes.json. To add a recipe follow AGENTS.md and email crews@mail.grokbot.com (recipe: in the subject). Bulk: POST /api/recipes (OpenAPI /openapi.json) or paste at /add.">
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="/icon-180.png"><link rel=icon type=image/png href="/icon-180.png"><style>{css}</style></head>
 <body><div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><h2>For AI agents</h2><p>Read recipes from <a href="/recipes.json">/recipes.json</a>. To add one, follow <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">AGENTS.md</a> and email crews@mail.grokbot.com with "recipe:" in the subject. Bulk: POST <a href="/openapi.json">/api/recipes</a> or paste at <a href="/add">/add</a>.</p><p>Every recipe has a plain page with no JavaScript at /r/&lt;slug&gt; and markdown at /r/&lt;slug&gt;.md. A link like /#r-&lt;slug&gt; is the same recipe as /r/&lt;slug&gt;. Full list: <a href="/r/">/r/</a> and <a href="/sitemap.xml">/sitemap.xml</a>.</p><ul>{"".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a></li>' for r in sorted(live, key=lambda r: r["title"].lower()))}</ul></div><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="/week/">this week</a> · <a href="/add">+ add one</a></p></div></header>{home}{views}
 <script>window.KITCHEN={data};</script><script>{js}</script><script src="/week-btn.js" defer></script></body></html>'''
     (out/"index.html").write_text(page)
     static_pages(live, out)
     week_page(live, out)
+    follow_page(live, out)
     # /add paste page (human fallback) + OpenAPI for GPT Actions / agents
     add_tpl = (SITE / "add.html").read_text()
     add_js = (SITE / "add.js").read_text()
@@ -259,6 +260,7 @@ def render(items, staples, root):
 
 # ---- Static recipe pages for people and LLMs that don't run JavaScript: /r/<slug> (HTML) and /r/<slug>.md
 BASE = "https://blind-tiger.pages.dev"
+RSS = '<link rel="alternate" type="application/rss+xml" title="Crews &amp; Anna\'s Kitchen" href="/feed.xml">'
 PAGE_CSS = """@font-face{font-family:Hand;src:url(/caveat.woff2) format('woff2');font-weight:400 700;font-display:swap}
 body{margin:0;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#2a2723;background:#fbf6ea;
 background-image:linear-gradient(90deg,rgba(127,154,122,.10) 50%,transparent 50%),linear-gradient(rgba(127,154,122,.10) 50%,transparent 50%);background-size:28px 28px}
@@ -343,14 +345,14 @@ def recipe_page(r, P):
     t, dsc = E(title), E(desc)
     return f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="{dsc}"><link rel=canonical href="{url}">
-<link rel=alternate type="text/markdown" href="/r/{E(slug)}.md"><meta name=theme-color content="#7f9a7a">
+<link rel=alternate type="text/markdown" href="/r/{E(slug)}.md">{RSS}<meta name=theme-color content="#7f9a7a">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Crews &amp; Anna's Kitchen"><meta property="og:title" content="{t}"><meta property="og:description" content="{dsc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{E(img)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{dsc}"><meta name="twitter:image" content="{E(img)}">
 <link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png"><style>{PAGE_CSS}{WKCSS}{cook_css()}</style>
 <script type="application/ld+json">{ldj}</script></head>
 <body><main>
 {chr(10).join(x for x in body if x)}
-</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script></body></html>'''
+</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. <a href="/follow">Follow along</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script></body></html>'''
 
 def cook_js():
     """/cook.js: app.js's shared sign-in block and its Cooked it block, unchanged, so /r/<slug> pages log cooks
@@ -381,11 +383,11 @@ def static_pages(live, out):
     food = [r for r in by if r["type"] not in DRINK]; bar = [r for r in by if r["type"] in DRINK]
     li = lambda rs: "<ul>" + "".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a>{"" if r["type"] in DRINK else wkbtn(r["slug"], True)}</li>' for r in rs) + "</ul>"
     (rdir / "index.html").write_text(f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>All recipes · Crews &amp; Anna's Kitchen</title><meta name=description content="Every recipe and cocktail in Crews &amp; Anna's Kitchen as a plain page."><link rel=canonical href="{BASE}/r/"><style>{PAGE_CSS}{WKCSS}</style></head>
-<body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a></nav><h1>All recipes</h1><p class=meta>{len(food)} recipes and {len(bar)} cocktails. Each page has a plain markdown copy at the same address plus .md.</p>
+<title>All recipes · Crews &amp; Anna's Kitchen</title><meta name=description content="Every recipe and cocktail in Crews &amp; Anna's Kitchen as a plain page."><link rel=canonical href="{BASE}/r/">{RSS}<style>{PAGE_CSS}{WKCSS}</style></head>
+<body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/follow">Follow along</a></nav><h1>All recipes</h1><p class=meta>{len(food)} recipes and {len(bar)} cocktails. Each page has a plain markdown copy at the same address plus .md.</p>
 <h2>Recipes</h2>{li(food)}<h2>Cocktails</h2>{li(bar)}</main><script src="/week-btn.js" defer></script></body></html>''')
     today = datetime.date.today().isoformat()
-    urls = [f"{BASE}/", f"{BASE}/week/", f"{BASE}/r/"] + [f'{BASE}/r/{r["slug"]}' for r in by]
+    urls = [f"{BASE}/", f"{BASE}/week/", f"{BASE}/r/", f"{BASE}/follow"] + [f'{BASE}/r/{r["slug"]}' for r in by]
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {BASE}/sitemap.xml\n")
@@ -405,9 +407,9 @@ def week_page(live, out):
     by = {r["slug"]: r for r in live}
     head = lambda t: f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="This week's dinners and grocery list."><link rel=canonical href="{BASE}/week/">
-<link rel=alternate type="text/markdown" href="/week.md"><meta name=theme-color content="#7f9a7a"><link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
+<link rel=alternate type="text/markdown" href="/week.md">{RSS}<meta name=theme-color content="#7f9a7a"><link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
 <style>{PAGE_CSS}{WEEK_CSS}{WKCSS}</style></head>'''
-    nav = '<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/week.md">Markdown</a> · <a href="/week.json">JSON</a> · <a href="/r/">All recipes</a></nav>'
+    nav = '<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/week.md">Markdown</a> · <a href="/week.json">JSON</a> · <a href="/r/">All recipes</a> · <a href="/follow">Follow along</a></nav>'
     if not g:
         (wdir / "index.html").write_text(head("This week") + f"<body><main class=wk>{nav}<h1>This week</h1><p>No plan yet.</p></main></body></html>")
         (out / "week.md").write_text("# This week\n\nNo plan yet.\n"); (out / "week.json").write_text("null"); (out / "groceries.txt").write_text(""); return
@@ -432,10 +434,58 @@ def week_page(live, out):
     body.append(f'<h2>Grocery list</h2><p class=havemsg role=status hidden>Check what you already have or just bought. It is added to the inventory and moves to Already have after the next rebuild (about a minute).</p><div class=gl>{gl}</div>')
     if g["staples_assumed"]: body.append(f'<p class=staples>Not on the list because we keep them stocked: {E(", ".join(g["staples_assumed"]))}. Running low? Add them.</p>')
     (wdir / "index.html").write_text(head(f"This week, {span}") + "<body><main class=wk>\n" + "\n".join(body)
-        + f'\n</main><footer>From <a href="/">Crews &amp; Anna\'s Kitchen</a>. Plan: <a href="https://github.com/TheYoungCrews/recipes/blob/main/{E(g["plan_file"])}">{E(g["plan_file"])}</a> · plain text: <a href="/week.md">/week.md</a></footer><script src="/week-btn.js" defer></script></body></html>')
+        + f'\n</main><footer>From <a href="/">Crews &amp; Anna\'s Kitchen</a>. <a href="/follow">Follow along</a>. Plan: <a href="https://github.com/TheYoungCrews/recipes/blob/main/{E(g["plan_file"])}">{E(g["plan_file"])}</a> · plain text: <a href="/week.md">/week.md</a></footer><script src="/week-btn.js" defer></script></body></html>')
     (out / "week.md").write_text(groceries.to_md(g, BASE) + f"\nPage: {BASE}/week/\n")
     g2 = {k: v for k, v in g.items() if k != "detail"}
     g2["url"], g2["md_url"] = f"{BASE}/week/", f"{BASE}/week.md"
     g2["items"] = [{"line": i["line"], "short": i["short"], "key": i["key"], "section": i["section"], "optional": i["optional"], "recipes": i["recipes"]} for i in g["detail"]]
     (out / "week.json").write_text(json.dumps(g2, ensure_ascii=False, indent=1))
     (out / "groceries.txt").write_text(groceries.to_txt(g))   # feed for the Sync Groceries Shortcut
+
+
+# ---- /follow and /feed.xml: public additions and ratings only (see feed.py)
+FOLLOW_CSS = """.act{list-style:none;padding:0;margin:24px 0 0}.act li{padding:16px 0;border-bottom:1px dashed #e9e1cf}
+.act time{display:block;color:#7a7266;font-size:14px;margin-bottom:2px}.act p{margin:6px 0 0}
+.boxy{background:#fff;border:1px solid #e9e1cf;border-radius:12px;padding:16px 18px;margin:16px 0 20px}
+.boxy h2{margin:0 0 8px;font-size:28px}.boxy p{margin:0 0 10px}.boxy p:last-child{margin:0}
+.boxy code{display:block;margin:8px 0 0;padding:8px 10px;background:#fbf6ea;border-radius:8px;word-break:break-all;font-size:14px}
+.mail{display:inline-block;margin-top:6px;background:#7f9a7a;color:#fff;text-decoration:none;border-radius:999px;padding:8px 16px;font-weight:600}
+.mail:visited{color:#fff}"""
+
+def follow_page(live, out):
+    """Write /feed.xml and /follow from the same public activity list."""
+    import feed
+    ev = feed.events(live)
+    (out / "feed.xml").write_text(feed.rss(ev), encoding="utf-8")
+    fdir = out / "follow"
+    shutil.rmtree(fdir, ignore_errors=True)
+    fdir.mkdir(parents=True)
+    items = []
+    for e in ev:
+        note = f"<p>{E(e['note'])}</p>" if e.get("note") and e["kind"] == "rated" else ""
+        items.append(f'<li><time datetime="{e["date"].isoformat()}">{_date(e["date"].isoformat())}</time>'
+                     f'<a href="/r/{E(e["slug"])}">{E(e["title"])}</a>{note}</li>')
+    feed_url = f"{BASE}/feed.xml"
+    html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Follow along · Crews &amp; Anna's Kitchen</title>
+<meta name=description content="Get notified when Anna and Crews add or rate a dish.">
+<link rel=canonical href="{BASE}/follow">{RSS}
+<meta name=theme-color content="#7f9a7a"><link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
+<style>{PAGE_CSS}{FOLLOW_CSS}</style></head>
+<body><main>
+<nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/r/">All recipes</a></nav>
+<h1>Follow along</h1>
+<p>This is what Anna and Crews are cooking and drinking. When a new dish or cocktail goes into the book, or when we rate one, it shows up here.</p>
+<div class=boxy>
+<h2>Get notified</h2>
+<p><a href="/feed.xml">RSS feed</a>. Subscribe in any feed reader with this address:</p>
+<code>{E(feed_url)}</code>
+<p style="margin-top:14px">Want it in your inbox? We don't keep a mailing list. <a href="https://blogtrottr.com/">Blogtrottr</a> will email you when the feed updates, for free. Open that link, paste the feed address above, enter your email, and confirm the message they send you.</p>
+<p><a class=mail href="https://blogtrottr.com/">Get emails with Blogtrottr</a></p>
+</div>
+<h2>Recently at Blind Tiger</h2>
+{"<ol class=act>" + "".join(items) + "</ol>" if items else "<p>Nothing to show yet.</p>"}
+</main>
+<footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. Feed: <a href="/feed.xml">/feed.xml</a></footer>
+</body></html>'''
+    (fdir / "index.html").write_text(html_page)
