@@ -4,7 +4,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 
 ## Pantry: produce
 - sweet potatoes
-- gold potatoes
 - vidalia onion
 
 ## Pantry: cans and jars
@@ -86,7 +85,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - kodiak cakes protein power cakes mix
 
 ## Fridge
-- picanha steaks (2, for Friday)
 - whole milk
 - butter (Kerrygold)
 - heavy cream
@@ -128,7 +126,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - Coca-Cola
 - dry vermouth (Dolin)
 - fresh ginger
-- dry red wine
 
 ## Freezer
 - chicken nuggets (Bare)

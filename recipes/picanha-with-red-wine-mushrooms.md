@@ -2,7 +2,7 @@
 title: Picanha with Red Wine Mushrooms
 slug: picanha-with-red-wine-mushrooms
 type: main
-status: to-try
+status: made
 tags: [beef, french, stovetop, fall, date-night, weekend-project]
 ingredients: [picanha, salt, black pepper, onion, cremini mushrooms, garlic, thyme, red wine, beef stock, butter, potatoes, olive oil]
 serves: 2
@@ -14,11 +14,13 @@ added_by: crews
 via: grok-bot
 owner: crews
 input_type: text
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-10
+rating: 4.5
+cooks: 1
 ---
 Seared picanha with a red wine, mushroom and onion pan sauce made in the beef fat, plus crispy roasted potatoes. Fall steak night.
+
+![Made 2026-11-10](photos/picanha-with-red-wine-mushrooms-2026-11-10.jpg)
 
 ## Original
 Our own recipe. Crews's idea for a fall steak night: picanha, mushrooms, onion and red wine. See Our version.
@@ -56,6 +58,7 @@ Serves 2, about 75 minutes, plus salting the steaks ahead. One oven does both jo
 If the air fryer is free, cook the potatoes there instead (400°F, 20 to 25 minutes, shaking twice) and set the oven to 200°F for the steaks from the start.
 
 ## Notes
+- 2026-11-10 (crews via site, 4.5/5): excellent dinner! bit involved but pan sauce turned out delicious
 - 2026-11-01 (grok-bot): written from Crews's fall picanha idea (mushrooms, onion, red wine). Amounts are ours for 2 steaks. Planned for the week of 2026-11-02.
 - 2026-11-03 (grok-bot): the polenta picanha overcooked after 5 minutes at 275°F, so step 5 now skips the oven for steaks under about 1½ inches and checks temperature much earlier.
 - 2026-11-10 (grok-bot): Crews cooked it and found the old step 5 out of order (pull temp came before the oven step) and the oven temps unclear. Rewrote steps 3 to 6 as a reverse sear at 200°F, pull at 110 to 115°F, then a short render and sear in the stainless pan. Added notes for pre-boiled potatoes and for salting late.
