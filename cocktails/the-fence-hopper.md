@@ -2,7 +2,7 @@
 title: The Fence Hopper
 slug: the-fence-hopper
 type: cocktail
-status: to-try
+status: made
 tags: [bourbon, no-cook, quick-20]
 spirit: bourbon
 ingredients: [bourbon, apple cider, maple syrup, lemon juice, aromatic bitters, ipa beer, cinnamon]
@@ -17,8 +17,13 @@ via: muse
 input_type: instagram-video
 owner: Anders Erickson
 credit: Anders Erickson
+rating: 4
+last_made: 2026-11-12
+cooks: 1
 ---
 Anders Erickson's fall bourbon cocktail topped with IPA. Bourbon, apple cider and maple get shaken, then the beer goes on top.
+
+![Made 2026-11-12](photos/the-fence-hopper-2026-11-12.jpg)
 
 ## Original
 - 1 oz bourbon (he used Still Austin)
@@ -51,4 +56,5 @@ Anders Erickson's fall bourbon cocktail topped with IPA. Bourbon, apple cider an
 4. Grate a little cinnamon over the top.
 
 ## Notes
+- 2026-11-12 (crews via site, 4/5): great idea, execution could be better. prefer campari + olives
 - 2026-11-11 (via muse): from an Instagram reel by @_happyhourharry_. The full spec was in the caption, so nothing was guessed. He frames it as a football-season afternoon drink.
