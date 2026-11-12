@@ -128,6 +128,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - fresh ginger
 - picanha steaks
 - english cucumber
+- bell pepper
 
 ## Freezer
 - chicken nuggets (Bare)
