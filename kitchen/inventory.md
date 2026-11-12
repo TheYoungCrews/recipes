@@ -5,6 +5,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 ## Pantry: produce
 - sweet potatoes
 - vidalia onion
+- yukon gold potatoes
 
 ## Pantry: cans and jars
 - chickpeas
