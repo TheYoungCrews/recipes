@@ -131,6 +131,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - bell pepper
 - green onion
 - cremini mushrooms
+- cucumber
 
 ## Freezer
 - chicken nuggets (Bare)
