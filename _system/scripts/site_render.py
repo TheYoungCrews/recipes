@@ -542,10 +542,11 @@ def follow_page(live, out):
         st = stars(e["rating"]) if e.get("rating") else ""
         note = f'<p class=note>{E(e["note"])}</p>' if e.get("note") and e["kind"] == "rated" else ""
         cat = "cocktail" if e.get("category") == "cocktails" else "recipe"
+        heading = f'<h3 class="tt hand">{E(name)}</h3>' if e.get("photo") else f'<h3 class=sr>{E(name)}</h3>'
         cards.append(
             f'<a class=card href="/r/{E(e["slug"])}">'
             f'<span class=stamp>{badge}</span>{ph}<div class=bd>'
-            f'<h3 class="tt hand">{E(name)}</h3>'
+            f'{heading}'
             f'<div class=tags><span class=tag>{E(badge.lower())}</span><span class=tag>{cat}</span></div>'
             f'{note}<div class=meta><span>{E(_date(e["date"].isoformat()))}</span>{st}</div></div></a>'
         )
