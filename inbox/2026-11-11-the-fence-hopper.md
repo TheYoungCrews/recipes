@@ -1,4 +1,6 @@
 ---
+filed_to: cocktails/the-fence-hopper.md
+filed_at: 2026-11-11
 title: The Fence Hopper
 slug: the-fence-hopper
 type: cocktail
