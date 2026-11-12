@@ -98,7 +98,7 @@ def build():
         draw.text((tx, ty), line, font=title_font, fill=SAGE_D)
         ty += 84
     ty += 8
-    sub = "Get an email when we add a recipe or cocktail, or rate one. At most one a day."
+    sub = "One email on Sunday evening: what we cooked, what's new in the book, and next week's menu."
     for line in wrap(draw, sub, body_font, 500):
         draw.text((tx, ty), line, font=body_font, fill=INK)
         ty += 40

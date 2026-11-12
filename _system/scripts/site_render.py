@@ -445,11 +445,11 @@ def week_page(live, out):
 
 # ---- /follow and /feed.xml: public additions and ratings only (see feed.py)
 EXPECT = {
-    "both": "You'll get an email when we add a new recipe or cocktail, and when we cook and rate one. At most one email a day, bundled if there's more than one. Unsubscribe anytime.",
-    "food": "You'll get an email when we add a new recipe, and when we cook and rate one. Cocktails stay off the list. At most one email a day, bundled if there's more than one. Unsubscribe anytime.",
-    "cocktails": "You'll get an email when we add a new cocktail, and when we mix and rate one. Recipes stay off the list. At most one email a day, bundled if there's more than one. Unsubscribe anytime.",
+    "both": "One email on Sunday: what we cooked and rated, new recipes and cocktails, and next week's menu. Unsubscribe anytime.",
+    "food": "One email on Sunday: the dinners we cooked and rated, new recipes, and next week's menu. Unsubscribe anytime.",
+    "cocktails": "One email on Sunday: the drinks we mixed and rated, new cocktails, and what's on the bar next week. Unsubscribe anytime.",
 }
-OG_DESC = "Get an email when we add a recipe or cocktail, or rate one. At most one a day. Pick food, cocktails, or both."
+OG_DESC = "One email on Sunday evening: what we cooked and rated, new recipes and cocktails, and next week's menu. Pick food, cocktails, or both."
 FOLLOW_CSS = """.follow .ask{margin:-46px auto 0;max-width:760px}
 .follow .lede{margin:0 0 16px;color:#4b463e;font-size:16px}
 .pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px}
@@ -579,7 +579,7 @@ def follow_page(live, out):
 <section><div class=wrap>
 <form id=followform class="sheet ask" method="post" action="/api/follow">
 <h1 class=hand>Follow along with Crews &amp; Anna's kitchen</h1>
-<p class=lede>Get an email when we add a new dish or rate one.</p>
+<p class=lede>One email on Sunday evening: what we cooked, what's new, and what's on the menu next week.</p>
 <div class=pills role=radiogroup aria-label="What to follow">
 <label><input type=radio name=interest value=food> Food</label>
 <label><input type=radio name=interest value=cocktails> Cocktails</label>

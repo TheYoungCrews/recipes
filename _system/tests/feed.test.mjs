@@ -96,7 +96,7 @@ finally:
   assert.doesNotMatch(out.html, /blogtrottr/i);
   assert.match(out.html, /rel="alternate" type="application\/rss\+xml"/);
   assert.match(out.html, /name=interest value=both checked/);
-  assert.match(out.html, /You'll get an email when we add a new recipe or cocktail/);
+  assert.match(out.html, /One email on Sunday: what we cooked and rated, new recipes and cocktails/);
   assert.match(out.html, /property="og:image" content="https:\/\/blind-tiger\.pages\.dev\/follow-og\.png"/);
   assert.match(out.html, /twitter:card" content="summary_large_image"/);
   assert.doesNotMatch(out.html, /—/);
