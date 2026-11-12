@@ -127,6 +127,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - dry vermouth (Dolin)
 - fresh ginger
 - picanha steaks
+- english cucumber
 
 ## Freezer
 - chicken nuggets (Bare)
