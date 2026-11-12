@@ -26,6 +26,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - package trader joe s precooked lentils
 - chicken broth or water
 - yellow curry powder
+- red curry paste
 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
