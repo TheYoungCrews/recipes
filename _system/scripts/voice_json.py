@@ -68,7 +68,7 @@ def write(items, out):
 ## For AI agents
 - Read recipes: https://blind-tiger.pages.dev/recipes.json (full) or https://blind-tiger.pages.dev/recipes-index.json (list)
 - One recipe as a plain page (no JavaScript): https://blind-tiger.pages.dev/r/<slug>, or as markdown: https://blind-tiger.pages.dev/r/<slug>.md
-- A link like https://blind-tiger.pages.dev/#r-<slug> is the same recipe; fetch /r/<slug> instead. List of every page: https://blind-tiger.pages.dev/r/ and https://blind-tiger.pages.dev/sitemap.xml
+- Share and fetch /r/<slug> (or /r/<slug>.md). Old /#r-<slug> links redirect to /r/<slug>. List of every page: https://blind-tiger.pages.dev/r/ and https://blind-tiger.pages.dev/sitemap.xml
 - Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
 - Bulk add: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or paste at https://blind-tiger.pages.dev/add
 - This week's dinners and grocery list: https://blind-tiger.pages.dev/week/ (markdown https://blind-tiger.pages.dev/week.md, JSON https://blind-tiger.pages.dev/week.json)

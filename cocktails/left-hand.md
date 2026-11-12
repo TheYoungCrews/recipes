@@ -10,6 +10,7 @@ ingredients: [chocolate bitters, sweet vermouth, campari, bourbon, luxardo cherr
 serves: 1
 time_minutes: 5
 source: "Home Bartending Mastery, Leandro DiMonriva (Educated Barfly), p. 109"
+source_url: https://www.youtube.com/watch?v=80yOBMqyph8
 source_type: book
 added: 2026-10-14
 added_by: crews

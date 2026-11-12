@@ -10,6 +10,7 @@ time_minutes: 80
 prep_minutes:
 cook_minutes: 80
 source: Instagram story from @theroberts2.0 (screenshots)
+source_url: https://www.instagram.com/theroberts2.0/
 source_type: instagram
 added: 2026-10-14
 added_by: crews

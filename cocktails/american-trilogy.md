@@ -10,6 +10,7 @@ ingredients: [demerara sugar cube, orange bitters, club soda, rye whiskey, apple
 serves: 1
 time_minutes: 5
 source: "Home Bartending Mastery, Leandro DiMonriva (Educated Barfly), p. 61"
+source_url: https://www.youtube.com/shorts/E-o-1gJSwHU
 source_type: book
 added: 2026-10-14
 added_by: crews

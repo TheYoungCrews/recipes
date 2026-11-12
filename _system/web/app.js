@@ -90,10 +90,7 @@ $('#pick').addEventListener('click',()=>{
 });
 // Ingredient checkboxes remember state per recipe on this device
 $$('.ing input').forEach((cb,i)=>{const k="chk:"+cb.name;cb.checked=localStorage.getItem(k)==="1";cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?"1":"0"))});
-// Scroll to top when opening a recipe
-// Cards and answers link to the plain /r/<slug> page (so copied links work everywhere); a plain click opens the in-page view instead.
-document.addEventListener('click',e=>{const a=e.target.closest('a.card,a.ans');if(!a||!a.dataset.slug||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();location.hash='r-'+a.dataset.slug});
-window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#r-'))window.scrollTo(0,0)});
+// Cards and answers link to the canonical /r/<slug> page so a copied or shared URL is always the plain recipe page, not /#r-<slug>.
 })();
 // ---- Sign-in (Google or Ethereum/SIWE) shared by Cooked it and Ask. The server keeps a 30-day HttpOnly session cookie that renews itself with use; signed-in state always comes from GET /api/session.
 (function(){

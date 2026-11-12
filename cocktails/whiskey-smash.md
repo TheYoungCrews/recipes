@@ -10,6 +10,7 @@ ingredients: [mint, lemon, simple syrup, sugar cube, whiskey, crushed ice]
 serves: 1
 time_minutes: 5
 source: "Home Bartending Mastery, Leandro DiMonriva (Educated Barfly), p. 64"
+source_url: https://www.youtube.com/watch?v=4HHiltyubhw
 source_type: book
 added: 2026-10-14
 added_by: crews

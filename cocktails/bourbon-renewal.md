@@ -10,6 +10,7 @@ ingredients: [bourbon, lemon juice, creme de cassis, simple syrup, aromatic bitt
 serves: 1
 time_minutes: 5
 source: Instagram screenshot from @highproofpreacher (post tags @jeffmorgen)
+source_url: https://www.youtube.com/watch?v=UnUgNgFbD6g
 source_type: instagram
 added: 2026-10-14
 added_by: crews

@@ -9,15 +9,16 @@ ingredients: [bourbon, apple cider, maple syrup, lemon juice, aromatic bitters, 
 serves: 1
 time_minutes: 5
 source: https://www.instagram.com/reel/DfnfF-7Pz6p/
+source_url: https://www.youtube.com/watch?v=Eg7DLBgwJqM
 source_type: instagram
 added: 2026-11-11
 added_by: crews
 via: muse
 input_type: instagram-video
-owner: "@_happyhourharry_"
-credit: "@_happyhourharry_"
+owner: Anders Erickson
+credit: Anders Erickson
 ---
-A fall bourbon cocktail topped with IPA. Bourbon, apple cider and maple get shaken, then the beer goes on top. It's Anders Erickson's recipe, made here by Harry (@_happyhourharry_).
+Anders Erickson's fall bourbon cocktail topped with IPA. Bourbon, apple cider and maple get shaken, then the beer goes on top.
 
 ## Original
 - 1 oz bourbon (he used Still Austin)

@@ -10,6 +10,7 @@ ingredients: [jamaican rum, campari, sweet vermouth, orange]
 serves: 1
 time_minutes: 5
 source: "Home Bartending Mastery, Leandro DiMonriva (Educated Barfly), p. 108"
+source_url: https://www.youtube.com/shorts/joe7C9tsbBk
 source_type: book
 added: 2026-10-14
 added_by: crews

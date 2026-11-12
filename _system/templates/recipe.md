@@ -10,6 +10,7 @@ time_minutes:
 prep_minutes:
 cook_minutes:
 source:
+source_url:
 source_type:
 added: YYYY-MM-DD
 added_by:

@@ -58,12 +58,14 @@ serves: 2
 time_minutes: 25                          # total
 prep_minutes: 10                          # optional; only if the source says
 cook_minutes: 15                          # optional; only if the source says
-source: https://www.instagram.com/p/XXXXXXXX/    # canonical post URL, no tracking params (?igsh=..., ?utm_...)
+source: https://www.instagram.com/p/XXXXXXXX/    # the post or page you captured, no tracking params (?igsh=..., ?utm_...)
+source_url: https://www.youtube.com/watch?v=XXXX  # optional: original creator's video, else their YouTube channel, else their Instagram profile
 source_type: instagram                    # instagram | tiktok | youtube | web | book | ai | family | own
 added: YYYY-MM-DD                         # today's date
 added_by: anna                            # the PERSON who sent it: crews | anna | (agent name if self-initiated)
 via: muse/<model name>                    # the agent + model that wrote the file, e.g. muse/gpt-x, instinct/claude-x, grok-bot
-owner: "@creatorhandle"                   # source creator until Crews/Anna adapt it
+owner: "@creatorhandle"                   # original recipe creator (not a reposter) until Crews/Anna adapt it
+credit: "Creator Name"                    # optional public credit; the original creator, never a reposter or the pipeline
 input_type: instagram-video               # what you decoded: instagram-video | instagram-carousel | tiktok | youtube | web-page | photo | screenshot | video-file | text | email
 last_made:
 rating:

@@ -10,6 +10,7 @@ ingredients: [smith & cross rum, aged dark rum, lemon juice, banana liqueur, bla
 serves: 1
 time_minutes: 10
 source: https://www.instagram.com/theeducatedbarfly/
+source_url: https://www.youtube.com/@TheEducatedBarfly
 source_type: instagram
 added: 2026-10-14
 added_by: crews

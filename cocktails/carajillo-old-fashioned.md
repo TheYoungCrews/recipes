@@ -16,7 +16,7 @@ added_by: crews
 via: grok-bot
 input_type: youtube
 owner: "@theeducatedbarfly"
-credit: "@TheEducatedBarfly"
+credit: Educated Barfly
 last_made:
 rating:
 cooks: 0

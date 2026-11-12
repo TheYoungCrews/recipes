@@ -10,6 +10,7 @@ ingredients: [smith & cross rum, aged dark rum, punt e mes, cynar]
 serves: 1
 time_minutes: 5
 source: https://www.youtube.com/@TheEducatedBarfly
+source_url: https://www.youtube.com/watch?v=PTBZIHuYc4M
 source_type: youtube
 added: 2026-10-14
 added_by: crews

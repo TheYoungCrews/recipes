@@ -14,14 +14,15 @@ serves: 2
 time_minutes: 30
 prep_minutes: 10                           # optional integer, only from the source (blank if not given)
 cook_minutes: 20                           # optional integer, only from the source; build warns if prep+cook != time_minutes
-source: https://...                        # URL, "Instagram @handle", "ChatGPT brief", etc.
+source: https://...                        # URL or citation for where we captured it (a post, book page, "ChatGPT brief", etc.)
+source_url: https://...                     # optional public credit link: the original creator's video of this dish/drink, else their YouTube channel, else their Instagram profile. If omitted, a URL in `source` is used. Strip tracking params (?igsh=, ?exln=, utm_...).
 source_type: instagram                     # instagram | tiktok | youtube | web | book | ai | family | own
 added: 2026-10-13                          # YYYY-MM-DD
 added_by: crews                            # PERSON who sent/asked for it: crews | anna | agent name if self-initiated
 via: grok-bot                              # agent/model that wrote the file, e.g. muse/<model>, instinct/<model>, grok-bot, human
 input_type: text                           # instagram-video | instagram-carousel | tiktok | youtube | web-page | photo | screenshot | video-file | text | email
 owner: kelly-gellner                      # whose recipe it is in practice: anna | crews | anna+crews | <creator name/@handle> while unadapted
-credit: "White Oak Pastures"                 # optional public credit line shown on the site; never the pipeline (no ChatGPT/Muse/notes/email). Omit for own/AI recipes ("By Crews"/"By Anna" is derived from owner; owner mom -> "Mom's recipe").
+credit: "White Oak Pastures"                 # optional public credit line shown on the site. Credit the original recipe creator, not a reposter or someone who filmed a later version. Never the pipeline (no ChatGPT/Muse/notes/email). Omit for own/AI recipes ("By Crews"/"By Anna" is derived from owner; owner mom -> "Mom's recipe").
 last_made:                                 # YYYY-MM-DD or blank
 rating:                                    # 1-5 or blank (latest overall)
 cooks: 0                                   # times made
@@ -54,7 +55,10 @@ Landing zone for outside agents (Muse, Instinct, ...), which may write **only** 
 Commit message: `inbox: <title> (via <agent>)`. Grok Bot's hourly routine validates each file, files it into `recipes/` / `cocktails/` (or applies the feedback), and adds `filed_to: <path>` at the top. Inbox files are never deleted.
 
 ## Owner
-`owner` is not `source` (where it came from) and not `added_by` (who sent it). New intake defaults to the source creator (name or @handle). Switch it to `anna`, `crews` or `anna+crews` once they adapt it, i.e. the first real feedback that changes Our version. Required (build.py fails without it).
+`owner` is not `source` (where it came from) and not `added_by` (who sent it). New intake defaults to the original recipe creator (name or @handle), not a reposter. Switch it to `anna`, `crews` or `anna+crews` once they adapt it, i.e. the first real feedback that changes Our version. Required (build.py fails without it).
+
+## Credit link
+The site's owner/credit line links to `source_url` if set, otherwise to a URL in `source`. Prefer the original creator's video of this dish or drink. If that is not findable, use their YouTube channel if they make videos, otherwise their Instagram profile. Never invent a URL. `source` can still record the post you actually captured it from (for example a friend's reel of someone else's recipe).
 
 ## Times
 `time_minutes` is the total. `prep_minutes` and `cook_minutes` are optional whole numbers, copied from the source only (blank if the source doesn't say). The build warns if prep + cook differs from the total, and suggests the time tag from the total: 20 or less is `quick-20`, 30 or less `weeknight-30`, 45 or less `weeknight-45`, anything longer `weekend-project`.

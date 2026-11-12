@@ -9,6 +9,7 @@ glass:
 ingredients: []
 serves: 1
 source:
+source_url:
 source_type:
 added: YYYY-MM-DD
 added_by:
