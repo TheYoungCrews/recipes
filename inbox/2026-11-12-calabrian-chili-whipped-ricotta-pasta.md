@@ -1,3 +1,5 @@
+filed_to: recipes/calabrian-chili-whipped-ricotta-pasta.md
+filed_at: 2026-11-12
 ---
 title: Calabrian Chili Whipped Ricotta Pasta
 slug: calabrian-chili-whipped-ricotta-pasta

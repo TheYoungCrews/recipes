@@ -1,3 +1,5 @@
+filed_to: cocktails/rosita-milk-washed.md
+filed_at: 2026-11-12
 ---
 title: Rosita (Milk Washed)
 slug: rosita-milk-washed
