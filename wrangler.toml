@@ -11,3 +11,8 @@ binding = "AI"
 [[kv_namespaces]]
 binding = "ASK_KV"
 id = "e70a2891e29545dfb1708a936e3add38"
+
+# /follow subscriber list (free KV). Emails never go in the repo.
+[[kv_namespaces]]
+binding = "FOLLOW_KV"
+id = "705a656758a549bd962ea0939da5f1b0"

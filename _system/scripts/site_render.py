@@ -444,48 +444,159 @@ def week_page(live, out):
 
 
 # ---- /follow and /feed.xml: public additions and ratings only (see feed.py)
-FOLLOW_CSS = """.act{list-style:none;padding:0;margin:24px 0 0}.act li{padding:16px 0;border-bottom:1px dashed #e9e1cf}
-.act time{display:block;color:#7a7266;font-size:14px;margin-bottom:2px}.act p{margin:6px 0 0}
-.boxy{background:#fff;border:1px solid #e9e1cf;border-radius:12px;padding:16px 18px;margin:16px 0 20px}
-.boxy h2{margin:0 0 8px;font-size:28px}.boxy p{margin:0 0 10px}.boxy p:last-child{margin:0}
-.boxy code{display:block;margin:8px 0 0;padding:8px 10px;background:#fbf6ea;border-radius:8px;word-break:break-all;font-size:14px}
-.mail{display:inline-block;margin-top:6px;background:#7f9a7a;color:#fff;text-decoration:none;border-radius:999px;padding:8px 16px;font-weight:600}
-.mail:visited{color:#fff}"""
+EXPECT = {
+    "both": "You'll get an email when we add a new recipe or cocktail, and when we cook and rate one. At most one email a day, bundled if there's more than one. Unsubscribe anytime.",
+    "food": "You'll get an email when we add a new recipe, and when we cook and rate one. Cocktails stay off the list. At most one email a day, bundled if there's more than one. Unsubscribe anytime.",
+    "cocktails": "You'll get an email when we add a new cocktail, and when we mix and rate one. Recipes stay off the list. At most one email a day, bundled if there's more than one. Unsubscribe anytime.",
+}
+OG_DESC = "Get an email when we add a recipe or cocktail, or rate one. At most one a day. Pick food, cocktails, or both."
+FOLLOW_CSS = """.follow .ask{margin:-46px auto 0;max-width:760px}
+.follow .lede{margin:0 0 16px;color:#4b463e;font-size:16px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px}
+.pills label{flex:1;min-width:88px;text-align:center;font:700 14px/1 -apple-system,sans-serif;padding:10px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.pills input{position:absolute;opacity:0;pointer-events:none}
+.pills label:has(input:checked),.pills label.on{background:var(--sage-d);color:#fff;border-color:var(--sage-d)}
+.expect{margin:0 0 16px;color:var(--mute);font-size:14px;line-height:1.45}
+.askbox button.go{width:auto;padding:0 18px;font:700 15px/38px -apple-system,sans-serif;cursor:pointer}
+.hp{position:absolute;left:-9999px;height:0;width:0;opacity:0}
+.fmsg{margin:12px 0 0;min-height:1.2em;font-size:14px;color:var(--mute)}
+.fmsg.ok{color:var(--sage-d);font:700 26px/1.3 Hand,cursive}
+.fmsg.err{color:var(--red);font-weight:600}
+#followform.done .askbox,#followform.done .pills{display:none}
+#followform.done .expect{display:none}
+.follow .grid{margin-top:10px}
+.card .note{margin:0;color:#4b463e;font-size:13px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rssq{text-align:center;margin:28px 0 0;font-size:12px;color:var(--mute)}
+.rssq a{color:var(--mute);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+"""
+FOLLOW_JS = r"""
+(function(){
+  var form = document.getElementById("followform");
+  if (!form) return;
+  var expect = document.getElementById("expect");
+  var msg = document.getElementById("fmsg");
+  var interestOf = function(){ var el = form.querySelector("input[name=interest]:checked"); return (el && el.value) || "both"; };
+  var textFor = function(v){ return expect.getAttribute("data-" + v) || expect.getAttribute("data-both"); };
+  var paint = function(){ expect.textContent = textFor(interestOf()); };
+  form.addEventListener("change", paint);
+  paint();
+  var params = new URLSearchParams(location.search);
+  if (params.get("ok")) {
+    form.classList.add("done");
+    msg.className = "fmsg ok";
+    msg.textContent = "You're in. " + textFor(params.get("interest") || "both");
+    return;
+  }
+  if (params.get("err") === "email") { msg.className = "fmsg err"; msg.textContent = "That email doesn't look right."; }
+  if (params.get("err") === "slow") { msg.className = "fmsg err"; msg.textContent = "Give it a minute, then try again."; }
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    msg.textContent = ""; msg.className = "fmsg";
+    var fd = new FormData(form);
+    var body = { email: fd.get("email"), interest: fd.get("interest") || "both", website: fd.get("website") || "" };
+    var btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    try {
+      var r = await fetch("/api/follow", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      var d = await r.json().catch(function(){ return {}; });
+      if (r.ok && d.ok) {
+        form.classList.add("done");
+        msg.className = "fmsg ok";
+        msg.textContent = (d.already ? "You're already on the list. " : "You're in. ") + textFor(body.interest);
+      } else {
+        msg.className = "fmsg err";
+        msg.textContent = d.error || "Something went wrong. Try again in a minute.";
+        btn.disabled = false;
+      }
+    } catch (err) {
+      msg.className = "fmsg err";
+      msg.textContent = "Something went wrong. Try again in a minute.";
+      btn.disabled = false;
+    }
+  });
+})();
+"""
+
+def kitchen_css():
+    """Home-page CSS with the Hand font inlined, paths fixed for pages other than /."""
+    css = (SITE / "style.css").read_text().replace("/*FONT*/", base64.b64encode((SITE / "caveat.woff2").read_bytes()).decode())
+    return css.replace("url(tablecloth.jpg)", "url(/tablecloth.jpg)")
 
 def follow_page(live, out):
-    """Write /feed.xml and /follow from the same public activity list."""
+    """Write /feed.xml, /follow and the follow Open Graph image."""
     import feed
     ev = feed.events(live)
     (out / "feed.xml").write_text(feed.rss(ev), encoding="utf-8")
+    og = SITE / "follow-og.png"
+    if og.exists():
+        shutil.copy2(og, out / "follow-og.png")
     fdir = out / "follow"
     shutil.rmtree(fdir, ignore_errors=True)
     fdir.mkdir(parents=True)
-    items = []
-    for e in ev:
-        note = f"<p>{E(e['note'])}</p>" if e.get("note") and e["kind"] == "rated" else ""
-        items.append(f'<li><time datetime="{e["date"].isoformat()}">{_date(e["date"].isoformat())}</time>'
-                     f'<a href="/r/{E(e["slug"])}">{E(e["title"])}</a>{note}</li>')
-    feed_url = f"{BASE}/feed.xml"
-    html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Follow along · Crews &amp; Anna's Kitchen</title>
-<meta name=description content="Get notified when Anna and Crews add or rate a dish.">
-<link rel=canonical href="{BASE}/follow">{RSS}
-<meta name=theme-color content="#7f9a7a"><link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
-<style>{PAGE_CSS}{FOLLOW_CSS}</style></head>
-<body><main>
-<nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/r/">All recipes</a></nav>
-<h1>Follow along</h1>
-<p>This is what Anna and Crews are cooking and drinking. When a new dish or cocktail goes into the book, or when we rate one, it shows up here.</p>
-<div class=boxy>
-<h2>Get notified</h2>
-<p><a href="/feed.xml">RSS feed</a>. Subscribe in any feed reader with this address:</p>
-<code>{E(feed_url)}</code>
-<p style="margin-top:14px">Want it in your inbox? We don't keep a mailing list. <a href="https://blogtrottr.com/">Blogtrottr</a> will email you when the feed updates, for free. Open that link, paste the feed address above, enter your email, and confirm the message they send you.</p>
-<p><a class=mail href="https://blogtrottr.com/">Get emails with Blogtrottr</a></p>
+    cards = []
+    for e in ev[:8]:
+        name = e.get("dish") or e["title"]
+        ph = (f'<div class=ph style="background-image:url(/{E(e["photo"])})" role=img aria-label="{E(name)}"></div>'
+              if e.get("photo") else f'<div class="ph ging"><span class=hand>{E(name)}</span></div>')
+        badge = "Rated" if e["kind"] == "rated" else "Added"
+        st = stars(e["rating"]) if e.get("rating") else ""
+        note = f'<p class=note>{E(e["note"])}</p>' if e.get("note") and e["kind"] == "rated" else ""
+        cat = "cocktail" if e.get("category") == "cocktails" else "recipe"
+        cards.append(
+            f'<a class=card href="/r/{E(e["slug"])}">'
+            f'<span class=stamp>{badge}</span>{ph}<div class=bd>'
+            f'<h3 class="tt hand">{E(name)}</h3>'
+            f'<div class=tags><span class=tag>{E(badge.lower())}</span><span class=tag>{cat}</span></div>'
+            f'{note}<div class=meta><span>{E(_date(e["date"].isoformat()))}</span>{st}</div></div></a>'
+        )
+    og_title = "Follow along with Crews & Anna's kitchen"
+    css = kitchen_css() + FOLLOW_CSS
+    xe = lambda s: html.escape(s, False)
+    t, d, u, img = xe(og_title), xe(OG_DESC), f"{BASE}/follow", f"{BASE}/follow-og.png"
+    html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{t}</title>
+<meta name=description content="{d}">
+<link rel=canonical href="{u}">{RSS}
+<meta name=theme-color content="#7f9a7a">
+<meta property="og:title" content="{t}">
+<meta property="og:description" content="{d}">
+<meta property="og:url" content="{u}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{img}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{t}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{t}">
+<meta name="twitter:description" content="{d}">
+<meta name="twitter:image" content="{img}">
+<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
+<style>{css}</style></head>
+<body class=follow>
+<header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div>
+<p class=x2sub><a href="/">the kitchen</a> · <a href="/r/">all recipes</a></p></div></header>
+<section><div class=wrap>
+<form id=followform class="sheet ask" method="post" action="/api/follow">
+<h1 class=hand>Follow along with Crews &amp; Anna's kitchen</h1>
+<p class=lede>Get an email when we add a new dish or rate one.</p>
+<div class=pills role=radiogroup aria-label="What to follow">
+<label><input type=radio name=interest value=food> Food</label>
+<label><input type=radio name=interest value=cocktails> Cocktails</label>
+<label><input type=radio name=interest value=both checked> Both</label>
 </div>
-<h2>Recently at Blind Tiger</h2>
-{"<ol class=act>" + "".join(items) + "</ol>" if items else "<p>Nothing to show yet.</p>"}
-</main>
-<footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. Feed: <a href="/feed.xml">/feed.xml</a></footer>
+<p class=expect id=expect data-both="{xe(EXPECT['both'])}" data-food="{xe(EXPECT['food'])}" data-cocktails="{xe(EXPECT['cocktails'])}">{xe(EXPECT['both'])}</p>
+<div class=askbox>
+<input type=email name=email autocomplete=email inputmode=email required placeholder="Your email" aria-label="Your email">
+<input class=hp type=text name=website tabindex=-1 autocomplete=off aria-hidden=true>
+<button class=go type=submit>Follow</button>
+</div>
+<p class=fmsg id=fmsg role=status></p>
+</form>
+<h2 class=hand>Recently <small>what's new</small></h2>
+{('<div class=grid>' + ''.join(cards) + '</div>') if cards else '<p class=nores>Nothing to show yet.</p>'}
+<p class=rssq><a href="/feed.xml">RSS feed</a></p>
+<footer>made at home <span class=heart>♥</span> · <a href="/">Crews &amp; Anna's Kitchen</a></footer>
+</div></section>
+<script>{FOLLOW_JS}</script>
 </body></html>'''
     (fdir / "index.html").write_text(html_page)

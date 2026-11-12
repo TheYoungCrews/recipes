@@ -15,7 +15,7 @@ export function whoForApiKey(authHeader, keysEnv) {
   return null;
 }
 
-function timingSafeEqual(a, b) {
+export function timingSafeEqual(a, b) {
   const enc = new TextEncoder();
   const aa = enc.encode(a), bb = enc.encode(b);
   if (aa.length !== bb.length) {

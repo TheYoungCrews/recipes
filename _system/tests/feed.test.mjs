@@ -67,6 +67,7 @@ test("RSS is valid XML with stable guids, newest first, and a cap", () => {
   const guids = [...xml.matchAll(/<guid[^>]*>([^<]*)<\/guid>/g)].map(m => m[1]);
   assert.equal(new Set(guids).size, guids.length);
   assert.doesNotMatch(xml, /plans\/|inventory\.md|grocery/i);
+  assert.match(xml, /<category>food<\/category>/);
   const n = JSON.parse(py(`import xml.etree.ElementTree as ET, json\nprint(json.dumps(len(ET.fromstring(${JSON.stringify(xml)}).findall("channel/item"))))`));
   assert.equal(n, 50);
 });
@@ -90,10 +91,16 @@ finally:
   assert.equal(out.n, 2);
   assert.match(out.xml, /Rated 4.5\/5: Test Steak/);
   assert.match(out.xml, /<guid isPermaLink="false">https:\/\/blind-tiger\.pages\.dev\/r\/test-steak/);
-  assert.match(out.html, /Follow along/);
+  assert.match(out.html, /Follow along with Crews &amp; Anna's kitchen/);
   assert.match(out.html, /href="\/feed\.xml"/);
-  assert.match(out.html, /blogtrottr\.com/);
+  assert.doesNotMatch(out.html, /blogtrottr/i);
   assert.match(out.html, /rel="alternate" type="application\/rss\+xml"/);
+  assert.match(out.html, /name=interest value=both checked/);
+  assert.match(out.html, /You'll get an email when we add a new recipe or cocktail/);
+  assert.match(out.html, /property="og:image" content="https:\/\/blind-tiger\.pages\.dev\/follow-og\.png"/);
+  assert.match(out.html, /twitter:card" content="summary_large_image"/);
   assert.doesNotMatch(out.html, /—/);
   assert.match(out.hdr, /\/feed\.xml\n\s*Content-Type: application\/rss\+xml; charset=utf-8/);
+  assert.match(out.hdr, /\/follow-og\.png\n\s*Content-Type: image\/png/);
+  assert.match(out.xml, /<category>/);
 });

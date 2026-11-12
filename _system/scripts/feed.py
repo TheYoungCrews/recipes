@@ -41,6 +41,7 @@ def events(items, cap=FEED_CAP):
             continue
         url = f"{BASE}/r/{slug}"
         kind = "cocktail" if r.get("type") in DRINK else "recipe"
+        category = "cocktails" if r.get("type") in DRINK or r.get("dir") == "cocktails" else "food"
         added = _day(r.get("added"))
         if added:
             P = site_render.recipe_parts(r)
@@ -49,10 +50,14 @@ def events(items, cap=FEED_CAP):
                 "kind": "added",
                 "date": added,
                 "title": f"Added: {title}",
+                "dish": title,
                 "link": url,
                 "guid": f"{url}#added-{added.isoformat()}",
                 "note": note,
                 "slug": slug,
+                "category": category,
+                "rating": "",
+                "photo": r.get("photo") or "",
             })
         else:
             P = None
@@ -72,10 +77,14 @@ def events(items, cap=FEED_CAP):
                 "kind": "rated",
                 "date": dt,
                 "title": f"Rated {rate}/5: {title}",
+                "dish": title,
                 "link": url,
                 "guid": guid,
                 "note": _plain(d.get("text") or ""),
                 "slug": slug,
+                "category": category,
+                "rating": rate,
+                "photo": r.get("photo") or "",
             })
     ev.sort(key=lambda e: (-e["date"].toordinal(), 0 if e["kind"] == "rated" else 1, e["title"].lower()))
     return ev[:cap]
@@ -114,6 +123,8 @@ def rss(ev, now=None):
         ]
         if e.get("note"):
             lines.append(_el("description", e["note"]))
+        if e.get("category"):
+            lines.append(_el("category", e["category"]))
         lines.append("</item>")
     lines += ["</channel>", "</rss>", ""]
     return "\n".join(lines)
