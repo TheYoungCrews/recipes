@@ -129,6 +129,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - picanha steaks
 - english cucumber
 - bell pepper
+- green onion
 
 ## Freezer
 - chicken nuggets (Bare)
