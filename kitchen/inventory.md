@@ -24,6 +24,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - pumpkin pie spice
 - beef stock
 - package trader joe s precooked lentils
+- chicken broth or water
 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
