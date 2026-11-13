@@ -39,7 +39,7 @@ Spooky season warm-weather Jamaican banana and black tea rum punch (@theeducated
 
 ## Our version
 - [x] 1 oz Jamaican rum (Smith & Cross is great)
-- [ ] 1 oz dark rum (any aged dark rum; a Demerara if you have one)
+- [ ] 1 oz aged dark rum (Demerara preferable)
 - [x] 1 oz fresh lemon juice
 - [ ] 0.5 oz banana liqueur (Giffard Banane du Brésil works great)
 - [x] 0.5 oz black tea simple syrup (2 black tea bags steeped 2 min in 150ml water + 150g sugar)
