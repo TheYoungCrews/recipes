@@ -1,6 +1,11 @@
 // node --test _system/tests/feed.test.mjs  Public RSS feed (additions + ratings).
 import test from "node:test"; import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const root = path.resolve(fileURLToPath(new URL(".", import.meta.url)), "../..");
 
 const py = (code) => execFileSync("python3", ["-c", `import sys, json, datetime\nsys.path.insert(0, "_system/scripts")\nimport feed, site_render\n${code}`], { encoding: "utf8" });
 const parse = (code) => JSON.parse(py(`print(json.dumps(${code}, default=str))`));
@@ -103,4 +108,16 @@ finally:
   assert.match(out.hdr, /\/feed\.xml\n\s*Content-Type: application\/rss\+xml; charset=utf-8/);
   assert.match(out.hdr, /\/follow-og\.png\n\s*Content-Type: image\/png/);
   assert.match(out.xml, /<category>/);
+});
+
+test("home page has a quiet Sunday follow-along note linking to /follow", () => {
+  const render = readFileSync(path.join(root, "_system/scripts/site_render.py"), "utf8");
+  const css = readFileSync(path.join(root, "_system/web/style.css"), "utf8");
+  const home = render.slice(render.indexOf("home = f"), render.indexOf("views = "));
+  assert.match(home, /class=followline/);
+  assert.match(home, /Get a Sunday note with what we cooked, how we rated it, and next week's menu/);
+  assert.match(home, /href="\/follow">Follow along</);
+  assert.doesNotMatch(home, /—/);
+  assert.doesNotMatch(home, /daily|every time we cook|each dish we/i);
+  assert.match(css, /\.followline\{/);
 });

@@ -236,6 +236,7 @@ def render(items, staples, root):
 <div class=askbox><input id=q type=search enterkeyhint=search autocomplete=off placeholder="What are we feeling tonight?" aria-label="Ask the kitchen"><button aria-label=Ask>↑</button></div>
 <div class=hints><button type=button class=hint data-q="what can I make with what's in the pantry">🥬 from the pantry</button><button type=button class=hint data-q="something quick tonight">⏱ under 30 min</button><button type=button class=hint data-q="a cocktail for two">🍸 a drink for two</button></div>
 <div id=answer class=answer hidden></div><div id=asksign class=asksign hidden><span class=asksay>Sign in to ask the kitchen helper (we're matching by keyword for now).</span> <button type=button id=asksignbtn class=hand>sign in to ask</button><div class=gsi></div></div></form>
+<p class=followline>Get a Sunday note with what we cooked, how we rated it, and next week's menu. <a href="/follow">Follow along</a></p>
 {f'<h2 class=hand>This {season} <small>{len(picks)} picks</small></h2><div class=row>{"".join(card(r) for r in picks)}</div>' if picks else ""}
 <h2 class=hand>The kitchen <small>{len(food)} recipes</small></h2>
 <div class=tools><div class=chips>{chip_html}</div><select id=sort class=sort aria-label="Sort recipes"><option value="">our picks</option><option value=quick>quickest first</option><option value=long>longest first</option></select><button id=pick type=button class="pick hand">🎲 what's for dinner?</button></div>
