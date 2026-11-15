@@ -34,3 +34,12 @@ Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` 
 - canned tomatoes
 - liquid aminos | trader-joes
 - sambal oelek | trader-joes
+- garlic powder
+- onion powder
+- paprika
+- chili powder
+- dried oregano
+- dried thyme
+- bay leaves
+- cinnamon
+- sugar
