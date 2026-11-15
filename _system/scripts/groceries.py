@@ -353,7 +353,7 @@ def build(plan=None, today=None, inv=None):
 
 def to_md(g, base="https://blind-tiger.pages.dev"):
     d = datetime.date.fromisoformat(g["starts"])
-    L = [f"# This week: {d.strftime('%b %-d')} to {(d + datetime.timedelta(days=6)).strftime('%b %-d, %Y')}", "",
+    L = [f"# What’s Cooking: {d.strftime('%b %-d')} to {(d + datetime.timedelta(days=6)).strftime('%b %-d, %Y')}", "",
          f"Dinners for {g['serves']}. Plan file: {g['plan_file']}", "", "## Dinners", ""]
     L += [f"- {m['night']}: {m['title']} ({base}/r/{m['slug']})" for m in g["meals"] if m["kind"] == "dinner"] + [""]
     ex = [m for m in g["meals"] if m["kind"] == "extra"]

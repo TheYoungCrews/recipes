@@ -13,7 +13,7 @@
     var on = inPlan(b.dataset.weekSlug), short = b.hasAttribute("data-short");
     b.classList.toggle("on", on);
     b.setAttribute("aria-pressed", on ? "true" : "false");
-    b.textContent = on ? (short ? "✓ this week" : "✓ On this week's list (tap to remove)") : (short ? "+ this week" : "+ Add to this week");
+    b.textContent = on ? (short ? "✓ What’s Cooking" : "✓ On What’s Cooking (tap to remove)") : (short ? "+ What’s Cooking" : "+ Add to What’s Cooking");
   }
   function say(b, t) { var m = b.parentNode.querySelector(".wkmsg"); if (m) m.textContent = t; }
   function start() {

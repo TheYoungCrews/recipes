@@ -120,7 +120,7 @@ Then reply to the sender in one line: what you saved, what to buy, and anything 
      - Agents can still edit the file by hand after a cook or shop if something the rules left alone was actually used up.
 5. **After cooking:** feedback goes into the recipe's Notes as in section 2. Rating the dish on the site also updates inventory as above. The page for the week is https://blind-tiger.pages.dev/week/.
 6. **Bakes and sides:** anything without a night goes in `extras: [slug]`, not `recipes`. It still feeds the grocery list.
-7. **Plan API (agents with a Recipe API key, and the site's "+ Add to this week" button):**
+7. **Plan API (agents with a Recipe API key, and the site's "+ Add to What’s Cooking" button):**
    - `GET https://blind-tiger.pages.dev/api/plan` with `Authorization: Bearer <key>` returns the live plan from the repo: `{week, starts, path, exists, recipes, nights, extras}`. Without auth, read https://blind-tiger.pages.dev/week.json instead (it lags a build behind).
    - `POST https://blind-tiger.pages.dev/api/plan` with the same header and JSON `{"slug": "squash-soup", "action": "add"}`. `action` is `add` or `remove`. Optional `as`: `dinner` or `extra` (default: `main` and `soup-bowl` are dinners, other types are extras). Optional `night`: `mon`..`sun` or `any` (default `any`).
    - Reply: `{ok, changed, week, path, as, in_plan, plan, commit}`. It commits only `plans/YYYY-Www.md` (`plan: add <slug> to YYYY-Www (<who> via api)`), creating the week's file if needed. 401 without a key or session, 404 for a slug not in recipes/.
