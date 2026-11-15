@@ -138,6 +138,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - cremini mushrooms
 - cucumber
 - shiitake mushrooms
+- lemon
 
 ## Freezer
 - chicken nuggets (Bare)
