@@ -153,3 +153,4 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - fully cooked bratwurst
 - bourbon
 - angostura bitters
+- ipa
