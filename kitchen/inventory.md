@@ -142,6 +142,17 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - bellwether farms a2 organic whole milk yogurt
 
 ## Freezer
+- Triple Threat ground multi-species blend (White Oak Pastures, 2)
+- bone-in ribeye steak (White Oak Pastures)
+- Denver steaks (White Oak Pastures, 2)
+- chuck eye steak (White Oak Pastures)
+- chuck roast (White Oak Pastures)
+- bone-in short ribs (White Oak Pastures, 2)
+- osso buco beef shanks (White Oak Pastures)
+- sage breakfast sausage (White Oak Pastures, 2)
+- pork bratwurst links (White Oak Pastures)
+- blackberry wine sausage links (White Oak Pastures)
+- ground chicken (White Oak Pastures, 2)
 - chicken nuggets (Bare)
 - Argentine red shrimp
 - ground beef (White Oak Pastures)
