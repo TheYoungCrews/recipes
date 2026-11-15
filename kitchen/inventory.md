@@ -139,6 +139,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - cucumber
 - shiitake mushrooms
 - lemon
+- bellwether farms a2 organic whole milk yogurt
 
 ## Freezer
 - chicken nuggets (Bare)
