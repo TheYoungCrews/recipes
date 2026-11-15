@@ -151,3 +151,4 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 
 ## New
 - fully cooked bratwurst
+- bourbon
