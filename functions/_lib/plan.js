@@ -22,15 +22,16 @@ export function mondayOf(week) {             // "2026-W45" -> "2026-11-02"
 }
 /** names: plan filenames in plans/ ("2026-W45.md"). Returns { week, starts, exists }. */
 export function pickWeek(names, today) {
+  // Sunday is planning day: from Sunday on, "current" means the week starting tomorrow.
+  if (parseDay(today).getUTCDay() === 0) { const m = parseDay(today); m.setUTCDate(m.getUTCDate() + 1); today = ymd(m); }
   const weeks = names.map(n => /^(\d{4}-W\d{2})\.md$/.exec(n)).filter(Boolean).map(m => ({ week: m[1], starts: mondayOf(m[1]) })).sort((a, b) => a.starts < b.starts ? -1 : 1);
   const t = parseDay(today);
   const cur = weeks.find(w => { const s = parseDay(w.starts); return s <= t && t - s < 7 * 864e5; });
   if (cur) return { ...cur, exists: true };
   const up = weeks.find(w => w.starts > today);
   if (up) return { ...up, exists: true };
-  // No plan yet: this week, or next week if today is Sunday (planning day).
-  const next = new Date(t); if (t.getUTCDay() === 0) next.setUTCDate(t.getUTCDate() + 1);
-  return { ...isoWeek(ymd(next)), exists: false };
+  // No plan yet: this week (Sunday already counts as next week, see above).
+  return { ...isoWeek(today), exists: false };
 }
 export function newPlan({ week, starts }) {
   return `---\nweek: ${week}\nstarts: ${starts}\nserves: 2\nrecipes: []\nnights: []\nextras: []\non_hand: []\nadd: []\n---\n`;

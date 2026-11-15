@@ -13,6 +13,8 @@ test("iso weeks", () => {
 test("pick week", () => {
   assert.deepEqual(pickWeek(["README.md", "2026-W44.md", "2026-W45.md"], "2026-11-03"), { week: "2026-W45", starts: "2026-11-02", exists: true });
   assert.equal(pickWeek(["2026-W45.md"], "2026-11-01").week, "2026-W45");          // Sunday before: upcoming
+  assert.deepEqual(pickWeek(["2026-W46.md"], "2026-11-15"), { week: "2026-W47", starts: "2026-11-16", exists: false }); // Sunday flips even when this week has a plan
+  assert.deepEqual(pickWeek(["2026-W46.md", "2026-W47.md"], "2026-11-15"), { week: "2026-W47", starts: "2026-11-16", exists: true });
   assert.deepEqual(pickWeek(["2026-W40.md"], "2026-11-08"), { week: "2026-W46", starts: "2026-11-09", exists: false }); // Sunday: next week
   assert.deepEqual(pickWeek([], "2026-11-04"), { week: "2026-W45", starts: "2026-11-02", exists: false });
 });

@@ -38,7 +38,7 @@ test("inventory.md: parentheticals dropped, matching items leave the list and sh
 f = pathlib.Path(tempfile.mkdtemp()) / "inv.md"
 f.write_text("# Inventory\\n\\n## Fridge\\n- butter (Kerrygold)\\n- broccolini\\n- picanha steaks (4: 2 salted for Tuesday, 2 for Friday)\\n- thyme\\n- whole milk\\n")
 inv = G.inventory(f)
-p = G.current()
+import datetime; p = G.current(datetime.date(2026, 11, 10))
 g = G.build(p, inv=["broccolini", "thyme", "cremini mushrooms"])
 g0 = G.build(p, inv=[])
 print(json.dumps({"inv": inv, "lines": [i["line"] for i in g["detail"]], "lines0": [i["line"] for i in g0["detail"]], "house": g["in_house"],

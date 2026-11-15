@@ -257,14 +257,22 @@ def plans():
     return out
 
 def current(today=None):
-    """The plan whose week contains today; else the next upcoming one; else the latest past one."""
-    today = today or datetime.date.today(); ps = plans()
+    """The plan whose week contains today; else the next upcoming one; else the latest past one.
+    Sunday is planning day: from Sunday on (New York time), the week starting tomorrow is current,
+    and if it has no plan yet there is no current plan."""
+    if today is None:
+        from zoneinfo import ZoneInfo
+        today = datetime.datetime.now(ZoneInfo("America/New_York")).date()
+    sunday = today.weekday() == 6
+    if sunday: today += datetime.timedelta(days=1)
+    ps = plans()
     if not ps: return None
     def start(p): return datetime.date.fromisoformat(p[1]["starts"])
     for p in ps:
         if start(p) <= today <= start(p) + datetime.timedelta(days=6): return p
     up = [p for p in ps if start(p) > today]
-    return min(up, key=start) if up else max(ps, key=start)
+    if up: return min(up, key=start)
+    return None if sunday else max(ps, key=start)
 
 def load_recipes():
     rs = {}
