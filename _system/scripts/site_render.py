@@ -165,6 +165,14 @@ def cook_form(r, hidden=False):
             '<div class=r><label class=b1>📷 Add or drop photo<input type=file accept="image/*" hidden></label><button class=b2 disabled>Log it</button></div>\n'
             '<div class=gsi></div><p class=cmsg role=status></p></form>')
 
+def ask_form(r, hidden=False):
+    """The per-recipe "Ask about this" box, shared by the home page view and /r/<slug>.
+    hidden=True keeps it off the page without JavaScript; cook.js unhides it."""
+    return (f'<form class=askr data-slug="{E(r["slug"])}"{" hidden" if hidden else ""}>'
+            '<h4 class=hand>Ask about this</h4>'
+            '<div class=askrow><input maxlength=500 placeholder="Out of something? Doubling it?" aria-label="Ask about this recipe"><button aria-label=Ask>↑</button></div>'
+            '<p class=askans role=status hidden></p><div class=gsi></div></form>')
+
 
 def recipe_view(r, staples):
     P = recipe_parts(r)
@@ -198,7 +206,7 @@ def recipe_view(r, staples):
 {ours_html}{orig_html}
 <h3 class="sec hand">Cook diary</h3><div class=diary>{diary_html}</div>
 {cook_form(r)}
-<form class=askr data-slug="{E(r["slug"])}"><h4 class=hand>Ask about this</h4><div class=askrow><input maxlength=500 placeholder="Out of something? Doubling it?" aria-label="Ask about this recipe"><button aria-label=Ask>↑</button></div><p class=askans role=status hidden></p><div class=gsi></div></form>
+{ask_form(r)}
 {src}</div></div></div></article>'''
 
 def groceries_inventory(root):
@@ -360,6 +368,7 @@ def recipe_page(r, P):
         body.append("<ul class=diary>" + "".join(items) + "</ul>")
     else: body.append("<p>Not cooked yet.</p>")
     body.append(cook_form(r, hidden=True))   # same form + /api/cook as the home page; cook.js shows it, so no-JS readers see a plain page
+    body.append(ask_form(r, hidden=True))    # same Ask about this box as the home page view; cook.js shows it and handles sign-in
     t, dsc = E(title), E(desc)
     return f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="{dsc}"><link rel=canonical href="{url}">
@@ -373,17 +382,17 @@ def recipe_page(r, P):
 </main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. <a href="/follow">Follow along</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script></body></html>'''
 
 def cook_js():
-    """/cook.js: app.js's shared sign-in block and its Cooked it block, unchanged, so /r/<slug> pages log cooks
-    through the same code, /api/cook endpoint and sign-in as the home page (no second implementation)."""
+    """/cook.js: app.js's shared sign-in block, its Cooked it block and its Ask about this block, unchanged, so /r/<slug> pages
+    log cooks and ask questions through the same code, endpoints and sign-in as the home page (no second implementation)."""
     js = (SITE / "app.js").read_text()
     return js[js.index("// ---- Sign-in"):]
 
 _COOK_CSS = None
 def cook_css():
-    """The Cooked it form's rules from style.css (plus its color variables), for the plain /r/<slug> pages."""
+    """The Cooked it and Ask about this form rules from style.css (plus color variables and sign-in pills), for the plain /r/<slug> pages."""
     global _COOK_CSS
     if _COOK_CSS is None:
-        keys = (":root{", ".cook", ".rate", ".pv{", ".gsi", "signrow", ".sbtn", ".gsiover", ".b1", ".b2", ".hand{")
+        keys = (":root{", ".cook", ".rate", ".pv{", ".gsi", "signrow", ".sbtn", ".gsiover", ".b1", ".b2", "form.askr", ".askrow", ".askans", ".hand{")
         rows = [l for l in (SITE / "style.css").read_text().splitlines() if l.startswith(keys) or any(k in l for k in keys[1:-1])]
         _COOK_CSS = "\n".join(l for l in rows if not l.startswith((".addcard", ".addr", ".addback"))) + "\n.cook,.cook *{box-sizing:border-box}"
     return _COOK_CSS

@@ -128,6 +128,7 @@ A.signIn=async(box,say)=>{
 };
 // Per-recipe "ask about this"
 document.querySelectorAll("form.askr").forEach(f=>{
+  f.hidden=false;   // plain /r/<slug> pages ship it hidden so the page reads fine without JavaScript
   const box=f.querySelector(".askans"),gs=f.querySelector(".gsi"),say=t=>{box.textContent=t;box.hidden=!t};
   async function go(){
     const qv=f.querySelector("input").value.trim();if(!qv)return;

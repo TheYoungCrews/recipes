@@ -134,3 +134,57 @@ test("plain /r/<slug> pages have their own og title, description, canonical url 
   assert.match(html, /class=facts/);
   assert.match(html, /href="https:\/\/www\.youtube\.com\/watch\?v=Eg7DLBgwJqM"/);
 });
+
+test("plain /r/<slug> pages include the Ask about this box, its CSS, and cook.js", () => {
+  const r = {
+    title: "Pork Ramen",
+    slug: "pork-ramen",
+    type: "main",
+    status: "to-try",
+    owner: "crews",
+    credit: "",
+    source: "",
+    source_url: "",
+    time_minutes: "30",
+    serves: "2",
+    rating: "",
+    cooks: "0",
+    tags: ["pork"],
+    photo: "",
+    body: "A weeknight ramen.\n\n## Original\n\n## Our version\n- [ ] pork\n\n1. Cook the pork.\n",
+  };
+  const html = py(`print(site_render.recipe_page(${JSON.stringify(r)}, site_render.recipe_parts(${JSON.stringify(r)})))`);
+  assert.match(html, /<form class=askr data-slug="pork-ramen" hidden>/);
+  assert.match(html, /Ask about this/);
+  assert.match(html, /<script src="\/cook\.js" defer><\/script>/);
+  assert.match(html, /form\.askr\{/);
+  assert.match(html, /\.askrow/);
+  const cookAt = html.indexOf("form class=cook");
+  const askAt = html.indexOf("form class=askr");
+  assert.ok(cookAt > -1 && askAt > cookAt, "ask box should follow the Cooked it form");
+  const js = py("print(site_render.cook_js())");
+  assert.match(js, /form\.askr/);
+  assert.match(js, /accounts\.google\.com\/gsi\/client/);
+  assert.match(js, /f\.hidden=false/);
+  // drinks get the box too, matching the home page view
+  const drink = {
+    title: "The Fence Hopper",
+    slug: "the-fence-hopper",
+    type: "cocktail",
+    status: "to-try",
+    owner: "Anders Erickson",
+    credit: "Anders Erickson",
+    source: "",
+    source_url: "",
+    time_minutes: "5",
+    serves: "1",
+    rating: "",
+    cooks: "0",
+    tags: ["bourbon"],
+    photo: "",
+    body: "A cocktail.\n\n## Original\n\n## Our version\n- [ ] bourbon\n\n1. Shake.\n",
+  };
+  const drinkHtml = py(`print(site_render.recipe_page(${JSON.stringify(drink)}, site_render.recipe_parts(${JSON.stringify(drink)})))`);
+  assert.match(drinkHtml, /<form class=askr data-slug="the-fence-hopper" hidden>/);
+});
+
