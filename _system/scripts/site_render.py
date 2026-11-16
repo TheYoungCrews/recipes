@@ -151,6 +151,10 @@ def wkbtn(slug, short=False):
     """Signed-in only (week-btn.js unhides it). Without JS or signed out, nothing shows."""
     if short: return f' <button type=button class=wkbtn data-short data-week-slug="{E(slug)}" hidden>+ What’s Cooking</button><span class=wkmsg role=status></span>'
     return f'<p class=wkrow><button type=button class=wkbtn data-week-slug="{E(slug)}" hidden>+ Add to What’s Cooking</button><span class=wkmsg role=status></span></p>'
+def rmbtn(slug, title):
+    """Take a dish off What’s Cooking. week-btn.js unhides it when signed in, confirms, then POSTs /api/plan."""
+    return (f' <button type=button class=rmweek data-week-slug="{E(slug)}" data-week-remove data-title="{E(title)}" hidden>Remove</button>'
+            f'<span class=wkmsg role=status></span>')
 
 def cook_form(r, hidden=False):
     """The one "Cooked it?" form (rate + note + photo -> /api/cook), shared by the home page view and /r/<slug>.
@@ -426,11 +430,21 @@ WEEK_CSS = """.meals{list-style:none;padding:0}.wk h2 small{font:15px -apple-sys
 .gl li{padding:6px 0 6px 30px;border-bottom:1px dashed #e9e1cf;position:relative}.gl li:before{content:"";position:absolute;left:4px;top:10px;width:14px;height:14px;border:2px solid #7f9a7a;border-radius:4px}
 .staples{color:#7a7266;font-size:15px}.gl label{display:block;cursor:pointer}.gl ul.got span,.gl li.done span{text-decoration:line-through;color:#9a9286}
 .gl ul.got li.undone span{text-decoration:none;color:inherit}.gl ul.got li:before{content:"✓";color:#7f9a7a;font-weight:700;text-align:center;line-height:14px}.havemode .gl li:before{display:none}.havemode .gl li{padding-left:4px}
-.gl input.have{width:18px;height:18px;margin:0 10px 0 0;vertical-align:-3px;accent-color:#7f9a7a}.havemsg{font-size:13px;color:#7a7266;min-height:1em}"""
-def week_page(live, out):
+.gl input.have{width:18px;height:18px;margin:0 10px 0 0;vertical-align:-3px;accent-color:#7f9a7a}.havemsg{font-size:13px;color:#7a7266;min-height:1em}
+.rmweek{font:600 14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fffdf7;color:#7a7266;border:1px solid #d5cdb8;border-radius:999px;padding:6px 12px;margin-left:8px;cursor:pointer;vertical-align:middle}
+.rmweek:hover,.rmweek:focus{color:#4f6b4c;border-color:#7f9a7a;background:#eef3ea}.rmweek:disabled{opacity:.6}
+.wkedit{font-size:14px;color:#7a7266;margin:8px 0;min-height:1em}.wkedit .wkmsg{display:inline;margin:0}
+.wksign{font:600 14px -apple-system,BlinkMacSystemFont,sans-serif;background:transparent;color:#4f6b4c;border:0;padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.gsi{display:flex;justify-content:center;margin-top:10px}.gsi:empty{display:none}.gsi .signrow{width:100%}
+.signrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;max-width:380px}
+@media (max-width:340px){.signrow{grid-template-columns:1fr}}
+.signrow .sbtn{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:999px;border:1.5px solid #5f7f5a;background:#fffdf7;color:#2f3a2c;font:600 15px/1 system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;overflow:hidden;white-space:nowrap;padding:0 14px;box-sizing:border-box;width:100%;margin:0;min-width:0;box-shadow:none}
+.signrow .sbtn:hover{background:#eef3ea}.sbtn:disabled{opacity:.6}
+.gsiover{position:absolute;inset:0;opacity:.001;display:flex;align-items:center;justify-content:center}.gsiover iframe{transform:scale(1.15)}"""
+def week_page(live, out, g=None):
     import groceries
     wdir = out / "week"; shutil.rmtree(wdir, ignore_errors=True); wdir.mkdir(parents=True)
-    g = groceries.build()
+    if g is None: g = groceries.build()
     by = {r["slug"]: r for r in live}
     head = lambda t: f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="What’s Cooking: this week's dinners and grocery list."><link rel=canonical href="{BASE}/week/">
@@ -445,7 +459,7 @@ def week_page(live, out):
     meals, extras = [], []
     for m in g["meals"]:
         r = by.get(m["slug"]); facts = " · ".join(_facts(r)) if r else ""
-        li = f'<li><b><a href="/r/{E(m["slug"])}">{E(m["title"])}</a></b>{wkbtn(m["slug"], True)}<br><span class=meta>{E(m["night"]) + " · " if m.get("kind") != "extra" else ""}{E(facts)}</span></li>'
+        li = f'<li><b><a href="/r/{E(m["slug"])}">{E(m["title"])}</a></b>{rmbtn(m["slug"], m["title"])}<br><span class=meta>{E(m["night"]) + " · " if m.get("kind") != "extra" else ""}{E(facts)}</span></li>'
         (extras if m.get("kind") == "extra" else meals).append(li)
     keys = {i["line"]: i["key"] for i in g["detail"]}
     # Each line gets a hidden 'already have' checkbox; week-btn.js shows them for signed-in cooks (plain list otherwise).
@@ -456,12 +470,13 @@ def week_page(live, out):
     if g.get("in_house"): gl += ('<h3>In the house</h3><ul class=got>' + "".join(f'<li><span>{E(h["line"])}</span></li>' for h in g["in_house"]) + "</ul>")
     body = [nav, f'<h1>What’s Cooking</h1><p class=meta>{E(span)} · dinners for {E(str(g["serves"]))}</p>']
     if g["note"]: body.append(f"<p>{inline(plain_md(g['note']))}</p>")
+    body.append('<p class=wkedit hidden><button type=button class=wksign>Sign in to edit this week</button> <span class=wkmsg role=status></span></p><div class=gsi></div>')
     body.append('<h2>Dinners</h2><ul class=meals>' + "".join(meals) + "</ul>")
     if extras: body.append('<h2>Also this week <small>bakes, sides, anytime</small></h2><ul class=meals>' + "".join(extras) + "</ul>")
     body.append(f'<h2>Grocery list</h2><p class=havemsg role=status hidden>Check what you already have or just bought. It is added to the inventory and moves to Already have after the next rebuild (about a minute).</p><div class=gl>{gl}</div>')
     if g["staples_assumed"]: body.append(f'<p class=staples>Not on the list because we keep them stocked: {E(", ".join(g["staples_assumed"]))}. Running low? Add them.</p>')
     (wdir / "index.html").write_text(head(f"What’s Cooking, {span}") + "<body><main class=wk>\n" + "\n".join(body)
-        + f'\n</main><footer>From <a href="/">Crews &amp; Anna\'s Kitchen</a>. <a href="/follow">Follow along</a>. Plan: <a href="https://github.com/TheYoungCrews/recipes/blob/main/{E(g["plan_file"])}">{E(g["plan_file"])}</a> · plain text: <a href="/week.md">/week.md</a></footer><script src="/week-btn.js" defer></script></body></html>')
+        + f'\n</main><footer>From <a href="/">Crews &amp; Anna\'s Kitchen</a>. <a href="/follow">Follow along</a>. Plan: <a href="https://github.com/TheYoungCrews/recipes/blob/main/{E(g["plan_file"])}">{E(g["plan_file"])}</a> · plain text: <a href="/week.md">/week.md</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script></body></html>')
     (out / "week.md").write_text(groceries.to_md(g, BASE) + f"\nPage: {BASE}/week/\n")
     g2 = {k: v for k, v in g.items() if k != "detail"}
     g2["url"], g2["md_url"] = f"{BASE}/week/", f"{BASE}/week.md"

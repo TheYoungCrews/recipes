@@ -1,8 +1,15 @@
 // node --test _system/tests/  Weekly plan helpers + /api/plan with mocked GitHub. Fake keys only; no network.
 import test from "node:test"; import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import { isoWeek, mondayOf, pickWeek, editPlan, readPlan, newPlan, editHave } from "../../functions/_lib/plan.js";
 import { commitPlanEdit } from "../../functions/_lib/github.js";
 import { onRequestPost, onRequestGet } from "../../functions/api/plan.js";
+
+const root = path.resolve(fileURLToPath(new URL(".", import.meta.url)), "../..");
+const py = (code) => execFileSync("python3", ["-c", `import sys, json, tempfile, pathlib\nsys.path.insert(0, "_system/scripts")\nimport site_render\n${code}`], { encoding: "utf8", cwd: root });
 
 test("iso weeks", () => {
   assert.deepEqual(isoWeek("2026-11-04"), { week: "2026-W45", starts: "2026-11-02" });
@@ -110,4 +117,34 @@ test("/api/plan have needs auth and a clean item", async () => {
   const mk = (body, h = {}) => new Request("https://x/api/plan", { method: "POST", headers: { "content-type": "application/json", ...h }, body: JSON.stringify(body) });
   assert.equal((await onRequestPost({ request: mk({ action: "have", item: "thyme" }), env })).status, 401);
   assert.equal((await onRequestPost({ request: mk({ action: "have", item: "x, [y]" }, { authorization: "Bearer " + "a".repeat(32) }), env })).status, 400);
+});
+
+test("What's Cooking dinners have a Remove control wired to /api/plan", () => {
+  const js = readFileSync(path.join(root, "_system/web/week-btn.js"), "utf8");
+  assert.match(js, /\[data-week-remove\]/);
+  assert.match(js, /confirm\(/);
+  assert.match(js, /action:\s*"remove"/);
+  assert.match(js, /offerSignIn/);
+  assert.match(js, /Sign in on a recipe page first/);
+
+  const html = py(`
+live = [{"slug": "pork-ramen", "title": "Pork Ramen", "type": "main", "status": "to-try", "serves": "2", "time_minutes": "30", "rating": "", "cooks": "0", "tags": [], "owner": "crews", "credit": "", "source": "", "source_url": "", "photo": "", "body": ""}]
+g = {"week": "2026-W47", "starts": "2026-11-16", "serves": "2", "plan_file": "plans/2026-W47.md",
+     "meals": [{"slug": "pork-ramen", "title": "Pork Ramen", "night": "Any night", "kind": "dinner"},
+               {"slug": "pumpkin-pecan-bread", "title": "Pumpkin Pecan Bread", "night": "Anytime", "kind": "extra"}],
+     "on_hand": [], "note": "", "sections": [], "optional": [], "staples_assumed": [], "have": [], "in_house": [], "detail": []}
+out = pathlib.Path(tempfile.mkdtemp())
+site_render.week_page(live, out, g)
+print((out / "week" / "index.html").read_text())
+`)
+  assert.match(html, /data-week-remove/);
+  assert.match(html, /data-week-slug="pork-ramen"/);
+  assert.match(html, /data-title="Pork Ramen"/);
+  assert.match(html, /data-week-slug="pumpkin-pecan-bread"/);
+  assert.match(html, />Remove</);
+  assert.match(html, /Sign in to edit this week/);
+  assert.match(html, /<script src="\/cook\.js" defer><\/script>/);
+  assert.match(html, /<script src="\/week-btn\.js" defer><\/script>/);
+  assert.match(html, /\.rmweek/);
+  assert.doesNotMatch(html, /class=wkbtn data-short/);
 });
