@@ -36,8 +36,8 @@ Phase 1:
 
 Phase 2:
 - 1 cup whole milk
-- 1 pint half-and-half
-- 1 pint heavy cream
+- 2 cups half-and-half
+- 2 cups heavy cream
 - 1/3 teaspoon nutmeg, grated on a rasp
 
 Hardware: immersion (stick) blender.
@@ -62,13 +62,14 @@ The first phase stays above 20% ABV, which cuts any salmonella by over 99%. For 
 - [ ] whole milk (2 cups)
 - [ ] sugar (1 lb)
 - [ ] whole nutmeg (1 tsp total, grated)
-- [ ] half-and-half (1 pint)
-- [ ] heavy cream (1 pint)
+- [ ] half-and-half (2 cups)
+- [ ] heavy cream (2 cups)
 - [ ] two 2-quart jars with lids, and a 3-quart container
 
 **Steps**
 Same as original. Start by mid-October for Christmas: 30 days for phase 1, then 50-60 for phase 2.
 
 ## Notes
+- 2026-11-18: amounts switched from pints to cups (1 pint = 2 cups) so the units match.
 - 2026-11-02 (crews via site, 5/5): cooked it.
 - 2026-10-17 (via muse): from Alton Brown's site. Active time about 15 minutes; total about 90 days with aging.
