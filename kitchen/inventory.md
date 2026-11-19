@@ -143,6 +143,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - cucumber
 - lemon
 - bellwether farms a2 organic whole milk yogurt
+- chicken broth or dry white wine
 
 ## Freezer
 - Triple Threat ground multi-species blend (White Oak Pastures, 2)
