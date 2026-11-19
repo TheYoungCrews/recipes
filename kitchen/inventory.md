@@ -80,6 +80,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - black lava salt
 - black pepper
 - white pepper
+- chipotle pepper flakes
 
 ## Pantry: drinks and protein
 - coffee beans (Evans Brothers)
