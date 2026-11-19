@@ -1,3 +1,4 @@
+filed_to: cocktails/batched-spiced-pear-french-75.md (2026-11-19)
 ---
 title: Batched Spiced Pear French 75
 slug: batched-spiced-pear-french-75

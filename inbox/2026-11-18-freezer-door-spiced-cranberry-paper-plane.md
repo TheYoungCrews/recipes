@@ -1,3 +1,4 @@
+filed_to: cocktails/freezer-door-spiced-cranberry-paper-plane.md (2026-11-19)
 ---
 title: Freezer Door Spiced Cranberry Paper Plane
 slug: freezer-door-spiced-cranberry-paper-plane
