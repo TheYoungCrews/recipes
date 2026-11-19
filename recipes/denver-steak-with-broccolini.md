@@ -4,7 +4,7 @@ slug: denver-steak-with-broccolini
 type: main
 status: to-try
 tags: [beef, american, stovetop, sheet-pan, weeknight-30, high-protein]
-ingredients: [denver steak, salt, black pepper, neutral oil, butter, broccolini, lemon, garlic, olive oil, parmesan]
+ingredients: [denver steak, salt, black pepper, neutral oil, butter, broccolini, lemon, garlic, olive oil, parmesan, smoked paprika, cayenne, avocado oil, brussels sprouts]
 serves: 2
 time_minutes: 30
 prep_minutes: 5
@@ -55,27 +55,30 @@ Kenji's timing chart for 1 1/2-inch steaks in a 250°F oven: rare, pull at 105°
 3. Remove from the oven, squeeze the remaining half of the lemon over the top and serve.
 
 ## Our version
-Two White Oak Denver steaks, cooked with Kenji's reverse sear in a 250°F oven (the temperature on his timing chart, within his 200 to 275°F range), then Alison Roman's broccolini at 425°F after the steaks come out. Kenji's method is written for steaks at least 1 1/2 to 2 inches thick. The 30-minute total is from his recipe card and covers the steaks; the broccolini needs 10 to 15 minutes once the oven is at 425°F. Temps and sear times in the steps are Kenji's. Crews's grass-fed numbers are in the note after the steps, because grass-fed beef is lean, cooks fast, and he always overcooks it.
+Two White Oak Denver steaks, pan-seared in cast iron (not reverse seared), with roasted Brussels sprouts. White Oak Denvers are only about an inch thick, and Kenji's reverse sear is written for steaks 1 1/2 inches or thicker, so a straight sear is faster and easier to control. Grass-fed beef is lean and cooks fast, and Crews tends to overcook it, so go by the thermometer, not the clock. Reverse sear is still a good option for a thick steak (see the note after the steps). Broccolini from the original works as the side too.
 
 - [ ] 2 Denver steaks
 - [x] salt
-- [x] black pepper
-- [x] 1 tbsp neutral oil
-- [x] 1 tbsp butter
-- [ ] Broccolini (2 bunches)
-- [ ] Lemon (1)
-- [x] 4 garlic cloves, smashed
-- [x] 3 to 4 tbsp olive oil
-- [x] Parmesan (1/2 cup, finely grated)
+- [x] smoked paprika (1 tsp)
+- [x] cayenne (1/4 tsp, or 1/8 tsp for less heat)
+- [x] avocado oil
+- [x] butter (a pat)
+- [ ] Brussels sprouts (1 bag)
+- [x] olive oil
+- [ ] lemon or balsamic, to finish the sprouts
 
 **Steps**
-1. Ahead: salt the Denver steaks (2) generously all over and set them on a wire rack set in a rimmed baking sheet. Refrigerate uncovered overnight if you can, to dry the exterior, as Kenji suggests. Before they go in the oven, pat them dry and season with black pepper.
-2. Heat the oven to 250°F. Keep the steaks on the rack over the sheet and put them in the oven. Start checking with a Thermapen at 10 minutes, then every 3 to 4 minutes (grass-fed beef cooks fast). For Kenji's medium-rare, pull them at 115°F. His chart for 1 1/2-inch steaks at 250°F is about 25 to 30 minutes, but check early; time can vary a lot.
-3. Just before the steaks come out, add the oil (1 tbsp) to a cast iron skillet and heat over high until smoking. Add the steaks and the butter (1 tbsp) and cook until each side is well browned, about 45 seconds per side. Hold them sideways with tongs to sear the edges. Kenji says there is no need to rest reverse-seared steaks.
-4. Raise the oven to 425°F. Thinly slice half the lemon (1) into rounds and set the other half aside. Toss the lemon slices, garlic (4 cloves, smashed) and broccolini (2 bunches, ends trimmed) with the olive oil (3 to 4 tbsp) on a rimmed baking sheet. Season with salt and pepper, coating the tips well. Sprinkle with the Parmesan (1/2 cup, finely grated) and roast until the broccolini is bright green and starting to char and the cheese is golden brown, 10 to 15 minutes. Squeeze the remaining lemon half over the top.
-5. Slice the steaks thin against the grain and serve with the broccolini.
+1. Ahead if you can: salt the steaks and leave them uncovered on a rack in the fridge overnight. This is the easy version of White Oak's advice to age or tenderize grass-fed steaks. Otherwise, salt them as soon as they come out of the fridge.
+2. Heat the oven to 425°F with a rack in the upper third. Rinse the Brussels sprouts and dry them well, trim the stem ends, pull off any yellow or loose leaves, and halve them (leave tiny ones whole). Toss with olive oil and salt on a sheet pan, spread out with room between them.
+3. Roast cut side up 18 to 25 minutes, shaking the pan once halfway, until the outer leaves are dark and crispy and a knife slides into the center easily. Start checking at 18 minutes.
+4. Mix the smoked paprika (1 tsp) and cayenne (1/4 tsp) in a small bowl. When the sprouts have about 10 minutes left, pat the steaks very dry and sprinkle the mix evenly over both sides of both steaks. Don't score them.
+5. Heat the cast iron over medium-high (not max) for 4 to 5 minutes, then add a thin film of avocado oil. If it smokes hard right away, turn the heat down a little.
+6. Sear the steaks about 2 to 3 minutes per side, flipping every minute if you like for even cooking. Start checking the center with a Thermapen after 4 minutes total. Add the butter in the last minute and baste.
+7. Pull at 120 to 125°F for medium-rare. Never go past 130°F for grass-fed. Rest 5 minutes (it climbs about 5 degrees).
+8. Finish the sprouts with a squeeze of lemon or a drizzle of balsamic and more salt if needed. Slice the steak thin, about 1/4 inch, against the grain. Denver's grain can run in more than one direction, so check it before cooking.
 
-Crews's grass-fed notes (where they differ from Kenji): pull at 110°F, not 115°F. Sear in ripping-hot cast iron 60 to 90 seconds per side, adding the butter for the last 30 seconds only. Rest 5 minutes and aim for 125 to 128°F for medium-rare.
+Reverse-sear option for a thick steak (1 1/2 inches or more): salt, set on a rack over a sheet pan in a 250°F oven, and pull at 110°F (start checking at 10 minutes). Sear in ripping-hot cast iron 45 to 60 seconds per side, butter in the last 30 seconds. Aim for 125 to 128°F after a 5 minute rest. Roast the sides at 425°F after the steak comes out.
 
 ## Notes
 - 2026-11-15 (via grok-bot): filed for the 2026-W47 steak night, using the White Oak Denver steaks. The reverse sear is J. Kenji López-Alt's Serious Eats method (video: https://www.youtube.com/watch?v=6NqLd2j2aVM). The side is Alison Roman's Roasted Broccolini and Lemon With Parmesan (https://cooking.nytimes.com/recipes/1018968-roasted-broccolini-and-lemon-with-parmesan). Kenji's steps and temps stay in Our version; Crews's grass-fed numbers (250°F oven is already Kenji's chart temp; pull 110°F; 60 to 90 second sear with butter in the last 30 seconds; 5 minute rest to 125 to 128°F; slice thin against the grain; start checking at 10 minutes) are noted separately where they conflict.
+- 2026-11-19 (via grok-bot): Our version rewritten from live cooking help. Straight cast iron sear instead of reverse sear (White Oak Denvers are about an inch thick), salt plus a 4:1 smoked paprika and cayenne rub, avocado oil for the sear with a butter baste, pull at 120 to 125°F, slice thin against the grain. Side switched to Brussels sprouts roasted cut side up at 425°F in olive oil. White Oak's grass-fed guide (https://blog.whiteoakpastures.com/blog/how-to-guide-to-cooking-grassfed-beef) recommends aging or tenderizing steaks, so an overnight uncovered dry brine is in step 1. Reverse sear kept as an option for thick steaks.
