@@ -145,6 +145,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - bellwether farms a2 organic whole milk yogurt
 - chicken broth or dry white wine
 - baby spinach
+- chives
 
 ## Freezer
 - Triple Threat ground multi-species blend (White Oak Pastures, 2)
