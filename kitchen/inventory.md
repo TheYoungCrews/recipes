@@ -27,6 +27,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - chicken broth or water
 - yellow curry powder
 - red curry paste
+- chicken stock
 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
