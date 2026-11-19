@@ -35,6 +35,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - mezzi rigatoni
 - egg roll wrappers
 - pancake mix (Kodiak)
+- yakisoba noodles
 
 ## Pantry: baking
 - flour
