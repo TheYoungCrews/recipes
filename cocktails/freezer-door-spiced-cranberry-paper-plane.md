@@ -2,7 +2,7 @@
 title: Freezer Door Spiced Cranberry Paper Plane
 slug: freezer-door-spiced-cranberry-paper-plane
 type: cocktail
-status: to-try
+status: made
 tags: [no-cook, weekend-project]
 ingredients: [bourbon, amaro nonino, aperol, lemon juice, spiced cranberry syrup, filtered water, orange, cranberries, unsweetened cranberry juice, sugar, cinnamon sticks, whole cloves, star anise, ground nutmeg, grand marnier]
 serves: 10
@@ -14,6 +14,9 @@ added_by: crews
 via: muse
 input_type: screenshot
 owner: @join_jules
+rating: 4
+last_made: 2026-11-19
+cooks: 1
 ---
 
 Julianna McIntosh (@join_jules) bottles this holiday Paper Plane straight into the freezer door — the classic equal-parts bourbon, Amaro Nonino, Aperol and lemon, cut with her spiced cranberry syrup.
@@ -60,5 +63,6 @@ Spiced cranberry syrup:
 Same as original.
 
 ## Notes
+- 2026-11-19 (crews via site, 4/5): cooked it.
 
 2026-11-18 · Identified from a screenshot of @join_jules's holiday carousel ("Recipes your family actually wants to drink"); full recipe text from her site, joinjules.com. Time is an estimate and includes the 4–6 hour freezer chill.
