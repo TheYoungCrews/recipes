@@ -146,6 +146,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - chicken broth or dry white wine
 - baby spinach
 - chives
+- jalapeño pepper
 
 ## Freezer
 - Triple Threat ground multi-species blend (White Oak Pastures, 2)
