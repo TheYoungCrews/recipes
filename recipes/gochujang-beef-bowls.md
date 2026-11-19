@@ -14,9 +14,9 @@ added_by: anna
 via: api
 input_type: text
 owner: anna
-last_made: 2026-11-13
-rating: 4.5
-cooks: 1
+last_made: 2026-11-19
+rating: 4
+cooks: 2
 ---
 A savory-sweet gochujang beef bowl with onion and bell pepper, served over rice with a bright, crunchy quick-pickled cucumber and carrot salad.
 
@@ -91,6 +91,7 @@ Ground beef from White Oak Pastures instead of shaved steak, plus seared shiitak
 7. Serve over rice with sliced green onions and sesame seeds, with the pickle alongside or on top.
 
 ## Notes
+- 2026-11-19 (crews via site, 4/5): cooked it.
 - 2026-11-13 (crews via site, 4.5/5): added shittake mushrooms really elevated it. amazing lunch
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-gochujang-beef-bowls.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).
 - 2026-11-13: Crews made it with White Oak Pastures ground beef instead of shaved steak and added shiitakes. Our version rewritten for ground beef: sauce added at the end, mushrooms seared separately, liquid aminos for soy sauce.

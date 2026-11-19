@@ -133,11 +133,9 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - dry vermouth (Dolin)
 - fresh ginger
 - picanha steaks
-- english cucumber
 - green onion
 - cremini mushrooms
 - cucumber
-- shiitake mushrooms
 - lemon
 - bellwether farms a2 organic whole milk yogurt
 
@@ -155,7 +153,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - ground chicken (White Oak Pastures, 2)
 - chicken nuggets (Bare)
 - Argentine red shrimp
-- ground beef (White Oak Pastures)
 - ground lamb
 - wild blueberries
 - large clear ice cubes
