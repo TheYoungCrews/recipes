@@ -6,6 +6,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - sweet potatoes
 - vidalia onion
 - yukon gold potatoes
+- butternut squash
 
 ## Pantry: cans and jars
 - chickpeas
