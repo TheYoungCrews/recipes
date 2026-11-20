@@ -214,6 +214,19 @@ $$("form.cook").forEach(f=>{
     say(`Logged for ${j.who==="anna"?"Anna":"Crews"} ✓ The page updates in a couple minutes.`+(taken.length?" Took "+taken.join(", ")+" off the inventory.":""),true);
     const art=f.closest("article"),d=art&&$(".diary",art);if(d){$(".diary-empty",d)?.remove();const row=document.createElement("div");
       row.innerHTML=`<span>today</span><div><b>${j.who}</b>: ${val}/5 ${$("textarea",f).value.replace(/[<&]/g,"")}</div>`;d.prepend(row)}
+    shareAfter(j.who);
+  }
+  // Right after a rating: a Share to story button with the stars and note on the card (share.js draws and shares it)
+  function shareAfter(who){
+    $(".shrow",f)?.remove();
+    const pg=document.querySelector(`button.sharebtn[data-share="${f.dataset.slug}"]`);
+    const row=document.createElement("p");row.className="shrow";
+    const b=document.createElement("button");b.type="button";b.className="sharebtn";b.textContent="Share to your story";
+    b.dataset.share=f.dataset.slug;b.dataset.title=f.dataset.title||"";
+    b.kshare={rating:val,note:$("textarea",f).value,photo:photo||(pg&&pg.dataset.photo)||"",who:who==="anna"?"Anna":"Crews"};
+    const m=document.createElement("span");m.className="shmsg";m.setAttribute("role","status");
+    row.append(b,m);$(".cmsg",f).after(row);
+    if(window.KSHARE&&window.KSHARE.wire)window.KSHARE.wire(b);else b.hidden=true;
   }
   async function ask(){
     const ok=await window.KAUTH.signIn($(".gsi",f),say);

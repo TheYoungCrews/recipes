@@ -151,6 +151,15 @@ def wkbtn(slug, short=False):
     """Signed-in only (week-btn.js unhides it). Without JS or signed out, nothing shows."""
     if short: return f' <button type=button class=wkbtn data-short data-week-slug="{E(slug)}" hidden>+ What’s Cooking</button><span class=wkmsg role=status></span>'
     return f'<p class=wkrow><button type=button class=wkbtn data-week-slug="{E(slug)}" hidden>+ Add to What’s Cooking</button><span class=wkmsg role=status></span></p>'
+SHARECSS = """.shrow{margin:10px 0}.sharebtn{font:600 15px -apple-system,BlinkMacSystemFont,sans-serif;background:#4f6b4c;color:#fff;border:2px solid #4f6b4c;border-radius:999px;padding:7px 14px;cursor:pointer}
+.sharebtn:disabled{opacity:.6}.shmsg{display:block;font-size:13px;color:#7a7266;margin-top:4px}.shmsg:empty{display:none}.cook .shrow{text-align:center;margin:12px 0 0}.cook .sharebtn{flex:none;width:100%;padding:12px;border-radius:10px;font-size:16px;background:#7f9a7a;border-color:#7f9a7a}.cook .shmsg{color:#bfb6a5}
+.shareov{position:fixed;inset:0;z-index:99;background:rgba(34,40,42,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center}
+.shareov p{margin:0;color:#fffdf6;font:600 16px/1.4 -apple-system,sans-serif;max-width:340px}.shareov img{max-height:72vh;max-width:100%;border-radius:12px}.shareov button{font:600 16px -apple-system,sans-serif;background:#fffdf6;color:#2a2723;border:0;border-radius:999px;padding:9px 22px}"""
+def share_btn(r):
+    """Share to story (share.js unhides it and draws a 1080x1920 card in the browser). Without JS, nothing shows."""
+    ph = f' data-photo="/{E(r["photo"])}"' if r.get("photo") else ""
+    return (f'<p class=shrow><button type=button class=sharebtn data-share="{E(r["slug"])}" data-title="{E(r["title"])}"{ph} hidden>Share to story</button>'
+            '<span class=shmsg role=status></span></p>')
 def rmbtn(slug, title):
     """Take a dish off What’s Cooking. week-btn.js unhides it when signed in, confirms, then POSTs /api/plan."""
     return (f' <button type=button class=rmweek data-week-slug="{E(slug)}" data-week-remove data-title="{E(title)}" hidden>Remove</button>'
@@ -204,7 +213,7 @@ def recipe_view(r, staples):
     return f'''<article class=view id="r-{E(r["slug"])}"><div class=wrap><a class=back href="#top">← Kitchen</a> <a class=plainlink href="/r/{E(r["slug"])}">plain page</a>
 <div class="sheet rc">{hero}<div class=in><div class=tags>{tags}</div>
 <h1 class=hand style="margin-top:10px">{E(r["title"])}</h1>{f"<p class=lede>{inline(intro)}</p>" if intro else ""}
-<div class=facts>{facts_html(r)}</div>{"" if r["type"] in DRINK else wkbtn(r["slug"])}
+<div class=facts>{facts_html(r)}</div>{"" if r["type"] in DRINK else wkbtn(r["slug"])}{share_btn(r)}
 {f'<h3 class="sec hand">Ingredients</h3><div class="ing ruled">{ing_html}</div>' if ing_html else ""}
 {f'<h3 class="sec hand">{"Method" if r["type"] in DRINK else "Steps"}</h3><ol class=st>{steps_html}</ol>' if steps_html else ""}
 {ours_html}{orig_html}
@@ -226,7 +235,7 @@ def render(items, staples, root):
         src = root / r["dir"] / p if p else None
         if src and src.exists():
             shutil.copy2(src, out / "photos" / src.name); r["photo"] = "photos/" + src.name
-    css = (SITE/"style.css").read_text().replace("/*FONT*/", base64.b64encode((SITE/"caveat.woff2").read_bytes()).decode()) + WKCSS
+    css = (SITE/"style.css").read_text().replace("/*FONT*/", base64.b64encode((SITE/"caveat.woff2").read_bytes()).decode()) + WKCSS + SHARECSS
     shutil.rmtree(out/"wallet", ignore_errors=True); shutil.copytree(SITE/"wallet", out/"wallet")
     shutil.copy2(SITE/"icon-180.png", out/"icon-180.png"); shutil.copy2(SITE/"tablecloth.jpg", out/"tablecloth.jpg"); shutil.copy2(SITE/"og.jpg", out/"og.jpg")
     banner = "data:image/jpeg;base64," + base64.b64encode((SITE/"banner-web.jpg").read_bytes()).decode()
@@ -264,7 +273,7 @@ def render(items, staples, root):
 <meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:type" content="website"><meta property="og:url" content="https://blind-tiger.pages.dev/"><link rel=canonical href="https://blind-tiger.pages.dev/"><link rel=sitemap type="application/xml" href="/sitemap.xml">{RSS}<meta property="og:image" content="https://blind-tiger.pages.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta name="twitter:image" content="https://blind-tiger.pages.dev/og.jpg"><link rel="alternate" type="application/json" href="/recipes.json" title="All recipes for agents"><link rel="help" href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md"><meta name="agent-instructions" content="AI agents: read /recipes.json. To add a recipe follow AGENTS.md and email crews@mail.grokbot.com (recipe: in the subject). Bulk: POST /api/recipes (OpenAPI /openapi.json) or paste at /add.">
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="/icon-180.png"><link rel=icon type=image/png href="/icon-180.png"><style>{css}</style></head>
 <body><div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><h2>For AI agents</h2><p>Read recipes from <a href="/recipes.json">/recipes.json</a>. To add one, follow <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">AGENTS.md</a> and email crews@mail.grokbot.com with "recipe:" in the subject. Bulk: POST <a href="/openapi.json">/api/recipes</a> or paste at <a href="/add">/add</a>.</p><p>Every recipe has a plain page with no JavaScript at /r/&lt;slug&gt; and markdown at /r/&lt;slug&gt;.md. Share /r/&lt;slug&gt;. An old /#r-&lt;slug&gt; link redirects there. Full list: <a href="/r/">/r/</a> and <a href="/sitemap.xml">/sitemap.xml</a>.</p><ul>{"".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a></li>' for r in sorted(live, key=lambda r: r["title"].lower()))}</ul></div><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="/week/">what’s cooking</a> · <a href="/add">+ add one</a></p></div></header>{home}{views}
-<script>window.KITCHEN={data};</script><script>{js}</script><script src="/week-btn.js" defer></script></body></html>'''
+<script>window.KITCHEN={data};</script><script>{js}</script><script src="/week-btn.js" defer></script><script src="/share.js" defer></script></body></html>'''
     (out/"index.html").write_text(page)
     static_pages(live, out)
     week_page(live, out)
@@ -354,7 +363,7 @@ def recipe_page(r, P):
     if P["intro"]: ld["description"] = plain_md(P["intro"])
     ldj = json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
     body = [f'<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/r/{E(slug)}.md">Markdown</a> · <a href="/week/">What’s Cooking</a></nav>',
-            f"<h1>{E(title)}</h1>", credit, f"<div class=facts>{facts_html(r)}</div>", "" if r["type"] in DRINK else wkbtn(slug)]
+            f"<h1>{E(title)}</h1>", credit, f"<div class=facts>{facts_html(r)}</div>", "" if r["type"] in DRINK else wkbtn(slug), share_btn(r)]
     if r["photo"]: body.append(f'<img class=hero src="/{E(r["photo"])}" alt="{E(title)}">')
     if P["intro"]: body.append(f"<p>{inline(P['intro'])}</p>")
     if P["ings"]: body.append("<h2>Ingredients</h2><ul>" + "".join(f"<li>{inline(t)}</li>" for t, _ in P["ings"]) + "</ul>")
@@ -379,11 +388,11 @@ def recipe_page(r, P):
 <link rel=alternate type="text/markdown" href="/r/{E(slug)}.md">{RSS}<meta name=theme-color content="#7f9a7a">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Crews &amp; Anna's Kitchen"><meta property="og:title" content="{t}"><meta property="og:description" content="{dsc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{E(img)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{dsc}"><meta name="twitter:image" content="{E(img)}">
-<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png"><style>{PAGE_CSS}{WKCSS}{cook_css()}</style>
+<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png"><style>{PAGE_CSS}{WKCSS}{SHARECSS}{cook_css()}</style>
 <script type="application/ld+json">{ldj}</script></head>
 <body><main>
 {chr(10).join(x for x in body if x)}
-</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. <a href="/follow">Follow along</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script></body></html>'''
+</main><footer>From <a href="/">Crews &amp; Anna's Kitchen</a>. <a href="/follow">Follow along</a>. Plain text: <a href="/r/{E(slug)}.md">/r/{E(slug)}.md</a> · all recipes: <a href="/recipes.json">/recipes.json</a></footer><script src="/cook.js" defer></script><script src="/week-btn.js" defer></script><script src="/share.js" defer></script></body></html>'''
 
 def cook_js():
     """/cook.js: app.js's shared sign-in block, its Cooked it block and its Ask about this block, unchanged, so /r/<slug> pages
@@ -403,7 +412,7 @@ def cook_css():
 
 def static_pages(live, out):
     rdir = out / "r"; shutil.rmtree(rdir, ignore_errors=True); rdir.mkdir(parents=True)
-    shutil.copy2(SITE / "caveat.woff2", out / "caveat.woff2"); shutil.copy2(SITE / "week-btn.js", out / "week-btn.js")
+    shutil.copy2(SITE / "caveat.woff2", out / "caveat.woff2"); shutil.copy2(SITE / "week-btn.js", out / "week-btn.js"); shutil.copy2(SITE / "share.js", out / "share.js")
     (out / "cook.js").write_text(cook_js())
     if (SITE / "sync-groceries.shortcut").exists(): shutil.copy2(SITE / "sync-groceries.shortcut", out / "sync-groceries.shortcut")   # signed Shortcut, source in _system/shortcuts/
     for r in live:
