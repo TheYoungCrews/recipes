@@ -158,7 +158,10 @@ SHARECSS = """.shrow{margin:10px 0}.sharebtn{font:600 15px -apple-system,BlinkMa
 def share_btn(r):
     """Share to story (share.js unhides it and draws a 1080x1920 card in the browser). Without JS, nothing shows."""
     ph = f' data-photo="/{E(r["photo"])}"' if r.get("photo") else ""
-    return (f'<p class=shrow><button type=button class=sharebtn data-share="{E(r["slug"])}" data-title="{E(r["title"])}"{ph} hidden>Share to story</button>'
+    try: rt = f' data-rating="{float(r.get("rating") or 0):g}"' if float(r.get("rating") or 0) > 0 else ""   # card footer: stars + rating
+    except (TypeError, ValueError): rt = ""
+    ck = str(r.get("cooks") or "").strip(); ck = f' data-cooks="{int(ck)}"' if ck.isdigit() and int(ck) > 0 else ""   # card footer: Made N times
+    return (f'<p class=shrow><button type=button class=sharebtn data-share="{E(r["slug"])}" data-title="{E(r["title"])}"{ph}{rt}{ck} hidden>Share to story</button>'
             '<span class=shmsg role=status></span></p>')
 def rmbtn(slug, title):
     """Take a dish off What’s Cooking. week-btn.js unhides it when signed in, confirms, then POSTs /api/plan."""

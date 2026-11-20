@@ -71,6 +71,19 @@ test("a tap copies the link first, synchronously, then shares", () => {
   assert.match(src, /Link copied/);
 });
 
+test("card footer shows the recipe's stars and made count, or nothing", () => {
+  assert.equal(S.madeLabel(0), ""); assert.equal(S.madeLabel("1"), "Made once"); assert.equal(S.madeLabel(3), "Made 3 times");
+  const both = S.footerParts("4.5", "3", false);
+  assert.deepEqual([...both.stars], [1, 1, 1, 1, 0.5]); assert.equal(both.text, "4.5/5  \u00B7  Made 3 times");
+  assert.equal(S.footerParts("5", "", false).text, "5/5");
+  const made = S.footerParts("", "2", false); assert.equal(made.stars, null); assert.equal(made.text, "Made 2 times");
+  assert.equal(S.footerParts("", "0", false), null);
+  assert.equal(S.footerParts("", "", false), null);
+  // right after rating the new stars are up top, so the footer is only the made count
+  const after = S.footerParts("4", "2", true); assert.equal(after.stars, null); assert.equal(after.text, "Made 2 times");
+  assert.equal(S.footerParts("4", "", true), null);
+});
+
 test("coverBox center-crops like object-fit: cover", () => {
   const b = S.coverBox(2000, 1000, 500, 500);
   assert.equal(b.sw, 1000); assert.equal(b.sh, 1000); assert.equal(b.sx, 500); assert.equal(b.sy, 0);
@@ -81,7 +94,7 @@ test("share flow uses the file share sheet with a download and press-to-save fal
   assert.match(src, /navigator\.share\(\{ files: \[f\]/);
   assert.match(src, /a\.download = f\.name/);
   assert.match(src, /Press and hold the card/);
-  assert.match(src, /blind-tiger\.pages\.dev/);
+  assert.doesNotMatch(src, /fillText\("blind-tiger/);   // the domain is no longer drawn on the card
   assert.doesNotMatch(src, /\u2014/);   // no em dashes
 });
 
@@ -91,13 +104,16 @@ test("recipe pages and the home view render a Share to story button and load sha
     time_minutes: "30", serves: "2", rating: "4", cooks: "1", tags: [], photo: "photos/pork-ramen.jpg",
     body: "## Original\n\n## Our version\n- [ ] ramen noodles (2 packs)\n\n1. Boil the noodles.\n" };
   const page = py(`print(site_render.recipe_page(${JSON.stringify(r)}, site_render.recipe_parts(${JSON.stringify(r)})))`);
-  assert.match(page, /<button type=button class=sharebtn data-share="pork-ramen" data-title="Pork Ramen" data-photo="\/photos\/pork-ramen\.jpg" hidden>Share to story<\/button>/);
+  assert.match(page, /<button type=button class=sharebtn data-share="pork-ramen" data-title="Pork Ramen" data-photo="\/photos\/pork-ramen\.jpg" data-rating="4" data-cooks="1" hidden>Share to story<\/button>/);
   assert.match(page, /<script src="\/share\.js" defer><\/script>/);
   assert.match(page, /\.sharebtn\{/);
   const view = py(`print(site_render.recipe_view(${JSON.stringify(r)}, set()))`);
   assert.match(view, /class=sharebtn data-share="pork-ramen"/);
+  assert.match(page, /data-rating="4" data-cooks="1" hidden>/);
   const noPhoto = py(`print(site_render.share_btn(${JSON.stringify({ ...r, photo: "" })}))`);
   assert.doesNotMatch(noPhoto, /data-photo/);
+  const fresh = py(`print(site_render.share_btn(${JSON.stringify({ ...r, rating: "", cooks: "0" })}))`);
+  assert.doesNotMatch(fresh, /data-rating|data-cooks/);
   const app = readFileSync(path.join(root, "_system/web/app.js"), "utf8");
   assert.match(app, /shareAfter\(j\.who\)/);
   assert.match(app, /KSHARE\.wire\(b\)/);

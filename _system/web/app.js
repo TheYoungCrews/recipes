@@ -223,7 +223,7 @@ $$("form.cook").forEach(f=>{
     const row=document.createElement("p");row.className="shrow";
     const b=document.createElement("button");b.type="button";b.className="sharebtn";b.textContent="Share to your story";
     b.dataset.share=f.dataset.slug;b.dataset.title=f.dataset.title||"";
-    b.kshare={rating:val,note:$("textarea",f).value,photo:photo||(pg&&pg.dataset.photo)||"",who:who==="anna"?"Anna":"Crews"};
+    b.kshare={rating:val,note:$("textarea",f).value,photo:photo||(pg&&pg.dataset.photo)||"",who:who==="anna"?"Anna":"Crews",cooks:(parseInt(pg&&pg.dataset.cooks,10)||0)+1};
     const m=document.createElement("span");m.className="shmsg";m.setAttribute("role","status");
     row.append(b,m);$(".cmsg",f).after(row);
     if(window.KSHARE&&window.KSHARE.wire)window.KSHARE.wire(b);else b.hidden=true;

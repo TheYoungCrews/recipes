@@ -1,5 +1,5 @@
 // Share to story: <button class=sharebtn data-share="slug" data-title="..." data-photo="/photos/x.jpg" hidden>.
-// A tap draws a 1080x1920 PNG card on a canvas (title, photo, and stars plus note right after rating) and opens the
+// A tap draws a 1080x1920 PNG card on a canvas (title, photo, the recipe's stars and made count, and the new stars plus note right after rating) and opens the
 // phone share sheet with the image (navigator.share with files), so Instagram > Story is one more tap.
 // No share sheet for files (most desktops): the PNG downloads. Older iPhones: the card opens full screen to press and save.
 // Everything runs in the browser. No accounts, keys or uploads. The Cooked it form (app.js) adds a button after a rating.
@@ -47,6 +47,14 @@
     s = s.slice(0, max - 3); var sp = s.lastIndexOf(" ");
     return (sp > max * 0.6 ? s.slice(0, sp) : s).replace(/[\s,.;:!-]+$/, "") + "...";
   }
+  function madeLabel(n) { n = parseInt(n, 10) || 0; return n <= 0 ? "" : n === 1 ? "Made once" : "Made " + n + " times"; }
+  // Bottom line of the card: the recipe's overall stars + rating and how many times it's been made. After a fresh rating
+  // the stars are already up top, so the footer is just the made count. Nothing to show: null (no footer at all).
+  function footerParts(rating, cooks, justRated) {
+    var r = justRated ? 0 : parseFloat(rating) || 0, made = madeLabel(cooks);
+    if (!(r > 0) && !made) return null;
+    return { stars: r > 0 ? starParts(r) : null, text: [r > 0 ? ratingLabel(r) : "", made].filter(Boolean).join("  \u00B7  ") };
+  }
   function recipeUrl(slug) { return "https://blind-tiger.pages.dev/r/" + encodeURIComponent(String(slug || "").trim()); }
   function fileName(slug) { return "blind-tiger-" + (String(slug || "recipe").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") || "recipe") + ".png"; }
   // Center-crop box for drawing a w x h image into a bw x bh frame (object-fit: cover).
@@ -54,7 +62,7 @@
     var k = Math.max(bw / w, bh / h), sw = bw / k, sh = bh / k;
     return { sx: (w - sw) / 2, sy: (h - sh) / 2, sw: sw, sh: sh };
   }
-  var H_ = { wrapLines: wrapLines, fitTitle: fitTitle, starParts: starParts, ratingLabel: ratingLabel, shortNote: shortNote, fileName: fileName, recipeUrl: recipeUrl, coverBox: coverBox, W: W, H: H };
+  var H_ = { wrapLines: wrapLines, fitTitle: fitTitle, starParts: starParts, ratingLabel: ratingLabel, shortNote: shortNote, fileName: fileName, recipeUrl: recipeUrl, madeLabel: madeLabel, footerParts: footerParts, coverBox: coverBox, W: W, H: H };
   g.KSHARE = H_;
   if (!g.document) return;
 
@@ -104,7 +112,8 @@
     if ("letterSpacing" in x) x.letterSpacing = "0px";
     y += 70;
     var rated = parseFloat(d.rating) > 0, note = rated ? shortNote(d.note, 150) : "";
-    var fy = top + ch - P - 20, bottom = fy - 70 - 60;   // footer rule sits 70px above the address; keep 60px clear
+    var foot = footerParts(d.pageRating, d.cooks, rated);
+    var fy = top + ch - P - 20, bottom = foot ? fy - 84 - 60 : fy;   // footer rule sits 84px above its line; keep 60px clear
     var measureAt = function (t, s) { x.font = "700 " + s + "px " + HAND; return x.measureText(t).width; };
     x.font = "italic 44px " + SANS;
     var nl = note ? wrapLines("\u201C" + note + "\u201D", tw, function (t) { return x.measureText(t).width; }, 4) : [];
@@ -135,12 +144,12 @@
       x.font = "italic 44px " + SANS; x.fillStyle = C.ink;
       nl.forEach(function (l, k) { x.fillText(l, L, y + 44 + k * 62); });
     }
-    // footer: a rule and the site address
-    x.fillStyle = C.line; x.fillRect(L, fy - 70, tw, 3);
-    x.font = "600 44px " + SANS; x.fillStyle = C.sageD;
-    if ("letterSpacing" in x) x.letterSpacing = "1px";
-    x.fillText("blind-tiger.pages.dev", L, fy);
-    if ("letterSpacing" in x) x.letterSpacing = "0px";
+    // footer: a thin rule, then the recipe's stars and made count (left off when there's neither)
+    if (foot) {
+      x.fillStyle = C.line; x.fillRect(L, fy - 84, tw, 3);
+      var fx = foot.stars ? drawStars(x, foot.stars, L, fy - 17, 30, 12) + 26 : L;
+      x.font = "600 46px " + SANS; x.fillStyle = C.sageD; x.fillText(foot.text, fx, fy);
+    }
     return new Promise(function (ok, no) { cv.toBlob(function (bl) { bl ? ok(bl) : no(new Error("no image")); }, "image/png"); });
   }
 
@@ -148,7 +157,8 @@
   // sheet if navigator.share runs right after the tap.
   function dataOf(b) {
     var k = b.kshare || {};
-    return { slug: b.dataset.share, title: b.dataset.title || "", photo: k.photo || b.dataset.photo || "", rating: k.rating || "", note: k.note || "", who: k.who || "" };
+    return { slug: b.dataset.share, title: b.dataset.title || "", photo: k.photo || b.dataset.photo || "", rating: k.rating || "", note: k.note || "", who: k.who || "",
+      pageRating: b.dataset.rating || "", cooks: k.cooks != null ? k.cooks : b.dataset.cooks || "" };
   }
   function prep(b) { if (!b._card) b._card = render(dataOf(b)).then(function (bl) { return (b._file = new File([bl], fileName(b.dataset.share), { type: "image/png" })); }); return b._card; }
   var iOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
