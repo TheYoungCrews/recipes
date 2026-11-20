@@ -47,13 +47,14 @@
     s = s.slice(0, max - 3); var sp = s.lastIndexOf(" ");
     return (sp > max * 0.6 ? s.slice(0, sp) : s).replace(/[\s,.;:!-]+$/, "") + "...";
   }
+  function recipeUrl(slug) { return "https://blind-tiger.pages.dev/r/" + encodeURIComponent(String(slug || "").trim()); }
   function fileName(slug) { return "blind-tiger-" + (String(slug || "recipe").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") || "recipe") + ".png"; }
   // Center-crop box for drawing a w x h image into a bw x bh frame (object-fit: cover).
   function coverBox(w, h, bw, bh) {
     var k = Math.max(bw / w, bh / h), sw = bw / k, sh = bh / k;
     return { sx: (w - sw) / 2, sy: (h - sh) / 2, sw: sw, sh: sh };
   }
-  var H_ = { wrapLines: wrapLines, fitTitle: fitTitle, starParts: starParts, ratingLabel: ratingLabel, shortNote: shortNote, fileName: fileName, coverBox: coverBox, W: W, H: H };
+  var H_ = { wrapLines: wrapLines, fitTitle: fitTitle, starParts: starParts, ratingLabel: ratingLabel, shortNote: shortNote, fileName: fileName, recipeUrl: recipeUrl, coverBox: coverBox, W: W, H: H };
   g.KSHARE = H_;
   if (!g.document) return;
 
@@ -149,9 +150,27 @@
     var k = b.kshare || {};
     return { slug: b.dataset.share, title: b.dataset.title || "", photo: k.photo || b.dataset.photo || "", rating: k.rating || "", note: k.note || "", who: k.who || "" };
   }
-  function prep(b) { if (!b._card) b._card = render(dataOf(b)).then(function (bl) { return new File([bl], fileName(b.dataset.share), { type: "image/png" }); }); return b._card; }
+  function prep(b) { if (!b._card) b._card = render(dataOf(b)).then(function (bl) { return (b._file = new File([bl], fileName(b.dataset.share), { type: "image/png" })); }); return b._card; }
   var iOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  function say(b, t) { var m = b.parentNode && b.parentNode.querySelector(".shmsg"); if (m) m.textContent = t; }
+  // Status line under the button. "Link copied" rides along with whatever else it says.
+  function say(b, t) { b._msg = t; var m = b.parentNode && b.parentNode.querySelector(".shmsg"); if (m) m.textContent = b._copied ? (t ? t + " Link copied." : "Link copied") : t; }
+  // Copy the recipe link. Runs first in the tap, before any await, so iPhone Safari counts it as part of the gesture.
+  // Clipboard API, else a hidden textarea + execCommand. A failed copy stays quiet and the share goes on.
+  function copyLink(b) {
+    var url = recipeUrl(b.dataset.share), done = function () { b._copied = true; say(b, b._msg || ""); setTimeout(function () { b._copied = false; say(b, b._msg || ""); }, 4000); };
+    var legacy = function () {
+      try {
+        var ta = doc.createElement("textarea"); ta.value = url; ta.setAttribute("readonly", ""); ta.setAttribute("aria-hidden", "true");
+        ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none";
+        doc.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, url.length);
+        var ok = doc.execCommand("copy"); ta.remove(); b.focus && b.focus({ preventScroll: true }); if (ok) done();
+      } catch (e) {}
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () {});
+      else legacy();
+    } catch (e) { legacy(); }
+  }
   function canFiles(f) { try { return !!(navigator.canShare && navigator.canShare({ files: [f] })); } catch (e) { return false; } }
   function preview(f) {
     var url = URL.createObjectURL(f), ov = doc.createElement("div");
@@ -168,13 +187,16 @@
   }
   async function go(b) {
     if (b.disabled) return;
-    var ready = !!b._ready; b.disabled = true;
-    if (!ready) say(b, "Making the card...");
-    var f;
-    try { f = await prep(b); b._ready = true; } catch (e) { b.disabled = false; b._card = null; return say(b, "Couldn't make the card. Try again?"); }
-    b.disabled = false; say(b, "");
+    copyLink(b);   // synchronous, before the share sheet
+    var ready = !!b._file, f = b._file;
+    if (!f) {   // card not drawn yet: draw it now (the share may then need a second tap on iPhone)
+      b.disabled = true; say(b, "Making the card...");
+      try { f = await prep(b); b._ready = true; } catch (e) { b.disabled = false; b._card = null; return say(b, "Couldn't make the card. Try again?"); }
+      b.disabled = false;
+    }
+    say(b, "");
     if (canFiles(f)) {
-      try { await navigator.share({ files: [f], title: b.dataset.title || "" }); }
+      try { await navigator.share({ files: [f], title: b.dataset.title || "" }); }   // files only: adding a url makes some apps drop the image
       catch (e) {
         if (e && e.name === "AbortError") return;
         if (!ready && e && e.name === "NotAllowedError") return say(b, "Card's ready. Tap again to share.");

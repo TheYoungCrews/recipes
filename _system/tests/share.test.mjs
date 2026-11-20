@@ -57,6 +57,20 @@ test("fileName is a safe png name", () => {
   assert.equal(S.fileName(""), "blind-tiger-recipe.png");
 });
 
+test("recipeUrl is the full plain page link", () => {
+  assert.equal(S.recipeUrl("pork-ramen"), "https://blind-tiger.pages.dev/r/pork-ramen");
+  assert.equal(S.recipeUrl("a b"), "https://blind-tiger.pages.dev/r/a%20b");
+});
+
+test("a tap copies the link first, synchronously, then shares", () => {
+  const go = src.slice(src.indexOf("async function go"), src.indexOf("function wire"));
+  const copy = go.indexOf("copyLink(b)"), firstAwait = go.indexOf("await"), share = go.indexOf("navigator.share");
+  assert.ok(copy > 0 && copy < firstAwait && copy < share);
+  assert.match(src, /navigator\.clipboard\.writeText\(url\)/);
+  assert.match(src, /execCommand\("copy"\)/);
+  assert.match(src, /Link copied/);
+});
+
 test("coverBox center-crops like object-fit: cover", () => {
   const b = S.coverBox(2000, 1000, 500, 500);
   assert.equal(b.sw, 1000); assert.equal(b.sh, 1000); assert.equal(b.sx, 500); assert.equal(b.sy, 0);
