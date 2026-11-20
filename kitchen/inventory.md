@@ -153,7 +153,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 ## Freezer
 - Triple Threat ground multi-species blend (White Oak Pastures, 2)
 - bone-in ribeye steak (White Oak Pastures)
-- Denver steaks (White Oak Pastures, 2)
 - chuck eye steak (White Oak Pastures)
 - chuck roast (White Oak Pastures)
 - bone-in short ribs (White Oak Pastures, 2)

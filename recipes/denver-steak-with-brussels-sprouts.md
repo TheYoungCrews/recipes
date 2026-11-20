@@ -2,7 +2,7 @@
 title: Denver Steak with Brussels Sprouts
 slug: denver-steak-with-brussels-sprouts
 type: main
-status: to-try
+status: favorite
 tags: [beef, american, stovetop, sheet-pan, weeknight-30, high-protein]
 ingredients: [denver steak, salt, smoked paprika, cayenne, avocado oil, butter, brussels sprouts, olive oil, lemon, parmesan]
 serves: 2
@@ -14,11 +14,13 @@ added_by: crews
 via: grok-bot
 input_type: text
 owner: crews
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-19
+rating: 5
+cooks: 1
 ---
 Grass-fed Denver steaks seared hard in cast iron with a smoked paprika and cayenne rub, pulled early so they stay medium-rare, with crispy roasted Brussels sprouts tossed in lemon and Parmesan.
+
+![Made 2026-11-19](photos/denver-steak-with-brussels-sprouts-2026-11-19.jpg)
 
 ## Original
 Our own recipe, worked out by Crews cooking White Oak Pastures Denver steaks. See Our version.
@@ -51,4 +53,5 @@ Two White Oak Denver steaks, pan-seared in cast iron, with roasted Brussels spro
 Reverse-sear option for a thick steak (1 1/2 inches or more): salt, set on a rack over a sheet pan in a 250°F oven, and pull at 110°F (start checking at 10 minutes). Sear in ripping-hot cast iron 45 to 60 seconds per side, butter in the last 30 seconds. Aim for 125 to 128°F after a 5 minute rest. Roast the sides at 425°F after the steak comes out.
 
 ## Notes
+- 2026-11-19 (crews via site, 5/5): finally didn't overcook some white oak pastures meat! still a bit chewy from the grassfed texture. it was great but id try aging longer or marinating or putting dry rub on for longer next time. also i added caramelized onions & mushrooms.
 - 2026-11-19 (via grok-bot): worked out live while cooking. Straight cast iron sear (White Oak Denvers are about an inch thick), salt plus a 4:1 smoked paprika and cayenne rub, avocado oil for the sear with a butter baste, pull at 120 to 125°F, slice thin against the grain. Brussels sprouts roasted cut side up at 425°F in olive oil, tossed hot with lemon and Parmesan. White Oak's grass-fed guide (https://blog.whiteoakpastures.com/blog/how-to-guide-to-cooking-grassfed-beef) recommends aging or tenderizing steaks, hence the overnight dry brine. Renamed from Denver Steak with Broccolini.
