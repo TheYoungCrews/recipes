@@ -2,7 +2,7 @@
 title: Pork Ramen
 slug: pork-ramen
 type: soup-bowl
-status: to-try
+status: made
 tags: [pork, egg, one-pot, georgia, weeknight-30]
 ingredients: [ramen broth, eggs, olive oil, garlic, ginger, shiitake mushrooms, liquid aminos, carrot, chives, baby spinach, yakisoba noodles]
 serves: 
@@ -17,11 +17,13 @@ via: grok-bot
 input_type: web-page
 owner: White Oak Pastures
 credit: "White Oak Pastures"
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-19
+rating: 4
+cooks: 1
 ---
 Fast weeknight ramen built on White Oak Pastures' pork (or poultry or beef) ramen broth with ginger, garlic, shiitakes, spinach and jammy eggs.
+
+![Made 2026-11-19](photos/pork-ramen-2026-11-19.jpg)
 
 ## Original
 - 2 large eggs
@@ -65,4 +67,5 @@ Fast weeknight ramen built on White Oak Pastures' pork (or poultry or beef) rame
 5. Stir in the spinach (3 cups), chives (2 tbsp chopped) and carrot (1, grated) until the spinach wilts, about 2 minutes. Top with the eggs.
 
 ## Notes
+- 2026-11-19 (crews via site, 4/5): solid, tricky and high effort making ramen just for 2. served w jammy eggs
 - 2026-10-15 (via grok-bot): captured from White Oak Pastures. Soy sauce is liquid aminos in Our version (standing substitution; the source suggests Bragg's aminos too). Serves and total time not stated (roughly 25 minutes of steps).

@@ -29,14 +29,12 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - yellow curry powder
 - red curry paste
 - chicken stock
-- pork ramen broth
 
 ## Pantry: pasta, grains, wraps
 - hearts of palm pasta
 - mezzi rigatoni
 - egg roll wrappers
 - pancake mix (Kodiak)
-- yakisoba noodles
 
 ## Pantry: baking
 - flour
