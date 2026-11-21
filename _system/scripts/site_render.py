@@ -445,21 +445,26 @@ def not_found_page(live, out):
     picks = [{"s": r["slug"], "t": r["title"]} for r in by]
     first = by[0] if by else None
     hint_href = f'/r/{E(first["slug"])}' if first else "/r/"
-    hint_text = E(first["title"]) if first else "the full list"
     picks_js = json.dumps(picks, ensure_ascii=False).replace("</", "<\\/")
     css = PAGE_CSS + """
+:root{--sage:#7f9a7a;--sage-d:#4f6b4c;--sage-l:#dfe8da;--cream:#fbf6ea;--paper:#fffdf6;--ink:#2a2723;--mute:#7a7266;--line:#e9e1cf}
 html{-webkit-text-size-adjust:100%}
 .gone{max-width:640px;margin:8vh auto 24px;padding:32px 26px 40px}
 .gone nav{font-size:18px}
 .gone .code{font-size:18px;letter-spacing:.14em;text-transform:uppercase;margin:18px 0 0}
 .gone h1{font-size:clamp(42px,11vw,64px);margin:10px 0 18px;line-height:1.05}
-.gone .lede{font-size:22px;line-height:1.5;margin:0 0 28px;color:#2a2723}
-.gone .paths{display:flex;flex-direction:column;gap:12px;margin:0 0 28px}
-.gone .btn{display:block;padding:16px 20px;border:2px solid #4f6b4c;border-radius:12px;text-decoration:none;font-size:20px;font-weight:600;text-align:center;background:#fffdf6;color:#4f6b4c}
-.gone .btn:hover,.gone .btn:focus{background:#7f9a7a;color:#fff;outline:none}
-.gone .surprise{font-size:20px;line-height:1.45;margin:0}
+.gone .lede{font-size:22px;line-height:1.5;margin:0 0 28px;color:var(--ink)}
+.gone .paths{display:flex;flex-direction:column;gap:16px;margin:0}
+.gone .btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 20px;min-height:56px;border:2px solid var(--sage-d);border-radius:16px;text-decoration:none;font-size:20px;font-weight:700;text-align:center;line-height:1.2;background:var(--paper);color:var(--sage-d);box-shadow:4px 4px 0 var(--sage-d);background-image:linear-gradient(90deg,rgba(127,154,122,.12) 50%,transparent 50%),linear-gradient(rgba(127,154,122,.12) 50%,transparent 50%);background-size:14px 14px;transition:transform .08s ease,box-shadow .08s ease}
+.gone .btn .ico{font-size:22px;line-height:1;flex:none}
+.gone .btn.primary{background:var(--sage-d);background-image:none;color:var(--paper);border-color:var(--sage-d);box-shadow:4px 4px 0 #2c3d2a}
+.gone .btn.surprise{border-style:dashed;font-family:Hand,"Bradley Hand",cursive;font-size:24px;font-weight:700;letter-spacing:.2px}
+.gone .btn:hover,.gone .btn:focus-visible{background-color:var(--sage-l);outline:2px solid var(--sage-d);outline-offset:3px}
+.gone .btn.primary:hover,.gone .btn.primary:focus-visible{background:var(--sage);background-image:none;color:var(--paper)}
+.gone .btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--sage-d)}
+.gone .btn.primary:active{box-shadow:0 0 0 #2c3d2a}
 footer{font-size:16px}
-@media(min-width:560px){.gone .paths{flex-direction:row;flex-wrap:wrap}.gone .btn{flex:1;min-width:150px}}
+@media(min-width:560px){.gone .paths{display:grid;grid-template-columns:1fr 1fr;gap:16px}.gone .btn.primary,.gone .btn.surprise{grid-column:1/-1}}
 """
     html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Page not found · Crews &amp; Anna's Kitchen</title>
@@ -475,11 +480,11 @@ footer{font-size:16px}
 <h1>It fell behind the stove</h1>
 <p class=lede>We checked under the Dutch oven and behind the spice jars. That page isn't in this kitchen. The rest of the book is still here.</p>
 <p class=paths>
-<a class=btn href="/">Back to the kitchen</a>
-<a class=btn href="/r/">All recipes</a>
-<a class=btn href="/week/">What’s Cooking</a>
+<a class="btn primary" href="/"><span class=ico aria-hidden=true>🍳</span> Back to the kitchen</a>
+<a class=btn href="/r/"><span class=ico aria-hidden=true>📖</span> All recipes</a>
+<a class=btn href="/week/"><span class=ico aria-hidden=true>🥘</span> What’s Cooking</a>
+<a class="btn surprise" id=surprise href="{hint_href}"><span class=ico aria-hidden=true>🎲</span> Surprise me</a>
 </p>
-<p class=surprise>Or try a random recipe: <a id=surprise href="{hint_href}">{hint_text}</a>.</p>
 </main>
 <footer>From <a href="/">Crews &amp; Anna's Kitchen</a>.</footer>
 <script>
@@ -489,7 +494,6 @@ footer{font-size:16px}
   if (!a || !picks.length) return;
   var p = picks[Math.floor(Math.random() * picks.length)];
   a.href = "/r/" + encodeURIComponent(p.s);
-  a.textContent = p.t;
 }})();
 </script>
 </body></html>

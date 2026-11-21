@@ -26,16 +26,20 @@ finally:
   assert.match(html, /<h1>It fell behind the stove<\/h1>/);
   assert.match(html, /We checked under the Dutch oven and behind the spice jars/);
   assert.match(html, /That page isn't in this kitchen/);
-  assert.match(html, /href="\/">Back to the kitchen/);
-  assert.match(html, /href="\/r\/">All recipes/);
-  assert.match(html, /href="\/week\/">What’s Cooking/);
-  assert.match(html, /href="\/r\/aged-eggnog">Aged Eggnog/);  // alphabetical fallback before the surprise script runs
+  assert.match(html, /class="btn primary" href="\/"/);
+  assert.match(html, /Back to the kitchen/);
+  assert.match(html, /href="\/r\/"[^>]*>[\s\S]*All recipes/);
+  assert.match(html, /href="\/week\/"[^>]*>[\s\S]*What’s Cooking/);
+  assert.match(html, /id=surprise href="\/r\/aged-eggnog"/);  // alphabetical fallback before the surprise script runs
+  assert.match(html, /Surprise me/);
   assert.match(html, /"s": "zebra-cake"/);
-  assert.match(html, /id=surprise/);
+  assert.match(html, /box-shadow:4px 4px 0/);
+  assert.match(html, /\.gone \.btn:active\{transform:translate\(4px,4px\)/);
   assert.match(html, /viewport-fit=cover/);
   assert.match(html, /font-size:22px/);
   assert.match(html, /font-family:Hand/);
   assert.match(html, /background-image:linear-gradient/);
+  assert.match(html, /--sage:#7f9a7a/);
   assert.match(html, /Crews &amp; Anna's Kitchen/);
   assert.doesNotMatch(html, /—/);
   assert.doesNotMatch(html, /pages\.dev/);
