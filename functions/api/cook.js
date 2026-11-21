@@ -1,5 +1,5 @@
 import { verifyGoogleIdToken, whoFor } from "../_lib/auth.js";
-import { verifySiwe } from "../_lib/siwe.js";
+import { verifySiwe, siweDomainFor } from "../_lib/siwe.js";
 import { readSessionFull, renewCookies } from "../_lib/session.js";
 import { commitCook } from "../_lib/github.js";
 import { todayNY } from "../_lib/recipe.js";
@@ -13,7 +13,7 @@ export async function onRequestPost({ request, env }) {
   if (b && b.siwe) {
     if (!env.COOKS_ETH || !env.SESSION_SECRET) return out(503, { error: "Ethereum sign-in isn't set up yet." });
     let r;
-    try { r = await verifySiwe({ message: String(b.siwe.message || ""), signature: String(b.siwe.signature || ""), cookie: request.headers.get("cookie"), secret: env.SESSION_SECRET, cooksEth: env.COOKS_ETH, domain: env.SITE_DOMAIN || "blind-tiger.pages.dev" }); }
+    try { r = await verifySiwe({ message: String(b.siwe.message || ""), signature: String(b.siwe.signature || ""), cookie: request.headers.get("cookie"), secret: env.SESSION_SECRET, cooksEth: env.COOKS_ETH, domain: siweDomainFor(request, env) }); }
     catch { return out(401, { error: "Please sign in again." }); }
     who = r.who; clear = true; via = "siwe";
   } else if ((sess = await readSessionFull(request.headers.get("cookie"), env.SESSION_SECRET))) {

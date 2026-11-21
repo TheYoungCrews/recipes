@@ -62,6 +62,24 @@ export function whoForAddr(addr, env) {
   return null;
 }
 
+// Wallet sign-in (EIP-4361) binds the message to the page's host. Accept the pages.dev
+// address and recipes.crews.fyi; SITE_DOMAIN can add more hosts (comma or space separated).
+export const DEFAULT_SIWE_DOMAINS = ["blind-tiger.pages.dev", "recipes.crews.fyi"];
+
+export function allowedSiweDomains(env = {}) {
+  const extra = String(env.SITE_DOMAIN || "").split(/[,\s]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+  return [...new Set([...DEFAULT_SIWE_DOMAINS, ...extra])];
+}
+
+export function siweDomainFor(request, env = {}) {
+  let host = "";
+  try { host = new URL(request.url).hostname; } catch {}
+  if (!host && request && request.headers) host = String(request.headers.get("host") || "").split(":")[0];
+  host = host.toLowerCase();
+  if (!allowedSiweDomains(env).includes(host)) throw new Error("bad domain");
+  return host;
+}
+
 export async function verifySiwe({ message, signature, cookie, secret, cooksEth, domain = "blind-tiger.pages.dev", now = Math.floor(Date.now() / 1000) }) {
   if (!secret) throw new Error("not configured");
   const p = parseSiwe(message);

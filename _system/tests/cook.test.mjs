@@ -103,7 +103,7 @@ test("commitCook 404 for unknown slug", async () => {
 
 // ---- Sign in with Ethereum (EIP-4361)
 import { secp256k1, keccak_256 } from "../../functions/_lib/vendor/noble.js";
-import { verifySiwe, recoverPersonal, makeNonceCookie, toChecksum, whoForAddr, parseSiwe } from "../../functions/_lib/siwe.js";
+import { verifySiwe, recoverPersonal, makeNonceCookie, toChecksum, whoForAddr, parseSiwe, siweDomainFor, allowedSiweDomains } from "../../functions/_lib/siwe.js";
 const SECRET = "test-session-secret", DOM = "blind-tiger.pages.dev";
 const ethAddr = priv => "0x" + Buffer.from(keccak_256(secp256k1.getPublicKey(priv, false).slice(1)).slice(-20)).toString("hex");
 function personalSign(msg, priv) {
@@ -127,6 +127,22 @@ test("siwe valid cook", async () => assert.equal((await siweCase()).who, "crews"
 test("siwe random key not on allowlist", async () => assert.equal((await siweCase({ priv: strangerPriv })).who, null));
 test("siwe signed by someone else", async () => assert.rejects(siweCase({ signer: strangerPriv }), /signer mismatch/));
 test("siwe wrong domain", async () => assert.rejects(siweCase({ domain: "evil.example" }), /domain/));
+test("siweDomainFor allows pages.dev and recipes.crews.fyi, rejects others", () => {
+  assert.equal(siweDomainFor(new Request("https://blind-tiger.pages.dev/api/session")), "blind-tiger.pages.dev");
+  assert.equal(siweDomainFor(new Request("https://recipes.crews.fyi/r/x")), "recipes.crews.fyi");
+  assert.throws(() => siweDomainFor(new Request("https://evil.example/api/session")), /domain/);
+  assert.ok(allowedSiweDomains({ SITE_DOMAIN: "preview.example" }).includes("preview.example"));
+  assert.equal(siweDomainFor(new Request("https://preview.example/"), { SITE_DOMAIN: "preview.example" }), "preview.example");
+});
+test("siwe valid on recipes.crews.fyi", async () => {
+  const host = "recipes.crews.fyi";
+  const { nonce, value } = await makeNonceCookie(SECRET, NOW);
+  const address = toChecksum(ethAddr(cookPriv));
+  const message = siweMsg({ domain: host, address, nonce, iat: iso(NOW), uri: `https://${host}/` });
+  const signature = personalSign(message, cookPriv);
+  const r = await verifySiwe({ message, signature, cookie: `siwe_nonce=${value}`, secret: SECRET, cooksEth: COOKS_ETH, domain: host, now: NOW });
+  assert.equal(r.who, "crews");
+});
 test("siwe wrong uri", async () => assert.rejects(siweCase({ uri: "https://evil.example" }), /uri/));
 test("siwe wrong chain", async () => assert.rejects(siweCase({ chain: 5 }), /chain/));
 test("siwe nonce mismatch", async () => assert.rejects(siweCase({ nonce: "0".repeat(32) }), /nonce/));
