@@ -33,10 +33,10 @@ test("events include an addition and a rating, newest first", () => {
   assert.equal(ev[0].title, "Rated 4.5/5: Test Steak");
   assert.equal(ev[0].date, "2026-11-10");
   assert.equal(ev[0].note, "Excellent dinner");
-  assert.equal(ev[0].guid, "https://blind-tiger.pages.dev/r/test-steak#rated-2026-11-10-4.5-crews");
+  assert.equal(ev[0].guid, "https://recipes.crews.fyi/r/test-steak#rated-2026-11-10-4.5-crews");
   assert.equal(ev[1].kind, "added");
   assert.equal(ev[1].title, "Added: Test Steak");
-  assert.equal(ev[1].guid, "https://blind-tiger.pages.dev/r/test-steak#added-2026-11-01");
+  assert.equal(ev[1].guid, "https://recipes.crews.fyi/r/test-steak#added-2026-11-01");
   assert.match(ev[1].note, /weeknight steak/i);
 });
 
@@ -95,14 +95,14 @@ finally:
 `));
   assert.equal(out.n, 2);
   assert.match(out.xml, /Rated 4.5\/5: Test Steak/);
-  assert.match(out.xml, /<guid isPermaLink="false">https:\/\/blind-tiger\.pages\.dev\/r\/test-steak/);
+  assert.match(out.xml, /<guid isPermaLink="false">https:\/\/recipes\.crews\.fyi\/r\/test-steak/);
   assert.match(out.html, /Follow along with Crews &amp; Anna's kitchen/);
   assert.match(out.html, /href="\/feed\.xml"/);
   assert.doesNotMatch(out.html, /blogtrottr/i);
   assert.match(out.html, /rel="alternate" type="application\/rss\+xml"/);
   assert.match(out.html, /name=interest value=both checked/);
   assert.match(out.html, /One email on Sunday: what we cooked and rated, new recipes and cocktails/);
-  assert.match(out.html, /property="og:image" content="https:\/\/blind-tiger\.pages\.dev\/follow-og\.png"/);
+  assert.match(out.html, /property="og:image" content="https:\/\/recipes\.crews\.fyi\/follow-og\.png"/);
   assert.match(out.html, /twitter:card" content="summary_large_image"/);
   assert.doesNotMatch(out.html, /—/);
   assert.match(out.hdr, /\/feed\.xml\n\s*Content-Type: application\/rss\+xml; charset=utf-8/);

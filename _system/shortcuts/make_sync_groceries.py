@@ -3,7 +3,7 @@
 
   python3 _system/shortcuts/make_sync_groceries.py /tmp/Sync\\ Groceries.shortcut
 
-Flow: Get https://blind-tiger.pages.dev/groceries.txt -> split by new lines -> Find Reminders in "Groceries"
+Flow: Get https://recipes.crews.fyi/groceries.txt -> split by new lines -> Find Reminders in "Groceries"
 (open, plus checked off in the last week) -> read this week's sent log from iCloud Drive
 (Shortcuts/Cookbook/groceries-sent-YYYY-Www.txt; missing file is fine) -> one lowercase text
 "|title|title|" from reminder titles plus log lines -> for each feed line, if that text does not
@@ -12,9 +12,11 @@ the sent log, and bump AddedCount -> notify "Added N: a, b" when N > 0, else "No
 Deleting a reminder will not make it come back the same week; new grocery lines still get added.
 The file has to be signed on a Mac (`shortcuts sign --mode anyone`) before iOS will import it; the signed copy
 lives at _system/web/sync-groceries.shortcut and is served at /sync-groceries.shortcut."""
-import plistlib, sys, uuid
+import pathlib, plistlib, sys, uuid
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
+from site_url import SITE
 
-FEED = "https://blind-tiger.pages.dev/groceries.txt"
+FEED = SITE + "/groceries.txt"
 LIST = {"Title": "Groceries", "Identifier": "A99A9127-03ED-4C82-89C8-DFC3C297B14B", "IsAllCalendar": False}
 OBJ = "\ufffc"
 # Per-week log in the iCloud Drive Shortcuts folder. Append File paths are relative to
@@ -58,7 +60,7 @@ def build():
     get_path = tokens("/Shortcuts/", LOG_DIR, "/", LOG_PREFIX, week_tok, ".txt")
     append_path = tokens("/", LOG_DIR, "/", LOG_PREFIX, week_tok, ".txt")
     a = [
-        act("comment", WFCommentActionText="Sync Groceries: adds this week's cookbook grocery list (blind-tiger.pages.dev/groceries.txt) to the shared Reminders list Groceries. Skips anything already there, open or checked off in the last week, and anything already added this week (logged in iCloud Drive/Shortcuts/Cookbook/groceries-sent-YYYY-Www.txt). Deleting a reminder will not make it come back the same week."),
+        act("comment", WFCommentActionText="Sync Groceries: adds this week's cookbook grocery list (recipes.crews.fyi/groceries.txt) to the shared Reminders list Groceries. Skips anything already there, open or checked off in the last week, and anything already added this week (logged in iCloud Drive/Shortcuts/Cookbook/groceries-sent-YYYY-Www.txt). Deleting a reminder will not make it come back the same week."),
         act("date", UUID=DATE, WFDateActionMode="Current Date"),
         act("format.date", UUID=WEEK, WFDate=tokens(out(DATE, "Date")),
             WFDateFormatStyle="Custom", WFDateFormat=WEEK_FMT, WFDateFormatString=WEEK_FMT),

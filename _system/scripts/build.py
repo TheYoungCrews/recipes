@@ -3,6 +3,8 @@
 Validates frontmatter against _system/SCHEMA.md / _system/TAGS.md; exits 1 on errors."""
 import json, re, sys, html, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[2]  # repo root (this file is _system/scripts/build.py)
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from site_url import SITE
 REQ = ["title", "slug", "type", "status", "owner"]
 STATUSES = {"to-try", "made", "favorite", "retired"}
 
@@ -100,8 +102,8 @@ def readme(items):
     out = ['<img src="_system/assets/banner.jpg" alt="Crews and Anna Kitchen, recipes we love" width="100%">', "",
            "Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, the family ones we don't want to lose, and Anna's favorite cocktails.",
            "Each one keeps the creator's original plus our version, which gets a little better every time we cook it and rate it.", "",
-           f"Browse, search and rate them at **[blind-tiger.pages.dev](https://blind-tiger.pages.dev)**. So far: {live('recipes')} [recipes](recipes/) and {live('cocktails')} [cocktails](cocktails/).", "",
-           "Want to hear when we add or rate a dish? [Follow along](https://blind-tiger.pages.dev/follow), or subscribe to the [RSS feed](https://blind-tiger.pages.dev/feed.xml).", "",
+           f"Browse, search and rate them at **[recipes.crews.fyi]({SITE})**. So far: {live('recipes')} [recipes](recipes/) and {live('cocktails')} [cocktails](cocktails/).", "",
+           f"Want to hear when we add or rate a dish? [Follow along]({SITE}/follow), or subscribe to the [RSS feed]({SITE}/feed.xml).", "",
            "## Our kitchen", "",
            "[What we like](kitchen/taste-profile.md) · [Pantry staples](kitchen/staples.md) · [Bar shelf](kitchen/bar.md)", "",
            "Got one we should try? Email crews@mail.grokbot.com with \"recipe:\" and the name in the subject, or point your AI at [AGENTS.md](AGENTS.md).", "",

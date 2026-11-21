@@ -4,9 +4,9 @@ import {
   validEmail, normalizeEmail, normalizeInterest, isHoneypot, clientIp,
   authorizedLister, rateLimited, subscribe, listActive, readBody, wantsHtml,
 } from "../_lib/follow.js";
+import { SITE } from "../_lib/site.js";
 
 const json = (status, body) => Response.json(body, { status, headers: { "cache-control": "no-store" } });
-const SITE = "https://blind-tiger.pages.dev";
 
 function back(request, qs) {
   const url = new URL("/follow", request.url);

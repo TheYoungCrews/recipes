@@ -5,8 +5,7 @@ personal info. Built at site-build time into /feed.xml and /follow.
 """
 import datetime, html, re
 from zoneinfo import ZoneInfo
-
-BASE = "https://blind-tiger.pages.dev"
+from site_url import SITE as BASE
 ET = ZoneInfo("America/New_York")
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+")
 FEED_CAP = 50

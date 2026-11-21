@@ -1,8 +1,7 @@
 """Voice-friendly exports: site/recipes.json (full) and site/recipes-index.json (tiny). Plain text, no markdown, no emails."""
 import json, re
 from credit import credit as _credit
-
-SITE = "https://blind-tiger.pages.dev"
+from site_url import SITE
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+")
 
 def plain(s):
@@ -61,19 +60,19 @@ def write(items, out):
     (out/"recipes.json").write_text(json.dumps({"site": SITE, "count": len(full), "items": full}, indent=1, ensure_ascii=False))
     (out/"recipes-index.json").write_text(json.dumps([{k: e[k] for k in ("slug","title","tags","status","url")} for e in full], ensure_ascii=False))
     (out/"_headers").write_text(headers())
-    (out/"llms.txt").write_text("""# Crews & Anna's Kitchen
+    (out/"llms.txt").write_text(f"""# Crews & Anna's Kitchen
 
 > Recipes and cocktails from Crews and Anna. Plain-text data for AI agents.
 
 ## For AI agents
-- Read recipes: https://blind-tiger.pages.dev/recipes.json (full) or https://blind-tiger.pages.dev/recipes-index.json (list)
-- One recipe as a plain page (no JavaScript): https://blind-tiger.pages.dev/r/<slug>, or as markdown: https://blind-tiger.pages.dev/r/<slug>.md
-- Share and fetch /r/<slug> (or /r/<slug>.md). Old /#r-<slug> links redirect to /r/<slug>. List of every page: https://blind-tiger.pages.dev/r/ and https://blind-tiger.pages.dev/sitemap.xml
+- Read recipes: {SITE}/recipes.json (full) or {SITE}/recipes-index.json (list)
+- One recipe as a plain page (no JavaScript): {SITE}/r/<slug>, or as markdown: {SITE}/r/<slug>.md
+- Share and fetch /r/<slug> (or /r/<slug>.md). Old /#r-<slug> links redirect to /r/<slug>. List of every page: {SITE}/r/ and {SITE}/sitemap.xml
 - Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
-- Bulk add: POST https://blind-tiger.pages.dev/api/recipes (Bearer key; schema https://blind-tiger.pages.dev/openapi.json) or paste at https://blind-tiger.pages.dev/add
-- This week's dinners and grocery list: https://blind-tiger.pages.dev/week/ (markdown https://blind-tiger.pages.dev/week.md, JSON https://blind-tiger.pages.dev/week.json)
-- Add or remove a recipe on this week's plan: POST https://blind-tiger.pages.dev/api/plan with {"slug": "<slug>", "action": "add"|"remove"} (Bearer key; GET /api/plan reads the live plan; details in AGENTS.md section 5)
-- Mark a grocery line as already have: POST https://blind-tiger.pages.dev/api/plan with {"action": "have"|"unhave", "item": "<items[].key from /week.json>"} (Bearer key)
+- Bulk add: POST {SITE}/api/recipes (Bearer key; schema {SITE}/openapi.json) or paste at {SITE}/add
+- This week's dinners and grocery list: {SITE}/week/ (markdown {SITE}/week.md, JSON {SITE}/week.json)
+- Add or remove a recipe on this week's plan: POST {SITE}/api/plan with {{"slug": "<slug>", "action": "add"|"remove"}} (Bearer key; GET /api/plan reads the live plan; details in AGENTS.md section 5)
+- Mark a grocery line as already have: POST {SITE}/api/plan with {{"action": "have"|"unhave", "item": "<items[].key from /week.json>"}} (Bearer key)
 - Agents with repo write access commit to inbox/ in https://github.com/TheYoungCrews/recipes
 
 ## Recipes

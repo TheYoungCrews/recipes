@@ -14,13 +14,13 @@ On a recipe page, the Cooked it form loads a "Used up from the inventory?" check
 
 ## 2. Checking off groceries on This week
 
-Signed in on https://blind-tiger.pages.dev/week/, each grocery checkbox still marks the plan's `on_hand` list. It also adds that item to `kitchen/inventory.md` (section inferred when possible, otherwise `## New`). Unchecking removes the exact line that was added, not a fuzzy match, so leftover cousins stay put. Staples are not added.
+Signed in on https://recipes.crews.fyi/week/, each grocery checkbox still marks the plan's `on_hand` list. It also adds that item to `kitchen/inventory.md` (section inferred when possible, otherwise `## New`). Unchecking removes the exact line that was added, not a fuzzy match, so leftover cousins stay put. Staples are not added.
 
 ## 3. Checking off groceries in Apple Reminders
 
 iOS Shortcuts cannot run at the moment you check off a reminder. There is no "when a reminder is completed" trigger. The closest options are: run a shortcut after shopping, run it when you close the Reminders app, or run it at a time of day.
 
-The shortcut calls `POST https://blind-tiger.pages.dev/api/inventory` with a Bearer Recipe API key (the same kind of key used for `/api/plan`). It never belongs in this repo. Put it only in the shortcut on your phone.
+The shortcut calls `POST https://recipes.crews.fyi/api/inventory` with a Bearer Recipe API key (the same kind of key used for `/api/plan`). It never belongs in this repo. Put it only in the shortcut on your phone.
 
 ```
 POST /api/inventory
@@ -52,13 +52,13 @@ Deleting a Groceries reminder is safe. Sync Groceries logs each title it adds fo
      - `action` (Text): `add`
      - `items` (variable): `Bought`
    - Add **Get Contents of URL**:
-     - URL: `https://blind-tiger.pages.dev/api/inventory`
+     - URL: `https://recipes.crews.fyi/api/inventory`
      - Method: POST
      - Headers: `Authorization` = `Bearer ` then the `Key` variable (one space after Bearer), and `Content-Type` = `application/json`
      - Request Body: JSON, and choose the Dictionary as the body (or File / JSON from the Dictionary)
    - Add **Show Notification** titled `Add Bought Groceries` with body `Added checked-off groceries to the inventory.`
 9. In Otherwise, notify `Nothing checked off in the last 2 days.`
-10. Run it once after a shopping trip to confirm. You should see a commit like `inventory: add ... (crews via api)` and the items on https://blind-tiger.pages.dev after about a minute. If you get 401, the key is missing or wrong.
+10. Run it once after a shopping trip to confirm. You should see a commit like `inventory: add ... (crews via api)` and the items on https://recipes.crews.fyi after about a minute. If you get 401, the key is missing or wrong.
 
 ### Closest automations
 

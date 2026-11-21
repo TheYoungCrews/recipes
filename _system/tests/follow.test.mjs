@@ -46,7 +46,7 @@ test("signup stores email and interest, list returns unfollow URL", async () => 
   assert.equal(listed.count, 1);
   assert.equal(listed.subscribers[0].email, "friend@example.com");
   assert.equal(listed.subscribers[0].interest, "food");
-  assert.match(listed.subscribers[0].unsubscribe, /^https:\/\/blind-tiger\.pages\.dev\/api\/unfollow\?token=[a-f0-9]+$/);
+  assert.match(listed.subscribers[0].unsubscribe, /^https:\/\/recipes\.crews\.fyi\/api\/unfollow\?token=[a-f0-9]+$/);
 });
 
 test("existing subscriber updates interest; honeypot and bad email are rejected", async () => {

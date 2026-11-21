@@ -126,11 +126,11 @@ test("plain /r/<slug> pages have their own og title, description, canonical url 
   };
   const html = py(`print(site_render.recipe_page(${JSON.stringify(r)}, site_render.recipe_parts(${JSON.stringify(r)})))`);
   assert.match(html, /property="og:title" content="The Fence Hopper"/);
-  assert.match(html, /property="og:url" content="https:\/\/blind-tiger\.pages\.dev\/r\/the-fence-hopper"/);
-  assert.match(html, /rel=canonical href="https:\/\/blind-tiger\.pages\.dev\/r\/the-fence-hopper"/);
-  assert.match(html, /property="og:image" content="https:\/\/blind-tiger\.pages\.dev\/og\.jpg"/);
+  assert.match(html, /property="og:url" content="https:\/\/recipes\.crews\.fyi\/r\/the-fence-hopper"/);
+  assert.match(html, /rel=canonical href="https:\/\/recipes\.crews\.fyi\/r\/the-fence-hopper"/);
+  assert.match(html, /property="og:image" content="https:\/\/recipes\.crews\.fyi\/og\.jpg"/);
   assert.match(html, /property="og:description" content="[^"]*Anders Erickson/);
-  assert.doesNotMatch(html, /property="og:url" content="https:\/\/blind-tiger\.pages\.dev\/"/);
+  assert.doesNotMatch(html, /property="og:url" content="https:\/\/recipes\.crews\.fyi\/"/);
   assert.match(html, /class=facts/);
   assert.match(html, /href="https:\/\/www\.youtube\.com\/watch\?v=Eg7DLBgwJqM"/);
 });

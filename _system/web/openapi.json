@@ -3,9 +3,9 @@
   "info": {
     "title": "Crews & Anna Recipe Book",
     "version": "1.0.0",
-    "description": "Add recipes to Crews and Anna's kitchen inbox. They get filed onto https://blind-tiger.pages.dev within about an hour. For assistants and Custom GPT Actions."
+    "description": "Add recipes to Crews and Anna's kitchen inbox. They get filed onto https://recipes.crews.fyi within about an hour. For assistants and Custom GPT Actions."
   },
-  "servers": [{ "url": "https://blind-tiger.pages.dev" }],
+  "servers": [{ "url": "https://recipes.crews.fyi" }],
   "paths": {
     "/api/plan": {
       "get": {"operationId": "getWeekPlan", "summary": "This week's plan, live from the repo", "security": [{"ApiKeyAuth": []}], "responses": {"200": {"description": "Current plan", "content": {"application/json": {"schema": {"type": "object", "properties": {"week": {"type": "string", "example": "2026-W45"}, "starts": {"type": "string", "example": "2026-11-02"}, "path": {"type": "string"}, "exists": {"type": "boolean"}, "recipes": {"type": "array", "items": {"type": "string"}}, "nights": {"type": "array", "items": {"type": "string"}}, "extras": {"type": "array", "items": {"type": "string"}}}}}}}, "401": {"description": "No key or session"}}},

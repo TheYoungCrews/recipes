@@ -4,7 +4,7 @@
 // No share sheet for files (most desktops): the PNG downloads. Older iPhones: the card opens full screen to press and save.
 // Everything runs in the browser. No accounts, keys or uploads. The Cooked it form (app.js) adds a button after a rating.
 (function (g) {
-  var W = 1080, H = 1920;
+  var W = 1080, H = 1920, SITE = "https://recipes.crews.fyi";
   var C = { cream: "#fbf6ea", paper: "#fffdf6", ink: "#2a2723", mute: "#7a7266", line: "#e9e1cf", sage: "#7f9a7a", sageD: "#4f6b4c", empty: "#e4dccb" };
 
   // ---- Pure helpers (tested in _system/tests/share.test.mjs)
@@ -55,7 +55,7 @@
     if (!(r > 0) && !made) return null;
     return { stars: r > 0 ? starParts(r) : null, text: [r > 0 ? ratingLabel(r) : "", made].filter(Boolean).join("  \u00B7  ") };
   }
-  function recipeUrl(slug) { return "https://blind-tiger.pages.dev/r/" + encodeURIComponent(String(slug || "").trim()); }
+  function recipeUrl(slug) { return SITE + "/r/" + encodeURIComponent(String(slug || "").trim()); }
   function fileName(slug) { return "blind-tiger-" + (String(slug || "recipe").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "") || "recipe") + ".png"; }
   // Center-crop box for drawing a w x h image into a bw x bh frame (object-fit: cover).
   function coverBox(w, h, bw, bh) {

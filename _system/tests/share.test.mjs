@@ -58,8 +58,8 @@ test("fileName is a safe png name", () => {
 });
 
 test("recipeUrl is the full plain page link", () => {
-  assert.equal(S.recipeUrl("pork-ramen"), "https://blind-tiger.pages.dev/r/pork-ramen");
-  assert.equal(S.recipeUrl("a b"), "https://blind-tiger.pages.dev/r/a%20b");
+  assert.equal(S.recipeUrl("pork-ramen"), "https://recipes.crews.fyi/r/pork-ramen");
+  assert.equal(S.recipeUrl("a b"), "https://recipes.crews.fyi/r/a%20b");
 });
 
 test("a tap copies the link first, synchronously, then shares", () => {

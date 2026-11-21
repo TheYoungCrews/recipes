@@ -10,6 +10,7 @@ Reads the chosen recipes' Our version checklists, merges clear duplicates (same 
 drops kitchen/staples.md items, the plan's on_hand items and anything in kitchen/inventory.md, and sorts what's left by store section.
 Plan format: _system/SCHEMA.md ("Weekly plans")."""
 import unicodedata
+from site_url import SITE
 import datetime, json, pathlib, re, sys
 from fractions import Fraction as F
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -359,7 +360,7 @@ def build(plan=None, today=None, inv=None):
             "optional": [i["line"] for i in optional], "staples_assumed": check, "have": have, "in_house": in_house,
             "detail": items}
 
-def to_md(g, base="https://blind-tiger.pages.dev"):
+def to_md(g, base=SITE):
     d = datetime.date.fromisoformat(g["starts"])
     L = [f"# What’s Cooking: {d.strftime('%b %-d')} to {(d + datetime.timedelta(days=6)).strftime('%b %-d, %Y')}", "",
          f"Dinners for {g['serves']}. Plan file: {g['plan_file']}", "", "## Dinners", ""]
