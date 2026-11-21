@@ -23,6 +23,7 @@ Private, $0, agent-agnostic recipe repo. Plain markdown + a documented frontmatt
 | `inbox/` | Where outside agents drop new recipes/feedback (create-only); filed hourly into `recipes/` |
 | `_system/templates/` | Copy these to start a new brief |
 | `_system/scripts/build.py` | Builds `site/index.html` (+ `site/photos/`), `site/recipes.json` and the root `README.md` (no dependencies, Python 3). Design lives in `_system/web/` (style.css, app.js, share.js for the Share to story card, Caveat font, banner); HTML is rendered by `_system/scripts/site_render.py` |
+| `_system/domain-worker/` | Proxy Worker for `recipes.crews.fyi` (forwards to `blind-tiger.pages.dev`). Deploy with `npx wrangler deploy` from that folder. |
 
 ## Adding a recipe (no GitHub needed)
 **Anna and Crews:** either

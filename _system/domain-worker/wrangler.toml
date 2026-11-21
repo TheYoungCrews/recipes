@@ -1,0 +1,11 @@
+# Proxy recipes.crews.fyi -> the Blind Tiger Pages site.
+# Secrets are not used here. Deploy from this folder: npx wrangler deploy
+name = "blind-tiger-domain"
+main = "src/worker.js"
+compatibility_date = "2026-11-21"
+account_id = "8da4bb708ed51067e422520371d25423"
+workers_dev = false
+
+[[routes]]
+pattern = "recipes.crews.fyi"
+custom_domain = true

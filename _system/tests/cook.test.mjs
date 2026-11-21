@@ -134,6 +134,12 @@ test("siweDomainFor allows pages.dev and recipes.crews.fyi, rejects others", () 
   assert.ok(allowedSiweDomains({ SITE_DOMAIN: "preview.example" }).includes("preview.example"));
   assert.equal(siweDomainFor(new Request("https://preview.example/"), { SITE_DOMAIN: "preview.example" }), "preview.example");
 });
+test("siweDomainFor honors X-Forwarded-Host from the recipes.crews.fyi proxy", () => {
+  const req = new Request("https://blind-tiger.pages.dev/api/session", { headers: { "x-forwarded-host": "recipes.crews.fyi" } });
+  assert.equal(siweDomainFor(req), "recipes.crews.fyi");
+  const ignored = new Request("https://blind-tiger.pages.dev/api/session", { headers: { "x-forwarded-host": "evil.example" } });
+  assert.equal(siweDomainFor(ignored), "blind-tiger.pages.dev");
+});
 test("siwe valid on recipes.crews.fyi", async () => {
   const host = "recipes.crews.fyi";
   const { nonce, value } = await makeNonceCookie(SECRET, NOW);

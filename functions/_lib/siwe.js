@@ -72,12 +72,16 @@ export function allowedSiweDomains(env = {}) {
 }
 
 export function siweDomainFor(request, env = {}) {
-  let host = "";
-  try { host = new URL(request.url).hostname; } catch {}
-  if (!host && request && request.headers) host = String(request.headers.get("host") || "").split(":")[0];
-  host = host.toLowerCase();
-  if (!allowedSiweDomains(env).includes(host)) throw new Error("bad domain");
-  return host;
+  const allowed = allowedSiweDomains(env);
+  const candidates = [];
+  const fwd = request && request.headers && request.headers.get("x-forwarded-host");
+  if (fwd) candidates.push(String(fwd).split(",")[0].split(":")[0].trim().toLowerCase());
+  try { candidates.push(new URL(request.url).hostname.toLowerCase()); } catch {}
+  if (request && request.headers) candidates.push(String(request.headers.get("host") || "").split(":")[0].toLowerCase());
+  for (const host of candidates) {
+    if (host && allowed.includes(host)) return host;
+  }
+  throw new Error("bad domain");
 }
 
 export async function verifySiwe({ message, signature, cookie, secret, cooksEth, domain = "blind-tiger.pages.dev", now = Math.floor(Date.now() / 1000) }) {
