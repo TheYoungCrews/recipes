@@ -18,6 +18,7 @@ Agents: cocktail briefs use only these unless marked "buy". Fill in with what's 
 ## Liqueurs / amari / vermouth
 - Cointreau
 - Aperol
+- Sapelo aperitivo (Creature Comforts)
 - Campari
 - Cynar
 - Amaro Nonino (low)
