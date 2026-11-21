@@ -280,6 +280,7 @@ def render(items, staples, root):
 <script>window.KITCHEN={data};</script><script>{js}</script><script src="/week-btn.js" defer></script><script src="/share.js" defer></script></body></html>'''
     (out/"index.html").write_text(page)
     static_pages(live, out)
+    not_found_page(live, out)
     week_page(live, out)
     follow_page(live, out)
     # /add paste page (human fallback) + OpenAPI for GPT Actions / agents
@@ -437,6 +438,65 @@ def static_pages(live, out):
 
 
 # ---- /week/: this week's dinners + grocery list, from plans/ via groceries.py (HTML, /week.md, /week.json)
+def not_found_page(live, out):
+    """Cloudflare Pages serves site/404.html with HTTP 404 for missing paths, including nested ones."""
+    out = pathlib.Path(out)
+    by = sorted(live or [], key=lambda r: r["title"].lower())
+    picks = [{"s": r["slug"], "t": r["title"]} for r in by]
+    first = by[0] if by else None
+    hint_href = f'/r/{E(first["slug"])}' if first else "/r/"
+    hint_text = E(first["title"]) if first else "the full list"
+    picks_js = json.dumps(picks, ensure_ascii=False).replace("</", "<\\/")
+    css = PAGE_CSS + """
+html{-webkit-text-size-adjust:100%}
+.gone{max-width:640px;margin:8vh auto 24px;padding:32px 26px 40px}
+.gone nav{font-size:18px}
+.gone .code{font-size:18px;letter-spacing:.14em;text-transform:uppercase;margin:18px 0 0}
+.gone h1{font-size:clamp(42px,11vw,64px);margin:10px 0 18px;line-height:1.05}
+.gone .lede{font-size:22px;line-height:1.5;margin:0 0 28px;color:#2a2723}
+.gone .paths{display:flex;flex-direction:column;gap:12px;margin:0 0 28px}
+.gone .btn{display:block;padding:16px 20px;border:2px solid #4f6b4c;border-radius:12px;text-decoration:none;font-size:20px;font-weight:600;text-align:center;background:#fffdf6;color:#4f6b4c}
+.gone .btn:hover,.gone .btn:focus{background:#7f9a7a;color:#fff;outline:none}
+.gone .surprise{font-size:20px;line-height:1.45;margin:0}
+footer{font-size:16px}
+@media(min-width:560px){.gone .paths{flex-direction:row;flex-wrap:wrap}.gone .btn{flex:1;min-width:150px}}
+"""
+    html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Page not found · Crews &amp; Anna's Kitchen</title>
+<meta name=robots content="noindex">
+<meta name=description content="That page isn&#x27;t in Crews &amp; Anna&#x27;s Kitchen. It may have fallen behind the stove.">
+<meta name=theme-color content="#7f9a7a">
+<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
+<style>{css}</style></head>
+<body>
+<main class=gone>
+<nav><a href="/">Crews &amp; Anna's Kitchen</a></nav>
+<p class="meta code">404</p>
+<h1>It fell behind the stove</h1>
+<p class=lede>We checked under the Dutch oven and behind the spice jars. That page isn't in this kitchen. The rest of the book is still here.</p>
+<p class=paths>
+<a class=btn href="/">Back to the kitchen</a>
+<a class=btn href="/r/">All recipes</a>
+<a class=btn href="/week/">What’s Cooking</a>
+</p>
+<p class=surprise>Or try a random recipe: <a id=surprise href="{hint_href}">{hint_text}</a>.</p>
+</main>
+<footer>From <a href="/">Crews &amp; Anna's Kitchen</a>.</footer>
+<script>
+(function(){{
+  var picks = {picks_js};
+  var a = document.getElementById("surprise");
+  if (!a || !picks.length) return;
+  var p = picks[Math.floor(Math.random() * picks.length)];
+  a.href = "/r/" + encodeURIComponent(p.s);
+  a.textContent = p.t;
+}})();
+</script>
+</body></html>
+'''
+    (out / "404.html").write_text(html_page)
+
+
 WEEK_CSS = """.meals{list-style:none;padding:0}.wk h2 small{font:15px -apple-system,BlinkMacSystemFont,sans-serif;color:#7a7266}.meals li{margin:8px 0}.meals b{font-family:Hand,cursive;font-size:24px;color:#4f6b4c;font-weight:700}
 .gl h3{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#7f9a7a;margin:18px 0 4px}.gl ul{list-style:none;padding:0;margin:0}
 .gl li{padding:6px 0 6px 30px;border-bottom:1px dashed #e9e1cf;position:relative}.gl li:before{content:"";position:absolute;left:4px;top:10px;width:14px;height:14px;border:2px solid #7f9a7a;border-radius:4px}
