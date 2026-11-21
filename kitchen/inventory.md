@@ -104,7 +104,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - parmesan
 - pomegranate seeds
 - sauerkraut
-- apple cider
 - cilantro
 - parsley
 - thyme
@@ -128,11 +127,9 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - chili crunch
 - maple syrup (bourbon barrel aged)
 - black tea (Trader Joe's, iced)
-- club soda
 - ginger beer (zero sugar)
 - Heineken
 - Coca-Cola
-- dry vermouth (Dolin)
 - fresh ginger
 - picanha steaks
 - green onion

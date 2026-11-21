@@ -3,13 +3,19 @@
 Agents: cocktail briefs use only these unless marked "buy". Fill in with what's actually on the shelf.
 
 ## Spirits
-- (to fill)
+- bourbon
+- rye
+- blanco tequila
 
 ## Liqueurs / amari / vermouth
-- (to fill)
+- Cointreau
+- Aperol
 
 ## Bitters / syrups / mixers
-- (to fill)
+- angostura bitters
+- spiced cranberry syrup (homemade)
+- ginger beer (zero sugar)
 
 ## Wishlist (which bottle unlocks the most?)
-- (to fill)
+- Amaro Nonino
+- dry vermouth (Dolin)
