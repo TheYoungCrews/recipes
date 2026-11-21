@@ -5,13 +5,14 @@ Agents: cocktail briefs use only these unless marked "buy". Fill in with what's 
 ## Spirits
 - bourbon
 - rye
-- blanco tequila (Cazadores)
-- reposado tequila (Cazadores)
+- blanco tequila (Cazcanes)
+- tequila (Cazcanes, second bottle)
 - mezcal (Rey Campero)
 - mezcal (Del Maguey Vida)
-- gin
+- gin (Ford's)
 - Jamaican rum (Smith & Cross)
-- aged rum (Appleton Estate)
+- aged rum (Appleton Estate Reserve)
+- white rum (Planteray 3 Stars)
 - cognac (Pierre Ferrand)
 
 ## Liqueurs / amari / vermouth
@@ -25,7 +26,7 @@ Agents: cocktail briefs use only these unless marked "buy". Fill in with what's 
 - Kahlua
 - Licor 43
 - Chambord
-- Drambuie (?)
+- St-Germain
 
 ## Bitters / syrups / mixers
 - angostura bitters
