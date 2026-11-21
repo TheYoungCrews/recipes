@@ -102,7 +102,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - cottage cheese
 - pepper jack (shredded)
 - parmesan
-- cheddar gruyere blend
 - pomegranate seeds
 - sauerkraut
 - apple cider
