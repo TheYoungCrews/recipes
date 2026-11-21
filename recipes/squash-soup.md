@@ -15,9 +15,9 @@ via: api
 input_type: text
 owner: "Casi Cielo"
 credit: "Casi Cielo"
-last_made: 2026-11-07
+last_made: 2026-11-21
 rating: 5
-cooks: 1
+cooks: 2
 ---
 Adapted from Emeril Lagasse’s Butternut Squash Soup, with peanut oil, chipotle pepper flakes, and creamy, crunchy chili toppings.
 
@@ -81,5 +81,6 @@ Adapted from Emeril Lagasse’s Butternut Squash Soup, with peanut oil, chipotle
 7. Serve topped with a dollop of crème fraîche or Greek yogurt and a drizzle of chili oil or a spoonful of Trader Joe’s Chili Crunch. Add pumpkin seeds if desired. Heat note: The ½ teaspoon of chipotle pepper flakes makes this soup a bit spicy, especially with the jalapeño and chili topping. Start with ¼ teaspoon if you prefer it milder.
 
 ## Notes
+- 2026-11-21 (crews via site, 5/5): cooked it.
 - 2026-11-07 (crews via site, 5/5): great soup
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-casi-cielo-squash-soup.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).
