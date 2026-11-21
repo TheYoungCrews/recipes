@@ -15,7 +15,7 @@ via: grok-bot
 input_type: text
 owner: crews
 last_made: 2026-11-21
-rating:
+rating: 4.5
 cooks: 1
 ---
 Beer-braised pork brats, butterflied and seared hard in the Dutch oven, piled on toasted sourdough with jammy onions and mushrooms, then finished with a splash of red wine vinegar, red pepper flakes and torn parsley.
@@ -48,4 +48,5 @@ White Oak Pastures pork bratwurst, beer-braised in the Dutch oven, butterflied a
 7. Build it: toast, then onions and mushrooms, then the split brat. Finish with the red wine vinegar (a splash), the red pepper flakes (a pinch) and the parsley (torn).
 
 ## Notes
+- 2026-11-21 (crews via grok-bot, 4.5/5): rated it.
 - 2026-11-21 (via grok-bot): worked out live while cooking lunch. Dutch oven beer-braised White Oak Pastures bratwurst, butterflied and seared, served on toasted sourdough with jammy onions and mushrooms, finished with a splash of red wine vinegar, a pinch of red pepper flakes and torn parsley. A lazy nod to Argentine choripán after watching The Two Popes. Skipped chimichurri on purpose to keep it easy. Crews said it was great and to add it to the cookbook. No star rating given.
