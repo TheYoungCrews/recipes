@@ -3,7 +3,7 @@
 Our recipes in one place: the dinners we keep making, the ones we saved from Instagram and swear we'll try, the family ones we don't want to lose, and Anna's favorite cocktails.
 Each one keeps the creator's original plus our version, which gets a little better every time we cook it and rate it.
 
-Browse, search and rate them at **[recipes.crews.fyi](https://recipes.crews.fyi)**. So far: 88 [recipes](recipes/) and 59 [cocktails](cocktails/).
+Browse, search and rate them at **[recipes.crews.fyi](https://recipes.crews.fyi)**. So far: 88 [recipes](recipes/) and 60 [cocktails](cocktails/).
 
 Want to hear when we add or rate a dish? [Follow along](https://recipes.crews.fyi/follow), or subscribe to the [RSS feed](https://recipes.crews.fyi/feed.xml).
 
