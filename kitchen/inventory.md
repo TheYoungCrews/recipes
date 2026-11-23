@@ -106,7 +106,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - sauerkraut
 - cilantro
 - parsley
-- thyme
 - kale
 - broccolini (leftover)
 - carrots
