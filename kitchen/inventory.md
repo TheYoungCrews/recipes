@@ -140,6 +140,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - baby spinach
 - chives
 - bell pepper
+- beer
 
 ## Freezer
 - Triple Threat ground multi-species blend (White Oak Pastures, 2)
