@@ -72,10 +72,11 @@ Chuck roast braised with caramelized sweet onions, white wine, and bone broth in
 3. Add the butter (one tbsp) and sweet onions (four to five) to the Dutch oven. Saute until caramelized, about 40 minutes, stirring every five or so minutes.
 4. Add the garlic (three cloves) and cook briefly (step inferred).
 5. Deglaze the pan with the dry white wine (one cup, or sub more bone broth) and bone broth (two cups). Add the Worcestershire sauce (one tbsp) and Dijon mustard (one tbsp).
-6. Return the chuck roast to the pot. Add more salt, thyme (amount not given), and black pepper.
+6. Return the chuck roast to the pot. Add more salt, thyme (amount not given; tie sprigs in a bundle with kitchen twine so the stems come out in one piece), and black pepper.
 7. Add the lid and braise in the oven for 3-4 hours, or until the meat is falling apart.
 8. Serve with mashed potatoes or crusty bread.
 
 ## Notes
+- 2026-11-23 (via grok-bot): if using fresh thyme sprigs, tie them in a bundle with kitchen twine before they go into the braise, so the stems come out in one piece. Carried over from Crews's feedback on the Beer Braised Short Ribs.
 
 - 2026-11-22 (via grok-bot): captured from an Instagram reel by Anna Mondanaro (@feelwellbyanna), sent by crews. Full ingredient list and steps were in the caption; video not fully watched. Serves not stated. Time 220 min is the lower bound of the stated 40-minute caramelize plus 3-4 hour braise; sear time is not given. Thyme is in the steps but not the ingredient list, amount not given. Beef tallow is listed but the written steps never say when to add it; Our version uses it for the sear. Garlic is listed but the caption never says when to add it; Our version adds it after the onions are caramelized (step inferred). The caption writes the roast weight as "3-5 Ibs".

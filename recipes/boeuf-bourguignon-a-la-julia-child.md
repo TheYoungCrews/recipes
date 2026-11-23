@@ -97,9 +97,10 @@ Serves: (not given on page)
 - [ ] mushrooms (1 lb)
 
 **Steps**
-Same as original, in the Dutch oven (the fireproof casserole). No standing soy/chili-paste subs apply.
+Same as original, in the Dutch oven (the fireproof casserole). No standing soy/chili-paste subs apply. If using a fresh thyme sprig, tie it with the bay leaf in kitchen twine so it comes out in one piece.
 
 ## Notes
+- 2026-11-23 (via grok-bot): if using fresh thyme sprigs, tie them in a bundle with kitchen twine before they go into the braise, so the stems come out in one piece. Carried over from Crews's feedback on the Beer Braised Short Ribs.
 - 2026-10-14 (filed by grok-bot): filed from email 486841. Added french to _system/TAGS.md. Wrote grocery checklist for Our version (was "Same as original").
 - 2026-10-14 (via muse): captured from web.
 - Crews says they made this last year (exact date and rating not given). cooks stays 0 because the count was not provided.
