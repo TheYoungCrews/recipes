@@ -12,3 +12,4 @@ Format: `- <key> | <Short name>`. The key is the item's `key` in https://recipes
 - bellwether farms a2 organic whole milk yogurt | Whole milk yogurt
 - jalapeño pepper | Jalapeño
 - carrot | Carrots
+- thyme sprigs | Thyme
