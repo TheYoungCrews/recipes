@@ -41,5 +41,6 @@ Seeded from the two briefs; Crews/Anna to correct. Optional usual store after ` 
 - dried oregano
 - dried thyme
 - bay leaves
+- fresh rosemary (backyard plant, never runs out)
 - cinnamon
 - sugar
