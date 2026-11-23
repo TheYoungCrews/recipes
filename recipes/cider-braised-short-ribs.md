@@ -1,5 +1,5 @@
 ---
-title: Cider Braised Short Ribs
+title: Beer Braised Short Ribs
 slug: cider-braised-short-ribs
 type: main
 status: to-try
@@ -22,7 +22,7 @@ last_made:
 rating:
 cooks: 0
 ---
-Tieghan Gerard's (@halfbakedharvest) apple cider short ribs with caramelized onions, served with Food Network Kitchen's whole baked sweet potatoes.
+Beer braised short ribs with caramelized onions, based on Tieghan Gerard's (@halfbakedharvest) cider braised short ribs, served with Food Network Kitchen's whole baked sweet potatoes.
 
 ## Original
 
