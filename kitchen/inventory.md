@@ -135,7 +135,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - green onion
 - cremini mushrooms
 - cucumber
-- lemon
 - bellwether farms a2 organic whole milk yogurt
 - chicken broth or dry white wine
 - baby spinach
