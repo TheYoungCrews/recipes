@@ -78,19 +78,20 @@ Tieghan's 6-serving Dutch oven braise, with Food Network Kitchen's whole baked s
 - [x] 1 cup beef stock
 - [x] 6 carrots, chopped
 - [x] 6 cloves garlic, smashed
-- [x] 2 tbsp fresh thyme, chopped
+- [x] 2 tbsp fresh thyme, chopped (or whole sprigs tied with twine)
 - [x] 2 bay leaves
 - [x] Sweet potatoes
 
 **Steps**
 1. Heat the oven to 325°F. Season the short ribs (2 1/2 lbs, bone-in) with salt and black pepper, then rub with the flour (1 1/2 tbsp) to coat. Heat the Dutch oven over high heat and sear the ribs on both sides (one batch is usually enough at this size). Move them to a plate and wipe the pot clean of grease.
 2. Add the salted butter (1 tbsp) and the onions (3 to 4, thinly sliced) and cook 5 minutes, until softened. Pour in 1/4 cup of the beer (3/4 cup total) plus the brown sugar (1/2 tsp), season with salt and pepper, and keep cooking 5 to 8 minutes, until evaporated and the onions are lightly golden.
-3. Stir in the thyme (2 tbsp, chopped), then return the ribs to the pot. Add the remaining beer (1/2 cup), apple cider vinegar (1 1/2 tbsp), maple syrup or honey (1 tbsp), beef stock (1 cup), carrots (6, chopped), garlic (6 cloves, smashed), and bay leaves (2). Cover and braise in the oven for 2 1/2 to 3 hours (start checking at 2 hours), until the ribs are tender and falling off the bone.
+3. Stir in the thyme (2 tbsp, chopped). If using whole sprigs, tie them in a bundle with kitchen twine first so the stems come out in one piece. Then return the ribs to the pot. Add the remaining beer (1/2 cup), apple cider vinegar (1 1/2 tbsp), maple syrup or honey (1 tbsp), beef stock (1 cup), carrots (6, chopped), garlic (6 cloves, smashed), and bay leaves (2). Cover and braise in the oven for 2 1/2 to 3 hours (start checking at 2 hours), until the ribs are tender and falling off the bone.
 4. For a weeknight: let the pot cool, then refrigerate the ribs in their sauce overnight. The next day, spoon off any hardened fat and reheat the ribs and sauce in the Dutch oven on the stove over low until hot.
 5. For the last 1 1/2 hours of the braise, bake the sweet potatoes in the same 325°F oven. Line a baking sheet with foil. Wash and scrub the sweet potatoes, pat them dry, and poke each one 3 to 4 times with a fork. Set them on the sheet and bake 1 1/2 hours, until a knife slides easily through the center. If you are reheating leftover ribs on the stove, bake the potatoes at 325°F for 1 1/2 hours, or use Food Network's shorter times: 1 hour to 1 hour 15 minutes at 350°F, or 45 minutes to 1 hour at 400°F.
-6. Pull out the bay leaves (2). Taste the sauce and add a splash more apple cider vinegar if it tastes flat. Split the sweet potatoes open and serve the short ribs with them, with the pan sauce and onions spooned over.
+6. Pull out the bay leaves (2) and the thyme bundle, if you used one. Taste the sauce and add a splash more apple cider vinegar if it tastes flat. Split the sweet potatoes open and serve the short ribs with them, with the pan sauce and onions spooned over.
 
 ## Notes
+- 2026-11-23 (via grok-bot): Crews's feedback mid-cook: loose thyme stems have to be fished out before serving, so next time tie the sprigs in a bundle with kitchen twine before they go in. Steps updated.
 - 2026-11-23 (via grok-bot): Crews had 2 1/2 lbs of short ribs, so our version is scaled to half: flour and braise liquids halved, aromatics kept near full, start checking at 2 hours. Serves about 3.
 - 2026-11-22 (via grok-bot): out of apple cider and apples and skipping wine, so our version swaps in a beer braise with apple cider vinegar and maple or honey for the sweet-tart, and beef stock for the broth or wine.
 - 2026-11-15 (via grok-bot): swapped the ATK mash for Food Network Kitchen's whole baked sweet potatoes (https://www.foodnetwork.com/how-to/packages/food-network-essentials/how-to-cook-sweet-potatoes), after Crews said the mash was too much effort. They go in the same 325°F oven for the last 1 1/2 hours, which is Food Network's time at that temperature. No count was given in the source, so the list just says sweet potatoes.
