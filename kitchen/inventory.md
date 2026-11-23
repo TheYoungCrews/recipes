@@ -71,6 +71,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - sherry vinegar
 - dijon mustard
 - peanut oil
+- apple cider vinegar
 
 ## Pantry: spices and salt
 - cinnamon
