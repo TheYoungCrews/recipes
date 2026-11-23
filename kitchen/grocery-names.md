@@ -1,6 +1,6 @@
 # Grocery names (short names for the shared list)
 
-The Sync Groceries Shortcut adds one short, generic name per item to Apple Reminders ("Lentils", not "1 package Trader Joe's precooked lentils"). The build makes most names on its own: it drops amounts, prep words (chopped, sliced), "fresh", "boneless", "skinless" and "organic", then capitalizes the first letter. Add a line here only when that result reads wrong.
+The Sync Groceries Shortcut adds one short, generic name per item to Apple Reminders ("Lentils", not "1 package Trader Joe's precooked lentils"). The build makes most names on its own: it drops amounts, prep words (chopped, sliced), length sizes (4" piece, 4-inch piece), "fresh", "boneless", "skinless" and "organic", then capitalizes the first letter. Add a line here only when that result reads wrong.
 
 Format: `- <key> | <Short name>`. The key is the item's `key` in https://recipes.crews.fyi/week.json (`items[].key`), lowercase. Read by `_system/scripts/groceries.py`; used for https://recipes.crews.fyi/groceries.txt and `items[].short`.
 

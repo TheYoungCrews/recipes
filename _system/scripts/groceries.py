@@ -58,6 +58,12 @@ UNITS = {"lb": ("w", 16), "lbs": ("w", 16), "pound": ("w", 16), "pounds": ("w", 
          "clove": ("clove", 1), "cloves": ("clove", 1), "sprig": ("sprig", 1), "sprigs": ("sprig", 1), "can": ("can", 1), "cans": ("can", 1),
          "bunch": ("bunch", 1), "bunches": ("bunch", 1), "head": ("head", 1), "heads": ("head", 1), "pint": ("pint", 1), "pints": ("pint", 1)}
 SIZES = {"small", "medium", "large"}
+# Length-size prefixes like 4" piece, 4-inch piece, 1cm piece, 2 inches of. Not a buyable amount.
+SIZE_PIECE = re.compile(r"""(?ix)(?<![A-Za-z0-9])(?:an?\s+)?
+    \d+(?:\.\d+)?(?:\s*(?:to|-|–)\s*\d+(?:\.\d+)?)?
+    (?:\s*["”″]\s*(?:(?:pieces?|pcs?)(?:\s+of)?)?
+    |\s*-?\s*(?:inch(?:es)?|in|cm|mm)\s*(?:(?:pieces?|pcs?)(?:\s+of)?|of))
+    (?:\s+|(?=[);,]|$))""")
 
 def num(s):
     s = s.strip()
@@ -78,6 +84,8 @@ def parse_line(line):
     for k, v in UNI.items(): s = re.sub(rf"(\d){k}", rf"\1 {v}", s).replace(k, v)
     optional = bool(re.match(r"(?i)optional:?\s*", s)) or bool(re.search(r"(?i)\(optional\)|,\s*optional\b", s))
     s = re.sub(r"(?i)^optional:?\s*", "", s); s = re.sub(r"(?i)\s*\(optional\)", "", s)
+    s = SIZE_PIECE.sub(" ", s)
+    s = re.sub(r"\s+", " ", s).strip()
     if not re.match(NUM, s):                       # 'chicken thighs (1.5 lb boneless)' -> '1.5 lb chicken thighs'
         pm = re.match(rf"^([^(]+?)\s*\(\s*({NUM})(?:\s+([A-Za-z]+))?[^)]*\)", s)
         if pm:
@@ -234,6 +242,8 @@ def short_name(name, k=None, names=None):
     for kk in [k, have_key(name)]:
         if kk and have_key(kk) in names: return names[have_key(kk)]
     n = CONTAINER.sub("", PREP.sub("", name)); n = DROP.sub("", n)
+    n = SIZE_PIECE.sub(" ", n)
+    n = re.sub(r"(?i)^(?:pieces?|pcs?)\s+(?:of\s+)?", "", n)
     n = re.sub(r"\s+", " ", n).strip(" ,;-")
     return n[:1].upper() + n[1:] if n else name
 

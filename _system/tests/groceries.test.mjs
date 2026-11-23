@@ -6,8 +6,10 @@ const py = (code) => JSON.parse(execFileSync("python3", ["-c", `import sys, json
 test("short names drop amounts, prep and filler words", () => {
   const got = py(`print(json.dumps([G.short_name(G.parse_line(x)["name"], names={}) for x in [
     "1 lb Yukon Gold potatoes, cut in chunks", "8 sprigs fresh thyme", "1½ cups dry red wine", "⅓ cup chopped pecans",
-    "1.5 lb boneless skinless chicken thighs", "1 package organic baby spinach", "2 jars of salsa verde"]]))`);
-  assert.deepEqual(got, ["Yukon Gold potatoes", "Thyme", "Dry red wine", "Pecans", "Chicken thighs", "Baby spinach", "Salsa verde"]);
+    "1.5 lb boneless skinless chicken thighs", "1 package organic baby spinach", "2 jars of salsa verde",
+    '4" piece ginger', '4-inch piece ginger', '4 inch piece of ginger', '1cm piece ginger', '2 shallots']]))`);
+  assert.deepEqual(got, ["Yukon Gold potatoes", "Thyme", "Dry red wine", "Pecans", "Chicken thighs", "Baby spinach", "Salsa verde",
+    "Ginger", "Ginger", "Ginger", "Ginger", "Shallots"]);
 });
 test("override map from kitchen/grocery-names.md wins", () => {
   const got = py(`n = G.grocery_names(); print(json.dumps([G.short_name(G.parse_line(x)["name"], names=n) for x in [
