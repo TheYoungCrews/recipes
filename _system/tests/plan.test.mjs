@@ -65,6 +65,9 @@ test("commitPlanEdit: dinner vs extra by type, one path only", async () => {
   assert.match(g.calls.find(c => c[1] === "/git/commits")[2].message, /^plan: add soup to 2026-W45 \(anna via site\)$/);
   const r2 = await commitPlanEdit({ token: "x", repo: "o/r", slug: "loaf", action: "add", who: "anna", today: "2026-11-03", fetchFn: fakeGit({ "plans/2026-W45.md": PLAN, "recipes/loaf.md": "---\ntype: breakfast\n---\n" }).fetchFn });
   assert.equal(r2.as, "extra"); assert.deepEqual(r2.plan.extras, ["bread", "loaf"]);
+  const r3 = await commitPlanEdit({ token: "x", repo: "o/r", slug: "aged-eggnog", action: "add", who: "crews", today: "2026-11-03", fetchFn: fakeGit({ "plans/2026-W45.md": PLAN, "cocktails/aged-eggnog.md": "---\ntype: cocktail\n---\n" }).fetchFn });
+  assert.equal(r3.as, "extra"); assert.deepEqual(r3.plan.extras, ["bread", "aged-eggnog"]);
+  assert.ok(!r3.plan.recipes.includes("aged-eggnog"));
   await assert.rejects(commitPlanEdit({ token: "x", repo: "o/r", slug: "nope", action: "add", who: "anna", today: "2026-11-03", fetchFn: g.fetchFn }), /unknown recipe/);
 });
 test("/api/plan needs auth", async () => {
@@ -147,4 +150,38 @@ print((out / "week" / "index.html").read_text())
   assert.match(html, /<script src="\/week-btn\.js" defer><\/script>/);
   assert.match(html, /\.rmweek/);
   assert.doesNotMatch(html, /class=wkbtn data-short/);
+});
+
+test("What's Cooking button shows on cocktail and mocktail pages, the /r/ list, and the home recipe view", () => {
+  const drink = (type, slug, title) => ({
+    title, slug, type, status: "to-try", owner: "crews", credit: "", source: "", source_url: "",
+    time_minutes: "5", serves: "1", rating: "", cooks: "0", tags: [], photo: "",
+    body: "A drink.\\n\\n## Original\\n\\n## Our version\\n- [ ] gin (2 oz)\\n\\n1. Stir with ice.\\n",
+  });
+  const cocktail = drink("cocktail", "aged-eggnog", "Aged Eggnog");
+  const mocktail = drink("mocktail", "lime-and-soda", "Lime and Soda");
+  const food = {
+    title: "Soup", slug: "soup", type: "soup-bowl", status: "to-try", owner: "crews", credit: "",
+    source: "", source_url: "", time_minutes: "30", serves: "2", rating: "", cooks: "0", tags: [], photo: "",
+    body: "A soup.\\n\\n## Original\\n\\n## Our version\\n- [ ] onion\\n\\n1. Simmer.\\n",
+  };
+  const page = (r) => py(`print(site_render.recipe_page(${JSON.stringify(r)}, site_render.recipe_parts(${JSON.stringify(r)})))`);
+  const view = (r) => py(`print(site_render.recipe_view(${JSON.stringify(r)}, []))`);
+  for (const r of [cocktail, mocktail]) {
+    const html = page(r);
+    assert.match(html, new RegExp(`class=wkbtn data-week-slug="${r.slug}"`));
+    assert.match(html, /\+ Add to What’s Cooking/);
+    const home = view(r);
+    assert.match(home, new RegExp(`class=wkbtn data-week-slug="${r.slug}"`));
+    assert.match(home, /\+ Add to What’s Cooking/);
+  }
+  const list = py(`
+out = pathlib.Path(tempfile.mkdtemp())
+site_render.static_pages(${JSON.stringify([food, cocktail, mocktail])}, out)
+print((out / "r" / "index.html").read_text())
+`);
+  assert.match(list, /data-week-slug="aged-eggnog"/);
+  assert.match(list, /data-week-slug="lime-and-soda"/);
+  assert.match(list, /data-week-slug="soup"/);
+  assert.match(list, /class=wkbtn data-short/);
 });

@@ -135,7 +135,9 @@ export async function commitPlanEdit({ token, repo = "TheYoungCrews/recipes", br
       try { await api(`/git/refs/heads/${branch}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha, force: false }) }); return { sha: c.sha, changed: true, week: wk.week, path, plan, inventory }; }
       catch (e) { if (e.status !== 422 && e.status !== 409) throw e; continue; }
     }
-    try { recipe = await api(`/contents/recipes/${slug}.md?ref=${head}`); } catch (e) { if (e.status !== 404) throw e; }   // food only, not cocktails/
+    for (const d of ["recipes", "cocktails"]) {
+      try { recipe = await api(`/contents/${d}/${slug}.md?ref=${head}`); break; } catch (e) { if (e.status !== 404) throw e; }
+    }
     if (!recipe) { const e = new Error("unknown recipe"); e.status = 404; throw e; }
     let names = [];
     try { names = (await api(`/contents/plans?ref=${head}`)).map(f => f.name); } catch (e) { if (e.status !== 404) throw e; }

@@ -217,7 +217,7 @@ def recipe_view(r, staples):
     return f'''<article class=view id="r-{E(r["slug"])}"><div class=wrap><a class=back href="#top">← Kitchen</a> <a class=plainlink href="/r/{E(r["slug"])}">plain page</a>
 <div class="sheet rc">{hero}<div class=in><div class=tags>{tags}</div>
 <h1 class=hand style="margin-top:10px">{E(r["title"])}</h1>{f"<p class=lede>{inline(intro)}</p>" if intro else ""}
-<div class=facts>{facts_html(r)}</div>{"" if r["type"] in DRINK else wkbtn(r["slug"])}{share_btn(r)}
+<div class=facts>{facts_html(r)}</div>{wkbtn(r["slug"])}{share_btn(r)}
 {f'<h3 class="sec hand">Ingredients</h3><div class="ing ruled">{ing_html}</div>' if ing_html else ""}
 {f'<h3 class="sec hand">{"Method" if r["type"] in DRINK else "Steps"}</h3><ol class=st>{steps_html}</ol>' if steps_html else ""}
 {ours_html}{orig_html}
@@ -367,7 +367,7 @@ def recipe_page(r, P):
     if P["intro"]: ld["description"] = plain_md(P["intro"])
     ldj = json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
     body = [f'<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/r/{E(slug)}.md">Markdown</a> · <a href="/week/">What’s Cooking</a></nav>',
-            f"<h1>{E(title)}</h1>", credit, f"<div class=facts>{facts_html(r)}</div>", "" if r["type"] in DRINK else wkbtn(slug), share_btn(r)]
+            f"<h1>{E(title)}</h1>", credit, f"<div class=facts>{facts_html(r)}</div>", wkbtn(slug), share_btn(r)]
     if r["photo"]: body.append(f'<img class=hero src="/{E(r["photo"])}" alt="{E(title)}">')
     if P["intro"]: body.append(f"<p>{inline(P['intro'])}</p>")
     if P["ings"]: body.append("<h2>Ingredients</h2><ul>" + "".join(f"<li>{inline(t)}</li>" for t, _ in P["ings"]) + "</ul>")
@@ -425,7 +425,7 @@ def static_pages(live, out):
         (rdir / f'{r["slug"]}.md').write_text(recipe_md(r, P))
     by = sorted(live, key=lambda r: r["title"].lower())
     food = [r for r in by if r["type"] not in DRINK]; bar = [r for r in by if r["type"] in DRINK]
-    li = lambda rs: "<ul>" + "".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a>{"" if r["type"] in DRINK else wkbtn(r["slug"], True)}</li>' for r in rs) + "</ul>"
+    li = lambda rs: "<ul>" + "".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a>{wkbtn(r["slug"], True)}</li>' for r in rs) + "</ul>"
     (rdir / "index.html").write_text(f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>All recipes · Crews &amp; Anna's Kitchen</title><meta name=description content="Every recipe and cocktail in Crews &amp; Anna's Kitchen as a plain page."><link rel=canonical href="{BASE}/r/">{RSS}<style>{PAGE_CSS}{WKCSS}</style></head>
 <body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/follow">Follow along</a></nav><h1>All recipes</h1><p class=meta>{len(food)} recipes and {len(bar)} cocktails. Each page has a plain markdown copy at the same address plus .md.</p>
