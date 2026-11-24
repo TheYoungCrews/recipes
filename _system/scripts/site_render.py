@@ -227,7 +227,7 @@ def recipe_view(r, staples):
 {src}</div></div></div></article>'''
 
 def groceries_inventory(root):
-    """kitchen/inventory.md names for the home page's 'on hand' scoring (app.js)."""
+    """kitchen/inventory.md names included in the home page data."""
     import groceries
     return groceries.inventory(pathlib.Path(root) / "kitchen/inventory.md")
 
@@ -253,19 +253,18 @@ def render(items, staples, root):
     common = ["weeknight-30","quick-20","high-protein","one-pot","sheet-pan",season]
     chips = ["all"] + types + [s for s in ["favorite","to-try"] if any(r["status"]==s for r in food)] + [t for t in common if any(t in r["tags"] for r in food)]
     chip_html = "".join(f'<button class="chip{" on" if c=="all" else ""}" data-f="{E(c)}">{E(c.replace("-"," "))}</button>' for c in dict.fromkeys(chips))
-    data = json.dumps({"items":[{k:r[k] for k in ["title","slug","type","status","tags","ingredients","time_minutes","rating"]} for r in live],
+    data = json.dumps({"items":[{k: (r.get(k) or []) if k in ("tags","ingredients") else (r.get(k) or "") for k in ["title","slug","type","status","tags","ingredients","time_minutes","rating","spirit","cuisine"]} for r in live],
                        "staples":staples, "inventory":groceries_inventory(root)}, ensure_ascii=False).replace("</","<\\/")
-    js = (SITE/"app.js").read_text()
+    search_js = re.sub(r"^export ", "", (SITE/"search.js").read_text(), flags=re.M)
+    js = search_js + "\n" + (SITE/"app.js").read_text()
     home = f'''<section id=home><div class=wrap>
 <form id=askform class="sheet ask" role=search><h1 class=hand>What's cooking?</h1>
-<div class=askbox><input id=q type=search enterkeyhint=search autocomplete=off placeholder="What are we feeling tonight?" aria-label="Ask the kitchen"><button aria-label=Ask>↑</button></div>
-<div class=hints><button type=button class=hint data-q="what can I make with what's in the pantry">🥬 from the pantry</button><button type=button class=hint data-q="something quick tonight">⏱ under 30 min</button><button type=button class=hint data-q="a cocktail for two">🍸 a drink for two</button></div>
-<div id=answer class=answer hidden></div><div id=asksign class=asksign hidden><span class=asksay>Sign in to ask the kitchen helper (we're matching by keyword for now).</span> <button type=button id=asksignbtn class=hand>sign in to ask</button><div class=gsi></div></div></form>
+<div class=askbox><input id=q type=search enterkeyhint=search autocomplete=off placeholder="Search recipes and cocktails" aria-label="Search recipes and cocktails"><button type=button id=qclear hidden aria-label=Clear>×</button></div></form>
 <p class=followline>Get a Sunday note with what we cooked, how we rated it, and next week's menu. <a href="/follow">Follow along</a></p>
-{f'<h2 class=hand>This {season} <small>{len(picks)} picks</small></h2><div class=row>{"".join(card(r) for r in picks)}</div>' if picks else ""}
+{f'<div id=season><h2 class=hand>This {season} <small>{len(picks)} picks</small></h2><div class=row>{"".join(card(r) for r in picks)}</div></div>' if picks else ""}
 <h2 class=hand>The kitchen <small>{len(food)} recipes</small></h2>
 <div class=tools><div class=chips>{chip_html}</div><select id=sort class=sort aria-label="Sort recipes"><option value="">our picks</option><option value=quick>quickest first</option><option value=long>longest first</option></select><button id=pick type=button class="pick hand">🎲 what's for dinner?</button></div>
-<div id=food class=grid style="margin-top:10px">{"".join(card(r) for r in food)}</div><p id=nores class=nores hidden>No recipes match. Try another chip or word.</p>
+<div id=food class=grid style="margin-top:10px">{"".join(card(r) for r in food)}</div><p id=nores class=nores hidden>Nothing matches. Try another chip or word.</p>
 {f'<section class=bar id=bar><h2 class=hand>The bar cart <small>{len(bar)} cocktails</small></h2><div class=grid>{"".join(card(r) for r in bar)}</div></section>' if bar else ""}
 <p id=add class="addline hand"><a href="/week/">What’s Cooking: dinners and grocery list</a> · Got one we should try? <a href="/add">Add recipes</a> · <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">for AI assistants</a></p>
 <footer>made at home <span class=heart>♥</span> {len(live)} recipes · <a href="/follow">follow along</a> · <a href="https://github.com/TheYoungCrews/recipes">the recipe files</a></footer>

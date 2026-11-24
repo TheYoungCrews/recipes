@@ -1,85 +1,50 @@
-// Crews & Anna's Kitchen: search/ask, filters, dinner picker. Data: window.KITCHEN = {items, staples, inventory}.
+// Crews & Anna's Kitchen: search, filters, dinner picker. Data: window.KITCHEN = {items, staples, inventory}.
 (function(){
-const K=window.KITCHEN, items=K.items, staples=new Set([...K.staples, ...(K.inventory||[])]), bySlug={};
+const K=window.KITCHEN, items=K.items, bySlug={};
 items.forEach(r=>bySlug[r.slug]=r);
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-// Rotating placeholders
-const ph=["What are we feeling tonight?","What do we want to cook tonight?","Tell me what's in your pantry…","Something cozy under 30 minutes?","A drink with rye?"];
-let pi=0;const q=$('#q');setInterval(()=>{if(!q.value&&document.activeElement!==q){pi=(pi+1)%ph.length;q.placeholder=ph[pi]}},2800);
-
-// ---- Ask: local matcher. To plug in Workers AI later, set window.ASK_BACKEND = async (question, items) => [{slug, why}, ...].
-// Whatever the backend returns is filtered to slugs that exist here, so it can never invent a recipe.
-const STOP=new Set("a an and the i we me my our us to of for in on with what do want something some tonight feel feeling like have got is are it that this cook make eat dinner please can you tell about any whats what's in your pantry fridge".split(" "));
-const SYN={cozy:["soup-bowl","braise","fall","winter"],soup:["soup-bowl"],bowl:["soup-bowl"],noodle:["noodle","noodles","spaghetti"],noodles:["noodle","spaghetti"],
- spicy:["chili crisp","sambal oelek","jalapeno","chili"],quick:["quick-20","weeknight-30"],fast:["quick-20","weeknight-30"],easy:["weeknight-30","sheet-pan","one-pot"],
- drink:["cocktail"],drinks:["cocktail"],cocktail:["cocktail"],whiskey:["rye","bourbon","whiskey"],healthy:["high-protein"],protein:["high-protein"],
- fall:["fall"],autumn:["fall"],halloween:["fall"],christmas:["winter"],beef:["beef"],chicken:["chicken"],turkey:["turkey"],lamb:["lamb"],veggie:["veg"]};
-const norm=s=>(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-function localAsk(question){
-  const text=norm(question), words=text.split(/[^a-z0-9-]+/).filter(w=>w&&!STOP.has(w));
-  const quick=/quick|fast|under 30|30 min|weeknight|tonight/.test(text), drink=/drink|cocktail|bar|negroni|manhattan|sour|rye|mezcal|rum|gin/.test(text);
-  const pantry=/pantry|fridge|have |on hand|got /.test(text);
-  const terms=new Set(); words.forEach(w=>{terms.add(w);(SYN[w]||[]).forEach(t=>terms.add(t)); if(w.endsWith('s'))terms.add(w.slice(0,-1))});
-  const res=items.filter(r=>r.status!=="retired").map(r=>{
-    let score=0, hits=[], hay=norm(r.title);
-    const ings=r.ingredients.map(norm), tags=r.tags.map(norm);
-    terms.forEach(t=>{ if(t.length<3)return;
-      const ing=ings.find(i=>i.includes(t)); if(ing){score+=3;hits.push(ing)}
-      if(tags.includes(t)||norm(r.type)===t){score+=2}
-      if(hay.includes(t)){score+=2;if(!ing)hits.push(t)} });
-    const isDrink=r.type==="cocktail"||r.type==="mocktail";
-    if(drink&&isDrink)score+=3; if(!drink&&isDrink)score-=4; if(drink&&!isDrink)score-=4;
-    const t=parseInt(r.time_minutes)||99; if(quick&&!isDrink&&t<=30)score+=2;
-    const have=ings.filter(i=>staples.has(i)).length, cover=ings.length?have/ings.length:0;
-    score+=cover*(pantry?4:1.5);
-    if(r.status==="favorite")score+=.6; if(r.rating)score+=parseFloat(r.rating)/10;
-    const why=[]; const uniq=[...new Set(hits)].slice(0,3);
-    if(uniq.length)why.push("Uses "+uniq.join(", "));
-    if(ings.length&&!isDrink)why.push(`${have} of ${ings.length} ingredients on hand`);
-    if(r.time_minutes&&!isDrink)why.push(r.time_minutes+" min");
-    if(r.status==="favorite")why.push("a favorite"); else if(r.status==="to-try")why.push("still on the to-try list");
-    if(r.rating)why.push(`last rated ${r.rating}★`);
-    return {slug:r.slug,score,why:why.join(" · ")};
-  }).filter(x=>x.score>0.5).sort((a,b)=>b.score-a.score).slice(0,3);
-  return res;
-}
-async function ask(question){
-  window.ASK_AI_USED=false;
-  if(typeof window.ASK_BACKEND==="function"){
-    try{const out=await window.ASK_BACKEND(question,items);const ok=(out||[]).filter(x=>bySlug[x.slug]).slice(0,3);if(ok.length)return ok}catch(e){}
-  }
-  return localAsk(question);
-}
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-async function run(){
-  const v=q.value.trim(), box=$('#answer'); if(!v){box.hidden=true;filter();return}
-  const out=await ask(v); box.hidden=false;
-  box.innerHTML=`<div class=q>You asked: <b>"${esc(v)}"</b></div>`+(out.length?out.map((x,i)=>{const r=bySlug[x.slug];
-    return `<a class=ans href="/r/${r.slug}" data-slug="${r.slug}" style="text-decoration:none;color:inherit"><span class=n>${i+1}</span><div><div class="t hand">${esc(r.title)}</div><div class=w>${esc(x.why)}</div></div><span class=go>Open →</span></a>`}).join("")
-    :`<div class=empty>Nothing in our book matches that yet. Try an ingredient, like "chicken" or "rye".</div>`)+
-    `<div class=note>${window.ASK_AI_USED?"Picked by the kitchen helper from our book.":"Simple keyword and pantry matching. It only suggests recipes already in our book."}</div>`;
-  filter();
-}
-$('#askform').addEventListener('submit',e=>{e.preventDefault();run()});
-$$('.hint').forEach(h=>h.addEventListener('click',()=>{q.value=h.dataset.q;run()}));
-// ---- Filters + live title search
+const q=$('#q'), clr=$('#qclear');
+const foodGrid=$('#food'), foodBase=$$('#food .card');
+const bar=$('#bar'), barBase=bar?$$('#bar .card'):[];
+function clearSearch(){q.value="";filter();q.focus()}
+q.addEventListener('input',filter);
+q.addEventListener('keydown',e=>{if(e.key==="Escape"){e.preventDefault();clearSearch()}});
+if(clr)clr.addEventListener('click',clearSearch);
+$('#askform').addEventListener('submit',e=>{e.preventDefault();filter()});
+// ---- Filters + live search
 let chip="all";
 $$('.chip').forEach(c=>c.addEventListener('click',()=>{$$('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');chip=c.dataset.f;filter()}));
-function filter(){
-  const v=norm(q.value).trim(); let shown=0;
-  $$('#food .card').forEach(el=>{const r=bySlug[el.dataset.slug];
-    const okChip=chip==="all"||r.type===chip||r.status===chip||r.tags.includes(chip);
-    const okQ=!v||(norm(r.title)+" "+r.ingredients.join(" ")+" "+r.tags.join(" ")).includes(v)||$('#answer').hidden===false;
-    el.hidden=!(okChip&&okQ); if(!el.hidden)shown++});
-  $('#nores').hidden=shown>0;
-}
-// ---- Sort by time. Recipes with no time go last; "our picks" restores the built order.
-const grid=$('#food'), base=$$('#food .card');
 const mins=el=>parseInt(bySlug[el.dataset.slug].time_minutes)||NaN;
-$('#sort').addEventListener('change',e=>{const m=e.target.value, dir=m==="long"?-1:1;
-  const order=!m?base:[...base].sort((a,b)=>{const x=mins(a),y=mins(b);
-    if(isNaN(x)||isNaN(y))return isNaN(x)-isNaN(y); return (x-y)*dir||base.indexOf(a)-base.indexOf(b)});
-  order.forEach(el=>grid.appendChild(el))});
+function foodOrder(){
+  const m=$('#sort').value;
+  if(!m)return foodBase.slice();
+  const dir=m==="long"?-1:1;
+  return foodBase.slice().sort((a,b)=>{const x=mins(a),y=mins(b);
+    if(isNaN(x)||isNaN(y))return isNaN(x)-isNaN(y); return (x-y)*dir||foodBase.indexOf(a)-foodBase.indexOf(b)});
+}
+function arrange(grid, order, v){
+  const title=[], other=[], hidden=[];
+  order.forEach(el=>{
+    const r=bySlug[el.dataset.slug];
+    const okChip=grid!==foodGrid||chip==="all"||r.type===chip||r.status===chip||r.tags.includes(chip);
+    const s=v?scoreItem(r,v):2;
+    const show=okChip&&s>0;
+    el.hidden=!show;
+    (show?(s===2?title:other):hidden).push(el);
+  });
+  [...title,...other,...hidden].forEach(el=>grid.appendChild(el));
+  return title.length+other.length;
+}
+function filter(){
+  const v=q.value.trim();
+  if(clr)clr.hidden=!v;
+  const season=$('#season'); if(season)season.hidden=!!v;
+  const foodShown=arrange(foodGrid, foodOrder(), v);
+  const barShown=bar?arrange(bar, barBase, v):0;
+  if(bar)bar.hidden=!!v&&barShown===0;
+  $('#nores').hidden=v?foodShown+barShown>0:foodShown>0;
+}
+$('#sort').addEventListener('change',filter);
 // ---- Dinner picker: random made/favorite/to-try main or bowl
 $('#pick').addEventListener('click',()=>{
   const pool=items.filter(r=>r.type!=="cocktail"&&r.type!=="mocktail"&&r.status!=="retired"); if(!pool.length)return;
@@ -90,9 +55,9 @@ $('#pick').addEventListener('click',()=>{
 });
 // Ingredient checkboxes remember state per recipe on this device
 $$('.ing input').forEach((cb,i)=>{const k="chk:"+cb.name;cb.checked=localStorage.getItem(k)==="1";cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?"1":"0"))});
-// Cards and answers link to the canonical /r/<slug> page so a copied or shared URL is always the plain recipe page, not /#r-<slug>.
+// Cards link to the canonical /r/<slug> page so a copied or shared URL is always the plain recipe page, not /#r-<slug>.
 })();
-// ---- Sign-in (Google or Ethereum/SIWE) shared by Cooked it and Ask. The server keeps a 30-day HttpOnly session cookie that renews itself with use; signed-in state always comes from GET /api/session.
+// ---- Sign-in (Google or Ethereum/SIWE) shared by Cooked it and Ask about this. The server keeps a 30-day HttpOnly session cookie that renews itself with use; signed-in state always comes from GET /api/session.
 (function(){
 let cfg=null,gsi=null;
 const getCfg=()=>cfg||(cfg=fetch("/api/config").then(r=>r.ok?r.json():{}).catch(()=>({})));
@@ -140,16 +105,6 @@ document.querySelectorAll("form.askr").forEach(f=>{
   }
   f.addEventListener("submit",e=>{e.preventDefault();go()});
 });
-// Main ask box -> AI search when signed in (the local matcher stays as the fallback)
-window.ASK_BACKEND=async q=>{
-  if(!(await A.signedIn())){const n=document.getElementById("asksign");if(n)n.hidden=false;throw new Error("signed out")}
-  const r=await fetch("/api/ask",{method:"POST",credentials:"same-origin",headers:A.headers(),body:JSON.stringify({mode:"search",question:q})});
-  if(!r.ok)throw new Error("ask failed");window.ASK_AI_USED=true;return (await r.json()).picks||[];
-};
-const sb=document.getElementById("asksignbtn");
-if(sb)sb.addEventListener("click",()=>{const n=document.getElementById("asksign"),say=t=>{n.querySelector(".asksay").textContent=t};
-  A.onSignedIn.push(()=>{n.hidden=true;const f=document.getElementById("askform");if(f&&document.getElementById("q").value.trim())f.requestSubmit()});
-  A.signIn(n.querySelector(".gsi"),say)});
 })();
 // ---- Cooked it: rate + note + photo -> /api/cook (Google sign-in; server checks the allowlist)
 (function(){

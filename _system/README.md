@@ -38,4 +38,4 @@ capture -> `status: to-try` -> cook -> feedback -> dated note + "Our version" up
 
 ## Browse
 Online (once set up): the Cloudflare Pages URL, signed in with email + PIN (see `_system/docs/CLOUDFLARE.md`). Offline:
-`python3 _system/scripts/build.py` then open `site/index.html` (single self-contained file: works offline, on a phone, or from iCloud/Drive). Filters: tags, status, search, and "missing at most N ingredients" vs `kitchen/staples.md`.
+`python3 _system/scripts/build.py` then open `site/index.html` (single self-contained file: works offline, on a phone, or from iCloud/Drive). Filters: tags, status, and a simple search by title, ingredient, tag, cuisine, or spirit. Search works signed out and only uses data already on the page.

@@ -13,16 +13,9 @@ background:var(--cream);background-image:linear-gradient(90deg,rgba(127,154,122,
 .ask h1{margin:0 0 10px;font-size:34px;line-height:1;color:var(--sage-d)}
 .askbox{display:flex;gap:8px;align-items:center;background:#fff;border:1.5px solid var(--sage);border-radius:999px;padding:6px 6px 6px 16px;box-shadow:0 0 0 4px var(--sage-l)}
 .askbox input{flex:1;border:0;outline:0;font:inherit;font-size:16px;background:none;min-width:0}
-.askbox button{border:0;background:var(--sage-d);color:#fff;border-radius:999px;width:38px;height:38px;font-size:18px}
-.hints{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}
-.hint{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--sage-l);color:var(--sage-d)}
-.answer{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
-.answer .q{font-size:13px;color:var(--mute)} .answer .q b{color:var(--ink);font-weight:600}
-.ans{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f1ebdc}
-.ans:last-child{border:0}.ans .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--sage-d);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:600}
-.ans .t{font-size:22px;line-height:1.05}.ans .w{font-size:13px;color:var(--mute)}
-.ans .go{margin-left:auto;color:var(--sage-d);font-weight:600;font-size:13px;white-space:nowrap}
-.note{font-size:11.5px;color:var(--mute);margin-top:6px}
+.askbox button{border:0;background:var(--sage-d);color:#fff;border-radius:999px;width:38px;height:38px;font-size:18px;cursor:pointer;line-height:1}
+.askbox button[hidden]{display:none}
+.askbox input::-webkit-search-cancel-button{display:none}
 h2{font-size:30px;margin:30px 0 10px;color:var(--ink);display:flex;align-items:baseline;gap:10px}
 h2 small{font:500 13px -apple-system,sans-serif;color:var(--mute)}
 .row{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
@@ -104,16 +97,13 @@ details.orig ul.chk{list-style:none;padding-left:0}.box{display:inline-block;wid
 .src{font-size:12.5px;color:var(--mute);word-break:break-word;margin-top:16px}
 .cook.soon{opacity:.92}.cook.soon .rate,.cook.soon textarea,.cook.soon button{opacity:.45;pointer-events:none}
 .soonpill{display:inline-block;font:700 10px/1 -apple-system,sans-serif;letter-spacing:1.2px;background:#e0a83a;color:#22282a;padding:4px 7px;border-radius:4px;vertical-align:middle;margin-left:8px}
-.answer[hidden]{display:none}.empty{font-size:14px;color:var(--mute);padding:8px 0}
 .label{font-size:11px;color:var(--mute);margin-top:8px}
 .picked{outline:3px solid #e0a83a;outline-offset:2px}
 .nores{color:var(--mute);font-size:14px;padding:10px 2px}
 .diary-empty{font-size:14px;color:var(--mute)}
 .bar.alone{margin-top:24px}
 noscript p{font-size:13px;color:var(--mute);text-align:center}
-.hint{border:0;font:inherit;font-size:12.5px;cursor:pointer}
 .chip{font:inherit;font-size:13px;cursor:pointer}
-.askbox input::-webkit-search-cancel-button{opacity:.5}
 
 /* hero: tablecloth + recipe box tab */
 .banner{display:flex;align-items:center;justify-content:center;width:100%;max-width:1120px;margin:0 auto;height:300px;padding:0 16px 40px;background:#dfe8da url(tablecloth.jpg) center/cover;border-bottom:4px solid var(--paper);box-shadow:0 2px 0 var(--line)}
@@ -152,7 +142,6 @@ form.askr h4{margin:0 0 6px;font-size:1.35em}
 .askrow{display:flex;gap:6px}.askrow input{flex:1;min-width:0;padding:9px 12px;border:1px solid rgba(0,0,0,.2);border-radius:999px;font:inherit;background:#fffdf7}
 .askrow button{border:0;border-radius:999px;width:38px;background:#c0392b;color:#fff;font-size:1.05em;cursor:pointer}
 .askans{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:repeating-linear-gradient(45deg,rgba(192,57,43,.05) 0 8px,transparent 8px 16px);white-space:pre-wrap;line-height:1.45}
-.asksign{margin-top:10px;font-size:.92em;opacity:.85}.asksign button{border:0;background:none;color:#c0392b;font-size:1.25em;cursor:pointer;text-decoration:underline}
 /* Sign-in pills: Google + Wallet, equal size */
 .gsi .signrow{width:100%}
 .signrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;max-width:380px}
