@@ -83,6 +83,10 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - sea salt
 - black lava salt
 - black pepper
+- star anise
+- whole cloves
+- cinnamon sticks
+- nutmeg
 - white pepper
 - chipotle pepper flakes
 
@@ -99,12 +103,15 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - whole milk
 - butter (Kerrygold)
 - heavy cream
+- half-and-half
 - eggs
 - Greek yogurt
 - cottage cheese
 - pepper jack (shredded)
 - parmesan
 - pomegranate seeds
+- orange
+- cranberries
 - sauerkraut
 - cilantro
 - parsley
@@ -129,6 +136,9 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - maple syrup (bourbon barrel aged)
 - black tea (Trader Joe's, iced)
 - ginger beer (zero sugar)
+- spiced cranberry syrup
+- unsweetened cranberry juice
+- lemon juice
 - Heineken
 - Coca-Cola
 - fresh ginger
@@ -160,9 +170,16 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - wild blueberries
 - large clear ice cubes
 
+## Bar
+- bourbon
+- jamaican rum
+- cognac
+- amaro nonino
+- aperol
+- grand marnier
+
 ## New
 - fully cooked bratwurst
-- bourbon
 - angostura bitters
 - ipa
 - pinch of nutmeg
