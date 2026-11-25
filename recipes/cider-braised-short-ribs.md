@@ -2,7 +2,7 @@
 title: Beer Braised Short Ribs
 slug: cider-braised-short-ribs
 type: main
-status: to-try
+status: made
 tags: [beef, american, dutch-oven, braise, weekend-project, make-ahead, leftovers-friendly, fall]
 ingredients: [bone-in short ribs, flour, salt, black pepper, butter, onion, beer, apple cider vinegar, maple syrup, brown sugar, beef stock, carrot, garlic, thyme, bay leaf, sweet potatoes]
 serves: 3
@@ -18,11 +18,13 @@ via: grok-bot
 input_type: web-page
 owner: Tieghan Gerard
 credit: "Tieghan Gerard"
-last_made:
-rating:
-cooks: 0
+last_made: 2026-11-25
+rating: 4.5
+cooks: 1
 ---
 Beer braised short ribs with caramelized onions, based on Tieghan Gerard's (@halfbakedharvest) cider braised short ribs, served with Food Network Kitchen's whole baked sweet potatoes.
+
+![Made 2026-11-25](photos/cider-braised-short-ribs-2026-11-25.jpg)
 
 ## Original
 
@@ -91,6 +93,7 @@ Tieghan's 6-serving Dutch oven braise, with Food Network Kitchen's whole baked s
 6. Pull out the bay leaves (2) and the thyme bundle, if you used one. Taste the sauce and add a splash more apple cider vinegar if it tastes flat. Split the sweet potatoes open and serve the short ribs with them, with the pan sauce and onions spooned over.
 
 ## Notes
+- 2026-11-25 (crews via site, 4.5/5): cooked it.
 - 2026-11-23 (via grok-bot): Crews's feedback mid-cook: loose thyme stems have to be fished out before serving, so next time tie the sprigs in a bundle with kitchen twine before they go in. Steps updated.
 - 2026-11-23 (via grok-bot): Crews had 2 1/2 lbs of short ribs, so our version is scaled to half: flour and braise liquids halved, aromatics kept near full, start checking at 2 hours. Serves about 3.
 - 2026-11-22 (via grok-bot): out of apple cider and apples and skipping wine, so our version swaps in a beer braise with apple cider vinegar and maple or honey for the sweet-tart, and beef stock for the broth or wine.

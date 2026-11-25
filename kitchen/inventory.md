@@ -117,7 +117,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - parsley
 - kale
 - broccolini (leftover)
-- carrots
 - Monterey Jack
 - gateau basque
 - salsa
@@ -158,7 +157,6 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - bone-in ribeye steak (White Oak Pastures)
 - chuck eye steak (White Oak Pastures)
 - chuck roast (White Oak Pastures)
-- bone-in short ribs (White Oak Pastures, 2)
 - osso buco beef shanks (White Oak Pastures)
 - sage breakfast sausage (White Oak Pastures, 2)
 - pork bratwurst links (White Oak Pastures)
