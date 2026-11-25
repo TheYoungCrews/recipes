@@ -186,3 +186,4 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - angostura bitters
 - ipa
 - pinch of nutmeg
+- old fitzgerald bourbon
