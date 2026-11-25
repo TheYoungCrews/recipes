@@ -153,6 +153,7 @@ Updated by hand, and automatically when a dish is rated (used-up ingredients com
 - beer
 - fresh thyme
 - sage
+- thyme sprigs
 
 ## Freezer
 - Triple Threat ground multi-species blend (White Oak Pastures, 2)
