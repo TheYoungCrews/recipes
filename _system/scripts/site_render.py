@@ -107,6 +107,50 @@ def ours_prose(lines):
         if s and not s.startswith("**Grocery"): out.append(s[0].upper()+s[1:] if not s.startswith(("-", "*")) else s)
     return out
 
+
+SKIP_GROUP_HEADINGS = {"steps", "ingredients", "method", "grocery & inventory check", "grocery"}
+
+def group_heading(s):
+    """### Heading or a standalone **Heading** line in Our version / Original."""
+    s = (s or "").strip()
+    m = re.match(r"^#{3,}\s+(.+)$", s)
+    if not m:
+        m = re.match(r"^\*\*(.+?)\*\*:?\s*$", s)
+    if not m:
+        return None
+    t = m.group(1).strip().rstrip(":")
+    if not t or t.lower() in SKIP_GROUP_HEADINGS:
+        return None
+    return t
+
+def grouped_rows(lines, checks_only):
+    """Split a recipe section into titled groups of ingredients and steps."""
+    groups, title, ings, steps = [], None, [], []
+    def flush():
+        nonlocal title, ings, steps
+        if title or ings or steps:
+            groups.append({"title": title, "ings": ings, "steps": steps})
+        title, ings, steps = None, [], []
+    for l in lines:
+        s = l.strip()
+        if not s or re.match(r"^!\[", s):
+            continue
+        h = group_heading(s)
+        if h:
+            flush(); title = h; continue
+        box = re.match(r"^- \[([ x])\]\s*(.*)$", s)
+        if box:
+            ings.append((clean(box.group(2)), box.group(1) == "x")); continue
+        if not checks_only:
+            bullet = re.match(r"^- (.*)$", s)
+            if bullet and not re.match(r"\d{4}-", bullet.group(1)):
+                ings.append((clean(bullet.group(1)), False)); continue
+        step = re.match(r"^\d+\.\s+(.*)$", s)
+        if step:
+            steps.append(step.group(1))
+    flush()
+    return groups
+
 def recipe_parts(r):
     """Everything the public site shows for one recipe, as plain data. Used by the modal, /r/<slug> pages and /r/<slug>.md."""
     sec = sections(r["body"])
@@ -118,7 +162,23 @@ def recipe_parts(r):
         m = re.match(r"\[([ x])\]\s*(.*)", x)
         ings.append((clean(m.group(2) if m else x), bool(m and m.group(1) == "x")))
     steps = ou_ol or or_ol
-    extra = ours_prose([l for l in ours if not re.match(r"^\s*(- \[[ x]\]|\d+\.\s)", l)])
+    extra = ours_prose([l for l in ours if not re.match(r"^\s*(- \[[ x]\]|\d+\.\s)", l) and not group_heading(l)])
+    ing_rows = [{"type": "item", "text": t, "onhand": o} for t, o in ings]
+    step_rows = [{"type": "item", "text": s} for s in steps]
+    # Headings only when ingredients and steps come from the same section.
+    if bool(ours_checks) == bool(ou_ol):
+        groups = grouped_rows(ours if (ours_checks or ou_ol) else orig, checks_only=bool(ours_checks))
+        g_ings, g_steps = [], []
+        for g in groups:
+            if g["title"] and g["ings"]:
+                g_ings.append({"type": "heading", "text": g["title"]})
+            g_ings.extend({"type": "item", "text": t, "onhand": o} for t, o in g["ings"])
+            if g["title"] and g["steps"]:
+                g_steps.append({"type": "heading", "text": g["title"]})
+            g_steps.extend({"type": "item", "text": s} for s in g["steps"])
+        if ([x["text"] for x in g_ings if x["type"] == "item"] == [t for t, _ in ings]
+                and [x["text"] for x in g_steps if x["type"] == "item"] == list(steps)):
+            ing_rows, step_rows = g_ings, g_steps
     diary = []
     for l in notes:
         m = re.match(r"^\s*- (\d{4}-\d{2}-\d{2})\s*(\(([^)]*)\))?:?\s*(.*)", l)
@@ -140,7 +200,7 @@ def recipe_parts(r):
     intro = clean(" ".join(x for x in re.split(r"(?<=[.!?])\s+", intro) if not DEV.search(x)))
     from credit import credit as _cr
     ct, ch = _cr(r)
-    return {"ings": ings, "steps": steps, "extra": extra, "diary": diary, "intro": intro, "credit": ct, "credit_url": ch}
+    return {"ings": ings, "steps": steps, "ing_rows": ing_rows, "step_rows": step_rows, "extra": extra, "diary": diary, "intro": intro, "credit": ct, "credit_url": ch}
 
 def step_html(s, inl=None):
     m = re.match(r"^\*\*(.+?)\*\*:?\s*(.*)", s)
@@ -193,11 +253,20 @@ def ask_form(r, hidden=False):
 
 def recipe_view(r, staples):
     P = recipe_parts(r)
-    ing_html = ""
-    for i, (txt, onhand) in enumerate(P["ings"]):
-        have = '<span class=have>on hand</span>' if onhand else ""
-        ing_html += f'<label><input type=checkbox name="{E(r["slug"])}-{i}"><span>{inline(txt)}</span>{have}</label>'
-    steps_html = "".join(step_html(s) for s in P["steps"])
+    ing_html, i = "", 0
+    for row in P["ing_rows"]:
+        if row["type"] == "heading":
+            ing_html += f'<div class=ingh>{inline(row["text"])}</div>'
+            continue
+        have = '<span class=have>on hand</span>' if row["onhand"] else ""
+        ing_html += f'<label><input type=checkbox name="{E(r["slug"])}-{i}"><span>{inline(row["text"])}</span>{have}</label>'
+        i += 1
+    steps_html = ""
+    for row in P["step_rows"]:
+        if row["type"] == "heading":
+            steps_html += f'<li class=grp><div><b>{E(row["text"])}</b></div></li>'
+        else:
+            steps_html += step_html(row["text"])
     extra = P["extra"]
     ours_html = f'<h3 class="sec hand">Notes from us</h3><div class=ours>{md_block(extra)}</div>' if extra else ""
     diary = []
@@ -307,7 +376,7 @@ PAGE_CSS = """@font-face{font-family:Hand;src:url(/caveat.woff2) format('woff2')
 body{margin:0;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#2a2723;background:#fbf6ea;
 background-image:linear-gradient(90deg,rgba(127,154,122,.10) 50%,transparent 50%),linear-gradient(rgba(127,154,122,.10) 50%,transparent 50%);background-size:28px 28px}
 main{max-width:720px;margin:24px auto;padding:24px 22px 32px;background:#fffdf6;border:1px solid #e9e1cf;border-radius:14px}
-h1,h2{font-family:Hand,"Bradley Hand",cursive;color:#4f6b4c;line-height:1.1}h1{font-size:44px;margin:4px 0 6px}h2{font-size:30px;margin:28px 0 8px}
+h1,h2,h3{font-family:Hand,"Bradley Hand",cursive;color:#4f6b4c;line-height:1.1}h1{font-size:44px;margin:4px 0 6px}h2{font-size:30px;margin:28px 0 8px}h3{font-size:22px;margin:18px 0 6px}
 a{color:#4f6b4c}.meta,.credit,nav{color:#7a7266;font-size:15px}.credit{margin:0 0 6px}img.hero{width:100%;border-radius:10px;margin:8px 0}
 li{margin:4px 0}.diary li img{display:block;max-width:180px;border-radius:8px;margin-top:4px}footer{max-width:720px;margin:0 auto 32px;padding:0 22px;color:#7a7266;font-size:14px}"""
 PAGE_CSS += FACTS_CSS
@@ -334,8 +403,26 @@ def recipe_md(r, P):
     if P["credit"]: L += [(f'{P["credit"]} ({P["credit_url"]})' if P["credit_url"] else P["credit"]), ""]
     L += [" · ".join(_facts(r)), ""]
     if P["intro"]: L += [plain_md(P["intro"]), ""]
-    if P["ings"]: L += ["## Ingredients", ""] + [f"- {plain_md(t)}" for t, _ in P["ings"]] + [""]
-    if P["steps"]: L += ["## " + ("Method" if r["type"] in DRINK else "Steps"), ""] + [f"{i}. {plain_md(clean(s))}" for i, s in enumerate(P["steps"], 1)] + [""]
+    if P["ings"]:
+        L += ["## Ingredients", ""]
+        for row in P["ing_rows"]:
+            if row["type"] == "heading":
+                if not L[-1]: L.pop()
+                L += ["", f"### {row['text']}", ""]
+            else:
+                L.append(f"- {plain_md(row['text'])}")
+        L.append("")
+    if P["steps"]:
+        L += ["## " + ("Method" if r["type"] in DRINK else "Steps"), ""]
+        n = 1
+        for row in P["step_rows"]:
+            if row["type"] == "heading":
+                if not L[-1]: L.pop()
+                L += ["", f"### {row['text']}", ""]
+            else:
+                L.append(f"{n}. {plain_md(clean(row['text']))}")
+                n += 1
+        L.append("")
     if P["extra"]: L += ["## Notes from us", ""] + [x if x.startswith(("- ", "* ")) else x for x in P["extra"]] + [""]
     if P["diary"]:
         L += ["## Cook diary", ""]
@@ -370,10 +457,35 @@ def recipe_page(r, P):
             f"<h1>{E(title)}</h1>", credit, f"<div class=facts>{facts_html(r)}</div>", wkbtn(slug), share_btn(r)]
     if r["photo"]: body.append(f'<img class=hero src="/{E(r["photo"])}" alt="{E(title)}">')
     if P["intro"]: body.append(f"<p>{inline(P['intro'])}</p>")
-    if P["ings"]: body.append("<h2>Ingredients</h2><ul>" + "".join(f"<li>{inline(t)}</li>" for t, _ in P["ings"]) + "</ul>")
+    if P["ings"]:
+        chunks, cur = ["<h2>Ingredients</h2>"], []
+        for row in P["ing_rows"]:
+            if row["type"] == "heading":
+                if cur:
+                    chunks.append("<ul>" + "".join(cur) + "</ul>"); cur = []
+                chunks.append(f"<h3>{inline(row['text'])}</h3>")
+            else:
+                cur.append(f"<li>{inline(row['text'])}</li>")
+        if cur:
+            chunks.append("<ul>" + "".join(cur) + "</ul>")
+        body.append("".join(chunks))
     if P["steps"]:
-        body.append(f'<h2>{"Method" if r["type"] in DRINK else "Steps"}</h2><ol>'
-                    + "".join(re.sub(r"</?div>", "", step_html(s)).replace("</b>", "</b> ", 1) if s.startswith("**") else re.sub(r"</?div>", "", step_html(s)) for s in P["steps"]) + "</ol>")
+        chunks, cur, n = [f'<h2>{"Method" if r["type"] in DRINK else "Steps"}</h2>'], [], 1
+        def step_li(s):
+            html = re.sub(r"</?div>", "", step_html(s))
+            return html.replace("</b>", "</b> ", 1) if s.startswith("**") else html
+        for row in P["step_rows"]:
+            if row["type"] == "heading":
+                if cur:
+                    start = n - len(cur)
+                    chunks.append((f'<ol start="{start}">' if start != 1 else "<ol>") + "".join(cur) + "</ol>"); cur = []
+                chunks.append(f"<h3>{inline(row['text'])}</h3>")
+            else:
+                cur.append(step_li(row["text"])); n += 1
+        if cur:
+            start = n - len(cur)
+            chunks.append((f'<ol start="{start}">' if start != 1 else "<ol>") + "".join(cur) + "</ol>")
+        body.append("".join(chunks))
     if P["extra"]: body.append("<h2>Notes from us</h2>" + md_block(P["extra"]))
     body.append("<h2>Cook diary</h2>")
     if P["diary"]:
