@@ -861,15 +861,15 @@ THANKS_CSS = """@font-face{font-family:Display;src:url(/thanksgiving-drinks/font
 .thanks .body{padding:0;display:flex;flex-direction:column;gap:0}
 .thanks section{margin:0;padding-top:44px}.thanks .body>section:first-child{padding-top:24px}
 .thanks .lbl{font-family:Text,serif;font-size:clamp(15px,3.2vw,24px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9A7424;margin:0 0 10px;line-height:1.3}
-.thanks .item{margin:0 0 26px}.thanks .item:last-child{margin-bottom:0}
+.thanks .item{margin:0 0 22px}.thanks .item:last-child{margin-bottom:0}
 .thanks .name{font-family:Text,"Libre Caslon Text",Georgia,serif;font-weight:400;font-size:clamp(28px,6vw,46px);line-height:1.35;color:#2A241A;margin:0;letter-spacing:0.03em}
 .thanks a.name{color:#2A241A;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#9A7424;text-underline-offset:5px}
 .thanks a.name:hover,.thanks a.name:focus-visible{color:#9A7424}
 .thanks .note{font-family:Text,serif;font-size:clamp(17px,3.4vw,26px);line-height:1.35;color:#3D3428;margin:12px 0 0;letter-spacing:0.03em}
-.thanks .wines .item{margin:0 0 18px}.thanks .wines .item:last-of-type{margin-bottom:0}
-.thanks .wines{}.thanks .wines .name{font-size:clamp(26px,5.4vw,42px)}
+.thanks .wines .item{margin:0 0 22px}.thanks .wines .item:last-child{margin-bottom:0}
+.thanks .wines .name{font-size:clamp(26px,5.4vw,42px)}
 .thanks .welcome{font-family:Text,serif;font-size:clamp(16px,3.2vw,24px);font-style:italic;color:#3D3428;margin:16px 0 0;letter-spacing:0.03em;line-height:1.35}
-.thanks .split{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;margin:0;padding-top:44px}.thanks .split section{padding-top:0}
+.thanks .split{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;margin:0;padding-top:44px}.thanks .split section{padding-top:0}.thanks .split .lbl{font-size:clamp(13px,2.6vw,20px);margin:0 0 8px}.thanks .split .name{font-size:clamp(22px,4.2vw,32px)}.thanks .split .item{margin:0 0 8px}.thanks .split .item:last-child{margin-bottom:0}
 .thanks .foot{margin:8px 0 0;font-family:Text,serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9A7424}
 .thanks button.name{background:none;border:0;padding:0;margin:0 auto;width:auto;max-width:100%;display:block;text-align:center;cursor:pointer;color:#2A241A;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#9A7424;text-underline-offset:5px;font:inherit;letter-spacing:inherit}
 .thanks button.name:hover,.thanks button.name:focus-visible{color:#9A7424;outline:0}
@@ -901,6 +901,8 @@ def thanksgiving_drinks_page(out, src=None):
     tdir.mkdir(parents=True)
     img_src = pathlib.Path(src) if src else SITE / "thanksgiving-drinks.png"
     shutil.copy2(img_src, tdir / "menu.png")
+    og = SITE / "thanksgiving-drinks-og.png"
+    if og.exists(): shutil.copy2(og, tdir / "og.png")
     bg = SITE / "thanksgiving-drinks-bg.jpg"
     if bg.exists(): shutil.copy2(bg, tdir / "bg.jpg")
     gilded = SITE / "thanksgiving-drinks-gilded.png"
@@ -914,7 +916,7 @@ def thanksgiving_drinks_page(out, src=None):
     title = "Thanksgiving Beverage Menu"
     desc = "A beverage menu for Thanksgiving at the Blind Tiger: batched cocktails, Alton Brown's aged eggnog, wine, and a few zero-proof pours."
     url = f"{BASE}/thanksgiving-drinks/"
-    img = f"{BASE}/thanksgiving-drinks/menu.png"
+    img = f"{BASE}/thanksgiving-drinks/og.png"
     t, d, u, im = E(title), E(desc), E(url), E(img)
     html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{t} · Crews &amp; Anna's Kitchen</title>
@@ -924,7 +926,7 @@ def thanksgiving_drinks_page(out, src=None):
 <meta property="og:type" content="website"><meta property="og:site_name" content="Crews &amp; Anna's Kitchen">
 <meta property="og:title" content="{t}"><meta property="og:description" content="{d}">
 <meta property="og:url" content="{u}">
-<meta property="og:image" content="{im}"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1440">
+<meta property="og:image" content="{im}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Thanksgiving beverage menu on cream parchment, framed with watercolor greenery">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}"><meta name="twitter:image" content="{im}">
@@ -941,8 +943,8 @@ def thanksgiving_drinks_page(out, src=None):
 </div>
 <div class=rule aria-hidden=true></div>
 <div class=body>
-<section>
-<p class=lbl>Cocktails</p>
+<section class=sigs>
+<p class=lbl>Signature Cocktails</p>
 <div class=item>
 <a class=name href="/r/freezer-door-spiced-cranberry-paper-plane">Spiced Cranberry Paper Plane</a>
 <p class=note>Bourbon, Amaro Nonino, Aperol, lemon, and spiced cranberry syrup.</p>
@@ -952,14 +954,11 @@ def thanksgiving_drinks_page(out, src=None):
 <p class=note>Rittenhouse rye, banana liqueur, maple, and black walnut bitters.</p>
 </div>
 <div class=item>
-<p class=name>Holiday Gin Mule</p>
-</div>
-</section>
-<section>
-<p class=lbl>Holiday</p>
-<div class=item>
 <a class=name href="/r/aged-eggnog">Alton Brown's Aged Eggnog</a>
 <p class=note>Aging since October 18.</p>
+</div>
+<div class=item>
+<p class=name>Holiday Gin Mule</p>
 </div>
 </section>
 <section class=wines>

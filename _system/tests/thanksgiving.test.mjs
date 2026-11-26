@@ -40,9 +40,9 @@ finally:
   assert.match(html, /rel=canonical href="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/"/);
   assert.match(html, /property="og:title" content="Thanksgiving Beverage Menu"/);
   assert.match(html, /property="og:description" content="A beverage menu for Thanksgiving at the Blind Tiger: batched cocktails, Alton Brown&#x27;s aged eggnog, wine, and a few zero-proof pours."/);
-  assert.match(html, /property="og:image" content="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/menu\.png"/);
-  assert.match(html, /property="og:image:width" content="1080"/);
-  assert.match(html, /property="og:image:height" content="1440"/);
+  assert.match(html, /property="og:image" content="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/og\.png"/);
+  assert.match(html, /property="og:image:width" content="1200"/);
+  assert.match(html, /property="og:image:height" content="630"/);
   assert.match(html, /property="og:url" content="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/"/);
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /href="\/r\/freezer-door-spiced-cranberry-paper-plane">Spiced Cranberry Paper Plane</);
@@ -56,6 +56,8 @@ finally:
   assert.match(html, /Sauternes/);
   assert.doesNotMatch(html, /Carajillo/);
   assert.match(html, /Holiday Gin Mule/);
+  assert.match(html, /Signature Cocktails/);
+  assert.doesNotMatch(html, /<p class=lbl>Holiday<\/p>/);
   assert.match(html, /Cocktails/);
   assert.match(html, /Lemonade/);
   assert.match(html, /Iced tea/);
