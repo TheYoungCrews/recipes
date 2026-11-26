@@ -51,6 +51,8 @@ def headers():
     hdr += "/feed.xml\n  Content-Type: application/rss+xml; charset=utf-8\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n"
     hdr += "/follow-og.png\n  Content-Type: image/png\n  Cache-Control: public, max-age=86400\n  Access-Control-Allow-Origin: *\n"
     hdr += "/thanksgiving-drinks/menu.png\n  Content-Type: image/png\n  Cache-Control: public, max-age=86400\n  Access-Control-Allow-Origin: *\n"
+    hdr += "/thanksgiving-drinks/hero.jpg\n  Content-Type: image/jpeg\n  Cache-Control: public, max-age=86400\n  Access-Control-Allow-Origin: *\n"
+    hdr += "/thanksgiving-drinks/bg.jpg\n  Content-Type: image/jpeg\n  Cache-Control: public, max-age=86400\n  Access-Control-Allow-Origin: *\n"
     hdr += "/thanksgiving-drinks/*\n  Cache-Control: public, max-age=300\n"
     return hdr
 

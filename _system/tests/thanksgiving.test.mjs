@@ -26,18 +26,20 @@ try:
     site_render.thanksgiving_drinks_page(d, src)
     html = (d / "thanksgiving-drinks" / "index.html").read_text()
     img = d / "thanksgiving-drinks" / "menu.png"
-    print(json.dumps({"html": html, "has_png": img.exists(), "png_size": img.stat().st_size}))
+    wines = d / "thanksgiving-drinks" / "wines.json"
+    js = d / "thanksgiving-drinks" / "wines.js"
+    print(json.dumps({"html": html, "has_png": img.exists(), "png_size": img.stat().st_size, "has_wines": wines.exists(), "has_js": js.exists()}))
 finally:
     shutil.rmtree(d)
     shutil.rmtree(src.parent)
 `);
-  const { html, has_png, png_size } = JSON.parse(out);
+  const { html, has_png, png_size, has_wines, has_js } = JSON.parse(out);
   assert.equal(has_png, true);
   assert.ok(png_size > 0);
-  assert.match(html, /<title>Thanksgiving at the Blind Tiger · Crews &amp; Anna's Kitchen<\/title>/);
+  assert.match(html, /<title>Thanksgiving Beverage Menu · Crews &amp; Anna's Kitchen<\/title>/);
   assert.match(html, /rel=canonical href="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/"/);
-  assert.match(html, /property="og:title" content="Thanksgiving at the Blind Tiger"/);
-  assert.match(html, /property="og:description" content="Drinks for Thanksgiving, November 26, 2026: batched cocktails, Alton Brown&#x27;s aged eggnog, wine, and a few zero-proof pours."/);
+  assert.match(html, /property="og:title" content="Thanksgiving Beverage Menu"/);
+  assert.match(html, /property="og:description" content="A beverage menu for Thanksgiving at the Blind Tiger: batched cocktails, Alton Brown&#x27;s aged eggnog, wine, and a few zero-proof pours."/);
   assert.match(html, /property="og:image" content="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/menu\.png"/);
   assert.match(html, /property="og:image:width" content="1080"/);
   assert.match(html, /property="og:image:height" content="1350"/);
@@ -50,13 +52,26 @@ finally:
   assert.match(html, /Sonoma Zinfandel/);
   assert.match(html, /Napa Sauvignon Blanc/);
   assert.match(html, /Napa Cabernet Sauvignon/);
-  assert.match(html, /Bring a bottle if you like\. We'll open it with the rest\./);
+  assert.match(html, /Feel free to bring your own\./);
   assert.match(html, /Sauternes/);
   assert.match(html, /Carajillo/);
   assert.match(html, /Lemonade/);
   assert.match(html, /Iced tea/);
   assert.match(html, /Aging since October 18\./);
-  assert.match(html, /Thursday, November 26, 2026/);
+  assert.match(html, /Nov 26, 2026/);
+  assert.match(html, /<h1>Thanksgiving<\/h1>/);
+  assert.match(html, /<p class=sub>Beverage Menu<\/p>/);
+  assert.match(html, /House Wine Selection/);
+  assert.match(html, /data-wine="Sonoma Zinfandel"/);
+  assert.match(html, /data-wine="Chateauneuf-du-Pape"/);
+  assert.match(html, /data-wine="Napa Sauvignon Blanc"/);
+  assert.match(html, /data-wine="Sauternes"/);
+  assert.doesNotMatch(html, /data-wine="Napa Cabernet/);
+  assert.match(html, /<p class=name>Napa Cabernet Sauvignon<\/p>/);
+  assert.match(html, /id="wine-cards"/);
+  assert.match(html, /src="\/thanksgiving-drinks\/wines\.js"/);
+  assert.equal(has_wines, true);
+  assert.equal(has_js, true);
   assert.doesNotMatch(html, /—/);
   assert.doesNotMatch(html, /pages\.dev/);
   assert.doesNotMatch(html, /href="\/r\/soup"/);
