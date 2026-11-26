@@ -54,7 +54,9 @@ finally:
   assert.match(html, /Napa Cabernet Sauvignon/);
   assert.match(html, /Feel free to bring your own\./);
   assert.match(html, /Sauternes/);
-  assert.match(html, /Carajillo/);
+  assert.doesNotMatch(html, /Carajillo/);
+  assert.match(html, /Holiday Gin Mule/);
+  assert.match(html, /Cocktails/);
   assert.match(html, /Lemonade/);
   assert.match(html, /Iced tea/);
   assert.match(html, /Aging since October 18\./);
