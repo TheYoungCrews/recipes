@@ -45,7 +45,7 @@ def entry(r):
 def headers():
     """Cloudflare Pages _headers for the JSON, markdown and RSS exports."""
     hdr = "".join(f"/{f}\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n" for f in ("recipes.json", "recipes-index.json", "llms.txt", "openapi.json", "week.json", "week.md"))
-    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n/week.md\n  Content-Type: text/markdown; charset=utf-8\n/week/*\n  Cache-Control: public, max-age=300\n"
+    hdr += "/r/*\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n/r/*.md\n  Content-Type: text/markdown; charset=utf-8\n/week.md\n  Content-Type: text/markdown; charset=utf-8\n/week/*\n  Cache-Control: public, max-age=300\n/cocktails/*\n  Cache-Control: public, max-age=300\n"
     hdr += "/groceries.txt\n  Content-Type: text/plain; charset=utf-8\n  Cache-Control: no-cache\n  Access-Control-Allow-Origin: *\n"   # Sync Groceries Shortcut feed
     hdr += '/sync-groceries.shortcut\n  Content-Type: application/octet-stream\n  Content-Disposition: attachment; filename="Sync Groceries.shortcut"\n  Cache-Control: public, max-age=300\n'
     hdr += "/feed.xml\n  Content-Type: application/rss+xml; charset=utf-8\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n"
@@ -67,7 +67,7 @@ def write(items, out):
 ## For AI agents
 - Read recipes: {SITE}/recipes.json (full) or {SITE}/recipes-index.json (list)
 - One recipe as a plain page (no JavaScript): {SITE}/r/<slug>, or as markdown: {SITE}/r/<slug>.md
-- Share and fetch /r/<slug> (or /r/<slug>.md). Old /#r-<slug> links redirect to /r/<slug>. List of every page: {SITE}/r/ and {SITE}/sitemap.xml
+- Share and fetch /r/<slug> (or /r/<slug>.md). Old /#r-<slug> links redirect to /r/<slug>. List of every page: {SITE}/r/, {SITE}/cocktails/, and {SITE}/sitemap.xml
 - Add a recipe (default): follow https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md and email crews@mail.grokbot.com with "recipe:" or "cocktail:" in the subject
 - Bulk add: POST {SITE}/api/recipes (Bearer key; schema {SITE}/openapi.json) or paste at {SITE}/add
 - This week's dinners and grocery list: {SITE}/week/ (markdown {SITE}/week.md, JSON {SITE}/week.json)

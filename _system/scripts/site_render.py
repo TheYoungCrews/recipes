@@ -262,7 +262,7 @@ def render(items, staples, root):
 <div class=askbox><input id=q type=search enterkeyhint=search autocomplete=off placeholder="Search recipes and cocktails" aria-label="Search recipes and cocktails"><button type=button id=qclear hidden aria-label=Clear>×</button></div></form>
 <p class=followline>Get a Sunday note with what we cooked, how we rated it, and next week's menu. <a href="/follow">Follow along</a></p>
 {f'<div id=season><h2 class=hand>This {season} <small>{len(picks)} picks</small></h2><div class=row>{"".join(card(r) for r in picks)}</div></div>' if picks else ""}
-<h2 class=hand>The kitchen <small>{len(food)} recipes</small></h2>
+<h2 class=hand id=kitchen>The kitchen <small>{len(food)} recipes</small></h2>
 <div class=tools><div class=chips>{chip_html}</div><select id=sort class=sort aria-label="Sort recipes"><option value="">our picks</option><option value=quick>quickest first</option><option value=long>longest first</option></select><button id=pick type=button class="pick hand">🎲 what's for dinner?</button></div>
 <div id=food class=grid style="margin-top:10px">{"".join(card(r) for r in food)}</div><p id=nores class=nores hidden>Nothing matches. Try another chip or word.</p>
 {f'<section class=bar id=bar><h2 class=hand>The bar cart <small>{len(bar)} cocktails</small></h2><div class=grid>{"".join(card(r) for r in bar)}</div></section>' if bar else ""}
@@ -275,7 +275,7 @@ def render(items, staples, root):
 <title>Crews &amp; Anna's Kitchen</title><meta name=theme-color content="#7f9a7a"><meta name=apple-mobile-web-app-capable content=yes>
 <meta name=description content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta property="og:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta property="og:type" content="website"><meta property="og:url" content="{BASE}/"><link rel=canonical href="{BASE}/"><link rel=sitemap type="application/xml" href="/sitemap.xml">{RSS}<meta property="og:image" content="{BASE}/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Crews &amp; Anna&#x27;s Kitchen on a gingham tablecloth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Crews &amp; Anna&#x27;s Kitchen"><meta name="twitter:description" content="The dinners we keep making, the ones we swear we&#x27;ll try, and Anna&#x27;s favorite cocktails."><meta name="twitter:image" content="{BASE}/og.jpg"><link rel="alternate" type="application/json" href="/recipes.json" title="All recipes for agents"><link rel="help" href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md"><meta name="agent-instructions" content="AI agents: read /recipes.json. To add a recipe follow AGENTS.md and email crews@mail.grokbot.com (recipe: in the subject). Bulk: POST /api/recipes (OpenAPI /openapi.json) or paste at /add.">
 <meta name=apple-mobile-web-app-title content="Kitchen"><link rel=apple-touch-icon href="/icon-180.png"><link rel=icon type=image/png href="/icon-180.png"><style>{css}</style></head>
-<body><div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><h2>For AI agents</h2><p>Read recipes from <a href="/recipes.json">/recipes.json</a>. To add one, follow <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">AGENTS.md</a> and email crews@mail.grokbot.com with "recipe:" in the subject. Bulk: POST <a href="/openapi.json">/api/recipes</a> or paste at <a href="/add">/add</a>.</p><p>Every recipe has a plain page with no JavaScript at /r/&lt;slug&gt; and markdown at /r/&lt;slug&gt;.md. Share /r/&lt;slug&gt;. An old /#r-&lt;slug&gt; link redirects there. Full list: <a href="/r/">/r/</a> and <a href="/sitemap.xml">/sitemap.xml</a>.</p><ul>{"".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a></li>' for r in sorted(live, key=lambda r: r["title"].lower()))}</ul></div><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub>{len(food)} recipes · {len(bar)} cocktails · <a href="/week/">what’s cooking</a> · <a href="/add">+ add one</a></p></div></header>{home}{views}
+<body><div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><h2>For AI agents</h2><p>Read recipes from <a href="/recipes.json">/recipes.json</a>. To add one, follow <a href="https://github.com/TheYoungCrews/recipes/blob/main/AGENTS.md">AGENTS.md</a> and email crews@mail.grokbot.com with "recipe:" in the subject. Bulk: POST <a href="/openapi.json">/api/recipes</a> or paste at <a href="/add">/add</a>.</p><p>Every recipe has a plain page with no JavaScript at /r/&lt;slug&gt; and markdown at /r/&lt;slug&gt;.md. Share /r/&lt;slug&gt;. An old /#r-&lt;slug&gt; link redirects there. Full list: <a href="/r/">/r/</a> and <a href="/sitemap.xml">/sitemap.xml</a>.</p><ul>{"".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a></li>' for r in sorted(live, key=lambda r: r["title"].lower()))}</ul></div><div id=top></div><header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div><p class=x2sub><a href="/#kitchen">{len(food)} recipes</a> · <a href="/cocktails/">{len(bar)} cocktails</a> · <a href="/week/">what’s cooking</a> · <a href="/add">+ add one</a></p></div></header>{home}{views}
 <script>window.KITCHEN={data};</script><script>{js}</script><script src="/week-btn.js" defer></script><script src="/share.js" defer></script></body></html>'''
     (out/"index.html").write_text(page)
     static_pages(live, out)
@@ -365,7 +365,7 @@ def recipe_page(r, P):
     if r["time_minutes"]: ld["totalTime"] = f'PT{r["time_minutes"]}M'
     if P["intro"]: ld["description"] = plain_md(P["intro"])
     ldj = json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
-    body = [f'<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/r/{E(slug)}.md">Markdown</a> · <a href="/week/">What’s Cooking</a></nav>',
+    body = [f'<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/r/{E(slug)}.md">Markdown</a> · <a href="/week/">What’s Cooking</a> · <a href="/cocktails/">Cocktails</a></nav>',
             f"<h1>{E(title)}</h1>", credit, f"<div class=facts>{facts_html(r)}</div>", wkbtn(slug), share_btn(r)]
     if r["photo"]: body.append(f'<img class=hero src="/{E(r["photo"])}" alt="{E(title)}">')
     if P["intro"]: body.append(f"<p>{inline(P['intro'])}</p>")
@@ -427,10 +427,15 @@ def static_pages(live, out):
     li = lambda rs: "<ul>" + "".join(f'<li><a href="/r/{E(r["slug"])}">{E(r["title"])}</a>{wkbtn(r["slug"], True)}</li>' for r in rs) + "</ul>"
     (rdir / "index.html").write_text(f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>All recipes · Crews &amp; Anna's Kitchen</title><meta name=description content="Every recipe and cocktail in Crews &amp; Anna's Kitchen as a plain page."><link rel=canonical href="{BASE}/r/">{RSS}<style>{PAGE_CSS}{WKCSS}</style></head>
-<body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/follow">Follow along</a></nav><h1>All recipes</h1><p class=meta>{len(food)} recipes and {len(bar)} cocktails. Each page has a plain markdown copy at the same address plus .md.</p>
-<h2>Recipes</h2>{li(food)}<h2>Cocktails</h2>{li(bar)}</main><script src="/week-btn.js" defer></script></body></html>''')
+<body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/cocktails/">Cocktails</a> · <a href="/follow">Follow along</a></nav><h1>All recipes</h1><p class=meta><a href="#recipes">{len(food)} recipes</a> and <a href="/cocktails/">{len(bar)} cocktails</a>. Each page has a plain markdown copy at the same address plus .md.</p>
+<h2 id=recipes>Recipes</h2>{li(food)}<h2 id=cocktails>Cocktails</h2>{li(bar)}</main><script src="/week-btn.js" defer></script></body></html>''')
+    cdir = out / "cocktails"; shutil.rmtree(cdir, ignore_errors=True); cdir.mkdir(parents=True)
+    (cdir / "index.html").write_text(f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Cocktails · Crews &amp; Anna's Kitchen</title><meta name=description content="Every cocktail and mocktail in Crews &amp; Anna's Kitchen as a plain page."><link rel=canonical href="{BASE}/cocktails/">{RSS}<style>{PAGE_CSS}{WKCSS}</style></head>
+<body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/r/">All recipes</a> · <a href="/week/">What’s Cooking</a> · <a href="/follow">Follow along</a></nav><h1>Cocktails</h1><p class=meta>{len(bar)} cocktails. Each page has a plain markdown copy at /r/&lt;slug&gt;.md.</p>
+{li(bar)}</main><script src="/week-btn.js" defer></script></body></html>''')
     today = datetime.date.today().isoformat()
-    urls = [f"{BASE}/", f"{BASE}/week/", f"{BASE}/r/", f"{BASE}/follow"] + [f'{BASE}/r/{r["slug"]}' for r in by]
+    urls = [f"{BASE}/", f"{BASE}/week/", f"{BASE}/r/", f"{BASE}/cocktails/", f"{BASE}/follow"] + [f'{BASE}/r/{r["slug"]}' for r in by]
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {BASE}/sitemap.xml\n")
@@ -525,7 +530,7 @@ def week_page(live, out, g=None):
 <title>{t} · Crews &amp; Anna's Kitchen</title><meta name=description content="What’s Cooking: this week's dinners and grocery list."><link rel=canonical href="{BASE}/week/">
 <link rel=alternate type="text/markdown" href="/week.md">{RSS}<meta name=theme-color content="#7f9a7a"><link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
 <style>{PAGE_CSS}{WEEK_CSS}{WKCSS}</style></head>'''
-    nav = '<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/week.md">Markdown</a> · <a href="/week.json">JSON</a> · <a href="/r/">All recipes</a> · <a href="/follow">Follow along</a></nav>'
+    nav = '<nav><a href="/">← Crews &amp; Anna\'s Kitchen</a> · <a href="/week.md">Markdown</a> · <a href="/week.json">JSON</a> · <a href="/r/">All recipes</a> · <a href="/cocktails/">Cocktails</a> · <a href="/follow">Follow along</a></nav>'
     if not g:
         (wdir / "index.html").write_text(head("What’s Cooking") + f"<body><main class=wk>{nav}<h1>What’s Cooking</h1><p>No plan yet.</p></main></body></html>")
         (out / "week.md").write_text("# What’s Cooking\n\nNo plan yet.\n"); (out / "week.json").write_text("null"); (out / "groceries.txt").write_text(""); return
@@ -692,7 +697,7 @@ def follow_page(live, out):
 <style>{css}</style></head>
 <body class=follow>
 <header class=banner><div class=x2box><div class=x2tab><div class=x2lbl><h1 class=hand>Crews &amp; Anna's Kitchen</h1></div></div><div class=x2lip></div>
-<p class=x2sub><a href="/">the kitchen</a> · <a href="/r/">all recipes</a></p></div></header>
+<p class=x2sub><a href="/">the kitchen</a> · <a href="/r/">all recipes</a> · <a href="/cocktails/">cocktails</a></p></div></header>
 <section><div class=wrap>
 <form id=followform class="sheet ask" method="post" action="/api/follow">
 <h1 class=hand>Follow along with Crews &amp; Anna's kitchen</h1>
