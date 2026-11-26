@@ -853,10 +853,10 @@ THANKS_CSS = """@font-face{font-family:Display;src:url(/thanksgiving-drinks/font
 .thanks .card:before,.thanks .card:after{content:"";position:absolute;left:0;right:0;z-index:-1;pointer-events:none}
 .thanks .card:before{top:0;height:100%;background:url(/thanksgiving-drinks/bg.jpg) top center / 100% auto no-repeat}
 .thanks .card:after{bottom:0;height:28%;background:url(/thanksgiving-drinks/bg.jpg) bottom center / 100% auto no-repeat;-webkit-mask-image:linear-gradient(to top,#000 70%,transparent);mask-image:linear-gradient(to top,#000 70%,transparent)}
-.thanks .panel{position:relative;background:#EEE1C6;border:2px solid #8a6516;padding:22px 18px 20px;text-align:center}
+.thanks .panel{position:relative;background:#EEE1C6;border:2px solid #8a6516;padding:22px 18px 20px;text-align:center;container-type:inline-size;container-name:menu}
 .thanks .titles{text-align:center;padding:0}
-.thanks h1{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-optical-sizing:auto;font-size:clamp(56px,14vw,120px);line-height:1.12;text-align:center;color:#8a6516;margin:0;letter-spacing:0.02em}
-.thanks .sub{font-family:Display,"Bodoni Moda",Georgia,serif;font-style:italic;font-weight:600;font-optical-sizing:auto;font-size:clamp(28px,5.5vw,46px);line-height:1.2;text-align:center;color:#8a6516;margin:20px 0 0;letter-spacing:0.03em}
+.thanks h1{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-optical-sizing:auto;font-size:clamp(40px,12.5cqi,92px);line-height:1.08;text-align:center;color:#8a6516;margin:0;letter-spacing:0.01em;max-width:100%}
+.thanks .sub{font-family:Display,"Bodoni Moda",Georgia,serif;font-style:italic;font-weight:600;font-optical-sizing:auto;font-size:clamp(22px,5.2cqi,40px);line-height:1.2;text-align:center;color:#8a6516;margin:12px 0 0;letter-spacing:0.03em}
 .thanks .rule{width:160px;height:2px;border:0;margin:12px auto 0;background:#7d5a12}
 .thanks .body{padding:0;display:flex;flex-direction:column;gap:0}
 .thanks section{margin:0;padding-top:52px}.thanks .body>section:first-child{padding-top:52px}
@@ -894,7 +894,59 @@ html.wine-open,body.wine-open{overflow:hidden;overscroll-behavior:none}
 .wmodal-stat dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7d5a12}
 .wmodal-stat dd{margin:2px 0 0;font-size:17px;color:#2A241A}
 @media(max-width:720px){.thanks .card{max-width:none;margin:0;padding:9vw 6vw 24vw;min-height:100vh}.thanks .top{padding:10px 14px 0}.thanks .panel{padding:16px 12px 14px}.thanks .split{gap:4px 10px}.wmodal{padding:8px;align-items:center}.wmodal-card{max-height:85vh;max-height:85dvh}}
-@media(min-width:800px){.thanks{background:#E4D6B4;padding:0 16px 48px}.thanks .card{margin-top:8px;max-width:760px;box-shadow:0 16px 48px rgba(80,60,30,.14)}.thanks .top{max-width:760px;padding-top:22px}}"""
+@media(min-width:800px){.thanks{background:#E4D6B4;padding:0 16px 48px}.thanks .card{margin-top:8px;max-width:760px;box-shadow:0 16px 48px rgba(80,60,30,.14)}.thanks .top{max-width:760px;padding-top:22px}}
+@media(min-width:740px) and (max-width:920px) and (orientation:portrait){
+.thanks{padding:0 16px 28px}
+.thanks .top{max-width:680px;padding-top:14px}
+.thanks .card{max-width:680px;margin-top:6px;padding:4% 5% 8%}
+.thanks .panel{padding:18px 16px 16px}
+.thanks .sub{margin-top:10px}
+.thanks .rule{margin:10px auto 0}
+.thanks section{padding-top:22px}.thanks .body>section:first-child{padding-top:20px}
+.thanks .lbl{margin:0 0 10px;font-size:clamp(14px,2.4cqi,22px)}
+.thanks .item{margin:0 0 16px}
+.thanks .name{font-size:clamp(26px,5.6cqi,40px)}
+.thanks .note{font-size:clamp(16px,3.2cqi,22px);margin-top:6px}
+.thanks .wines .name{font-size:clamp(18px,4cqi,28px)}
+.thanks .wgrid{gap:10px 12px}
+.thanks .welcome{font-size:clamp(16px,3cqi,22px);margin-top:10px}
+.thanks .split{padding-top:22px;gap:4px 20px}
+.thanks .split .lbl{margin:0 0 10px}
+.thanks .split .name{font-size:clamp(22px,4.4cqi,32px)}
+.thanks .split .item{margin:0 0 12px}
+.thanks .foot{margin-top:12px}
+}
+@media(min-width:900px) and (max-height:900px) and (orientation:landscape){
+.thanks{padding:0 16px 12px;min-height:100svh;min-height:100dvh}
+.thanks .top{max-width:1100px;padding:6px 16px 0}
+.thanks nav.tnav{font-size:13px}
+.thanks .card{max-width:1100px;margin-top:4px;padding:1.6% 2.4% 2.2%;box-shadow:0 10px 32px rgba(80,60,30,.12)}
+.thanks .panel{padding:10px 22px 10px}
+.thanks h1{font-size:clamp(44px,8cqi,68px);line-height:1.05}
+.thanks .sub{font-size:clamp(20px,3.4cqi,28px);margin-top:4px}
+.thanks .rule{margin:6px auto 0;width:120px}
+.thanks .body{display:grid;grid-template-columns:1.12fr 1fr;column-gap:32px;align-items:start}
+.thanks .sigs{grid-column:1;grid-row:1/3;padding-top:12px}
+.thanks .wines{grid-column:2;grid-row:1;padding-top:12px}
+.thanks .split{grid-column:2;grid-row:2;padding-top:16px;gap:4px 20px}
+.thanks section{padding-top:12px}
+.thanks .lbl{margin:0 0 6px;font-size:clamp(12px,1.7cqi,16px)}
+.thanks .item{margin:0 0 10px}
+.thanks .name{font-size:clamp(20px,2.9cqi,28px);line-height:1.15;white-space:nowrap}
+.thanks .note{font-size:clamp(13px,1.9cqi,16px);margin-top:2px;line-height:1.25}
+.thanks .wgrid{grid-template-columns:1fr;gap:6px}
+.thanks .wines .item{margin:0}
+.thanks .wines .name{font-size:clamp(18px,2.5cqi,24px);white-space:nowrap}
+.thanks .welcome{font-size:clamp(13px,1.8cqi,16px);margin-top:6px}
+.thanks .split .lbl{margin:0 0 6px;font-size:clamp(12px,1.7cqi,16px)}
+.thanks .split .name{font-size:clamp(18px,2.5cqi,24px);white-space:nowrap}
+.thanks .split .item{margin:0 0 6px}
+.thanks .foot{margin-top:8px}
+}
+@media(min-width:1100px) and (max-height:900px) and (orientation:landscape){
+.thanks .wgrid{grid-template-columns:1fr 1fr;gap:8px 16px}
+}
+"""
 
 def thanksgiving_drinks_page(out, src=None):
     """One-off Thanksgiving drinks menu. Not linked from the home header."""
