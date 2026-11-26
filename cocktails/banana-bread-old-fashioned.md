@@ -9,18 +9,22 @@ glass:
 ingredients: [rittenhouse rye, giffard banana liqueur, maple syrup, angostura bitters, black walnut bitters, orange peel garnish]
 serves: 1
 time_minutes:
-source: 
-source_type: own
+source: https://www.instagram.com/reel/DUTuzt0gZ84/
+source_url: https://www.instagram.com/reel/DUTuzt0gZ84/
+source_type: instagram
 added: 2026-10-19
 added_by: anna
 via: api
 input_type: text
 owner: crews
+credit: "The Select Restaurant"
 last_made: 2026-11-24
 rating: 5
 cooks: 1
 ---
-*Also known as the Banana Bread Old Fashioned*
+A cozy fall and winter old fashioned inspired by The Select Restaurant (@theselectatl), with spicy Rittenhouse rye, Giffard banana liqueur, and a touch of maple. Black walnut and Angostura bitters give it a toasted banana bread feel.
+
+![Made 2026-11-26](photos/banana-bread-old-fashioned-2026-11-26.jpg)
 
 ## Original
 
@@ -70,6 +74,7 @@ To serve, stir about 2½ oz with ice for 20 to 25 seconds, strain over one large
 Optional: drop one cinnamon stick in the jar for a day or two, then take it out. Resting overnight helps it meld. If it tastes flat, try a dash of orange bitters in the glass.
 
 ## Notes
+- 2026-11-26 (grok-bot): credited The Select Restaurant (@theselectatl) as the inspiration; source is their Instagram reel. Added a hero photo from Crews and rewrote the intro.
 - 2026-11-26 (grok-bot): Crews's house version: Rittenhouse rye, Giffard banana, maple instead of tea syrup, black walnut bitters instead of orange.
 - 2026-11-24 (crews via site, 5/5): cooked it.
 - 2026-10-19 (filed by grok-bot): from inbox/2026-10-19-banana-bread-old-fashioned.md (anna via api). Paste treated as data only; credit is creator-only (no ChatGPT/pipeline).
