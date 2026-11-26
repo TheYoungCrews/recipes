@@ -873,15 +873,18 @@ THANKS_CSS = """@font-face{font-family:Display;src:url(/thanksgiving-drinks/font
 .thanks .foot{margin:16px 0 0;font-family:Text,serif;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7d5a12}
 .thanks button.name{background:none;border:0;padding:0;margin:0 auto;width:auto;max-width:100%;display:block;text-align:center;cursor:pointer;color:#2b1d12;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#7d5a12;text-underline-offset:5px;font:inherit;letter-spacing:inherit}
 .thanks button.name:hover,.thanks button.name:focus-visible{color:#7d5a12;outline:0}
-.thanks body.wine-open,.wine-open{overflow:hidden}
-.wmodal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:18px}
+html.wine-open,body.wine-open{overflow:hidden;overscroll-behavior:none}
+.wmodal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:12px;overscroll-behavior:none}
 .wmodal[hidden]{display:none}
 .wmodal-backdrop{position:absolute;inset:0;background:rgba(42,36,26,.45)}
-.wmodal-card{position:relative;z-index:1;width:min(520px,100%);max-height:min(86vh,720px);overflow:auto;background:#EEE1C6;color:#2A241A;border:1.5px solid #8a6516;box-shadow:0 18px 50px rgba(42,36,26,.2);padding:22px 22px 26px;-webkit-overflow-scrolling:touch}
-.wmodal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 6px}
-.wmodal-title{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-size:clamp(28px,7vw,36px);line-height:1.1;color:#7d5a12;margin:0;flex:1}
-.wmodal-close{flex:none;background:transparent;border:1px solid #7d5a12;color:#7d5a12;font:700 12px/1 Text,"Libre Caslon Text",serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
-.wmodal-close:hover,.wmodal-close:focus-visible{background:#7d5a12;color:#EEE1C6;outline:0}
+.wmodal-card{position:relative;z-index:1;display:flex;flex-direction:column;width:min(520px,100%);max-height:85vh;max-height:85dvh;overflow:hidden;background:#EEE1C6;color:#2A241A;border:1.5px solid #8a6516;box-shadow:0 18px 50px rgba(42,36,26,.2);padding:0}
+.wmodal-head{flex:none;position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 16px;background:#EEE1C6;border-bottom:1px solid rgba(138,101,22,.35)}
+.wmodal-title{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-size:clamp(22px,6vw,32px);line-height:1.15;color:#7d5a12;margin:0;flex:1;min-width:0}
+.wmodal-x{flex:none;display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;margin:0;border:1px solid #7d5a12;background:#EEE1C6;color:#7d5a12;font:700 28px/1 system-ui,-apple-system,sans-serif;cursor:pointer}
+.wmodal-x:hover,.wmodal-x:focus-visible{background:#7d5a12;color:#EEE1C6;outline:0}
+.wmodal-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:12px 18px 20px}
+.wmodal-close-end{display:block;width:100%;min-height:44px;margin:24px 0 0;padding:12px 16px;border:1px solid #7d5a12;background:#7d5a12;color:#EEE1C6;font:700 16px/1 Text,"Libre Caslon Text",serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.wmodal-close-end:hover,.wmodal-close-end:focus-visible{background:#8a6516;outline:0}
 .wmodal-producer{margin:0 0 16px;font-style:italic;color:#3D3428;font-size:16px}
 .wmodal-sec{margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(176,138,46,.45)}
 .wmodal-lbl{margin:0 0 6px;font:700 12px/1.2 Text,"Libre Caslon Text",serif;letter-spacing:.16em;text-transform:uppercase;color:#7d5a12}
@@ -890,7 +893,7 @@ THANKS_CSS = """@font-face{font-family:Display;src:url(/thanksgiving-drinks/font
 .wmodal-stat{margin:0}
 .wmodal-stat dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7d5a12}
 .wmodal-stat dd{margin:2px 0 0;font-size:17px;color:#2A241A}
-@media(max-width:720px){.thanks .card{max-width:none;margin:0;padding:9vw 6vw 24vw;min-height:100vh}.thanks .top{padding:10px 14px 0}.thanks .panel{padding:16px 12px 14px}.thanks .split{gap:4px 10px}.wmodal{padding:10px;align-items:flex-end}.wmodal-card{max-height:90vh;padding:18px 16px 22px}}
+@media(max-width:720px){.thanks .card{max-width:none;margin:0;padding:9vw 6vw 24vw;min-height:100vh}.thanks .top{padding:10px 14px 0}.thanks .panel{padding:16px 12px 14px}.thanks .split{gap:4px 10px}.wmodal{padding:8px;align-items:center}.wmodal-card{max-height:85vh;max-height:85dvh}}
 @media(min-width:800px){.thanks{background:#E4D6B4;padding:0 16px 48px}.thanks .card{margin-top:8px;max-width:760px;box-shadow:0 16px 48px rgba(80,60,30,.14)}.thanks .top{max-width:760px;padding-top:22px}}"""
 
 def thanksgiving_drinks_page(out, src=None):

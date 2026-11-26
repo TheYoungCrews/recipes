@@ -106,3 +106,18 @@ test("share image asset is in the web folder", () => {
   assert.ok(buf.length > 10000);
   assert.equal(buf.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
 });
+
+test("wine modal script and CSS support a closeable mobile popup", () => {
+  const js = readFileSync(path.join(root, "_system/web/thanksgiving-wines.js"), "utf8");
+  const render = readFileSync(path.join(root, "_system/scripts/site_render.py"), "utf8");
+  assert.match(js, /popstate/);
+  assert.match(js, /wmodal-x/);
+  assert.match(js, /wmodal-close-end/);
+  assert.match(js, /pushState/);
+  assert.match(js, /wine-open/);
+  assert.match(render, /85dvh/);
+  assert.match(render, /min-width:44px/);
+  assert.match(render, /wmodal-body/);
+  assert.doesNotMatch(render, /align-items:flex-end/);
+  assert.doesNotMatch(js, /—/);
+});
