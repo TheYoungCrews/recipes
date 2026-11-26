@@ -282,6 +282,7 @@ def render(items, staples, root):
     not_found_page(live, out)
     week_page(live, out)
     follow_page(live, out)
+    thanksgiving_drinks_page(out)
     # /add paste page (human fallback) + OpenAPI for GPT Actions / agents
     add_tpl = (SITE / "add.html").read_text()
     add_js = (SITE / "add.js").read_text()
@@ -435,7 +436,7 @@ def static_pages(live, out):
 <body><main><nav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/r/">All recipes</a> · <a href="/week/">What’s Cooking</a> · <a href="/follow">Follow along</a></nav><h1>Cocktails</h1><p class=meta>{len(bar)} cocktails. Each page has a plain markdown copy at /r/&lt;slug&gt;.md.</p>
 {li(bar)}</main><script src="/week-btn.js" defer></script></body></html>''')
     today = datetime.date.today().isoformat()
-    urls = [f"{BASE}/", f"{BASE}/week/", f"{BASE}/r/", f"{BASE}/cocktails/", f"{BASE}/follow"] + [f'{BASE}/r/{r["slug"]}' for r in by]
+    urls = [f"{BASE}/", f"{BASE}/week/", f"{BASE}/r/", f"{BASE}/cocktails/", f"{BASE}/follow", f"{BASE}/thanksgiving-drinks/"] + [f'{BASE}/r/{r["slug"]}' for r in by]
     (out / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {BASE}/sitemap.xml\n")
@@ -723,3 +724,109 @@ def follow_page(live, out):
 <script>{FOLLOW_JS}</script>
 </body></html>'''
     (fdir / "index.html").write_text(html_page)
+
+
+# ---- /thanksgiving-drinks/: a one-day drinks menu for family, plus the share image
+THANKS_CSS = """.thanks{margin:0;font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#2a2723;background:#fbf6ea;
+background-image:linear-gradient(90deg,rgba(127,154,122,.10) 50%,transparent 50%),linear-gradient(rgba(127,154,122,.10) 50%,transparent 50%);background-size:28px 28px}
+.thanks nav.tnav{max-width:640px;margin:18px auto 0;padding:0 18px;color:#7a7266;font-size:15px}
+.thanks nav.tnav a{color:#4f6b4c}
+.thanks .card{max-width:640px;margin:14px auto 20px;padding:28px 26px 26px;background:#fffdf6;border:1px solid #e9e1cf;border-radius:18px;box-shadow:0 10px 30px -18px rgba(60,50,30,.35),0 1px 0 #e9e1cf}
+.thanks .kicker{text-align:center;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4f6b4c;margin:0}
+.thanks h1{font-family:Hand,"Bradley Hand",cursive;font-weight:700;font-size:clamp(44px,12vw,72px);line-height:.88;text-align:center;color:#4f6b4c;margin:4px 0 0;letter-spacing:.2px}
+.thanks .place{font-family:Hand,"Bradley Hand",cursive;font-weight:700;font-size:clamp(26px,7vw,36px);line-height:1;text-align:center;color:#4f6b4c;margin:2px 0 0}
+.thanks .date{text-align:center;margin:12px 0 0;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7a7266}
+.thanks .rule{height:0;border:0;border-top:2px solid #7f9a7a;border-bottom:1px solid #7f9a7a;margin:18px 12% 8px;opacity:.7}
+.thanks section{margin:20px 0 0}
+.thanks .lbl{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#7f9a7a;margin:0 0 4px}
+.thanks .item{margin:0 0 10px}
+.thanks .name{font-family:Hand,"Bradley Hand",cursive;font-weight:700;font-size:30px;line-height:1.1;color:#4f6b4c;margin:0}
+.thanks a.name{color:#4f6b4c;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px}
+.thanks a.name:hover,.thanks a.name:focus-visible{color:#2c3d2a}
+.thanks .note{font-size:16px;line-height:1.35;color:#7a7266;margin:1px 0 0}
+.thanks .wines .item{margin:0}
+.thanks .wines .name{font-size:28px}
+.thanks .welcome{font-size:16px;font-style:italic;color:#7a7266;margin:8px 0 0}
+.thanks .split{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin-top:20px}
+.thanks footer{max-width:640px;margin:0 auto 36px;padding:0 18px;color:#7a7266;font-size:14px;text-align:center}
+@media(max-width:420px){.thanks .card{padding:22px 18px 22px;margin-left:12px;margin-right:12px}.thanks .split{gap:8px 16px}.thanks .name{font-size:27px}.thanks .wines .name{font-size:25px}}"""
+
+def thanksgiving_drinks_page(out, src=None):
+    """One-off Thanksgiving drinks menu. Not linked from the home header."""
+    out = pathlib.Path(out)
+    tdir = out / "thanksgiving-drinks"
+    shutil.rmtree(tdir, ignore_errors=True)
+    tdir.mkdir(parents=True)
+    img_src = pathlib.Path(src) if src else SITE / "thanksgiving-drinks.png"
+    shutil.copy2(img_src, tdir / "menu.png")
+    title = "Thanksgiving at the Blind Tiger"
+    desc = "Drinks for Thanksgiving, November 26, 2026: batched cocktails, Alton Brown's aged eggnog, wine, and a few zero-proof pours."
+    url = f"{BASE}/thanksgiving-drinks/"
+    img = f"{BASE}/thanksgiving-drinks/menu.png"
+    t, d, u, im = E(title), E(desc), E(url), E(img)
+    html_page = f'''<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{t} · Crews &amp; Anna's Kitchen</title>
+<meta name=description content="{d}">
+<link rel=canonical href="{u}">{RSS}
+<meta name=theme-color content="#7f9a7a">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Crews &amp; Anna's Kitchen">
+<meta property="og:title" content="{t}"><meta property="og:description" content="{d}">
+<meta property="og:url" content="{u}">
+<meta property="og:image" content="{im}"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1350">
+<meta property="og:image:alt" content="Drinks menu for Thanksgiving at the Blind Tiger, November 26, 2026">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}">
+<meta name="twitter:description" content="{d}"><meta name="twitter:image" content="{im}">
+<link rel=icon type=image/png href="/icon-180.png"><link rel=apple-touch-icon href="/icon-180.png">
+<style>{PAGE_CSS}{THANKS_CSS}</style></head>
+<body class=thanks>
+<nav class=tnav><a href="/">← Crews &amp; Anna's Kitchen</a> · <a href="/cocktails/">Cocktails</a></nav>
+<article class=card>
+<p class=kicker>Drinks</p>
+<h1>Thanksgiving</h1>
+<p class=place>at the Blind Tiger</p>
+<p class=date>Thursday, November 26, 2026</p>
+<hr class=rule>
+<section>
+<p class=lbl>Batched cocktails</p>
+<div class=item>
+<a class=name href="/r/freezer-door-spiced-cranberry-paper-plane">Spiced Cranberry Paper Plane</a>
+<p class=note>Bourbon, Amaro Nonino, Aperol, lemon, and spiced cranberry syrup.</p>
+</div>
+<div class=item>
+<a class=name href="/r/banana-bread-old-fashioned">Banana Bread Old Fashioned</a>
+<p class=note>Rittenhouse rye, banana liqueur, maple, and black walnut bitters.</p>
+</div>
+</section>
+<section>
+<p class=lbl>Holiday</p>
+<div class=item>
+<a class=name href="/r/aged-eggnog">Alton Brown's Aged Eggnog</a>
+<p class=note>Aging since October 18.</p>
+</div>
+</section>
+<section class=wines>
+<p class=lbl>Wine</p>
+<div class=item><p class=name>Sonoma Zinfandel</p></div>
+<div class=item><p class=name>Châteauneuf-du-Pape</p></div>
+<div class=item><p class=name>Napa Sauvignon Blanc</p></div>
+<div class=item><p class=name>Napa Cabernet Sauvignon</p></div>
+<p class=welcome>Bring a bottle if you like. We'll open it with the rest.</p>
+</section>
+<div class=split>
+<section>
+<p class=lbl>After dinner</p>
+<div class=item><p class=name>Sauternes</p></div>
+<div class=item><p class=name>Espresso</p></div>
+<div class=item><p class=name>Carajillo</p></div>
+</section>
+<section>
+<p class=lbl>Zero proof</p>
+<div class=item><p class=name>Lemonade</p></div>
+<div class=item><p class=name>Iced tea</p></div>
+</section>
+</div>
+</article>
+<footer>From <a href="/">Crews &amp; Anna's Kitchen</a>.</footer>
+</body></html>
+'''
+    (tdir / "index.html").write_text(html_page)

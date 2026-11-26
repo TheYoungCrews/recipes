@@ -50,6 +50,8 @@ def headers():
     hdr += '/sync-groceries.shortcut\n  Content-Type: application/octet-stream\n  Content-Disposition: attachment; filename="Sync Groceries.shortcut"\n  Cache-Control: public, max-age=300\n'
     hdr += "/feed.xml\n  Content-Type: application/rss+xml; charset=utf-8\n  Cache-Control: public, max-age=300\n  Access-Control-Allow-Origin: *\n"
     hdr += "/follow-og.png\n  Content-Type: image/png\n  Cache-Control: public, max-age=86400\n  Access-Control-Allow-Origin: *\n"
+    hdr += "/thanksgiving-drinks/menu.png\n  Content-Type: image/png\n  Cache-Control: public, max-age=86400\n  Access-Control-Allow-Origin: *\n"
+    hdr += "/thanksgiving-drinks/*\n  Cache-Control: public, max-age=300\n"
     return hdr
 
 def write(items, out):
