@@ -42,7 +42,7 @@ finally:
   assert.match(html, /property="og:description" content="A beverage menu for Thanksgiving at the Blind Tiger: batched cocktails, Alton Brown&#x27;s aged eggnog, wine, and a few zero-proof pours."/);
   assert.match(html, /property="og:image" content="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/menu\.png"/);
   assert.match(html, /property="og:image:width" content="1080"/);
-  assert.match(html, /property="og:image:height" content="1350"/);
+  assert.match(html, /property="og:image:height" content="1440"/);
   assert.match(html, /property="og:url" content="https:\/\/recipes\.crews\.fyi\/thanksgiving-drinks\/"/);
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /href="\/r\/freezer-door-spiced-cranberry-paper-plane">Spiced Cranberry Paper Plane</);
@@ -73,6 +73,7 @@ finally:
   assert.equal(has_wines, true);
   assert.equal(has_js, true);
   assert.doesNotMatch(html, /—/);
+  assert.doesNotMatch(html, /hero\.jpg/);
   assert.doesNotMatch(html, /pages\.dev/);
   assert.doesNotMatch(html, /href="\/r\/soup"/);
 });
