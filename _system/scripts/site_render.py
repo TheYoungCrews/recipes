@@ -377,7 +377,7 @@ body{margin:0;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,s
 background-image:linear-gradient(90deg,rgba(127,154,122,.10) 50%,transparent 50%),linear-gradient(rgba(127,154,122,.10) 50%,transparent 50%);background-size:28px 28px}
 main{max-width:720px;margin:24px auto;padding:24px 22px 32px;background:#fffdf6;border:1px solid #e9e1cf;border-radius:14px}
 h1,h2,h3{font-family:Hand,"Bradley Hand",cursive;color:#4f6b4c;line-height:1.1}h1{font-size:44px;margin:4px 0 6px}h2{font-size:30px;margin:28px 0 8px}h3{font-size:22px;margin:18px 0 6px}
-a{color:#4f6b4c}.meta,.credit,nav{color:#7a7266;font-size:15px}.credit{margin:0 0 6px}img.hero{width:100%;border-radius:10px;margin:8px 0}
+a{color:#4f6b4c}.meta,.credit,nav{color:#7a7266;font-size:15px}.credit{margin:0 0 6px}img.hero{display:block;width:auto;height:auto;max-width:100%;max-height:480px;border-radius:10px;margin:12px auto}
 li{margin:4px 0}.diary li img{display:block;max-width:180px;border-radius:8px;margin-top:4px}footer{max-width:720px;margin:0 auto 32px;padding:0 22px;color:#7a7266;font-size:14px}"""
 PAGE_CSS += FACTS_CSS
 
