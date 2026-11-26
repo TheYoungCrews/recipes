@@ -55,7 +55,7 @@ finally:
   assert.match(html, /Feel free to bring your own\./);
   assert.match(html, /Sauternes/);
   assert.doesNotMatch(html, /Carajillo/);
-  assert.match(html, /Holiday Gin Mule/);
+  assert.match(html, /Rosemary Gin Mule/);
   assert.match(html, /Signature Cocktails/);
   assert.doesNotMatch(html, /<p class=lbl>Holiday<\/p>/);
   assert.match(html, /Cocktails/);

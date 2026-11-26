@@ -844,51 +844,51 @@ THANKS_CSS = """@font-face{font-family:Display;src:url(/thanksgiving-drinks/font
 @font-face{font-family:Text;src:url(/thanksgiving-drinks/fonts/libre-caslon-text-400-latin.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:Text;src:url(/thanksgiving-drinks/fonts/libre-caslon-text-400-italic-latin.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
 @font-face{font-family:Text;src:url(/thanksgiving-drinks/fonts/libre-caslon-text-700-latin.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
-.thanks{margin:0;min-height:100vh;font:18px/1.3 Text,"Libre Caslon Text","Times New Roman",Georgia,serif;color:#2A241A;background:#EEE1C6}
+.thanks{margin:0;min-height:100vh;font:18px/1.3 Text,"Libre Caslon Text","Times New Roman",Georgia,serif;color:#2b1d12;background:#EEE1C6}
 .thanks .top{max-width:720px;margin:0 auto;padding:12px 16px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.thanks nav.tnav{color:#9A7424;font-size:14px;font-family:Text,serif}
-.thanks nav.tnav a{color:#9A7424;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
-.thanks .date{font-family:Text,serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9A7424;opacity:.9;white-space:nowrap}
-.thanks .card{position:relative;isolation:isolate;max-width:720px;margin:0 auto;padding:10% 8% 22%;background-color:#EEE1C6;text-align:center}
+.thanks nav.tnav{color:#7d5a12;font-size:14px;font-family:Text,serif}
+.thanks nav.tnav a{color:#7d5a12;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.thanks .date{font-family:Text,serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7d5a12;opacity:.9;white-space:nowrap}
+.thanks .card{position:relative;isolation:isolate;max-width:760px;margin:0 auto;padding:6% 4% 12%;background-color:#EEE1C6;text-align:center}
 .thanks .card:before,.thanks .card:after{content:"";position:absolute;left:0;right:0;z-index:-1;pointer-events:none}
 .thanks .card:before{top:0;height:100%;background:url(/thanksgiving-drinks/bg.jpg) top center / 100% auto no-repeat}
 .thanks .card:after{bottom:0;height:28%;background:url(/thanksgiving-drinks/bg.jpg) bottom center / 100% auto no-repeat;-webkit-mask-image:linear-gradient(to top,#000 70%,transparent);mask-image:linear-gradient(to top,#000 70%,transparent)}
-.thanks .panel{position:relative;background:#EEE1C6;border:1.5px solid #B08A2E;padding:18px 18px 16px;text-align:center}
+.thanks .panel{position:relative;background:#EEE1C6;border:2px solid #8a6516;padding:22px 18px 20px;text-align:center}
 .thanks .titles{text-align:center;padding:0}
-.thanks h1{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-optical-sizing:auto;font-size:clamp(56px,13vw,104px);line-height:1.18;text-align:center;color:#9A7424;margin:0;letter-spacing:0.02em;-webkit-text-stroke:.4px #8A6820}
-.thanks .sub{font-family:Display,"Bodoni Moda",Georgia,serif;font-style:italic;font-weight:600;font-optical-sizing:auto;font-size:clamp(26px,5.2vw,38px);line-height:1.3;text-align:center;color:#9A7424;margin:12px 0 0;letter-spacing:0.03em}
-.thanks .rule{width:160px;height:2px;border:0;margin:14px auto 0;background:#B08A2E}
+.thanks h1{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-optical-sizing:auto;font-size:clamp(56px,14vw,120px);line-height:1.12;text-align:center;color:#8a6516;margin:0;letter-spacing:0.02em}
+.thanks .sub{font-family:Display,"Bodoni Moda",Georgia,serif;font-style:italic;font-weight:600;font-optical-sizing:auto;font-size:clamp(28px,5.5vw,46px);line-height:1.2;text-align:center;color:#8a6516;margin:20px 0 0;letter-spacing:0.03em}
+.thanks .rule{width:160px;height:2px;border:0;margin:12px auto 0;background:#7d5a12}
 .thanks .body{padding:0;display:flex;flex-direction:column;gap:0}
-.thanks section{margin:0;padding-top:44px}.thanks .body>section:first-child{padding-top:24px}
-.thanks .lbl{font-family:Text,serif;font-size:clamp(15px,3.2vw,24px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9A7424;margin:0 0 10px;line-height:1.3}
-.thanks .item{margin:0 0 22px}.thanks .item:last-child{margin-bottom:0}
-.thanks .name{font-family:Text,"Libre Caslon Text",Georgia,serif;font-weight:400;font-size:clamp(28px,6vw,46px);line-height:1.35;color:#2A241A;margin:0;letter-spacing:0.03em}
-.thanks a.name{color:#2A241A;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#9A7424;text-underline-offset:5px}
-.thanks a.name:hover,.thanks a.name:focus-visible{color:#9A7424}
-.thanks .note{font-family:Text,serif;font-size:clamp(17px,3.4vw,26px);line-height:1.35;color:#3D3428;margin:12px 0 0;letter-spacing:0.03em}
-.thanks .wines .item{margin:0 0 22px}.thanks .wines .item:last-child{margin-bottom:0}
-.thanks .wines .name{font-size:clamp(26px,5.4vw,42px)}
-.thanks .welcome{font-family:Text,serif;font-size:clamp(16px,3.2vw,24px);font-style:italic;color:#3D3428;margin:16px 0 0;letter-spacing:0.03em;line-height:1.35}
-.thanks .split{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;margin:0;padding-top:44px}.thanks .split section{padding-top:0}.thanks .split .lbl{font-size:clamp(13px,2.6vw,20px);margin:0 0 8px}.thanks .split .name{font-size:clamp(22px,4.2vw,32px)}.thanks .split .item{margin:0 0 8px}.thanks .split .item:last-child{margin-bottom:0}
-.thanks .foot{margin:8px 0 0;font-family:Text,serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9A7424}
-.thanks button.name{background:none;border:0;padding:0;margin:0 auto;width:auto;max-width:100%;display:block;text-align:center;cursor:pointer;color:#2A241A;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#9A7424;text-underline-offset:5px;font:inherit;letter-spacing:inherit}
-.thanks button.name:hover,.thanks button.name:focus-visible{color:#9A7424;outline:0}
+.thanks section{margin:0;padding-top:52px}.thanks .body>section:first-child{padding-top:52px}
+.thanks .lbl{font-family:Text,serif;font-size:clamp(16px,3.4vw,30px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7d5a12;margin:0 0 18px;line-height:1.2}
+.thanks .item{margin:0 0 28px}.thanks .item:last-child{margin-bottom:0}
+.thanks .name{font-family:Text,"Libre Caslon Text",Georgia,serif;font-weight:400;font-size:clamp(30px,6.4vw,52px);line-height:1.2;color:#2b1d12;margin:0;letter-spacing:0.02em}
+.thanks a.name{color:#2b1d12;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#7d5a12;text-underline-offset:5px}
+.thanks a.name:hover,.thanks a.name:focus-visible{color:#7d5a12}
+.thanks .note{font-family:Text,serif;font-size:clamp(20px,4vw,32px);line-height:1.25;color:#3d2b1c;margin:10px 0 0;letter-spacing:0.01em}
+.thanks .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px 20px;width:100%}.thanks .wines .item{margin:0}.thanks .wines .item:last-child{margin-bottom:0}
+.thanks .wines .name{font-size:clamp(24px,5.2vw,46px)}
+.thanks .welcome{font-family:Text,serif;font-size:clamp(18px,3.6vw,30px);font-style:italic;color:#3d2b1c;margin:16px 0 0;letter-spacing:0.02em;line-height:1.25}
+.thanks .split{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;margin:0;padding-top:52px}.thanks .split section{padding-top:0}.thanks .split .lbl{font-size:clamp(16px,3.4vw,30px);margin:0 0 18px}.thanks .split .name{font-size:clamp(24px,4.8vw,40px)}.thanks .split .item{margin:0 0 28px}.thanks .split .item:last-child{margin-bottom:0}
+.thanks .foot{margin:16px 0 0;font-family:Text,serif;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7d5a12}
+.thanks button.name{background:none;border:0;padding:0;margin:0 auto;width:auto;max-width:100%;display:block;text-align:center;cursor:pointer;color:#2b1d12;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#7d5a12;text-underline-offset:5px;font:inherit;letter-spacing:inherit}
+.thanks button.name:hover,.thanks button.name:focus-visible{color:#7d5a12;outline:0}
 .thanks body.wine-open,.wine-open{overflow:hidden}
 .wmodal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:18px}
 .wmodal[hidden]{display:none}
 .wmodal-backdrop{position:absolute;inset:0;background:rgba(42,36,26,.45)}
-.wmodal-card{position:relative;z-index:1;width:min(520px,100%);max-height:min(86vh,720px);overflow:auto;background:#EEE1C6;color:#2A241A;border:1.5px solid #B08A2E;box-shadow:0 18px 50px rgba(42,36,26,.2);padding:22px 22px 26px;-webkit-overflow-scrolling:touch}
+.wmodal-card{position:relative;z-index:1;width:min(520px,100%);max-height:min(86vh,720px);overflow:auto;background:#EEE1C6;color:#2A241A;border:1.5px solid #8a6516;box-shadow:0 18px 50px rgba(42,36,26,.2);padding:22px 22px 26px;-webkit-overflow-scrolling:touch}
 .wmodal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 6px}
-.wmodal-title{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-size:clamp(28px,7vw,36px);line-height:1.1;color:#9A7424;margin:0;flex:1}
-.wmodal-close{flex:none;background:transparent;border:1px solid #9A7424;color:#9A7424;font:700 12px/1 Text,"Libre Caslon Text",serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
-.wmodal-close:hover,.wmodal-close:focus-visible{background:#9A7424;color:#EEE1C6;outline:0}
+.wmodal-title{font-family:Display,"Bodoni Moda",Georgia,serif;font-weight:700;font-size:clamp(28px,7vw,36px);line-height:1.1;color:#7d5a12;margin:0;flex:1}
+.wmodal-close{flex:none;background:transparent;border:1px solid #7d5a12;color:#7d5a12;font:700 12px/1 Text,"Libre Caslon Text",serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
+.wmodal-close:hover,.wmodal-close:focus-visible{background:#7d5a12;color:#EEE1C6;outline:0}
 .wmodal-producer{margin:0 0 16px;font-style:italic;color:#3D3428;font-size:16px}
 .wmodal-sec{margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(176,138,46,.45)}
-.wmodal-lbl{margin:0 0 6px;font:700 12px/1.2 Text,"Libre Caslon Text",serif;letter-spacing:.16em;text-transform:uppercase;color:#9A7424}
+.wmodal-lbl{margin:0 0 6px;font:700 12px/1.2 Text,"Libre Caslon Text",serif;letter-spacing:.16em;text-transform:uppercase;color:#7d5a12}
 .wmodal-sec p{margin:0;font-size:17px;line-height:1.45;color:#2A241A}
 .wmodal-stats{margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px}
 .wmodal-stat{margin:0}
-.wmodal-stat dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9A7424}
+.wmodal-stat dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7d5a12}
 .wmodal-stat dd{margin:2px 0 0;font-size:17px;color:#2A241A}
 @media(max-width:720px){.thanks .card{max-width:none;margin:0;padding:9vw 6vw 24vw;min-height:100vh}.thanks .top{padding:10px 14px 0}.thanks .panel{padding:16px 12px 14px}.thanks .split{gap:4px 10px}.wmodal{padding:10px;align-items:flex-end}.wmodal-card{max-height:90vh;padding:18px 16px 22px}}
 @media(min-width:800px){.thanks{background:#E4D6B4;padding:0 16px 48px}.thanks .card{margin-top:8px;max-width:760px;box-shadow:0 16px 48px rgba(80,60,30,.14)}.thanks .top{max-width:760px;padding-top:22px}}"""
@@ -958,15 +958,17 @@ def thanksgiving_drinks_page(out, src=None):
 <p class=note>Aging since October 18.</p>
 </div>
 <div class=item>
-<p class=name>Holiday Gin Mule</p>
+<p class=name>Rosemary Gin Mule</p>
 </div>
 </section>
 <section class=wines>
 <p class=lbl>House Wine Selection</p>
+<div class=wgrid>
 <div class=item><button type=button class="name wine" data-wine="Sonoma Zinfandel" aria-haspopup="dialog">Sonoma Zinfandel</button></div>
 <div class=item><button type=button class="name wine" data-wine="Chateauneuf-du-Pape" aria-haspopup="dialog">Châteauneuf-du-Pape</button></div>
 <div class=item><button type=button class="name wine" data-wine="Napa Sauvignon Blanc" aria-haspopup="dialog">Napa Sauvignon Blanc</button></div>
 <div class=item><p class=name>Napa Cabernet Sauvignon</p></div>
+</div>
 <p class=welcome>Feel free to bring your own.</p>
 </section>
 <div class=split>
